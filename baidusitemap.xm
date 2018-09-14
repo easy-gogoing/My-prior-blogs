@@ -3,6 +3,22 @@
 
 
     
+  <url>
+    <loc>//mlone.top/2018/09/14/my-second-blog/</loc>
+    <lastmod>2018-09-14T13:39:48.060Z</lastmod>
+    <data>
+        <display>
+        <title>my-second-blog</title>
+        <pubTime>2018-09-14T13:30:20.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
     
     
   <url>
