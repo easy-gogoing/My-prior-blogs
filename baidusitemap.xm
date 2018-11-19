@@ -8,7 +8,7 @@
     
     
   <url>
-    <loc>//mlone.top/2018/09/14/my-second-blog/</loc>
+    <loc>//mlone.top/post/undefined.html</loc>
     <lastmod>2018-09-14T14:10:00.383Z</lastmod>
     <data>
         <display>
@@ -30,7 +30,7 @@
     
     
   <url>
-    <loc>//mlone.top/2018/09/13/hello-world/</loc>
+    <loc>//mlone.top/post/undefined.html</loc>
     <lastmod>2018-09-14T01:50:24.526Z</lastmod>
     <data>
         <display>
@@ -45,7 +45,7 @@
 
     
   <url>
-    <loc>//mlone.top/2018/09/14/my-first-blog/</loc>
+    <loc>//mlone.top/post/undefined.html</loc>
     <lastmod>2018-09-14T01:41:30.122Z</lastmod>
     <data>
         <display>
