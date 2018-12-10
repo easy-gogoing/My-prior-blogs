@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>https://mlone.top/post/66b74461.html</loc>
+    <lastmod>2018-12-10T08:37:11.231Z</lastmod>
+    <data>
+        <display>
+        <title>《爆裂无声》深度解析</title>
+        <pubTime>2018-12-10T07:00:10.000Z</pubTime>
+        
+        <tag>真实</tag>
+         
+        <tag>生活</tag>
+         
+        <tag>犯罪</tag>
+         
+        <tag>悬疑</tag>
+         
+        <tag>影视</tag>
+         
+         
+           
+             
+              <breadCrumb title="影视" url="https://mlone.top/categories/%E5%BD%B1%E8%A7%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mlone.top/post/f8e64e55.html</loc>
     <lastmod>2018-11-24T03:08:42.301Z</lastmod>
     <data>
