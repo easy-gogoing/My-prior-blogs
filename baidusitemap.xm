@@ -5,11 +5,39 @@
     
   <url>
     <loc>https://mlone.top/post/66b74461.html</loc>
-    <lastmod>2018-12-10T08:37:11.231Z</lastmod>
+    <lastmod>2018-12-11T08:39:00.264Z</lastmod>
     <data>
         <display>
-        <title>《爆裂无声》深度解析</title>
+        <title>忻钰坤第一弹--《爆裂无声》深度解析[转载]</title>
         <pubTime>2018-12-10T07:00:10.000Z</pubTime>
+        
+        <tag>真实</tag>
+         
+        <tag>生活</tag>
+         
+        <tag>犯罪</tag>
+         
+        <tag>悬疑</tag>
+         
+        <tag>影视</tag>
+         
+         
+           
+             
+              <breadCrumb title="影视" url="https://mlone.top/categories/%E5%BD%B1%E8%A7%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/b690c376.html</loc>
+    <lastmod>2018-12-11T08:32:08.043Z</lastmod>
+    <data>
+        <display>
+        <title>忻钰坤第二弹--《心迷宫》简单解读[转载]</title>
+        <pubTime>2018-12-11T07:22:43.000Z</pubTime>
         
         <tag>真实</tag>
          
