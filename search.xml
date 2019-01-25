@@ -43,7 +43,30 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[my-second-blog]]></title>
+    <title><![CDATA[序列化]]></title>
+    <url>%2Fpost%2F693bdb7c.html</url>
+    <content type="text"><![CDATA[什么是序列化？Java序列化是指把Java对象保存为二进制字节码的过程，Java反序列化是指把二进制码重新转换成Java对象的过程。 那么为什么需要序列化呢？第一种情况是：一般情况下Java对象的声明周期都比Java虚拟机的要短，实际应用中我们希望在JVM停止运行之后能够持久化指定的对象，这时候就需要把对象进行序列化之后保存。 第二种情况是：需要把Java对象通过网络进行传输的时候。因为数据只能够以二进制的形式在网络中进行传输，因此当把对象通过网络发送出去之前需要先序列化成二进制数据，在接收端读到二进制数据之后反序列化成Java对象。 怎样实现序列化？只需要实现Serializbale这个接口就可以了。 具体实现详见：“深入学习Java序列化”]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[早绑定与晚绑定]]></title>
+    <url>%2Fpost%2F72dff8df.html</url>
+    <content type="text"><![CDATA[静态绑定（早绑定）：程序在编译阶段根据参数个数确定调用哪个函数（重载）。动态绑定（晚绑定）：以封装和继承为基础，将成员函数和析构函数声明为虚函数（virtual）。构造函数不能声明为virtual： Shape *shape1 = new Circle(3.5, 4.0); shape -&gt; calcArea(); //父类指针调用子类面积函数delete Shape1；//先调用子类析构函数，再调用父类析构函数 shape1 = NULL; return 0; C++: virtual double cost()=0; //纯虚函数 纯虚函数在类内声明，在类内或类外定义函数，而纯虚函数无函数体。含有纯虚函数的类称为抽象类；只含有纯虚函数的类称为接口类（没有任何数据成员）。 Java: 通过”abstract”关键字实现多态。]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[图片收藏]]></title>
     <url>%2Fpost%2Ffda4c161.html</url>
     <content type="text"><![CDATA[发现好多美女啊！！！ 美女1 这里的图片链接不能写相对路径：./assets/blogImg/美女1.jpg如果这样写的话，文章不展开时的图片是可以显示的，但当文章展开时，所有的图片都无法找到路径了。(可见展开和不展开的页面代码文件并不在同一目录下) 美女2 动图1 动图2 动图3 动图4 风景1 风景2 佩奇 狗子]]></content>
       <categories>
@@ -54,7 +77,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[My-first-blog]]></title>
+    <title><![CDATA[GitHub Pages]]></title>
     <url>%2Fpost%2F5641fb4c.html</url>
     <content type="text"><![CDATA[前言使用github pages服务搭建博客的好处有： 全是静态文件，访问速度快； 免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台； 可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的； 数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行； 博客内容可以轻松打包、转移、发布到其它平台； 等等；]]></content>
       <categories>
