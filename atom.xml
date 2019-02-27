@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mlone.top/"/>
-  <updated>2019-02-25T10:35:06.300Z</updated>
+  <updated>2019-02-26T15:09:31.998Z</updated>
   <id>https://mlone.top/</id>
   
   <author>
@@ -15,6 +15,950 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>整数中1出现的次数</title>
+    <link href="https://mlone.top/post/42e11ab6.html"/>
+    <id>https://mlone.top/post/42e11ab6.html</id>
+    <published>2018-12-22T09:55:12.000Z</published>
+    <updated>2019-02-26T15:09:31.998Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>求出1~13的整数中1出现的次数,并算出100~1300的整数中1出现的次数？为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1 到 n 中1出现的次数）。</p><p><strong>代码：</strong> <a href="https://www.nowcoder.com/profile/448404/codeBookDetail?submissionId=1505827" target="_blank" rel="noopener">https://www.nowcoder.com/profile/448404/codeBookDetail?submissionId=1505827</a></p><pre><code>public class Solution {    public int NumberOf1Between1AndN_Solution(int n) {        int count=0;        while(n&gt;0){ //遍历n到1            String str = String.valueOf(n); //整数转字符串            char[] arr = str.toCharArray(); //字符串转字符数组            for(int i=0; i&lt;arr.length; i++){                if(arr[i]==&apos;1&apos;)                    count++;            }            n--;        }        return count;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>把字符串转换成整数</title>
+    <link href="https://mlone.top/post/9b7ea8ca.html"/>
+    <id>https://mlone.top/post/9b7ea8ca.html</id>
+    <published>2018-12-20T09:55:12.000Z</published>
+    <updated>2019-02-26T15:06:04.137Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>将一个字符串转换成一个整数(实现Integer.valueOf(string)的功能，但是string不符合数字要求时返回0)，要求不能使用字符串转换整数的库函数。 数值为0或者字符串不是一个合法的数值则返回0。</p><p><strong>代码：</strong></p><pre><code>class Solution {    public int StrToInt(String str) {        if(str.equals(&quot;&quot;) || str.length()==0) return 0; //非空判断        char[] cs = str.toCharArray();        int res = 0;        int symbol = 1;         if(cs[0] == &apos;-&apos;) symbol=-1;        for(int i=(cs[0]==&apos;-&apos; || cs[0]==&apos;+&apos;) ? 1:0; i&lt;cs.length; i++){            if(cs[i]&lt;&apos;0&apos; || cs[i]&gt;&apos;9&apos;) //if(cs[i]&lt;48 || cs[i]&gt;57)                return 0;            res = (res&lt;&lt;1)+(res&lt;&lt;3)+(cs[i]&amp;0xf);//res=res*10+cs[i]-&apos;0&apos;;            /**             * 左移是乘以2的次方(res&lt;&lt;1)+(res&lt;&lt;3) = res*2+res*8 = res*10             * 字符&apos;0&apos;到&apos;9&apos;的ascii值的低4个二进制位刚好就是0到9所以cs[i]&amp;0xf等于cs[i]-&apos;0&apos;。              * 位运算会比乘法运算效率高那么一点点点点...             *              * ASCII码是7位或8位的，如&apos;0&apos;--&gt;十进制48--&gt;二进制0011 0000             * 而十六进制等于四位二进制，如0xf--&gt;二进制1111             * 所以&apos;0&apos; &amp; 0xf == 00110000 &amp; 1111 == 0000 = 十进制0             * 而&apos;0&apos;-&apos;0&apos; == 48 -48 == 0 （减号两边的字符&apos;0&apos;会先被转换为十进制ascii码值48，然后再做运算）             */        }         return res*symbol;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数组中重复的数字</title>
+    <link href="https://mlone.top/post/8f265477.html"/>
+    <id>https://mlone.top/post/8f265477.html</id>
+    <published>2018-12-19T09:55:12.000Z</published>
+    <updated>2019-02-26T15:09:52.509Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>在一个长度为n的数组里的所有数字都在0到n-1的范围内。数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。</p><p><strong>代码：</strong></p><p><strong>方式一：</strong>（最愚蠢的做法，类似“不正统的冒泡排序2”）时间复杂度为T=O(n^2)</p><p><em>从numbers[i] (0&lt;=i&lt;=n-2)开始，分别与余下的numbers[i+1]~ numbers[n-1]进行比对，一旦找到重复的元素，就将其放到duplicate[0]中并返回true，否则返回false。<br>length为数组numbers的长度（似乎有点多余？）。</em></p><pre><code>public class Solution {    public boolean duplicate(int numbers[],int length,int [] duplication) {        if( numbers==null || numbers.length==0)            return false; //非空判断        length = numbers.length;        for(int i=0; i&lt;length-1; i++){            for(int j=i+1; j&lt;length; j++){                if(numbers[i]==numbers[j]){                    duplication[0]=numbers[i];                    return true;                }            }        }        return false;    }}</code></pre><p><strong>方式二：</strong>将数组元素转换成字符串装进StringBuffer中，然后从首末两端查找同一元素，若找到的两个下标不同，则说明该元素重复。时间复杂度为T=O(n),但是消耗内存空间。</p><pre><code>public class Solution {    public boolean duplicate(int numbers[],int length,int [] duplication) {    StringBuffer sb = new StringBuffer();         for(int i = 0; i &lt; length; i++){                sb.append(numbers[i] + &quot;&quot;);            }        for(int j = 0; j &lt; length; j++){            if(sb.indexOf(numbers[j]+&quot;&quot;) != sb.lastIndexOf(numbers[j]+&quot;&quot;)){                duplication[0] = numbers[j];                return true;            }        }        return false;    }}</code></pre><p><strong>方式三：</strong>（建议这种）题目里写了数组里数字的范围保证在0 ~ n-1 之间，所以可以利用现有数组设置标志，当一个数字被访问过后将标志位置为true。T=O(n)</p><pre><code>//boolean只占一位，所以还是比较省的public boolean duplicate(int numbers[], int length, int[] duplication) {    boolean[] k = new boolean[length];    for (int i = 0; i &lt; k.length; i++) {        if (k[numbers[i]] == true) {            duplication[0] = numbers[i];            return true;        }        k[numbers[i]] = true;    }    return false;}</code></pre><p><strong>方式四：</strong>（最机智的解法，但是我没咋明白）不需要额外的数组，题目里写了数组里数字的范围保证在0 ~ n-1 之间，所以可以利用现有数组设置标志，当一个数字被访问过后，可以设置对应位上的数 + n，之后再遇到相同的数时，会发现对应位上的数已经大于等于n了，那么直接返回这个数即可。T=O(n)</p><pre><code>public boolean duplicate(int numbers[],int length,int [] duplication) {        if( numbers==null || numbers.length==0)            return false;        for(int i=0; i&lt;length; i++){            int index = numbers[i];            if (index&gt;=length)                  index-=length;            if(numbers[index]&gt;=length){                duplication[0]=index;                return true;            }            numbers[index] = numbers[index]+length;        }        return false;}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>字符串的全排列</title>
+    <link href="https://mlone.top/post/6eef7a7f.html"/>
+    <id>https://mlone.top/post/6eef7a7f.html</id>
+    <published>2018-12-18T09:55:12.000Z</published>
+    <updated>2019-02-26T15:10:29.896Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入一个字符串,按字典序打印出该字符串中字符的所有排列。例如输入字符串abc,则打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。</p><p><strong>解析：</strong>基于回溯法思想</p><p>参考：<a href="https://www.nowcoder.com/questionTerminal/fe6b651b66ae47d7acce78ffdd9a96c7" target="_blank" rel="noopener">https://www.nowcoder.com/questionTerminal/fe6b651b66ae47d7acce78ffdd9a96c7</a></p><p><img src="/assets/blogImg/5/7.png" alt="图片7"></p><p>全排列就是从第一个数字起，每个数分别与它后面的数字交换：</p><p><em>固定第一个字符，递归取得首位后面的各种字符串组合；</em></p><p><em>再把第一个字符与后面每一个字符交换，并同样递归获得首位后面的字符串组合。</em></p><p><strong>代码：</strong></p><pre><code>import java.util.List;import java.util.Collections;import java.util.ArrayList;public class Solution {    public ArrayList&lt;String&gt; Permutation(String str) {        List&lt;String&gt; res = new ArrayList&lt;&gt;(); //创建结果集        if (str != null &amp;&amp; str.length() &gt; 0) { //参数非空判定            PermutationHelper(str.toCharArray(), 0, res);//扔进参数，一顿操作            Collections.sort(res); //按字典顺序对结果集进行排序        }        return (ArrayList)res; //返回结果集    }    //操作函数    public void PermutationHelper(char[] cs, int i, List&lt;String&gt; list) {        if (i == cs.length - 1) { //递归终止条件，当下标i已经移到char数组的末尾的时候，考虑添加这一组字符串到结果集中            String val = String.valueOf(cs);            if (!list.contains(val)) //排除结果集中的重复字符串元素                list.add(val);        } else {           //这一段就是“回溯法”            //递归的思想与栈的入栈和出栈是一样的,某一个状态遇到return结束了之后，会回到被调用的地方继续执行            for (int j = i; j &lt; cs.length; j++) {                swap(cs, i, j);                PermutationHelper(cs, i+1, list); //递归子序列                swap(cs, i, j); //将元素再调换回来，以免影响下趟循环（j=i+1）            }        }    }    //交换字符数组中两下标元素的位置    public void swap(char[] cs, int i, int j) {        char temp = cs[i];        cs[i] = cs[j];        cs[j] = temp;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="排列组合" scheme="https://mlone.top/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不用加减乘除作加法</title>
+    <link href="https://mlone.top/post/e61a0090.html"/>
+    <id>https://mlone.top/post/e61a0090.html</id>
+    <published>2018-12-17T09:55:12.000Z</published>
+    <updated>2019-02-26T15:05:47.056Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。</p><p><strong>解析：</strong></p><p>首先看十进制是如何做的： 5+7=12，分三步走</p><ul><li>第一步：相加各位的值，不算进位，得到2。</li><li>第二步：计算进位值，得到10. 如果这一步的进位值为0，那么第一步得到的值就是最终结果。 </li><li>第三步：重复上述两步，只是相加的值变成上述两步的得到的结果2和10，得到12。</li></ul><p>同样我们可以用三步走的方式计算二进制值相加： 5-101，7-111 </p><ul><li>第一步：相加各位的值，不算进位，得到010，二进制每位相加就相当于各位做异或操作，101^111。</li><li>第二步：计算进位值，得到1010，相当于各位做与操作得到101，再向左移一位得到1010，(101&amp;111)&lt;&lt;1。</li><li>第三步重复上述两步， 各位相加 010^1010=1000，进位值为100=(010&amp;1010)&lt;&lt;1。<br>继续重复上述两步：1000^100 = 1100，进位值为0，跳出循环，1100为最终结果。</li></ul><p><strong>代码：</strong></p><pre><code>public class Solution {    public int Add(int num1,int num2) {        while(num2!=0){            int temp=num1^num2; //计算当前位值            num2=(num1&amp;num2)&lt;&lt;1; //计算进位值            num1=temp;        }        return num1;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>递归求前n项和</title>
+    <link href="https://mlone.top/post/952e1d5a.html"/>
+    <id>https://mlone.top/post/952e1d5a.html</id>
+    <published>2018-12-16T09:55:12.000Z</published>
+    <updated>2019-02-26T15:05:35.120Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>求1+2+3+…+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A ? B:C）</p><p><strong>代码：</strong></p><pre><code>public class Solution {    public int Sum_Solution(int n) {        if(n==1) return 1;        return n+Sum_Solution(n-1);    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="递归" scheme="https://mlone.top/tags/%E9%80%92%E5%BD%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>包含min函数的栈</title>
+    <link href="https://mlone.top/post/11cbd9c1.html"/>
+    <id>https://mlone.top/post/11cbd9c1.html</id>
+    <published>2018-12-16T08:55:12.000Z</published>
+    <updated>2019-02-26T15:05:58.677Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O(1)）</p><p><strong>代码：</strong></p><pre><code>import java.util.Stack;import java.util.Iterator;public class Solution {    Stack&lt;Integer&gt; stack = new Stack&lt;Integer&gt;();    public void push(int node) {        stack.push(node);    }    public void pop() {        stack.pop();    }    public int top() {        return stack.peek();    }    public int min() {        int min=stack.peek();        int tmp;        Iterator&lt;Integer&gt; iterator = stack.iterator();        while(iterator.hasNext()){            tmp=iterator.next();            if(tmp&lt;min)                min=tmp;        }        return min;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>顺时针打印矩阵</title>
+    <link href="https://mlone.top/post/952c518.html"/>
+    <id>https://mlone.top/post/952c518.html</id>
+    <published>2018-12-15T08:55:12.000Z</published>
+    <updated>2019-02-26T15:10:41.307Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.</p><p><img src="/assets/blogImg/5/6.png" alt="图片6"></p><p><strong>代码：</strong></p><pre><code>import java.util.ArrayList;public class Solution {    public ArrayList&lt;Integer&gt; printMatrix(int[][] matrix) {        if(matrix==null || matrix.length==0) //非空判定            return null;       ArrayList&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;();       printOuterRace(matrix, 0, 0, matrix.length-1, matrix[0].length-1, result);       return result;    }    //顺时针打印矩阵最外圈元素：右--&gt;下--&gt;左--&gt;上    public void printOuterRace(int[][] matrix,int startRow,int startCol,int endRow,int endCol,ArrayList&lt;Integer&gt; result) {        if(startRow&lt;endRow &amp;&amp; startCol&lt;endCol){ //（1）多行多列            for(int i=startCol; i&lt;=endCol; i++) result.add(matrix[startRow][i]); //向右输出首行            for(int i=startRow+1; i&lt;=endRow-1; i++) result.add(matrix[i][endCol]); //向下输出尾列            for(int i=endCol; i&gt;=startCol; i--) result.add(matrix[endRow][i]); //向左输出尾行            for(int i=endRow-1; i&gt;=startRow+1; i--) result.add(matrix[i][startCol]); //向上输出首列            printOuterRace(matrix,startRow+1,startCol+1,endRow-1,endCol-1,result); //继续打印下一圈元素        }        else if(startRow==endRow &amp;&amp; startCol&lt;endCol){ //（2）就一行            for(int i=startCol; i&lt;=endCol; i++) result.add(matrix[startRow][i]);        }        else if(startRow&lt;endRow &amp;&amp; startCol==endCol){ //（3）就一列            for(int i=startRow; i&lt;=endRow; i++) result.add(matrix[i][startCol]);        }        else if(startRow==endRow &amp;&amp; startCol==endCol){ //（4）就一个元素            result.add(matrix[startRow][startCol]);        }        else //（5）角标越界            return;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="遍历" scheme="https://mlone.top/tags/%E9%81%8D%E5%8E%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二叉树的镜像</title>
+    <link href="https://mlone.top/post/5bf14681.html"/>
+    <id>https://mlone.top/post/5bf14681.html</id>
+    <published>2018-12-13T08:55:12.000Z</published>
+    <updated>2019-02-26T15:05:30.064Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>操作给定的二叉树，将其变换为源二叉树的镜像：</p><p><img src="/assets/blogImg/5/5.png" alt="图片5"></p><p><strong>代码：</strong>即是Swap函数的函数递归版</p><pre><code>/**public class TreeNode {    int val = 0;    TreeNode left = null;    TreeNode right = null;    public TreeNode(int val) {        this.val = val;    }}*/public class Solution {    public void Mirror(TreeNode root) {        TreeNode temp;        if(root!=null){            temp=root.left;            root.left=root.right;            root.right=temp;          //  if(root.left!=null)                Mirror(root.left);          //  if(root.right!=null)                Mirror(root.right);        }    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>树的子结构</title>
+    <link href="https://mlone.top/post/53dd15fc.html"/>
+    <id>https://mlone.top/post/53dd15fc.html</id>
+    <published>2018-12-12T08:55:12.000Z</published>
+    <updated>2019-02-26T15:10:55.831Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）。</p><p><strong>代码：</strong></p><pre><code>public class Solution {    public static boolean HasSubtree(TreeNode root1, TreeNode root2) {        boolean result = false;        //当两树都不为null的时候，才进行比较。否则直接返回false        if (root2 != null &amp;&amp; root1 != null) {            //如果两树的当前根节点值相等            if(root1.val == root2.val)                //就判断以root1为根节点的Tree1是否包含（或相等）Tree2                result = doesTree1HaveTree2(root1,root2);            //如果不包含，向左递归            if (!result)                result = HasSubtree(root1.left,root2);            //如果不包含，向右递归            if (!result)                result = HasSubtree(root1.right,root2);        }            //返回查找结果            return result;    }</code></pre><p>//Tree1以node1为起点，Tree2以node2为起点，分别开始向下进行匹配。判断Tree1是否包含（或相等）Tree2</p><pre><code>    public static boolean doesTree1HaveTree2(TreeNode node1, TreeNode node2) {        //如果Tree2已经遍历完了且都能对应的上Tree1，返回true        if (node2 == null)            return true;        else if(node1 == null)            //如果Tree2还没有遍历完，Tree1却遍历完了（说明Tree2比Tree1大），返回false            return false;        //如果其中有一个点没有对应上，就返回false        if (node1.val != node2.val)                   return false;        else            //如果根节点对应的上，那么就分别再去匹配左右子结点的值，看是否也能对应的上。（左比左，右比右）            return doesTree1HaveTree2(node1.left,node2.left) &amp;&amp; doesTree1HaveTree2(node1.right,node2.right);    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>合并两个排序的链表</title>
+    <link href="https://mlone.top/post/faa1cd64.html"/>
+    <id>https://mlone.top/post/faa1cd64.html</id>
+    <published>2018-12-10T08:55:12.000Z</published>
+    <updated>2019-02-26T15:12:13.854Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。</p><p><strong>方式一：</strong>（迭代）参考归并排序的Merge函数</p><pre><code>/*public class ListNode {    int val;    ListNode next = null;    ListNode(int val) {        this.val = val;    }}*/public class Solution {    public ListNode Merge(ListNode list1,ListNode list2) {        if(list1==null) //参数非空判定            return list2;        if(list2==null)            return list1;        ListNode root; //保留合并后的链表头        if(list1.val&lt;=list2.val)  root=list1;        else   root=list2;        ListNode p1=list1;        ListNode p2=list2; //定义两个指针分别指向两个链表        ListNode head=new ListNode(-1); //创建一个结点来使后置结点指向下一个较小结点                                       //这里的val值无论是-1或其他值都无所谓        while((p1!=null)&amp;&amp;(p2!=null)){            if(p1.val&lt;=p2.val){                head.next=p1; //让head(上个较小结点)的后置结点指向当前较小结点                head=p1; //更新head使其指向当前较小结点                p1=p1.next; //指针p1后移一位            }else{                head.next=p2;                head=p2;                p2=p2.next;            }        }        if(p1!=null)  head.next=p1; //若list1有剩余        if(p2!=null)  head.next=p2; //若list2有剩余        return root;    }}</code></pre><p><strong>方式二：</strong>（递归）可由上面的迭代代码理解下列递归代码</p><pre><code>public class Solution {    public ListNode Merge(ListNode list1,ListNode list2) {        if(list1==null) //参数非空判定；递归终止条件            return list2;        if(list2==null)            return list1;        ListNode phead; //定义一个指针用来指向当前较小结点            if(list1.val&lt;=list2.val){                phead=list1;                phead.next=Merge(list1.next,list2);            }else{                phead=list2;                phead.next=Merge(list1,list2.next);            }        return phead;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>翻转链表</title>
+    <link href="https://mlone.top/post/230b8655.html"/>
+    <id>https://mlone.top/post/230b8655.html</id>
+    <published>2018-12-10T06:55:12.000Z</published>
+    <updated>2019-02-26T15:12:31.006Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入一个链表，反转链表后，输出新链表的表头：</p><p><strong>代码：</strong></p><pre><code>/*public class ListNode {    int val;    ListNode next = null;    ListNode(int val) {        this.val = val;    }}*/public class Solution {    public ListNode ReverseList(ListNode head) {         if(head==null) //传入参数head是反转前的链表头0            return null;         ListNode pre = null; //用于存储当前节点head的前置节点         ListNode next = null; //用于存储当前节点head指向的下一节点         while(head!=null){ //判断是否到达链表末尾，如果当前节点head为null，则代表其前置节点pre节点是尾节点                            //pre节点即上次（最后一次）进行while循环操作的“当前head节点”             next = head.next; //先拿到head指向的下一节点1             head.next = pre; //再将head指向其前置节点             pre = head; //把当前节点head作为下一次循环的前置节点             head = next; //把下一节点1当做下次循环的当前节点             // 以上几步的顺序不能变，否则会导致链表断裂: 0&lt;-1 2-&gt;3         }        return pre;    }    // 反转前0-&gt;1-&gt;2-&gt;3    // 翻转后0&lt;-1&lt;-2&lt;-3}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>链表中倒数第K个结点</title>
+    <link href="https://mlone.top/post/d67309a5.html"/>
+    <id>https://mlone.top/post/d67309a5.html</id>
+    <published>2018-12-10T05:55:12.000Z</published>
+    <updated>2019-02-26T15:12:44.495Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入一个链表，输出该链表中倒数第k个结点。</p><p><strong>解析：</strong>先算出链表长度total，然后返回第total-K+1个结点。</p><p><strong>代码：</strong></p><pre><code>/*public class ListNode {    int val;    ListNode next = null;    ListNode(int val) {        this.val = val;    }}*/public class Solution {    public ListNode FindKthToTail(ListNode head,int k) {        int total=0;        if(head==null)            return null; //这里的参数非null判断其实不加也行，若head为null则下面的代码也会返回null        ListNode node=head;        while(node!=null){            total++;            node=node.next;        }        if(k&lt;=total){            node=head;            for(int i=1; i&lt;=total-k; i++){                node=node.next;            }            return node;        }        return null;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>调整数组顺序，使奇数位于偶数前面</title>
+    <link href="https://mlone.top/post/8ddb6e50.html"/>
+    <id>https://mlone.top/post/8ddb6e50.html</id>
+    <published>2018-12-09T05:55:12.000Z</published>
+    <updated>2019-02-26T15:12:55.511Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。</p><p><strong>解析：</strong></p><p>类似大元素下沉的冒泡排序：<strong>前后两两相比较，前偶后奇则调换位置</strong>，每趟排序一个偶数沉底。</p><p>（不能使用小数/奇数上浮的冒泡排序，它无法保证偶数的相对位置保持不变。）</p><p><strong>代码：</strong></p><pre><code>public class Solution {    public void reOrderArray(int [] array) {        for(int i=array.length-1; i&gt;0; i--){            for(int j=0; j&lt;i; j++){                if((array[j]%2==0)&amp;&amp;(array[j+1]%2==1)){                    int temp = array[j];                    array[j] = array[j+1];                    array[j+1] = temp;                }            }        }    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数值的整数次方</title>
+    <link href="https://mlone.top/post/a5d3b8f.html"/>
+    <id>https://mlone.top/post/a5d3b8f.html</id>
+    <published>2018-12-08T03:55:12.000Z</published>
+    <updated>2019-02-26T15:13:04.903Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。</p><p><strong>解析： </strong>     </p><p><em>1.全面考察指数的正负、底数是否为零等情况。</em></p><p><em>2.写出指数的二进制表达，例如13表达为二进制1101。</em></p><p><em>3.举例:10^1101 = 10^0001</em>10^0100<em>10^1000。</em></p><p><em>4.通过&amp;1和&gt;&gt;1来逐位读取1101，为1时将该位代表的乘数累乘到最终结果。</em></p><p><strong>代码：</strong></p><pre><code>class Solution {    public double Power(double base, int exponent) {        int exp;        if(exponent==0) //指数为0            return 1;        else if(exponent&lt;0){ //指数为负整数            if(base==0) //底数为0，即分母为0                throw new RuntimeException(&quot;指数为负整数，则底数不能为0！&quot;);            exp = -exponent;        }        else            exp = exponent; //指数为正整数        double sum=1;        while(exp!=0){            if((exp&amp;1)==1){ //括号不能少                sum=sum*base; //base * base^2 * base^4 * base^8 = base^(1+2+4+8) = base^1111            }            base=base*base; //翻倍：base、base^2、base^4、base^8            exp=exp&gt;&gt;1; //右移一位        }        return exponent&gt;0?sum:1/sum;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>二进制中1的个数</title>
+    <link href="https://mlone.top/post/33147ff9.html"/>
+    <id>https://mlone.top/post/33147ff9.html</id>
+    <published>2018-12-08T02:55:12.000Z</published>
+    <updated>2019-02-26T15:07:50.313Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p><p><strong>解法一：</strong>（十进制整数–&gt;二进制字符串–&gt;字符数组）</p><pre><code>public class Solution {    public int NumberOf1(int n) {        char[] arr = Integer.toBinaryString(n).toCharArray();        int count=0;        for(int i=0; i&lt;arr.length; i++){            if(arr[i]==&apos;1&apos;) //==可用于基本数据类型值的比较；或判断两个引用变量是否指向内存中的同一地址                count++;        }        return count;    }}</code></pre><p><strong>解法二：</strong>（绝妙解法，同样适用于负整数）</p><pre><code>public class Solution {    public int NumberOf1(int n) {        int count=0;        while(n!=0){            count++;            n = n&amp;(n-1);        }        return count;    }}</code></pre><p><strong>解析：</strong></p><p>如果一个整数不为0，那么这个整数至少有一位是1。如果我们把这个整数减1，那么原来处在整数最右边的1就会变为0，原来在1后面的所有的0都会变成1(如果最右边的1后面还有0的话)。其余所有位将不会受到影响。</p><p>举个例子：一个二进制数1100，从右边数起第三位是处于最右边的一个1。减去1后，第三位变成0，它后面的两位0变成了1，而前面的1保持不变，因此得到的结果是1011.我们发现减1的结果是把最右边的一个1开始的所有位都取反了。这个时候如果我们再把原来的整数和减去1之后的结果做与运算，从原来整数最右边一个1那一位开始所有位都会变成0。如1100&amp;1011=1000.也就是说，把一个整数减去1，再和原整数做与运算，会把该整数最右边一个1变成0.那么一个整数的二进制有多少个1，就可以进行多少次这样的操作。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>矩形覆盖</title>
+    <link href="https://mlone.top/post/5f2a74af.html"/>
+    <id>https://mlone.top/post/5f2a74af.html</id>
+    <published>2018-12-07T06:55:12.000Z</published>
+    <updated>2019-02-26T15:13:19.084Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>我们可以用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？</p><p><strong>解析：</strong></p><p>（1）当 n = 1时，只存在一种情况：</p><p><img src="/assets/blogImg/5/1.jpg" alt="图1"></p><p>（2）当 n = 2时，存在两种情况：</p><p><img src="/assets/blogImg/5/2.jpg" alt="图2"></p><p>（3）当 n &gt;= 3时，分为两步考虑：</p><p>（3.1） 第一次摆放一块 2*1 的小矩阵，则余下的摆放方法总共为f(target - 1)</p><p><img src="/assets/blogImg/5/3.png" alt="图3"></p><p>（3.2）第一次摆放一块1*2的小矩阵，则余下的摆放方法总共为f(target-2)</p><p>因为，摆放了一块1<em>2的小矩阵（用√√表示），对应下方的1</em>2（用××表示）摆放方法就确定了，所以为f(targte-2)</p><p><img src="/assets/blogImg/5/4.png" alt="图4"></p><p>故得出结论：<strong><em>f(target) = f(target - 1)+ f(target - 2)</em></strong></p><p><strong>代码：</strong></p><pre><code>public class Solution {    public int RectCover(int target) {        if(target&lt;=0)            return 0;        else if(target==1 || target==2)            return target;        else            return RectCover(target-1)+RectCover(target-2);        }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>变态跳台阶</title>
+    <link href="https://mlone.top/post/b34e4534.html"/>
+    <id>https://mlone.top/post/b34e4534.html</id>
+    <published>2018-12-07T05:55:12.000Z</published>
+    <updated>2019-02-26T15:05:53.943Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</p><p><strong>规律：</strong></p><p>因为n级台阶，第一步有n种跳法：跳1级、跳2级…跳n级：</p><p>跳1级，剩下n-1级，则剩下跳法是f(n-1)；</p><p>跳2级，剩下n-2级，则剩下跳法是f(n-2)；</p><p>…</p><p>跳n-1级，剩下1级，则剩下跳法是f(1)；</p><p>跳n级，剩下0级，则就1种跳法.</p><p>所以<em>f(n)=f(n-1)+f(n-2)+…+f(1)+1</em></p><p>又因为f(n-1)=f(n-2)+f(n-3)+…+f(1)+1  所以<em>f(n)=2</em>f(n-1)*</p><p><strong>解法一：</strong>（函数递归）</p><p>使用规律：<em>f(n)=2</em>f(n-1)*</p><pre><code>public class Solution {    public int JumpFloorII(int target) {        if(target&lt;=0) return 0; //f(0)        if(target==1) return 1; //f(1)        return JumpFloorII(target-1)*2; //f(n)    }}</code></pre><p><strong>解法二：</strong>（迭代）</p><p>使用规律：<em>f(n)=f(n-1)+f(n-2)+…+f(1)+1</em></p><pre><code>public class Solution {    public int JumpFloorII(int target) {        if(target&lt;=0) return 0;        if(target==1) return 1;        int[] arr = new int[target+1]; //动态分配堆内存        arr[0]=1;        arr[1]=1;        for(int i=2; i&lt;=target; i++){            for(int j=0; j&lt;i; j++){                arr[i]+=arr[j]; //f(n)=f(n-1)+f(n-2)+...+f(1)+1            }        }        return arr[target];    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>跳台阶</title>
+    <link href="https://mlone.top/post/ffada3b2.html"/>
+    <id>https://mlone.top/post/ffada3b2.html</id>
+    <published>2018-12-07T03:55:12.000Z</published>
+    <updated>2019-02-26T15:13:31.714Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）</p><p><strong>解法一：</strong>（下台阶）</p><pre><code>public class Solution {    public int JumpFloor(int target) {        if(target&lt;=0)            return 0; //target&lt;=0，不合法的输入值        if(target==1)            return 1; //1级台阶只有1种跳法：1（向下递归终止条件1，开始向上返回递归）        if(target==2)            return 2; //2级台阶有2种跳法:1,2（向下递归终止条件2，开始向上返回递归）        else // target&gt;=3            return JumpFloor(target-2)+JumpFloor(target-1); //从上往下计算，即“下台阶”    }}</code></pre><p><strong>解法二：</strong></p><p>规律：JumpFloor(target)= JumpFloor(target-2)+JumpFloor(target-1)）</p><p>可得数列<em>JumpFloor(1)、JumpFloor(2)、… JumpFloor(n)</em> 为“斐波那契数列”（0除外）。</p><pre><code>public class Solution {    public int JumpFloor(int target) {        if(target&lt;=0)            return 0; //target&lt;=0，不合法的输入值        if(target==1)            return 1; //1级台阶只有1种跳法：1（向下递归终止条件1，开始向上返回递归）        if(target==2)            return 2; //2级台阶有2种跳法:1,2（向下递归终止条件2，开始向上返回递归）        else {//target&gt;=3            int j1=1,j2=2;            int j3=0;            while(target&gt;=3){ //当做斐波那契数列处理，从第3项开始                j3 = j1 + j2;                j1 = j2;                j2 = j3;                target--;            }            return j3;        }        }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="动态规划" scheme="https://mlone.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>斐波那契数列的第n项</title>
+    <link href="https://mlone.top/post/5e64c5aa.html"/>
+    <id>https://mlone.top/post/5e64c5aa.html</id>
+    <published>2018-12-07T02:55:12.000Z</published>
+    <updated>2019-02-26T15:13:47.302Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>求斐波那契数列的第n项（从0开始，第0项为0）。n&lt;=39<br>（时间限制：1秒   空间限制：32768K）</p><p><strong>解法一：</strong>函数递归（运行时间：1008ms  占用内存：9320k）</p><pre><code>public class Solution1 {    public int Fibonacci(int n) {        if(n=0) return 0;        if(n=1) return 1; //0、1        return Fibonacci(n-2)+Fibonacci(n-1);    }}</code></pre><p><strong>解法二</strong>：迭代for循环+1个数组（运行时间：15ms  占用内存：9308k）效率明显提高</p><pre><code>public class Solution2 {    public int Fibonacci(int n) {        if(n=0) return 0;        if(n=1) return 1; //0、1        int[] arr = new int[n+1];        arr[0]=0;        arr[1]=1;        for(int i=2; i&lt;=n; i++){            arr[i]=arr[i-1]+arr[i-2];        }        return arr[n];    }}</code></pre><p><strong>解法三：</strong>迭代for循环+3个变量（运行时间：16ms  占用内存：9260k）内存降了100KB</p><pre><code>public class Solution3 {    public int Fibonacci(int n) {        if(n=0) return 0;        if(n=1) return 1; //0、1        int i0 = 0, i1 = 1;        int i2 = 0;        for(int i=2; i&lt;=n; i++){ //从第2项到第n项            i2 = i0 + i1;            i0 = i1; //向后平移一位，进入下次循环            i1 = i2;        }        return i2;    }}</code></pre><p><strong>解法四：</strong>迭代while循环+3个变量（运行时间：17ms  占用内存：9236k）变化不大</p><pre><code>public class Solution4 {    public int Fibonacci(int n) {        if(n=0) return 0;        if(n=1) return 1; //0、1        int i0 = 0, i1 = 1;        int i2 = 0;        while(n&gt;=2){            i2 = i0 + i1;            i0 = i1; //向后平移一位，进入下次循环            i1 = i2;            n--;        }        return i2;    }}</code></pre><p><strong>解法五：</strong>动态规划，迭代while循环+2个变量（运行时间：17ms  占用内存：9204k）变化不大</p><pre><code>public class Solution5 {    public int Fibonacci(int n) {        int i0=0, i1=1;        while(n&gt;0){            i1 = i0 + i1; //向后平移一位，进入下次循环            i0 = i1 - i0;            n--;        }        return i0;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="动态规划" scheme="https://mlone.top/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自然数组</title>
+    <link href="https://mlone.top/post/9aaffcef.html"/>
+    <id>https://mlone.top/post/9aaffcef.html</id>
+    <published>2018-12-06T02:55:12.000Z</published>
+    <updated>2019-02-26T15:14:07.841Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>二分查找的进一步应用：对于一个自然数（从0开始）数组，从中随机删除一个元素，请使用二分查找算法找出这个未知元素。</p><p>例如：</p><ul><li>角标：0,1,2,3,4,5,6,7,…</li><li>元素：0,1,2,4,5,6,7,8,…</li></ul><p><strong>坑1：</strong>如果待查询的范围最后只剩两个数(即最后一次迭代循环)：[2,4]，那么mid 一定会指向下标靠前的数字，<br>即arr[low=mid=high-1]=2,arr[high]=4</p><p><strong>代码：</strong></p><pre><code>public static int BSearchTest(int[] arr){    int low=0,high=arr.length-1;    while(low&lt;high){ //当只剩余一个元素时终止while迭代循环        int mid = (low+high)/2;        if(arr[mid]==mid) //（临界）情况1：[2,4]            low = mid+1; //由坑1）导致的坑2：）这里mid必须+1，不能为low=mid，否则最后一次迭代会陷入无限循环                         //然后剩余最后一个元素arr[low=mid=high]=4.跳出while循环返回arr[high]-1或arr[low]-1        else if(arr[mid]&gt;mid) //（临界）情况2：[2,4,5]            high = mid; //然后进入情况1    }    return arr[low]-1; //arr[high]-1}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>旋转数组中的最小数字</title>
+    <link href="https://mlone.top/post/a9f65c43.html"/>
+    <id>https://mlone.top/post/a9f65c43.html</id>
+    <published>2018-12-06T02:55:12.000Z</published>
+    <updated>2019-02-26T15:14:17.224Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。</p><p> NOTE：给出的所有元素都大于0，若数组大小为0，请返回0：</p><p><strong>解析：</strong></p><p>采用二分法解答这个问题，</p><p>mid = low + (high - low)/2</p><p>需要考虑三种情况：</p><p>(1)array[mid] &gt; array[high]:</p><p>出现这种情况的array类似[3,4,5,6,0,1,2]，此时最小数字一定在mid的右边。</p><p>low = mid + 1</p><p>(2)array[mid] == array[high]:</p><p>出现这种情况的array类似 [1,0,1,1,1] 或者[1,1,1,0,1]，此时最小数字不好判断在mid左边还是右边,这时只好一个一个试 ，</p><p>high = high - 1</p><p>(3)array[mid] &lt; array[high]:</p><p>出现这种情况的array类似[2,2,3,4,5,6,6],此时最小数字一定就是array[mid]或者在mid的左边。因为右边必然都是递增的。</p><p>high = mid</p><p><strong>注意这里有个坑（坑1）：如果待查询的范围最后只剩两个数(即最后一次迭代循环)，那么mid 一定会指向下标靠前的数字：</strong></p><p>比如 array = [4,6]</p><p>array[low] = 4 ;array[mid] = 4 ; array[high] = 6 ;</p><p>如果high = mid - 1，就会产生错误， 因此high = mid</p><p>但情形(1)中low = mid + 1就不会错误</p><p><strong>考虑临界情况：(最后一次迭代循环)</strong></p><p>情形1：<em>[max,min]时，array[mid]max，而array[high]min，此时满足if条件：array[mid]&gt; array[high]，将执行low=mid+1；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。</em></p><p>情形2：<em>[min,max]时，array[mid]min，而array[high]min，此时满足if条件：array[mid]&lt; array[high]，将执行high=mid；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。</em></p><p><strong>综合1、2，即将最后一个元素锁定到min即可，即设法当跳出循环时使其满足array[low=high]=min</strong></p><p><strong>代码：（二分查找的迭代形式）</strong></p><pre><code>public class Solution {    public int minNumberInRotateArray(int [] array) {        int low = 0 ; int high = array.length - 1;           while(low &lt; high){            int mid = (low + high)/2;                    if(array[mid] &gt; array[high])               //这里mid必须+1，否则面对剩余两个元素：[max,min]情况时会陷入无限循环low = mid + 1; //由坑1导致的坑2            else if(array[mid] == array[high])                high = high - 1;            else                high = mid;        }        return array[low];    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用两个栈来实现一个队列</title>
+    <link href="https://mlone.top/post/e7d7743b.html"/>
+    <id>https://mlone.top/post/e7d7743b.html</id>
+    <published>2018-12-06T01:55:12.000Z</published>
+    <updated>2019-02-26T15:14:28.416Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型：</p><p><strong>代码：</strong></p><pre><code>import java.util.Stack;public class Solution {    Stack&lt;Integer&gt; stack1 = new Stack&lt;Integer&gt;();    Stack&lt;Integer&gt; stack2 = new Stack&lt;Integer&gt;();    public void push(int node) {        stack1.push(node);    }    public int pop() {        while(!stack1.isEmpty()){            stack2.push(stack1.pop());        }        int first = stack2.pop();        while(!stack2.isEmpty()){            stack1.push(stack2.pop());        }        return first;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重建二叉树</title>
+    <link href="https://mlone.top/post/97fc4ab0.html"/>
+    <id>https://mlone.top/post/97fc4ab0.html</id>
+    <published>2018-12-06T00:55:12.000Z</published>
+    <updated>2019-02-26T15:15:13.495Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回：</p><p><strong>代码：</strong></p><pre><code>/** * Definition for binary tree * public class TreeNode { *     int val; *     TreeNode left; *     TreeNode right; *     TreeNode(int x) { val = x; } * } */public class Solution {     public TreeNode reConstructBinaryTree(int [] pre,int [] in) {        TreeNode root=reConstructBinaryTree(pre,0,pre.length-1,in,0,in.length-1);        return root;     }    //前序遍历{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}    private TreeNode reConstructBinaryTree(int [] pre,int startPre,int endPre,int [] in,int startIn,int endIn) {        if(startPre&gt;endPre||startIn&gt;endIn)            return null;        TreeNode root=new TreeNode(pre[startPre]);        for(int i=startIn;i&lt;=endIn;i++)            if(in[i]==pre[startPre]){                root.left=reConstructBinaryTree(pre,startPre+1,startPre+i-startIn,in,startIn,i-1);                root.right=reConstructBinaryTree(pre,i-startIn+startPre+1,endPre,in,i+1,endIn);break;       }        return root;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从尾到头打印链表</title>
+    <link href="https://mlone.top/post/b724efa.html"/>
+    <id>https://mlone.top/post/b724efa.html</id>
+    <published>2018-12-05T15:55:12.000Z</published>
+    <updated>2019-02-26T15:05:42.069Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>输入一个链表，按链表值从尾到头的顺序返回一个ArrayList：</p><p><strong>解法一：（使用栈）</strong></p><pre><code>  /** *    public class ListNode { *        int val; *        ListNode next = null; * *        ListNode(int val) { *            this.val = val; *        } *    } */import java.util.ArrayList;import java.util.Stack;public class Solution {    public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) {        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();        while(listNode!=null){            stack.push(listNode.val);            listNode = listNode.next;        }        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();        while(!stack.isEmpty()){            list.add(stack.pop());        }        return list;    }}</code></pre><p><strong>解法二：（使用函数递归）</strong></p><pre><code>import java.util.ArrayList;public class Solution {    ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();    public ArrayList&lt;Integer&gt; printListFromTailToHead(ListNode listNode) {        if(listNode != null){            this.printListFromTailToHead(listNode.next);            list.add(listNode.val);        }        return list;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="遍历" scheme="https://mlone.top/tags/%E9%81%8D%E5%8E%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>替换空格</title>
+    <link href="https://mlone.top/post/cd96fb91.html"/>
+    <id>https://mlone.top/post/cd96fb91.html</id>
+    <published>2018-12-05T14:55:12.000Z</published>
+    <updated>2019-02-26T15:15:24.140Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy：</p><p><strong>代码：</strong></p><pre><code>public class Solution {    public String replaceSpace(StringBuffer str) {        if(str == null){            return null;        }        for(int i=0; i&lt;str.length(); i++){            if(str.charAt(i)==&apos; &apos;){                str.replace(i,i+1,&quot;%20&quot;); //这个replace方法是StringBuffer的，并非String的            }        }        return str.toString();    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二维数组中的查找</title>
+    <link href="https://mlone.top/post/2aa4f70.html"/>
+    <id>https://mlone.top/post/2aa4f70.html</id>
+    <published>2018-12-05T13:55:12.000Z</published>
+    <updated>2019-02-26T15:04:16.475Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数：</p><p><strong>解析：</strong></p><p><em>把每一行看成有序递增的数组，利用二分查找，通过遍历每一行得到答案。</em></p><p>时间复杂度T=O(nlogn)</p><p><strong>代码：</strong></p><pre><code>public class Solution {    public boolean Find(int target, int [][] array) {        for(int i=0; i&lt;array.length; i++){ //一个for循环+二分查找            int left = 0;            int right = array[i].length-1;            int mid;            while(left&lt;=right){                mid = (left+right)/2;                if(target&lt;array[i][mid])                    right = mid-1;                else if(target&gt;array[i][mid])                    left = mid+1;                else                    return true;            }        }        return false;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="剑指offer" scheme="https://mlone.top/categories/%E5%89%91%E6%8C%87offer/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>求二叉树的最大路径和</title>
+    <link href="https://mlone.top/post/c88e8ab0.html"/>
+    <id>https://mlone.top/post/c88e8ab0.html</id>
+    <published>2018-12-04T13:55:12.000Z</published>
+    <updated>2019-02-26T14:55:25.770Z</updated>
+    
+    <content type="html"><![CDATA[<p>来源：<a href="https://blog.csdn.net/mine_song/article/details/69951308" target="_blank" rel="noopener">https://blog.csdn.net/mine_song/article/details/69951308</a></p><a id="more"></a><p><strong>代码：</strong></p><pre><code>/** * Definition for a binary tree node. * public class TreeNode { *     int val; *     TreeNode left; *     TreeNode right; *     TreeNode(int x) { val = x; } * } */public class Solution {    // 全局变量，记录最大路径和private int maxVal = Integer.MIN_VALUE;    public int maxPathSum(TreeNode root) {        if (root == null)            return 0;        maxCore(root);        return maxVal;    }    // 该函数返回是左右的最大路径和，而非左+右+root的最大值    // 使用curValue，来标记左+右+root    private int maxCore(TreeNode root) {        if (root == null)            return 0;        // 求以root为根的当前子树的最大路径和        // 如果左右子树都是负数，        // 那么就最大路径就是当前结点值（无论正负）        int curValue = root.val;        int lmax = maxCore(root.left);        int rmax = maxCore(root.right);        if (lmax &gt; 0)            curValue += lmax;        if (rmax &gt; 0)            curValue += rmax;        maxVal = Math.max(curValue, maxVal);        // 返回以当前root为根的子树的最大路径和        // 左右有可能都为负数，所以需要参与比较大小        int thisMax = Math.max(root.val,                 Math.max(lmax + root.val,                         rmax + root.val));        return thisMax;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;来源：&lt;a href=&quot;https://blog.csdn.net/mine_song/article/details/69951308&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/mine_song/article/details/69951308&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="贪心法" scheme="https://mlone.top/tags/%E8%B4%AA%E5%BF%83%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>求二叉树的最大直径</title>
+    <link href="https://mlone.top/post/feb46f07.html"/>
+    <id>https://mlone.top/post/feb46f07.html</id>
+    <published>2018-12-04T12:55:12.000Z</published>
+    <updated>2019-02-26T14:55:25.769Z</updated>
+    
+    <content type="html"><![CDATA[<p>来源：<a href="https://blog.csdn.net/mine_song/article/details/69951308" target="_blank" rel="noopener">https://blog.csdn.net/mine_song/article/details/69951308</a></p><a id="more"></a><p><strong>基本思想：</strong></p><ul><li>二叉树的直径：二叉树中从一个结点到另一个节点<strong>最长</strong>的路径，叫做二叉树的直径</li><li>采用分治和递归的思想：</li></ul><p>　　根节点为root的二叉树的直径 = Max(左子树直径，右子树直径，左子树的最大深度（不包括根节点）+右子树的最大深度（不包括根节点）+1)</p><p><strong>代码：</strong></p><pre><code>/** * Definition for a binary tree node. * public class TreeNode { *     int val; *     TreeNode left; *     TreeNode right; *     TreeNode(int x) { val = x; } * } */public class Solution {    // 全局变量，用于记录最大直径    int diameter = 0;    public int diameterOfBinaryTree(TreeNode root) {        getDepth(root);        return diameter;    }    // 此函数是返回树的最大深度    private int getDepth(TreeNode root) {        if (root == null) //作用1.传入实参非空判定；             return 0;      //作用2.若到达叶子结点就直接返回0（向下递归终止条件，开始向上返回递归）        int l = getDepth(root.left); //向左递归        int r = getDepth(root.right); //向右递归        diameter = Math.max(diameter, l + r); //记录直径        return Math.max(l, r) + 1; //返回结果    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;来源：&lt;a href=&quot;https://blog.csdn.net/mine_song/article/details/69951308&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/mine_song/article/details/69951308&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="数据结构" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="贪心法" scheme="https://mlone.top/tags/%E8%B4%AA%E5%BF%83%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>统计txt文件中出现的某个字符串次数</title>
+    <link href="https://mlone.top/post/e9735223.html"/>
+    <id>https://mlone.top/post/e9735223.html</id>
+    <published>2018-12-02T13:34:19.000Z</published>
+    <updated>2019-02-26T12:49:58.944Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>代码：</strong></p><a id="more"></a><p>参考：<a href="https://www.cnblogs.com/mlan/p/7811382.html" target="_blank" rel="noopener">https://www.cnblogs.com/mlan/p/7811382.html</a></p><pre><code>public class strCounts {    //主函数    public static int process(File file, String key){        FileInputStream fis = null;        int sum = 0;        try{           fis = new FileInputStream(file);           int len = 0;           byte[] buf = new byte[1024];           String str = null;           while((len = fis.read(buf)) !=-1){               str = new String(buf, 0, len,&quot;GBK&quot;);               int count = getKeyStringCount(str,key);                sum = sum + count;           }        }catch(FileNotFoundException e){            e.printStackTrace();        } catch (UnsupportedEncodingException e) {            e.printStackTrace();        } catch (IOException e) {            e.printStackTrace();        }finally{           try {               fis.close();           } catch (IOException e) {               e.printStackTrace();           }       }       return sum;    }</code></pre><p>// 统计主串str中子串key出现的次数（注意，这不同于模式匹配算法！）</p><pre><code>public static int getKeyStringCount(String str, String key) {             int count = 0;     int index = 0;    //indexOf(key,index):返回指定子串的第一次出现的字符串中的索引，从指定的索引开始       while((index = str.indexOf(key,index))!=-1){              index = index + key.length();         count++;                    }                 return count; }</code></pre><p>//测试</p><pre><code>    public static void main(String[] args) {       File file = new File(&quot;D:/test.txt&quot;);       String key = &quot;aa&quot;;       int sum = process(file, key);       System.out.println(&quot;文件中字符串&quot;+key+&quot;出现的次数为：&quot;+sum+&quot;次&quot;);    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;代码：&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>统计txt文件中出现的某个字符数</title>
+    <link href="https://mlone.top/post/63e0e4de.html"/>
+    <id>https://mlone.top/post/63e0e4de.html</id>
+    <published>2018-12-02T12:34:19.000Z</published>
+    <updated>2019-02-26T12:49:58.945Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>代码：</strong></p><a id="more"></a><pre><code>public class charCounts {    public static int process(File file, char c){        int count=0;        BufferedReader br = null;        try{            br = new BufferedReader(new FileReader(file));            String temp = &quot;&quot;;            while((temp=br.readLine()) != null){                char[] des = temp.trim().toCharArray();                for(int i=0; i&lt;des.length; i++){                    if(des[i]==c){                        count++;                    }                }            }        }catch(FileNotFoundException e){            e.printStackTrace();        }catch(IOException e){            e.printStackTrace();        }finally{            try{                br.close();            }catch(IOException e){                e.printStackTrace();            }        }        return count;    }</code></pre><p>//测试</p><pre><code>    public static void main(String[] args){        String path = &quot;D:/test.txt&quot;; //或&quot;D://test.txt&quot;或&quot;D:\\test.txt&quot;        File file = new File(path);        char des = &apos;a&apos;;        int count = process(file,des);        System.out.println(&quot;字符&quot;+des+&quot;在文中出现的次数为：&quot;+count);    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;代码：&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模式匹配的KMP算法</title>
+    <link href="https://mlone.top/post/53e89967.html"/>
+    <id>https://mlone.top/post/53e89967.html</id>
+    <published>2018-12-01T13:34:19.000Z</published>
+    <updated>2019-02-26T12:51:19.865Z</updated>
+    
+    <content type="html"><![CDATA[<p>来源：《数据结构：使用C++语言描述》</p><a id="more"></a><p><strong>代码：</strong></p><p>参考：<a href="blog.csdn.net/scgaliguodong123_/article/details/49148017">blog.csdn.net/scgaliguodong123_/article/details/49148017 </a></p><p> 模式匹配的KMP算法：</p><p>  　　比简单模式匹配算法多了个失败函数，利用失败数组next去除匹配过程中毫无意义的回溯对比。</p><pre><code>public class KMPMatch {    /**     * @param s 主串     * @param t 子串     * @param pos 从主串的pos下标开始进行模式匹配     * @return     */    public int indexKMP(String s, String t, int pos) {        int i = pos; //下标i指向主串（只进不退）        int j = 0; //下标j指向子串（若匹配失败就退回到“合适的”位置）        int[] next = getNext(t); //由子串t获构建 失败数组next        while (i &lt; s.length() &amp;&amp; j &lt; t.length()) {            if (j == -1 || s.charAt(i) == t.charAt(j)) {                 i++;                j++;            } else { //匹配失败，重新进行匹配                j = next[j]; //下标j退回到合适的位置，i值不变            }        }        if (j &gt;= t.length()) {            return i - t.length();        } else {            return 0;        }    }</code></pre><p>//失败函数    </p><pre><code>/** * 失败函数：构建“失败next数组” *   设长度为m的子串T=&quot;t1t2...t(m-1)&quot;，k为相同的前、后缀子串长，next数组定义为 *             *           |--&gt; -1, 当j=0时 *   next[j]=|--&gt; max{ k|0&lt;k&lt;j且 t1 t2 ... t(k-1) = t(j-k) t(j-k+1) ... t(j-1)} *           |--&gt; 0, 其他情况 * @param t 子串 * @return */public int[] getNext(String t) {    int[] next = new int[t.length()];    int i = 0;    int j = -1;    next[i] = j; //令next[0]=-1    while (i &lt; t.length()-1) {        if (j == -1 || t.charAt(i) == t.charAt(j)) {            i++;            j++;            next[i] = j; //初次next[1]=0        } else {            j = next[j]; //若字符不相等，则j值进行回溯        }    }    //将next数组打印出来，看看是什么样子的    System.out.println(Arrays.toString(next));    return next;}</code></pre><p>// 测试</p><pre><code>    public static void main(String[] args) {        KMPMatch test = new KMPMatch();        System.out.println(test.indexKMP(&quot;goodgoogle&quot;, &quot;google&quot;, 0));    }}</code></pre><p>输出：</p><pre><code>[-1, 0, 0, 0, 1, 0]4</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;来源：《数据结构：使用C++语言描述》&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单模式匹配算法</title>
+    <link href="https://mlone.top/post/cdfa5b00.html"/>
+    <id>https://mlone.top/post/cdfa5b00.html</id>
+    <published>2018-12-01T12:34:19.000Z</published>
+    <updated>2019-02-26T12:49:58.943Z</updated>
+    
+    <content type="html"><![CDATA[<p>来源：《数据结构：使用C++语言描述》</p><a id="more"></a><p><strong>代码：</strong></p><p>参考：<a href="blog.csdn.net/scgaliguodong123_/article/details/49148017">blog.csdn.net/scgaliguodong123_/article/details/49148017 </a></p><pre><code>public class SimpleMatch {    /**     * 从主串s中匹配子串t，若匹配成功则返回子串t第一次出现的起始下标；若匹配失败返回-1.     *      * @param s 主串     * @param t 子串     * @param pos 从主串的pos下标开始进行模式匹配     * @return     */    public int Index(String s, String t, int pos) {        int i = pos;// 下标i指向主串        int j = 0;// 下标j指向子串        while (i &lt; s.length() &amp;&amp; j &lt; t.length()) {            if (s.charAt(i) == t.charAt(j)) {                i++;                j++;            } else { //重头开始比对                i = i - j + 1;// 下标i回到主串的下一位置pos++                 j = 0;// 下标j回到子串首端            }        }        if (j &gt;= t.length()) {             return i - t.length(); //匹配成功，返回比对成功的主串开始下标        } else {            return -1; //匹配失败        }    }</code></pre><p>//测试</p><pre><code>    public static void main(String[] args) {        SimpleMatch test = new SimpleMatch();        System.out.println(test.Index(&quot;goodgoogle&quot;, &quot;google&quot;, 0)); //4        System.out.println(test.Index(&quot;goodgoogle&quot;, &quot;google&quot;, 2)); //4    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;来源：《数据结构：使用C++语言描述》&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>欧几里得算法(辗转相除法)</title>
+    <link href="https://mlone.top/post/4859ffd9.html"/>
+    <id>https://mlone.top/post/4859ffd9.html</id>
+    <published>2018-11-29T04:35:35.000Z</published>
+    <updated>2019-02-26T12:49:58.939Z</updated>
+    
+    <content type="html"><![CDATA[<p>求最大公约数</p><a id="more"></a><p>来源：《算法分析与设计：采用C++语言描述》</p><p><strong>代码</strong></p><pre><code>public class GcdTest {    /** 欧几里得迭代算法 **/    public int Gcd(int m, int n){        if(m==0) return n;        if(n==0) return m;        if(m&gt;n){int tmp=m; m=n; n=tmp;}        while(m&gt;0){            int c=n%m;            n=m;            m=c;        }        return n;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;求最大公约数&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>求第K小元素(也即是求最小的K个数)第二篇</title>
+    <link href="https://mlone.top/post/a4eccdbd.html"/>
+    <id>https://mlone.top/post/a4eccdbd.html</id>
+    <published>2018-11-28T04:35:35.000Z</published>
+    <updated>2019-02-26T12:49:58.940Z</updated>
+    
+    <content type="html"><![CDATA[<p>来源：<a href="https://www.nowcoder.com/profile/448404/codeBookDetail?submissionId=1505827" target="_blank" rel="noopener">https://www.nowcoder.com/profile/448404/codeBookDetail?submissionId=1505827</a></p><a id="more"></a><p><strong>基本思想</strong></p><p>   　　基本思想与上一篇相同、分划函数相同，主函数也是分治思想，不过没有随机取主元。</p><p><strong>代码：</strong></p><pre><code>public class SelectTest2 {    public int[] GetLeastNumbers_Solution(int[] input, int k) {        int[] res = new int[k];        int len=input.length;        if(len==0||k&gt;len||k==0) return res;        if(len==k) return input;        int start=0;        int end=len-1;        int j=Partition(input,start,end);        while(j!=k-1){            if(j&gt;k-1)                j=Partition(input,start,j-1); //结合Partition函数，此处应为right=j-1，当K=0时不会发生下标越界            else                j=Partition(input,j+1,end); //此处应为left=j+1，因为当K=l.length时，函数直接return input，不会再执行Partition函数，从而不会发生下标越界；                                            //若此处为left=j，则右递归的主元一直都会是l[j]，会导致此处无尽循环。        }        for(int i=0; i&lt;k; i++)            res[i]=input[i];        return res;    }</code></pre><p>//分划函数 </p><pre><code>public static int Partition(int[] l, int left, int right){    //前置条件：left&lt;=right    int i=left, j=right+1; //哨兵位（防止越界）    do{        do i++; while(l[i]&lt;l[left]&amp;&amp;i&lt;right);  //从首端向后找到&gt;=l[left]的元素l[i]则停止；或i=right时停止        do j--; while(l[j]&gt;l[left]); //从末端向前找到&lt;=l[left]的元素l[j]则停止；或当j=left时l[j]=l[left]自动停止        if(i&lt;j) Swap(l, i, j); //若大元素在小元素的前面则调换二者位置    }while(i&lt;j); //若未越界则继续查找和调换    Swap(l, left, j); //调换l[left]和l[j]    return j;}/** 调换两个元素的位置 **/public static void Swap(int[] l, int i, int j) {    int temp = l[i];    l[i] = l[j];    l[j] = temp;}</code></pre><p>//测试</p><pre><code>    public static void main(String[] args){        int[] input = {4,5,1,6,2,7,3,8};        SelectTest2 s = new SelectTest2();        int[] res = s.GetLeastNumbers_Solution(input,6);        System.out.println(Arrays.toString(input));        System.out.println(Arrays.toString(res));    } }</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;来源：&lt;a href=&quot;https://www.nowcoder.com/profile/448404/codeBookDetail?submissionId=1505827&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.nowcoder.com/profile/448404/codeBookDetail?submissionId=1505827&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>求第K小元素(也即是求最小的K个数)</title>
+    <link href="https://mlone.top/post/2b97d2a0.html"/>
+    <id>https://mlone.top/post/2b97d2a0.html</id>
+    <published>2018-11-27T04:35:35.000Z</published>
+    <updated>2019-02-26T12:49:58.942Z</updated>
+    
+    <content type="html"><![CDATA[<p>来源：《算法分析与设计：采用C++语言描述》</p><a id="more"></a><p><strong>基本思想：</strong></p><p>求第k小元素（也即是求最小的K个元素）平均T=O(n)，最坏Tmax=O(n^2) –&gt;与快速排序相同</p><p>   　　<em>对于求最大、最小元问题，在MaxMin.java中已经得到渐进时间复杂度为O(n)的算法，即线性时间算法。</em></p><p>当1&lt;k&lt;=n/logn时，可以使用堆排序求第k小元素：</p><p>   　　<em>首先构造一个堆，其时间为O(n)，然后依次输出前k个小元素，得到第k小元素。</em></p><p>   　　<em>由于没输出一个元素的时间为O(logn)，所以，求第k小元素的元素的时间为O(n+klogn)，这也是线性时间。</em></p><p>   　　<em>然而，对于任意给定的k，当1&lt;=k&lt;=n时，要设计求第k小元素的线性时间算法，并不十分容易，需要做一番努力。</em></p><p><strong>代码：（由C++改写的Java代码）</strong></p><pre><code>public class SelectTest {    /**     * 假定表中元素各不相同，并且随机选择主元，即在下标区间[left,right]中随机选择一个下标r，以该下标处的元素为主元。     * 函数Partition对区间[left,right]的元素实施分划操作，经过一趟分划，主元的下标为j，     * 区间[left,j-1]中的元素均小于主元，区间[j+1,right]中的元素均大于主元。     * 此时，若k=j+1，则表示下标为j的元素就是第k小元素；若k&lt;j+1,则在范围[left,j-1]中继续寻找，     * 否则在范围[j+1,right]范围内继续寻找。     *      * @param l 要查找的数组     * @param k 查找的第k小元素     * @param x 找到元素后就存储到x[0]中     * @return      */    public static int Select(int[] l, int k){        if(l.length&lt;=0 || k&lt;=0 || k&gt;l.length) //越界判断            throw new RuntimeException(&quot;OutOfBounds&quot;);        int left=0, right=l.length-1;        //-----------------迭代分划---------------------------        //返回伪随机的，均匀分布 int值介于0（含）和指定值（不包括）        Random random = new Random();        do{    //条件：left&lt;=right            int j = random.nextInt(right-left+1) + left; //注意：这里是--&gt;在范围[left,right]内随机选择主元            Swap(l, left, j); //将主元位置调换到left处（数组首端）            j = Partition(l, left, right); //执行分划操作            if(k==j+1)  return l[j];            else if(k&lt;j+1) right=j-1; //结合Partition函数，此处应为right=j-1，当K=0时不会发生下标越界            else left=j; //结合Partition函数，此处不能为left=j+1，否则当K=l.length时会发生下标越界；                         //而且由于是随机选择主元，left=j并不会导致右递归的主元一直都是l[j]        }while(true);    }</code></pre><p>//分划函数</p><pre><code>/** * 分划函数 *   将下标在[left,right]范围内的序列，以主元l[left]为中心 *   分划成左右两个子序列，最后返回分划点j。 *  */public static int Partition(int[] l, int left, int right){    //前置条件：left&lt;=right    int i=left, j=right+1; //哨兵位（防止越界）    do{        do i++; while(l[i]&lt;l[left]&amp;&amp;i&lt;right); //从首端向后找到&gt;=l[left]的元素l[i]则停止；或i=right时停止        do j--; while(l[j]&gt;l[left]); //从末端向前找到&lt;=l[left]的元素l[j]则停止；或当j=left时l[j]=l[left]自动停止        if(i&lt;j) Swap(l, i, j); //若大元素在小元素的前面则调换二者位置    }while(i&lt;j); //若未越界则继续查找和调换    Swap(l, left, j); //调换l[left]和l[j]    return j;}/** 调换两个元素的位置 **/public static void Swap(int[] l, int i, int j) {    int temp = l[i];    l[i] = l[j];    l[j] = temp;}</code></pre><p>//测试</p><pre><code>public static void main(String[] args) {    int[] l = new int[20];    int k=17;    //循环添加100内的随机数字到集合中    for(int i=0; i&lt;20; i++){        Random random = new Random();        int value = random.nextInt(100);        l[i] = value;    }    System.out.println(&quot;原始所有元素：&quot;);    System.out.println(Arrays.toString(l));    int res = Select(l,k);    System.out.println(&quot;第&quot;+k+&quot;小元素为：&quot;+res);    //----------------------------    System.out.println(&quot;分划后的所有元素：&quot;);    System.out.println(Arrays.toString(l));    System.out.println(&quot;最小的&quot;+k+&quot;个元素为：&quot;);    for(int i=0; i&lt;k; i++)        System.out.print(l[i]+&quot;\0&quot;);</code></pre><p>改进：</p><pre><code>        /**         * Select进阶版：         * 线性时间选择算法         *   下面讨论在最坏情况下具有线性时间的求第k小元素的算法。         *   经过精心挑选分划元素，可以使分划所得的两个子集合的大小相对接近，从而避免上述最坏情况的发生，         *   使得求第k小元素的最坏情况时间具有线性时间O(n)。         *            *   略...（算法设计与分析P84）         */    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;来源：《算法分析与设计：采用C++语言描述》&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>堆排序</title>
+    <link href="https://mlone.top/post/c2a5fdc5.html"/>
+    <id>https://mlone.top/post/c2a5fdc5.html</id>
+    <published>2018-11-24T04:35:35.000Z</published>
+    <updated>2019-02-26T12:49:58.936Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>代码：</strong></p><a id="more"></a><p>//堆排序</p><pre><code>public static void sort(int[] arr) {    // 1.构建大顶堆    for (int i = arr.length / 2 - 1; i &gt;= 0; i--) {        // 从第一个非叶子结点从下至上，从右至左调整结构        adjustHeap(arr, i, arr.length);    }    // 2.调整堆结构+交换堆顶元素与末尾元素    for (int j = arr.length - 1; j &gt; 0; j--) {        swap(arr, 0, j);// 将堆顶元素与末尾元素进行交换        adjustHeap(arr, 0, j);// 重新对堆进行调整    }}</code></pre><p>//调整大顶堆（仅是调整过程，建立在大顶堆已构建的基础上）</p><pre><code>public static void adjustHeap(int[] arr, int i, int length) {    int temp = arr[i];// 先取出当前元素i    for (int k = i * 2 + 1; k &lt; length; k = k * 2 + 1) {// 从i结点的左子结点开始，也就是2i+1处开始        if (k + 1 &lt; length &amp;&amp; arr[k] &lt; arr[k + 1]) {// 如果左子结点小于右子结点，k指向右子结点            k++;        }        if (arr[k] &gt; temp) {// 如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）            arr[i] = arr[k];            i = k;        } else {            break;        }    }    arr[i] = temp;// 将temp值放到最终的位置}</code></pre><p>//交换元素</p><pre><code>    public static void swap(int[] arr, int a, int b) {        int temp = arr[a];        arr[a] = arr[b];        arr[b] = temp;    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;代码：&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="排序" scheme="https://mlone.top/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二分查找</title>
+    <link href="https://mlone.top/post/e8eb0481.html"/>
+    <id>https://mlone.top/post/e8eb0481.html</id>
+    <published>2018-11-23T06:35:35.000Z</published>
+    <updated>2019-02-26T14:55:25.748Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>代码：</strong></p><a id="more"></a><p>// 递归形式</p><pre><code>/** * 对半搜索递归算法  T=log(n) * @param x 要搜索的元素值x * @param l 在数组l中进行搜索 * @param left 搜索的下标范围最小值 * @param right 搜索的下标范围最大值 * @return */public static int BSearch(int x, int[] l, int left, int right){    if(left&lt;=right){ //若表（子表）非空        int m = (left+right)/2; //对半分割        if(x&lt;l[m])  //搜索左半子表            return BSearch(x, l, left, m-1);        else if(x&gt;l[m]) //搜索右半子表            return BSearch(x, l , m+1, right);        else //搜索成功，返回下标            return m;    }    return -1; //搜索失败}</code></pre><p>// 迭代形式</p><pre><code>/** * 对半搜索的迭代算法  T=log(n) * @param x 要搜索的元素值x * @param l 在数组l中进行搜索 * @return */public static int BSearch(int x, int[] l){    int m, left=0, right=l.length-1;    while(left&lt;=right){        m=(left+right)/2; //int m = (left+right)/2        if(x&lt;l[m]) //朝左搜索            right = m-1;        else if(x&gt;l[m]) //朝右搜索            left = m+1;        else //x==l[m]，搜索成功            return m;    }    return -1; //搜索失败}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;代码：&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="查找" scheme="https://mlone.top/tags/%E6%9F%A5%E6%89%BE/"/>
+    
+      <category term="分治法" scheme="https://mlone.top/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>归并排序</title>
+    <link href="https://mlone.top/post/1599bffe.html"/>
+    <id>https://mlone.top/post/1599bffe.html</id>
+    <published>2018-11-22T06:35:35.000Z</published>
+    <updated>2019-02-26T13:50:14.469Z</updated>
+    
+    <content type="html"><![CDATA[<p>即 两路合并排序 T=O(nlogn)</p><a id="more"></a><p><strong>代码：</strong></p><pre><code>public class MergeSortTest {    /**     * Merge合并操作，将两个有序序列合并成一个有序序列：     *         比较两个序列中的最小值，输出其中较小者，然后重复此过程，     *         直到其中一个序列为空时，如果另一个还有元素未输出，则将剩余元素依次输出即可。     *      * @param l     * @param left 有序序列1：l[left],...,l[mid]     * @param mid     * @param right 有序序列2：l[mid+1],...,l[right]     */    public static void Merge(int[] l, int left, int mid, int right){        int[] temp = new int[right-left+1]; //定义缓存数组        int i=left, j=mid+1, k=0; //定义3个指针        while((i&lt;=mid)&amp;&amp;(j&lt;=right))            if(l[i]&lt;=l[j])    temp[k++] = l[i++];            else    temp[k++] = l[j++];        while(i&lt;=mid) temp[k++] = l[i++]; //若前组有剩余        while(j&lt;=right)    temp[k++] = l[j++]; //若后组有剩余        for(i=left,k=0; i&lt;=right; i++,k++)            l[i] = temp[k]; //将合并后的新序列赋给原数组    }</code></pre><p>//归并排序</p><pre><code>//缺省参数：则默认排序所有元素public static void MergeSort(int[] l){     MergeSort(l, 0, l.length-1);}//重载：排序部分范围内的元素public static void MergeSort(int[] l, int left, int right){     if(left&lt;right){ //若序列长度超过1，则将其分割成两个子序列        int mid = (left+right)/2; //将待排序的序列一分为二        MergeSort(l, left, mid); //对左子序列排序        MergeSort(l, mid+1, right); //对右子序列排序        //将两个有序子序列合并成一个有序序列        Merge(l, left, mid, right);         /*         * 其实，只有最后当left==right，即一直向下递归分割，直到子序列长度为1时，         * 才会开始向上递归返回，执行该代码行，调用Merge合并函数。         */    }}</code></pre><p>//测试</p><pre><code>    public static void main(String[] args) {        int[] l = new int[20];        //循环添加100内的随机数字到集合中        for(int i=0; i&lt;20; i++){            Random random = new Random();            int value = random.nextInt(100);            l[i] = value;        }        System.out.println(&quot;排序前：&quot;);        for(int i=0; i&lt;20; i++)            System.out.print(l[i]+&quot;\0&quot;);        //归并排序        MergeSort(l);        System.out.println(&quot;\n排序后：&quot;);        for(int i=0; i&lt;20; i++)            System.out.print(l[i]+&quot;\0&quot;);    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;即 两路合并排序 T=O(nlogn)&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="分治法" scheme="https://mlone.top/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+      <category term="排序" scheme="https://mlone.top/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>快速排序</title>
+    <link href="https://mlone.top/post/ff8068c0.html"/>
+    <id>https://mlone.top/post/ff8068c0.html</id>
+    <published>2018-11-22T04:35:35.000Z</published>
+    <updated>2019-02-26T13:49:58.311Z</updated>
+    
+    <content type="html"><![CDATA[<p>平均T=O(nlogn) 最坏Tmax=O(n^2)</p><a id="more"></a><p><strong>基本思想：</strong></p><p>简记：</p><p>　　<em>以最左端元素为分划元素（主元），然后</em></p><p>　　<em>左找大，右找小；</em></p><p>　　<em>调换后继续找；</em></p><p>　　<em>越界后停止查找和调换。最后，</em></p><p>　　<em>调位主元和l[j]，再在主元前后继续分划。</em></p><p><strong>代码：</strong></p><pre><code>public class QuickSortTest {        /**     * 分划函数     *   将下标在[left,right]范围内的序列，以主元l[left]为中心     *   分划成左右两个子序列，最后返回分划点j。     */    private static int Partition(int[] l, int left, int right){        //前置条件：left&lt;=right        int i=left, j=right+1; //哨兵位（防止越界）        do{            //&apos;i++&apos;即表示已将主元l[left]排除在外            do i++; while(l[i]&lt;l[left]&amp;&amp;left&lt;right); //从首端（left+1起）向后找到&gt;=主元的元素时停止；这里需要手动添加循环终止条件：left&lt;right，当left=right时停止循环，否则它不会自己停下来，造成角标越界。            do j--; while(l[j]&gt;l[left]); //从末端（right起）向前找到&lt;=主元的元素时停止；或当自减的j=left时，l[j]=主元自动停止循环。            if(i&lt;j) Swap(l, i, j); //若大元素在小元素的前面则调换二者位置        }while(i&lt;j); //若未越界则继续查找和调换        Swap(l, left, j); //调换l[left]和l[j]        return j;     }    /** 调换两个元素的位置 **/    private static void Swap(int[] l, int i, int j) {        int temp = l[i];        l[i] = l[j];        l[j] = temp;    }    public static void QuickSort(int[] l){ //缺省参数：则排序所有元素        QuickSort(l, 0, l.length-1);    }    //重载：对l[left~right]范围内的元素进行排序    public static void QuickSort(int[] l, int left, int right){        if(left&lt;right){ //当序列长度大于1时，则进行分划（此处也避免了Partition函数向右划分到末端时的角标越界，当left=right=l.length-1时自动跳出循环）            int j = Partition(l, left, right); //对[left,right]范围内的序列进行分割            QuickSort(l, left, j-1); //对左子序列实施快排            QuickSort(l, j+1, right); //对右子序列实施快排            //每分划一次则确定一个元素位置；分划完成即排序完成            //递归总次数：log2^(l.length)        }    }}</code></pre><p>另一种写法：</p><p>（基本思想是一样的，只是将主元从arr[left]换成了arr[right]，且分划函数Partition的主循环也从三个do-while循环换成了三个while循环）</p><pre><code>public class quickSortTest {    private static void recQuickSort(int arr[], int left, int right) {        if (right - left &lt;= 0) {            return;        } else {            int pivot = arr[right]; //一般使用数组最右边的元素作为枢纽            int partition = partitionIt(arr, left, right, pivot);            recQuickSort(arr, left, partition - 1);            recQuickSort(arr, partition + 1, right);        }    }    /**      *  划分：     *     划分是快速排序的根本机制，划分本身也是一个有用的操作。     *     划分数据就是把数据分为两组，使所有关键字大于特定值的数据项在一组，所有关键字小于特定值的数据项在另一组。     */    private static int partitionIt(int[] arr, int left, int right, int pivot) {        int leftPtr = left-1;        int rightPtr = right; //使用最右边的元素作为主元枢纽，划分时就要将最右端的数据项排除在外        while (true) {            while (arr[++leftPtr] &lt; pivot); //从前往后找到不比arr[right]小的元素时停止；或当自增的leftPtr=right时，arr[leftPtr]=pivot=arr[right]会自动停止循环            while (rightPtr &gt; 0 &amp;&amp; arr[--rightPtr] &gt; pivot); //从后往前找不比arr[right]大的元素时停止；这个需要手动添加循环终止条件rightPtr&gt;0以防角标越界。            if (leftPtr &gt;= rightPtr) {                break;            } else {                // 交换leftPtr和rightPtr位置的元素                int temp = arr[leftPtr];                arr[leftPtr] = arr[rightPtr];                arr[rightPtr] = temp;            }        }        // 交换leftPtr和right位置的元素        int temp = arr[leftPtr];        arr[leftPtr] = arr[right];        arr[right] = temp;        return leftPtr;// 返回枢纽位置    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;平均T=O(nlogn) 最坏Tmax=O(n^2)&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="分治法" scheme="https://mlone.top/tags/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+    
+      <category term="排序" scheme="https://mlone.top/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="分划" scheme="https://mlone.top/tags/%E5%88%86%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单排序之冒泡排序</title>
+    <link href="https://mlone.top/post/dcef8104.html"/>
+    <id>https://mlone.top/post/dcef8104.html</id>
+    <published>2018-11-20T04:35:35.000Z</published>
+    <updated>2019-02-26T12:09:42.880Z</updated>
+    
+    <content type="html"><![CDATA[<p>冒泡排序：  T=O(N^2)</p><a id="more"></a><p><strong>基本思想：</strong></p><p>　　<em>第一趟在序列A[0]~A[n-1]中从前往后进行相邻两个元素的比较，若后者小则交换位置，</em></p><p>　　<em>第一趟排序结束后，最大元素会被交换到A[n-1]中，即下沉；</em></p><p>　　<em>下一趟排序在A[0]~A[n-2]中进行…</em></p><p>　　<em>如果在某趟排序中未交换元素，说明子序列已经有序，则并不再进行下一趟排序。所以最多进行n-1次排序。</em></p><p><strong>代码：</strong></p><p>//（正统）冒泡排序1，从前往后，前后元素两两比较，前大后小则交换，每趟循环一个最大元素沉底</p><pre><code>private static void bubbleSort1(int[] arr){    int i=arr.length-1;    int last; //flag    while(i&gt;0){        last=0; //每次进入循环就将last置0        for(int j=0; j&lt;i; j++){            if(arr[j]&gt;arr[j+1]){                Swap(arr,j,j+1);                last=j; //变量last用于记录上次发生元素调换的位置下标            }        }        i=last; //（i--）若在某趟排序中未发生元素交换，则last=0                //此时i=last=0（说明当前序列已经有序，排序无需再往下进行）则while循环终止，排序完成    }}</code></pre><p>//（1.1）由程序（1）去掉last变量后的精简版（最大/平均时间复杂度都是O(n^2)）</p><pre><code>private static void bubbleSort1_1(int[] arr){    for(int i=arr.length-1; i&gt;0; i-- ){        for(int j=0; j&lt;i; j++){            if(arr[j]&gt;arr[j+1]){                Swap(arr,j,j+1);            }        }    }}</code></pre><p>//（不正统）冒泡排序2，从前往后，arr[i]分别与arr[i+1]~arr[n-1]相比较，小于arr[i]则调换，每趟循环有一个最小元素浮顶</p><pre><code>private static void bubbleSort2(int[] arr){    for(int i = 0; i &lt; arr.length - 1; i++){         for(int j = i + 1; j &lt; arr.length; j++){               if(arr[j]&lt;arr[i]){                    Swap(arr,i,j);               }         }    }}</code></pre><p>//调换数组中两元素的位置</p><pre><code>private static void Swap(int[] arr, int i, int j){    int temp = arr[i];    arr[i] = arr[j];    arr[j] = temp;}</code></pre><p><strong>冒泡排序的效率：</strong></p><p>　　选择排序改进了冒泡排序，将必要的交换次数从O(N^2)减少到O(N)，不幸的是比较次数依然是O(N^2)级</p><p>　　然而，选择排序依然为大数据量的排序提出了一个非常重要的改进，因为这些大量的记录需要在内存中移动，</p><p>　　这就使交换的时间和比较的时间相比起来，交换的时间更为重要。</p><p>　　一般来说，Java语言中不是这种情况，Java中只是改变了引用位置，而实际对象的位置并没有发生改变</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;冒泡排序：  T=O(N^2)&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="排序" scheme="https://mlone.top/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单排序之插入排序</title>
+    <link href="https://mlone.top/post/5e5c2f5d.html"/>
+    <id>https://mlone.top/post/5e5c2f5d.html</id>
+    <published>2018-11-20T03:35:35.000Z</published>
+    <updated>2019-02-26T12:09:42.881Z</updated>
+    
+    <content type="html"><![CDATA[<p>直接插入排序 T=O(N^2)</p><a id="more"></a><p><strong>基本思想：</strong></p><p>　　<em>将A[0]作为一个有序序列，然后将剩余n-1个元素依次插入该有序序列，</em></p><p>　　<em>每插入一个元素后依然保持该序列有序，经过n-1次插入操作后可排序完成。</em></p><p>　　<em>插入排序，在一般情况下，比冒泡排序快一倍，比选择排序快一点</em>。</p><p><strong>代码：</strong></p><pre><code>public class InsertSortTest {    private static void insertSort(int[] arr) {        for (int i = 1; i &lt; arr.length; i++) {             int j = i; //从后向前查找元素A[i]要插入序列A[i-1]~A[0]中的位置            int temp = arr[i]; //先将带插入元素存入临时变量            while (j &gt; 0 &amp;&amp; temp &lt; arr[j - 1]) {                 arr[j] = arr[j - 1]; //遇到比A[i]大的元素就将它后移一位                --j;            }            arr[j] = temp; //下标j最终就是带插入元素的插入位置        }    }}</code></pre><p><strong>插入排序的效率：</strong></p><p>　　这个算法中，第一趟排序最多比较一次，第二趟排序最多比较两次，以此类推，最后一趟最多比较N-1次，</p><p>　　对于随机顺序的数据，插入排序也需要O(N^2)时间级，可是当数据基本有序，插入排序几乎只需要O(N)时间，</p><p>　　这对于把一个基本有序的文件进行排序是个简单有效的方法。</p><p>　　对于逆序排列的数据，每次比较和移动都会执行，所以插入排序不比冒泡排序快。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;直接插入排序 T=O(N^2)&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="排序" scheme="https://mlone.top/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简单排序之选择排序</title>
+    <link href="https://mlone.top/post/8bd97a76.html"/>
+    <id>https://mlone.top/post/8bd97a76.html</id>
+    <published>2018-11-20T02:35:35.000Z</published>
+    <updated>2019-02-26T12:09:42.883Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单选择排序 T=O(N^2)</p><a id="more"></a><p><strong>基本思想：</strong></p><p>　　<em>第一趟在初始序列A[0]~A[n-1]中找出最小值元素的下标， 然后将该最小元素与A[0]调换位置，</em></p><p>　　<em>下一趟排序在A[1]~A[n-1]中找出最小值元素的下标， 然后将该最小元素与A[1]调换位置…</em></p><p>　　<em>经过n-1次调换后可排序完成。</em></p><p><strong>代码：</strong></p><pre><code>public class ChooseSortTest {    private static void chooseSort(int[] arr) {        for (int i = 0; i &lt; arr.length; i++) {            int least = i; //先假设待排序列中第一个元素最小            for (int j = i + 1; j &lt; arr.length; j++) {                 if (arr[j] &lt; arr[least]) { //比对查找待排序列中的最小元素下标                    least = j;                }            }            //将待排序列中的最小元素调到序列最前端            Swap(arr,i,least);        }    }    //调换数组中两元素的位置    private static void Swap(int[] arr, int i, int j){        int temp = arr[i];        arr[i] = arr[j];        arr[j] = temp;    }}</code></pre><p><strong>选择排序的效率：</strong></p><p>　　选择排序和冒泡排序执行了相同次数的比较：N*(N-1)/2.对于10个数据项，需进行45次比较。</p><p>　　然而，10个数据项只需要10次数据交换，而对于100个数据项，需要4950次比较，但只进行不到100次交换。</p><p>　　当N值很大时，比较的次数是主要的，所以结论是选择排序和冒泡排序一样运行了O(N^2)时间，但是，选择排序无疑更快，因为它进行的交换少得多。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单选择排序 T=O(N^2)&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="https://mlone.top/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="排序" scheme="https://mlone.top/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>java反射机制</title>
@@ -124,17 +1068,17 @@
   </entry>
   
   <entry>
-    <title>JVM启动参数设置</title>
-    <link href="https://mlone.top/post/61cc7df2.html"/>
-    <id>https://mlone.top/post/61cc7df2.html</id>
+    <title>JVM内存设置原理</title>
+    <link href="https://mlone.top/post/4cc01209.html"/>
+    <id>https://mlone.top/post/4cc01209.html</id>
     <published>2018-10-15T14:30:16.000Z</published>
-    <updated>2019-02-25T14:42:03.776Z</updated>
+    <updated>2019-02-25T14:50:44.523Z</updated>
     
-    <content type="html"><![CDATA[<p>参考1：<a href="https://blog.csdn.net/sivyer123/article/details/17139443" target="_blank" rel="noopener">JVM 堆内存设置原理</a></p><a id="more"></a><p>参考2：<a href="https://www.cnblogs.com/smyhvae/p/4736162.html" target="_blank" rel="noopener">Java虚拟机详解03—-常用JVM配置参数</a></p><h1 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h1><ul><li>-Xmx3550m：设置JVM<strong>最大堆内存</strong>为3550M。</li><li>-Xms3550m：设置JVM<strong>初始堆内存</strong>为3550M。此值可以设置与-Xmx相同，以避免每次垃圾回收完成后JVM重新分配内存。</li><li>-Xss128k：设置每个线程的栈大小。JDK5.0以后每个线程栈大小为1M，之前每个线程栈大小为256K。应当根据应用的线程所需内存大小进行调整。在相同物理内存下，减小这个值能生成更多的线程。但是操作系统对一个进程内的线程数还是有限制的，不能无限生成，经验值在3000~5000左右。需要注意的是：当这个值被设置的较大（例如&gt;2MB）时将会在很大程度上降低系统的性能。</li><li>-Xmn2g：设置<strong>年轻代</strong>大小为2G。在整个堆内存大小确定的情况下，增大年轻代将会减小年老代，反之亦然。此值关系到JVM垃圾回收，对系统性能影响较大，官方推荐配置为整个堆大小的3/8。</li><li>-XX:NewSize=1024m：设置年轻代初始值为1024M。</li><li>-XX:MaxNewSize=1024m：设置年轻代最大值为1024M。</li><li>-XX:PermSize=256m：设置<strong>持久代初始值</strong>为256M。</li><li>-XX:MaxPermSize=256m：设置<strong>持久代最大值</strong>为256M。</li><li>-XX:NewRatio=4：设置年轻代（包括1个Eden和2个Survivor区）与年老代的比值。表示年轻代比年老代为1:4。</li><li>-XX:SurvivorRatio=4：设置<strong>年轻代中Eden区与Survivor区的比值</strong>。表示2个Survivor区（JVM堆内存年轻代中默认有2个大小相等的Survivor区）与1个Eden区的比值为2:4，即1个Survivor区占整个年轻代大小的1/6。</li><li>-XX:MaxTenuringThreshold=7：表示一个对象如果在Survivor区（救助空间）移动了7次还没有被垃圾回收就进入年老代。如果设置为0的话，则年轻代对象不经过Survivor区，直接进入年老代，对于需要大量常驻内存的应用，这样做可以提高效率。如果将此值设置为一个较大值，则年轻代对象会在Survivor区进行多次复制，这样可以增加对象在年轻代存活时间，增加对象在年轻代被垃圾回收的概率，减少Full GC的频率，这样做可以在某种程度上提高服务稳定性。</li></ul><h1 id="疑问解答"><a href="#疑问解答" class="headerlink" title="疑问解答"></a>疑问解答</h1><p>-Xmn，-XX:NewSize/-XX:MaxNewSize，-XX:NewRatio 3组参数都可以影响年轻代的大小，混合使用的情况下，优先级是什么？<br>如下：</p><p>高优先级：-XX:NewSize/-XX:MaxNewSize </p><p>中优先级：-Xmn（默认等效  -Xmn=-XX:NewSize=-XX:MaxNewSize=?） </p><p>低优先级：-XX:NewRatio </p><p>推荐使用-Xmn参数，原因是这个参数简洁，相当于一次设定 NewSize/MaxNewSIze，而且两者相等，适用于生产环境。-Xmn 配合 -Xms/-Xmx，即可将堆内存布局完成。</p><p>-Xmn参数是在JDK 1.4 开始支持。</p><h1 id="垃圾回收器选择"><a href="#垃圾回收器选择" class="headerlink" title="垃圾回收器选择"></a>垃圾回收器选择</h1><p>JVM给出了3种选择：串行收集器、并行收集器、并发收集器。串行收集器只适用于小数据量的情况，所以生产环境的选择主要是并行收集器和并发收集器。</p><p>默认情况下JDK5.0以前都是使用串行收集器，如果想使用其他收集器需要在启动时加入相应参数。JDK5.0以后，JVM会根据当前系统配置进行智能判断。</p><h2 id="串行收集器"><a href="#串行收集器" class="headerlink" title="串行收集器"></a>串行收集器</h2><ul><li>-XX:+UseSerialGC：设置串行收集器。</li></ul><h2 id="并行收集器（吞吐量优先）"><a href="#并行收集器（吞吐量优先）" class="headerlink" title="并行收集器（吞吐量优先）"></a>并行收集器（吞吐量优先）</h2><ul><li>-XX:+UseParallelGC：设置为并行收集器。此配置仅对年轻代有效。即年轻代使用并行收集，而年老代仍使用串行收集。</li><li>-XX:ParallelGCThreads=20：配置并行收集器的线程数，即：同时有多少个线程一起进行垃圾回收。此值建议配置与CPU数目相等。</li><li>-XX:+UseParallelOldGC：配置年老代垃圾收集方式为并行收集。JDK6.0开始支持对年老代并行收集。</li><li>-XX:MaxGCPauseMillis=100：设置每次年轻代垃圾回收的最长时间（单位毫秒）。如果无法满足此时间，JVM会自动调整年轻代大小，以满足此时间。</li><li>-XX:+UseAdaptiveSizePolicy：设置此选项后，并行收集器会自动调整年轻代Eden区大小和Survivor区大小的比例，以达成目标系统规定的最低响应时间或者收集频率等指标。此参数建议在使用并行收集器时，一直打开。</li></ul><h2 id="并发收集器（响应时间优先）"><a href="#并发收集器（响应时间优先）" class="headerlink" title="并发收集器（响应时间优先）"></a>并发收集器（响应时间优先）</h2><ul><li>-XX:+UseConcMarkSweepGC：即CMS收集，设置年老代为并发收集。CMS收集是JDK1.4后期版本开始引入的新GC算法。它的主要适合场景是对响应时间的重要性需求大于对吞吐量的需求，能够承受垃圾回收线程和应用线程共享CPU资源，并且应用中存在比较多的长生命周期对象。CMS收集的目标是尽量减少应用的暂停时间，减少Full GC发生的几率，利用和应用程序线程并发的垃圾回收线程来标记清除年老代内存。</li><li>-XX:+UseParNewGC：设置年轻代为并发收集。可与CMS收集同时使用。JDK5.0以上，JVM会根据系统配置自行设置，所以无需再设置此参数。</li><li>-XX:CMSFullGCsBeforeCompaction=0：由于并发收集器不对内存空间进行压缩和整理，所以运行一段时间并行收集以后会产生内存碎片，内存使用效率降低。此参数设置运行0次Full GC后对内存空间进行压缩和整理，即每次Full GC后立刻开始压缩和整理内存。</li><li>-XX:+UseCMSCompactAtFullCollection：打开内存空间的压缩和整理，在Full GC后执行。可能会影响性能，但可以消除内存碎片。</li><li>-XX:+CMSIncrementalMode：设置为增量收集模式。一般适用于单CPU情况。</li><li>-XX:CMSInitiatingOccupancyFraction=70：表示年老代内存空间使用到70%时就开始执行CMS收集，以确保年老代有足够的空间接纳来自年轻代的对象，避免Full GC的发生。</li></ul><h2 id="其它垃圾回收参数"><a href="#其它垃圾回收参数" class="headerlink" title="其它垃圾回收参数"></a>其它垃圾回收参数</h2><ul><li>-XX:+ScavengeBeforeFullGC：年轻代GC优于Full GC执行。</li><li>-XX:-DisableExplicitGC：不响应 System.gc() 代码。</li><li>-XX:+UseThreadPriorities：启用本地线程优先级API。即使 java.lang.Thread.setPriority() 生效，不启用则无效。</li><li>-XX:SoftRefLRUPolicyMSPerMB=0：软引用对象在最后一次被访问后能存活0毫秒（JVM默认为1000毫秒）。</li><li>-XX:TargetSurvivorRatio=90：允许90%的Survivor区被占用（JVM默认为50%）。提高对于Survivor区的使用率。</li></ul><h1 id="辅助信息参数设置"><a href="#辅助信息参数设置" class="headerlink" title="辅助信息参数设置"></a>辅助信息参数设置</h1><ul><li>-XX:-CITime：打印消耗在JIT编译的时间。</li><li>-XX:ErrorFile=./hs_err_pid.log：保存错误日志或数据到指定文件中。</li><li>-XX:HeapDumpPath=./java_pid.hprof：指定Dump堆内存时的路径。</li><li>-XX:-HeapDumpOnOutOfMemoryError：当首次遭遇内存溢出时Dump出此时的堆内存。</li><li>-XX:OnError=”;”：出现致命ERROR后运行自定义命令。</li><li>-XX:OnOutOfMemoryError=”;”：当首次遭遇内存溢出时执行自定义命令。</li><li>-XX:-PrintClassHistogram：按下 Ctrl+Break 后打印堆内存中类实例的柱状信息，同JDK的 jmap -histo 命令。</li><li>-XX:-PrintConcurrentLocks：按下 Ctrl+Break 后打印线程栈中并发锁的相关信息，同JDK的 jstack -l 命令。</li><li>-XX:-PrintCompilation：当一个方法被编译时打印相关信息。</li><li>-XX:-PrintGC：每次GC时打印相关信息。</li><li>-XX:-PrintGCDetails：每次GC时打印详细信息。</li><li>-XX:-PrintGCTimeStamps：打印每次GC的时间戳。</li><li>-XX:-TraceClassLoading：跟踪类的加载信息。</li><li>-XX:-TraceClassLoadingPreorder：跟踪被引用到的所有类的加载信息。</li><li>-XX:-TraceClassResolution：跟踪常量池。</li><li>-XX:-TraceClassUnloading：跟踪类的卸载信息。</li></ul><h1 id="关于参数名称等"><a href="#关于参数名称等" class="headerlink" title="关于参数名称等"></a>关于参数名称等</h1><ul><li><p>标准参数（-），所有JVM都必须支持这些参数的功能，而且向后兼容；例如：</p><p>  – -client——设置JVM使用Client模式，特点是启动速度比较快，但运行时性能和内存管理效率不高，通常用于客户端应用程序或开发调试；在32位环境下直接运行Java程序默认启用该模式。</p><p>  – -server——设置JVM使Server模式，特点是启动速度比较慢，但运行时性能和内存管理效率很高，适用于生产环境。在具有64位能力的JDK环境下默认启用该模式。</p></li><li><p>非标准参数（-X），默认JVM实现这些参数的功能，但是并不保证所有JVM实现都满足，且不保证向后兼容；</p></li><li>非稳定参数（-XX），此类参数各个JVM实现会有所不同，将来可能会不被支持，需要慎重使用；</li></ul><h1 id="JVM服务参数调优实战"><a href="#JVM服务参数调优实战" class="headerlink" title="JVM服务参数调优实战"></a>JVM服务参数调优实战</h1><h2 id="大型网站服务器案例"><a href="#大型网站服务器案例" class="headerlink" title="大型网站服务器案例"></a>大型网站服务器案例</h2><p>承受海量访问的动态Web应用</p><p>服务器配置：8 CPU, 8G MEM, JDK 1.6.X</p><p>参数方案：</p><p>-server -Xmx3550m -Xms3550m -Xmn1256m -Xss128k -XX:SurvivorRatio=6 -XX:MaxPermSize=256m -XX:ParallelGCThreads=8 -XX:MaxTenuringThreshold=0 -XX:+UseConcMarkSweepGC</p><p>调优说明：</p><ul><li>-Xmx 与 -Xms 相同以避免JVM反复重新申请内存。-Xmx 的大小约等于系统内存大小的一半，即充分利用系统资源，又给予系统安全运行的空间。</li><li>-Xmn1256m 设置年轻代大小为1256MB。此值对系统性能影响较大，Sun官方推荐配置年轻代大小为整个堆的3/8。</li><li>-Xss128k 设置较小的线程栈以支持创建更多的线程，支持海量访问，并提升系统性能。</li><li>-XX:SurvivorRatio=6 设置年轻代中Eden区与Survivor区的比值。系统默认是8，根据经验设置为6，则2个Survivor区与1个Eden区的比值为2:6，一个Survivor区占整个年轻代的1/8。</li><li>-XX:ParallelGCThreads=8 配置并行收集器的线程数，即同时8个线程一起进行垃圾回收。此值一般配置为与CPU数目相等。</li><li>-XX:MaxTenuringThreshold=0 设置垃圾最大年龄（在年轻代的存活次数）。如果设置为0的话，则年轻代对象不经过Survivor区直接进入年老代。对于年老代比较多的应用，可以提高效率；如果将此值设置为一个较大值，则年轻代对象会在Survivor区进行多次复制，这样可以增加对象再年轻代的存活时间，增加在年轻代即被回收的概率。根据被海量访问的动态Web应用之特点，其内存要么被缓存起来以减少直接访问DB，要么被快速回收以支持高并发海量请求，因此其内存对象在年轻代存活多次意义不大，可以直接进入年老代，根据实际应用效果，在这里设置此值为0。</li><li>-XX:+UseConcMarkSweepGC 设置年老代为并发收集。CMS（ConcMarkSweepGC）收集的目标是尽量减少应用的暂停时间，减少Full GC发生的几率，利用和应用程序线程并发的垃圾回收线程来标记清除年老代内存，适用于应用中存在比较多的长生命周期对象的情况。</li></ul><h2 id="内部集成构建服务器案例"><a href="#内部集成构建服务器案例" class="headerlink" title="内部集成构建服务器案例"></a>内部集成构建服务器案例</h2><p>高性能数据处理的工具应用<br>服务器配置：1 CPU, 4G MEM, JDK 1.6.X</p><p>参数方案：</p><p>-server -XX:PermSize=196m -XX:MaxPermSize=196m -Xmn320m -Xms768m -Xmx1024m</p><p>调优说明：</p><ul><li>-XX:PermSize=196m -XX:MaxPermSize=196m 根据集成构建的特点，大规模的系统编译可能需要加载大量的Java类到内存中，所以预先分配好大量的持久代内存是高效和必要的。</li><li>-Xmn320m 遵循年轻代大小为整个堆的3/8原则。</li><li>-Xms768m -Xmx1024m 根据系统大致能够承受的堆内存大小设置即可。</li></ul><p>在64位服务器上运行应用程序，构建执行时，用 jmap -heap 11540 命令观察JVM堆内存状况如下：</p><pre><code>Attaching to process ID 11540, please wait...Debugger attached successfully.Server compiler detected.JVM version is 20.12-b01using thread-local object allocation.Parallel GC with 4 thread(s)Heap Configuration:   MinHeapFreeRatio = 40   MaxHeapFreeRatio = 70   MaxHeapSize      = 1073741824 (1024.0MB)   NewSize          = 335544320 (320.0MB)   MaxNewSize       = 335544320 (320.0MB)   OldSize          = 5439488 (5.1875MB)   NewRatio         = 2   SurvivorRatio    = 8   PermSize         = 205520896 (196.0MB)   MaxPermSize      = 205520896 (196.0MB)Heap Usage:PS Young GenerationEden Space:   capacity = 255852544 (244.0MB)   used     = 101395504 (96.69828796386719MB)   free     = 154457040 (147.3017120361328MB)   39.63044588683081% usedFrom Space:   capacity = 34144256 (32.5625MB)   used     = 33993968 (32.41917419433594MB)   free     = 150288 (0.1433258056640625MB)   99.55984397492803% usedTo Space:   capacity = 39845888 (38.0MB)   used     = 0 (0.0MB)   free     = 39845888 (38.0MB)   0.0% usedPS Old Generation   capacity = 469762048 (448.0MB)   used     = 44347696 (42.29325866699219MB)   free     = 425414352 (405.7067413330078MB)   9.440459523882184% usedPS Perm Generation   capacity = 205520896 (196.0MB)   used     = 85169496 (81.22396087646484MB)   free     = 120351400 (114.77603912353516MB)   41.440796365543285% used</code></pre><p>结果是比较健康的。</p>]]></content>
+    <content type="html"><![CDATA[<p>转载自：<a href="https://blog.csdn.net/sivyer123/article/details/17139443" target="_blank" rel="noopener">https://blog.csdn.net/sivyer123/article/details/17139443</a></p><a id="more"></a><h1 id="堆内存设置"><a href="#堆内存设置" class="headerlink" title="堆内存设置"></a>堆内存设置</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>方法区：Permanent 即 持久代（Permanent Generation），主要存放的是Java类定义信息，与垃圾收集器要收集的Java对象关系不大。</p><p>堆内存：Heap = { Old + NEW = {Eden, from, to} }，Old 即 年老代（Old Generation），New 即 年轻代（Young Generation）。年老代和年轻代的划分对垃圾收集影响比较大。</p><p><img src="/assets/blogImg/4/19.png" alt="图片19"></p><h3 id="持久代"><a href="#持久代" class="headerlink" title="持久代"></a>持久代</h3><p>　　用于存放静态类型数据，如 Java Class, Method 等。持久代对垃圾回收没有显著影响。但是有些应用可能动态生成或调用一些Class，例如 Hibernate CGLib 等，在这种时候往往需要设置一个比较大的持久代空间来存放这些运行过程中动态增加的类型。</p><h3 id="年轻代"><a href="#年轻代" class="headerlink" title="年轻代"></a>年轻代</h3><p>　　所有新生成的对象首先都是放在年轻代。年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象。年轻代一般分3个区，1个Eden区，2个Survivor区（from 和 to）。</p><p>　　大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到Survivor区（两个中的一个），当一个Survivor区满时，此区的存活对象将被复制到另外一个Survivor区，当另一个Survivor区也满了的时候，从前一个Survivor区复制过来的并且此时还存活的对象，将可能被复制到年老代。</p><p>　　2个Survivor区是对称的，没有先后关系，所以同一个Survivor区中可能同时存在从Eden区复制过来对象，和从另一个Survivor区复制过来的对象；而复制到年老区的只有从另一个Survivor区过来的对象。<strong>而且，因为需要交换的原因，Survivor区至少有一个是空的。</strong>特殊的情况下，根据程序需要，Survivor区是可以配置为多个的（多于2个），这样可以增加对象在年轻代中的存在时间，减少被放到年老代的可能。</p><p>　　针对年轻代的垃圾回收即 Young GC。</p><h3 id="年老代"><a href="#年老代" class="headerlink" title="年老代"></a>年老代</h3><p>　　在年轻代中经历了N次（可配置）垃圾回收后仍然存活的对象，就会被复制到年老代中。因此，可以认为年老代中存放的都是一些生命周期较长的对象。</p><p>　　针对年老代的垃圾回收即 Full GC。</p><p>所以，当一组对象生成时，<strong>内存申请过程</strong>如下：</p><p>　　<em>JVM会试图为相关Java对象在年轻代的Eden区中初始化一块内存区域。</em></p><p>　　<em>当Eden区空间足够时，内存申请结束。否则执行下一步。</em></p><p>　　<em>JVM试图释放在Eden区中所有不活跃的对象（Young GC）。释放后若Eden空间仍然不足以放入新对象，JVM则试图将部分Eden区中活跃对象放入Survivor区。</em></p><p>　　<em>Survivor区被用来作为Eden区及年老代的中间交换区域。当年老代空间足够时，Survivor区中存活了一定次数的对象会被移到年老代。</em></p><p>　　<em>当年老代空间不够时，JVM会在年老代进行完全的垃圾回收（Full GC）。</em></p><p>　　<em>Full GC后，若Survivor区及年老代仍然无法存放从Eden区复制过来的对象，则会导致JVM无法在Eden区为新生成的对象申请内存，即出现“Out of Memory”。</em></p><h3 id="OOM（“Out-of-Memory”）异常一般主要有如下2种原因："><a href="#OOM（“Out-of-Memory”）异常一般主要有如下2种原因：" class="headerlink" title="OOM（“Out of Memory”）异常一般主要有如下2种原因："></a>OOM（“Out of Memory”）异常一般主要有如下2种原因：</h3><ol><li>持久代溢出，表现为：java.lang.OutOfMemoryError:PermGenspace</li></ol><p>　　通常由于持久代设置过小，动态加载了大量Java类而导致溢出，解决办法唯有将参数 -XX:MaxPermSize 调大（一般256m能满足绝大多数应用程序需求）。将部分Java类放到容器共享区（例如Tomcat share lib）去加载的办法也是一个思路，但前提是容器里部署了多个应用，且这些应用有大量的共享类库。</p><ol start="2"><li>年老代溢出，表现为：java.lang.OutOfMemoryError:Javaheapspace</li></ol><p>　　这是最常见的情况，产生的原因可能是：设置的内存参数Xmx过小或程序的内存泄露及使用不当问题。</p><p>　　例如循环上万次的字符串处理、创建上千万个对象、在一段代码内申请上百M甚至上G的内存。还有的时候虽然不会报内存溢出，却会使系统不间断的垃圾回收，也无法处理其它请求。这种情况下除了检查程序、打印堆内存等方法排查，还可以借助一些内存分析工具，比如MAT就很不错。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;参考1：&lt;a href=&quot;https://blog.csdn.net/sivyer123/article/details/17139443&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JVM 堆内存设置原理&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;转载自：&lt;a href=&quot;https://blog.csdn.net/sivyer123/article/details/17139443&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/sivyer123/article/details/17139443&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -150,17 +1094,17 @@
   </entry>
   
   <entry>
-    <title>JVM内存设置原理</title>
-    <link href="https://mlone.top/post/4cc01209.html"/>
-    <id>https://mlone.top/post/4cc01209.html</id>
+    <title>JVM启动参数设置</title>
+    <link href="https://mlone.top/post/61cc7df2.html"/>
+    <id>https://mlone.top/post/61cc7df2.html</id>
     <published>2018-10-15T14:30:16.000Z</published>
-    <updated>2019-02-25T14:50:44.523Z</updated>
+    <updated>2019-02-25T14:42:03.776Z</updated>
     
-    <content type="html"><![CDATA[<p>转载自：<a href="https://blog.csdn.net/sivyer123/article/details/17139443" target="_blank" rel="noopener">https://blog.csdn.net/sivyer123/article/details/17139443</a></p><a id="more"></a><h1 id="堆内存设置"><a href="#堆内存设置" class="headerlink" title="堆内存设置"></a>堆内存设置</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>方法区：Permanent 即 持久代（Permanent Generation），主要存放的是Java类定义信息，与垃圾收集器要收集的Java对象关系不大。</p><p>堆内存：Heap = { Old + NEW = {Eden, from, to} }，Old 即 年老代（Old Generation），New 即 年轻代（Young Generation）。年老代和年轻代的划分对垃圾收集影响比较大。</p><p><img src="/assets/blogImg/4/19.png" alt="图片19"></p><h3 id="持久代"><a href="#持久代" class="headerlink" title="持久代"></a>持久代</h3><p>　　用于存放静态类型数据，如 Java Class, Method 等。持久代对垃圾回收没有显著影响。但是有些应用可能动态生成或调用一些Class，例如 Hibernate CGLib 等，在这种时候往往需要设置一个比较大的持久代空间来存放这些运行过程中动态增加的类型。</p><h3 id="年轻代"><a href="#年轻代" class="headerlink" title="年轻代"></a>年轻代</h3><p>　　所有新生成的对象首先都是放在年轻代。年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象。年轻代一般分3个区，1个Eden区，2个Survivor区（from 和 to）。</p><p>　　大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到Survivor区（两个中的一个），当一个Survivor区满时，此区的存活对象将被复制到另外一个Survivor区，当另一个Survivor区也满了的时候，从前一个Survivor区复制过来的并且此时还存活的对象，将可能被复制到年老代。</p><p>　　2个Survivor区是对称的，没有先后关系，所以同一个Survivor区中可能同时存在从Eden区复制过来对象，和从另一个Survivor区复制过来的对象；而复制到年老区的只有从另一个Survivor区过来的对象。<strong>而且，因为需要交换的原因，Survivor区至少有一个是空的。</strong>特殊的情况下，根据程序需要，Survivor区是可以配置为多个的（多于2个），这样可以增加对象在年轻代中的存在时间，减少被放到年老代的可能。</p><p>　　针对年轻代的垃圾回收即 Young GC。</p><h3 id="年老代"><a href="#年老代" class="headerlink" title="年老代"></a>年老代</h3><p>　　在年轻代中经历了N次（可配置）垃圾回收后仍然存活的对象，就会被复制到年老代中。因此，可以认为年老代中存放的都是一些生命周期较长的对象。</p><p>　　针对年老代的垃圾回收即 Full GC。</p><p>所以，当一组对象生成时，<strong>内存申请过程</strong>如下：</p><p>　　<em>JVM会试图为相关Java对象在年轻代的Eden区中初始化一块内存区域。</em></p><p>　　<em>当Eden区空间足够时，内存申请结束。否则执行下一步。</em></p><p>　　<em>JVM试图释放在Eden区中所有不活跃的对象（Young GC）。释放后若Eden空间仍然不足以放入新对象，JVM则试图将部分Eden区中活跃对象放入Survivor区。</em></p><p>　　<em>Survivor区被用来作为Eden区及年老代的中间交换区域。当年老代空间足够时，Survivor区中存活了一定次数的对象会被移到年老代。</em></p><p>　　<em>当年老代空间不够时，JVM会在年老代进行完全的垃圾回收（Full GC）。</em></p><p>　　<em>Full GC后，若Survivor区及年老代仍然无法存放从Eden区复制过来的对象，则会导致JVM无法在Eden区为新生成的对象申请内存，即出现“Out of Memory”。</em></p><h3 id="OOM（“Out-of-Memory”）异常一般主要有如下2种原因："><a href="#OOM（“Out-of-Memory”）异常一般主要有如下2种原因：" class="headerlink" title="OOM（“Out of Memory”）异常一般主要有如下2种原因："></a>OOM（“Out of Memory”）异常一般主要有如下2种原因：</h3><ol><li>持久代溢出，表现为：java.lang.OutOfMemoryError:PermGenspace</li></ol><p>　　通常由于持久代设置过小，动态加载了大量Java类而导致溢出，解决办法唯有将参数 -XX:MaxPermSize 调大（一般256m能满足绝大多数应用程序需求）。将部分Java类放到容器共享区（例如Tomcat share lib）去加载的办法也是一个思路，但前提是容器里部署了多个应用，且这些应用有大量的共享类库。</p><ol start="2"><li>年老代溢出，表现为：java.lang.OutOfMemoryError:Javaheapspace</li></ol><p>　　这是最常见的情况，产生的原因可能是：设置的内存参数Xmx过小或程序的内存泄露及使用不当问题。</p><p>　　例如循环上万次的字符串处理、创建上千万个对象、在一段代码内申请上百M甚至上G的内存。还有的时候虽然不会报内存溢出，却会使系统不间断的垃圾回收，也无法处理其它请求。这种情况下除了检查程序、打印堆内存等方法排查，还可以借助一些内存分析工具，比如MAT就很不错。</p>]]></content>
+    <content type="html"><![CDATA[<p>参考1：<a href="https://blog.csdn.net/sivyer123/article/details/17139443" target="_blank" rel="noopener">JVM 堆内存设置原理</a></p><a id="more"></a><p>参考2：<a href="https://www.cnblogs.com/smyhvae/p/4736162.html" target="_blank" rel="noopener">Java虚拟机详解03—-常用JVM配置参数</a></p><h1 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h1><ul><li>-Xmx3550m：设置JVM<strong>最大堆内存</strong>为3550M。</li><li>-Xms3550m：设置JVM<strong>初始堆内存</strong>为3550M。此值可以设置与-Xmx相同，以避免每次垃圾回收完成后JVM重新分配内存。</li><li>-Xss128k：设置每个线程的栈大小。JDK5.0以后每个线程栈大小为1M，之前每个线程栈大小为256K。应当根据应用的线程所需内存大小进行调整。在相同物理内存下，减小这个值能生成更多的线程。但是操作系统对一个进程内的线程数还是有限制的，不能无限生成，经验值在3000~5000左右。需要注意的是：当这个值被设置的较大（例如&gt;2MB）时将会在很大程度上降低系统的性能。</li><li>-Xmn2g：设置<strong>年轻代</strong>大小为2G。在整个堆内存大小确定的情况下，增大年轻代将会减小年老代，反之亦然。此值关系到JVM垃圾回收，对系统性能影响较大，官方推荐配置为整个堆大小的3/8。</li><li>-XX:NewSize=1024m：设置年轻代初始值为1024M。</li><li>-XX:MaxNewSize=1024m：设置年轻代最大值为1024M。</li><li>-XX:PermSize=256m：设置<strong>持久代初始值</strong>为256M。</li><li>-XX:MaxPermSize=256m：设置<strong>持久代最大值</strong>为256M。</li><li>-XX:NewRatio=4：设置年轻代（包括1个Eden和2个Survivor区）与年老代的比值。表示年轻代比年老代为1:4。</li><li>-XX:SurvivorRatio=4：设置<strong>年轻代中Eden区与Survivor区的比值</strong>。表示2个Survivor区（JVM堆内存年轻代中默认有2个大小相等的Survivor区）与1个Eden区的比值为2:4，即1个Survivor区占整个年轻代大小的1/6。</li><li>-XX:MaxTenuringThreshold=7：表示一个对象如果在Survivor区（救助空间）移动了7次还没有被垃圾回收就进入年老代。如果设置为0的话，则年轻代对象不经过Survivor区，直接进入年老代，对于需要大量常驻内存的应用，这样做可以提高效率。如果将此值设置为一个较大值，则年轻代对象会在Survivor区进行多次复制，这样可以增加对象在年轻代存活时间，增加对象在年轻代被垃圾回收的概率，减少Full GC的频率，这样做可以在某种程度上提高服务稳定性。</li></ul><h1 id="疑问解答"><a href="#疑问解答" class="headerlink" title="疑问解答"></a>疑问解答</h1><p>-Xmn，-XX:NewSize/-XX:MaxNewSize，-XX:NewRatio 3组参数都可以影响年轻代的大小，混合使用的情况下，优先级是什么？<br>如下：</p><p>高优先级：-XX:NewSize/-XX:MaxNewSize </p><p>中优先级：-Xmn（默认等效  -Xmn=-XX:NewSize=-XX:MaxNewSize=?） </p><p>低优先级：-XX:NewRatio </p><p>推荐使用-Xmn参数，原因是这个参数简洁，相当于一次设定 NewSize/MaxNewSIze，而且两者相等，适用于生产环境。-Xmn 配合 -Xms/-Xmx，即可将堆内存布局完成。</p><p>-Xmn参数是在JDK 1.4 开始支持。</p><h1 id="垃圾回收器选择"><a href="#垃圾回收器选择" class="headerlink" title="垃圾回收器选择"></a>垃圾回收器选择</h1><p>JVM给出了3种选择：串行收集器、并行收集器、并发收集器。串行收集器只适用于小数据量的情况，所以生产环境的选择主要是并行收集器和并发收集器。</p><p>默认情况下JDK5.0以前都是使用串行收集器，如果想使用其他收集器需要在启动时加入相应参数。JDK5.0以后，JVM会根据当前系统配置进行智能判断。</p><h2 id="串行收集器"><a href="#串行收集器" class="headerlink" title="串行收集器"></a>串行收集器</h2><ul><li>-XX:+UseSerialGC：设置串行收集器。</li></ul><h2 id="并行收集器（吞吐量优先）"><a href="#并行收集器（吞吐量优先）" class="headerlink" title="并行收集器（吞吐量优先）"></a>并行收集器（吞吐量优先）</h2><ul><li>-XX:+UseParallelGC：设置为并行收集器。此配置仅对年轻代有效。即年轻代使用并行收集，而年老代仍使用串行收集。</li><li>-XX:ParallelGCThreads=20：配置并行收集器的线程数，即：同时有多少个线程一起进行垃圾回收。此值建议配置与CPU数目相等。</li><li>-XX:+UseParallelOldGC：配置年老代垃圾收集方式为并行收集。JDK6.0开始支持对年老代并行收集。</li><li>-XX:MaxGCPauseMillis=100：设置每次年轻代垃圾回收的最长时间（单位毫秒）。如果无法满足此时间，JVM会自动调整年轻代大小，以满足此时间。</li><li>-XX:+UseAdaptiveSizePolicy：设置此选项后，并行收集器会自动调整年轻代Eden区大小和Survivor区大小的比例，以达成目标系统规定的最低响应时间或者收集频率等指标。此参数建议在使用并行收集器时，一直打开。</li></ul><h2 id="并发收集器（响应时间优先）"><a href="#并发收集器（响应时间优先）" class="headerlink" title="并发收集器（响应时间优先）"></a>并发收集器（响应时间优先）</h2><ul><li>-XX:+UseConcMarkSweepGC：即CMS收集，设置年老代为并发收集。CMS收集是JDK1.4后期版本开始引入的新GC算法。它的主要适合场景是对响应时间的重要性需求大于对吞吐量的需求，能够承受垃圾回收线程和应用线程共享CPU资源，并且应用中存在比较多的长生命周期对象。CMS收集的目标是尽量减少应用的暂停时间，减少Full GC发生的几率，利用和应用程序线程并发的垃圾回收线程来标记清除年老代内存。</li><li>-XX:+UseParNewGC：设置年轻代为并发收集。可与CMS收集同时使用。JDK5.0以上，JVM会根据系统配置自行设置，所以无需再设置此参数。</li><li>-XX:CMSFullGCsBeforeCompaction=0：由于并发收集器不对内存空间进行压缩和整理，所以运行一段时间并行收集以后会产生内存碎片，内存使用效率降低。此参数设置运行0次Full GC后对内存空间进行压缩和整理，即每次Full GC后立刻开始压缩和整理内存。</li><li>-XX:+UseCMSCompactAtFullCollection：打开内存空间的压缩和整理，在Full GC后执行。可能会影响性能，但可以消除内存碎片。</li><li>-XX:+CMSIncrementalMode：设置为增量收集模式。一般适用于单CPU情况。</li><li>-XX:CMSInitiatingOccupancyFraction=70：表示年老代内存空间使用到70%时就开始执行CMS收集，以确保年老代有足够的空间接纳来自年轻代的对象，避免Full GC的发生。</li></ul><h2 id="其它垃圾回收参数"><a href="#其它垃圾回收参数" class="headerlink" title="其它垃圾回收参数"></a>其它垃圾回收参数</h2><ul><li>-XX:+ScavengeBeforeFullGC：年轻代GC优于Full GC执行。</li><li>-XX:-DisableExplicitGC：不响应 System.gc() 代码。</li><li>-XX:+UseThreadPriorities：启用本地线程优先级API。即使 java.lang.Thread.setPriority() 生效，不启用则无效。</li><li>-XX:SoftRefLRUPolicyMSPerMB=0：软引用对象在最后一次被访问后能存活0毫秒（JVM默认为1000毫秒）。</li><li>-XX:TargetSurvivorRatio=90：允许90%的Survivor区被占用（JVM默认为50%）。提高对于Survivor区的使用率。</li></ul><h1 id="辅助信息参数设置"><a href="#辅助信息参数设置" class="headerlink" title="辅助信息参数设置"></a>辅助信息参数设置</h1><ul><li>-XX:-CITime：打印消耗在JIT编译的时间。</li><li>-XX:ErrorFile=./hs_err_pid.log：保存错误日志或数据到指定文件中。</li><li>-XX:HeapDumpPath=./java_pid.hprof：指定Dump堆内存时的路径。</li><li>-XX:-HeapDumpOnOutOfMemoryError：当首次遭遇内存溢出时Dump出此时的堆内存。</li><li>-XX:OnError=”;”：出现致命ERROR后运行自定义命令。</li><li>-XX:OnOutOfMemoryError=”;”：当首次遭遇内存溢出时执行自定义命令。</li><li>-XX:-PrintClassHistogram：按下 Ctrl+Break 后打印堆内存中类实例的柱状信息，同JDK的 jmap -histo 命令。</li><li>-XX:-PrintConcurrentLocks：按下 Ctrl+Break 后打印线程栈中并发锁的相关信息，同JDK的 jstack -l 命令。</li><li>-XX:-PrintCompilation：当一个方法被编译时打印相关信息。</li><li>-XX:-PrintGC：每次GC时打印相关信息。</li><li>-XX:-PrintGCDetails：每次GC时打印详细信息。</li><li>-XX:-PrintGCTimeStamps：打印每次GC的时间戳。</li><li>-XX:-TraceClassLoading：跟踪类的加载信息。</li><li>-XX:-TraceClassLoadingPreorder：跟踪被引用到的所有类的加载信息。</li><li>-XX:-TraceClassResolution：跟踪常量池。</li><li>-XX:-TraceClassUnloading：跟踪类的卸载信息。</li></ul><h1 id="关于参数名称等"><a href="#关于参数名称等" class="headerlink" title="关于参数名称等"></a>关于参数名称等</h1><ul><li><p>标准参数（-），所有JVM都必须支持这些参数的功能，而且向后兼容；例如：</p><p>  – -client——设置JVM使用Client模式，特点是启动速度比较快，但运行时性能和内存管理效率不高，通常用于客户端应用程序或开发调试；在32位环境下直接运行Java程序默认启用该模式。</p><p>  – -server——设置JVM使Server模式，特点是启动速度比较慢，但运行时性能和内存管理效率很高，适用于生产环境。在具有64位能力的JDK环境下默认启用该模式。</p></li><li><p>非标准参数（-X），默认JVM实现这些参数的功能，但是并不保证所有JVM实现都满足，且不保证向后兼容；</p></li><li>非稳定参数（-XX），此类参数各个JVM实现会有所不同，将来可能会不被支持，需要慎重使用；</li></ul><h1 id="JVM服务参数调优实战"><a href="#JVM服务参数调优实战" class="headerlink" title="JVM服务参数调优实战"></a>JVM服务参数调优实战</h1><h2 id="大型网站服务器案例"><a href="#大型网站服务器案例" class="headerlink" title="大型网站服务器案例"></a>大型网站服务器案例</h2><p>承受海量访问的动态Web应用</p><p>服务器配置：8 CPU, 8G MEM, JDK 1.6.X</p><p>参数方案：</p><p>-server -Xmx3550m -Xms3550m -Xmn1256m -Xss128k -XX:SurvivorRatio=6 -XX:MaxPermSize=256m -XX:ParallelGCThreads=8 -XX:MaxTenuringThreshold=0 -XX:+UseConcMarkSweepGC</p><p>调优说明：</p><ul><li>-Xmx 与 -Xms 相同以避免JVM反复重新申请内存。-Xmx 的大小约等于系统内存大小的一半，即充分利用系统资源，又给予系统安全运行的空间。</li><li>-Xmn1256m 设置年轻代大小为1256MB。此值对系统性能影响较大，Sun官方推荐配置年轻代大小为整个堆的3/8。</li><li>-Xss128k 设置较小的线程栈以支持创建更多的线程，支持海量访问，并提升系统性能。</li><li>-XX:SurvivorRatio=6 设置年轻代中Eden区与Survivor区的比值。系统默认是8，根据经验设置为6，则2个Survivor区与1个Eden区的比值为2:6，一个Survivor区占整个年轻代的1/8。</li><li>-XX:ParallelGCThreads=8 配置并行收集器的线程数，即同时8个线程一起进行垃圾回收。此值一般配置为与CPU数目相等。</li><li>-XX:MaxTenuringThreshold=0 设置垃圾最大年龄（在年轻代的存活次数）。如果设置为0的话，则年轻代对象不经过Survivor区直接进入年老代。对于年老代比较多的应用，可以提高效率；如果将此值设置为一个较大值，则年轻代对象会在Survivor区进行多次复制，这样可以增加对象再年轻代的存活时间，增加在年轻代即被回收的概率。根据被海量访问的动态Web应用之特点，其内存要么被缓存起来以减少直接访问DB，要么被快速回收以支持高并发海量请求，因此其内存对象在年轻代存活多次意义不大，可以直接进入年老代，根据实际应用效果，在这里设置此值为0。</li><li>-XX:+UseConcMarkSweepGC 设置年老代为并发收集。CMS（ConcMarkSweepGC）收集的目标是尽量减少应用的暂停时间，减少Full GC发生的几率，利用和应用程序线程并发的垃圾回收线程来标记清除年老代内存，适用于应用中存在比较多的长生命周期对象的情况。</li></ul><h2 id="内部集成构建服务器案例"><a href="#内部集成构建服务器案例" class="headerlink" title="内部集成构建服务器案例"></a>内部集成构建服务器案例</h2><p>高性能数据处理的工具应用<br>服务器配置：1 CPU, 4G MEM, JDK 1.6.X</p><p>参数方案：</p><p>-server -XX:PermSize=196m -XX:MaxPermSize=196m -Xmn320m -Xms768m -Xmx1024m</p><p>调优说明：</p><ul><li>-XX:PermSize=196m -XX:MaxPermSize=196m 根据集成构建的特点，大规模的系统编译可能需要加载大量的Java类到内存中，所以预先分配好大量的持久代内存是高效和必要的。</li><li>-Xmn320m 遵循年轻代大小为整个堆的3/8原则。</li><li>-Xms768m -Xmx1024m 根据系统大致能够承受的堆内存大小设置即可。</li></ul><p>在64位服务器上运行应用程序，构建执行时，用 jmap -heap 11540 命令观察JVM堆内存状况如下：</p><pre><code>Attaching to process ID 11540, please wait...Debugger attached successfully.Server compiler detected.JVM version is 20.12-b01using thread-local object allocation.Parallel GC with 4 thread(s)Heap Configuration:   MinHeapFreeRatio = 40   MaxHeapFreeRatio = 70   MaxHeapSize      = 1073741824 (1024.0MB)   NewSize          = 335544320 (320.0MB)   MaxNewSize       = 335544320 (320.0MB)   OldSize          = 5439488 (5.1875MB)   NewRatio         = 2   SurvivorRatio    = 8   PermSize         = 205520896 (196.0MB)   MaxPermSize      = 205520896 (196.0MB)Heap Usage:PS Young GenerationEden Space:   capacity = 255852544 (244.0MB)   used     = 101395504 (96.69828796386719MB)   free     = 154457040 (147.3017120361328MB)   39.63044588683081% usedFrom Space:   capacity = 34144256 (32.5625MB)   used     = 33993968 (32.41917419433594MB)   free     = 150288 (0.1433258056640625MB)   99.55984397492803% usedTo Space:   capacity = 39845888 (38.0MB)   used     = 0 (0.0MB)   free     = 39845888 (38.0MB)   0.0% usedPS Old Generation   capacity = 469762048 (448.0MB)   used     = 44347696 (42.29325866699219MB)   free     = 425414352 (405.7067413330078MB)   9.440459523882184% usedPS Perm Generation   capacity = 205520896 (196.0MB)   used     = 85169496 (81.22396087646484MB)   free     = 120351400 (114.77603912353516MB)   41.440796365543285% used</code></pre><p>结果是比较健康的。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;转载自：&lt;a href=&quot;https://blog.csdn.net/sivyer123/article/details/17139443&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/sivyer123/article/details/17139443&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;参考1：&lt;a href=&quot;https://blog.csdn.net/sivyer123/article/details/17139443&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JVM 堆内存设置原理&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
