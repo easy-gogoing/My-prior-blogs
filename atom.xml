@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mlone.top/"/>
-  <updated>2019-02-26T15:09:31.998Z</updated>
+  <updated>2019-02-27T10:07:25.404Z</updated>
   <id>https://mlone.top/</id>
   
   <author>
@@ -15,6 +15,194 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx的作用</title>
+    <link href="https://mlone.top/post/d86db295.html"/>
+    <id>https://mlone.top/post/d86db295.html</id>
+    <published>2018-12-30T08:50:36.000Z</published>
+    <updated>2019-02-27T10:07:25.404Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考：<a href="https://blog.csdn.net/qq_36178641/article/details/80110981" target="_blank" rel="noopener">正向代理和反向代理概述</a><br><a id="more"></a></p><h5 id="一、作为静态资源服务器"><a href="#一、作为静态资源服务器" class="headerlink" title="一、作为静态资源服务器"></a>一、作为静态资源服务器</h5><p>可以通过http请求访问服务器上的静态资源。（首页广告图片、商品图片显示、图片上传回显）</p><h5 id="二、反向代理与负载均衡："><a href="#二、反向代理与负载均衡：" class="headerlink" title="二、反向代理与负载均衡："></a>二、反向代理与负载均衡：</h5><p>正向代理最大的特点是客户端非常明确要访问的服务器地址；服务器只清楚请求来自哪个代理服务器，而不清楚来自哪个具体的客户端；正向代理模式屏蔽或者隐藏了真实客户端信息。</p><p><strong>反向代理</strong>，主要用于<strong>服务器集群分布式部署</strong>的情况下，反向代理隐藏了服务器的信息！</p><p>多个客户端给服务器发送的请求，nginx服务器接收到之后，按照一定的规则分发给了后端的业务处理服务器进行处理了。此时~请求的来源也就是客户端是明确的，但是请求具体由哪台服务器处理的并不明确了，nginx扮演的就是一个反向代理角色</p><p>客户端发送的、nginx反向代理服务器接收到的<strong>请求数量</strong>，就是我们说的<strong>负载量</strong><br>请求数量按照一定的规则进行分发到不同的服务器处理的规则，就是一种<strong>均衡规则</strong></p><p>所以<strong>~将服务器接收到的请求按照规则分发的过程</strong>，称为<strong>负载均衡</strong>。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/qq_36178641/article/details/80110981&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;正向代理和反向代理概述&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaWeb" scheme="https://mlone.top/categories/JavaWeb/"/>
+    
+    
+      <category term="web" scheme="https://mlone.top/tags/web/"/>
+    
+      <category term="nginx" scheme="https://mlone.top/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>spring与springmvc</title>
+    <link href="https://mlone.top/post/724a55c9.html"/>
+    <id>https://mlone.top/post/724a55c9.html</id>
+    <published>2018-12-29T08:50:36.000Z</published>
+    <updated>2019-02-27T10:12:17.544Z</updated>
+    
+    <content type="html"><![CDATA[<p>转自：<a href="https://blog.csdn.net/jonesAriven/article/details/80036602" target="_blank" rel="noopener">spring与springmvc的区别与联系</a></p><a id="more"></a><h5 id="一、spring框架的介绍"><a href="#一、spring框架的介绍" class="headerlink" title="一、spring框架的介绍"></a>一、spring框架的介绍</h5><p><strong>spring是一个一站式的框架，提供了表现层（springmvc）到业务层（spring）再到数据层（springdata）的全套解决方案；</strong>spring的两大核心IOC(控制反转)和AOP(面向切面编程)更是给我们的程序解耦和代码的简介提供了支持。</p><h5 id="二、springmvc"><a href="#二、springmvc" class="headerlink" title="二、springmvc"></a>二、springmvc</h5><p> （1）<strong>springmvc给spring的表现层提供支持</strong></p><p> （2）springmvc的流程：</p><ol><li><p>用户发送请求至<strong>前端控制器DispatcherServlet；</strong></p></li><li><p>DispatcherServlet收到请求调用<strong>HandlerMapping处理器映射器；</strong></p></li><li><p>处理器映射器根据<strong>请求url</strong>找到具体的处理器，生成<strong>处理器对象</strong>及<strong>处理器拦截器</strong>(如果有则生成)一并返回给DispatcherServlet；</p></li><li><p>DispatcherServlet通过<strong>HandlerAdapter处理器适配器</strong>调用处理器，执行<strong>处理器</strong>(Controller，也叫后端控制器)；</p></li><li><p>Controller执行完成返回ModelAndView，并返回给HandlerAdapter，HandlerAdapter将结果返回给DispatcherServlet；</p></li><li><p>DispatcherServlet将ModelAndView传给<strong>ViewReslover视图解析器</strong>，ViewReslover解析后返回具体View给DispatcherServlet；</p></li><li>DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）后返回给客户</li></ol><h5 id="三、AOP与IOC"><a href="#三、AOP与IOC" class="headerlink" title="三、AOP与IOC"></a>三、AOP与IOC</h5><p>（1）AOP与IOC给spring的业务层提供支持，使程序的耦合度更低，代码更简洁</p><p>（2）AOP原理：即面向切面编程，就是提取公共部分，集中解决一些公共问题</p><p>（3）IOC原理：控制反转。在传统过程中，当某一个对象依赖于另外一个对象时，会由该对象去创建另外一个对象，有了ioc后，将创建过程交给IOC,由spring创建bean，从而只需给该对象注入即可</p><p><strong>问：*</strong>什么是AOP和IOC，它们的作用是什么?*</p><p>AOP：(Aspect Oriented Programing) 面向切面编程。</p><p>是指<strong>使用动态代理模式，在一个事务中无缝地插入多条其他处理。</strong></p><p>作用：Spring使用aop声明式事务控制，通过横向抽取方法将service层中的事务控制的代码抽取出来。</p><p>IOC： (Inverse of Control) 控制反转。</p><p>是指<strong>将原来程序中自己创建实现类对象的控制权反转到IOC容器中。只需要通过IOC来获对象的实例，将IOC当成一个黑盒子、工厂。</strong></p><p>作用：Spring提供ioc容器，对 bean进行实例化。使用bean时候从容器中取。还可以实现依赖注入(DI)，将对象需要的bean注入到其对象属性中。</p><p><strong>拓展：*</strong>AOP的概念：*</p><p>Aspected Oriented Programming 面向方面编程。</p><p>好处：AOP将程序分解成各个方面或者说关注点。这使得可以模块化，相当横向上分切了。它可以解决OOP和过程化方法不能够很好解决的横切（crosscut）问题，如：事务、安全、日志等横切关注。</p><p>实现AOP有几种方式：</p><ol><li>Spring 1.2版本中通过ProxyFactoryBean来实现aop,即通过动态代理来实现的,Aspect必须继承MethodBeforeAdvice,MethodAfterAdvice等。</li><li>Spring 2.0 AOP需要改的是FBI 这个类，而且它也不需要再实现某些接口。</li><li>三使用标注（@AspectJ）实现AOP。</li></ol><p>AOP 和 OOP的区别：</p><ol><li>面向方面编程 AOP 偏重业务处理过程的某个步骤或阶段，强调降低模块之间的耦合度，使代码拥有更好的移植性。</li><li>面向对象编程 (oop) 则是对业务分析中抽取的实体进行方法和属性的封装。<br>也可以说 AOP 是面向业务中的动词领域， OOP 面向名词领域。<br>AOP 的一个很重要的特点是源代码无关性，也就是说如果我们的系统中引用了 AOP 组件，即使我们把该组件去掉，系统代码也应该能够编译通过。要实现这一点，可以使用动态 proxy 模式。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转自：&lt;a href=&quot;https://blog.csdn.net/jonesAriven/article/details/80036602&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;spring与springmvc的区别与联系&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="框架" scheme="https://mlone.top/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="框架" scheme="https://mlone.top/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="spring" scheme="https://mlone.top/tags/spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Struts2处理请求的全过程</title>
+    <link href="https://mlone.top/post/85eb9bf0.html"/>
+    <id>https://mlone.top/post/85eb9bf0.html</id>
+    <published>2018-12-27T08:50:36.000Z</published>
+    <updated>2019-02-27T10:11:49.505Z</updated>
+    
+    <content type="html"><![CDATA[<p>Struts 2处理请求的全过程是什么? </p><a id="more"></a><p>（1）当客户端浏览器向服务器端发送请求，会被Struts2的核心前端控制器（一个过滤器）所拦截，然后根据struts2.xml配置文件中的内容来决定调用哪个前端控制器action；</p><p>（2）前端控制器action接收到请求后，会根据请求的method方法名调用函数进行处理；</p><p>（3）处理完成后，会返回一个逻辑视图名，然后根据struts2.xml中配置的action的result来决定要跳转到哪个前端页面。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Struts 2处理请求的全过程是什么? &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="框架" scheme="https://mlone.top/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="框架" scheme="https://mlone.top/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="struts2" scheme="https://mlone.top/tags/struts2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hibernate对象的三大状态</title>
+    <link href="https://mlone.top/post/993a1961.html"/>
+    <id>https://mlone.top/post/993a1961.html</id>
+    <published>2018-12-26T08:50:36.000Z</published>
+    <updated>2019-02-27T10:07:25.396Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><ul><li><p><strong>瞬时态 transient</strong></p><p>  new了一个对象，此时对象就是瞬时态；</p><p>  瞬时态对象和数据库记录没有对应关系，和session没有关系。</p></li><li><p><strong>持久态 persistent</strong></p><p>  瞬时态对象执行save方法后变成持久态；</p><p>  持久态对象和数据库记录存在对应关系，和session有关系。</p><p>  修改对象的属性，会直接将数据保存到数据库中。</p></li><li><p><strong>托管态Detached</strong></p><p>  当session关闭后，持久态对象变为托管态。</p><p>  托管态对象和session没有关系，可能和数据库存在对应也可能不对应。</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="框架" scheme="https://mlone.top/categories/%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="框架" scheme="https://mlone.top/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+      <category term="hibernate" scheme="https://mlone.top/tags/hibernate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>forward和redirect的区别</title>
+    <link href="https://mlone.top/post/a78a807b.html"/>
+    <id>https://mlone.top/post/a78a807b.html</id>
+    <published>2018-12-25T11:26:25.000Z</published>
+    <updated>2019-02-27T10:07:25.401Z</updated>
+    
+    <content type="html"><![CDATA[<p>请求转发和重定向</p><a id="more"></a><p>forward：请求转发，属于同一请求，浏览器的url不会改变，request域中的数据不会丢失。</p><p>redirect：重定向，属于不同的请求，浏览器的url改变，request域中的数据清空。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;请求转发和重定向&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaWeb" scheme="https://mlone.top/categories/JavaWeb/"/>
+    
+    
+      <category term="web" scheme="https://mlone.top/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JSP有哪些内置对象</title>
+    <link href="https://mlone.top/post/23a05b25.html"/>
+    <id>https://mlone.top/post/23a05b25.html</id>
+    <published>2018-12-25T09:26:25.000Z</published>
+    <updated>2019-02-27T10:07:25.398Z</updated>
+    
+    <content type="html"><![CDATA[<p>JSP共9个内置对象：</p><a id="more"></a><p>page、request、session 、application、（四大域对象）</p><p>response、out、config、exception、</p><p>pageContext（可以获取其他八个内置对象；可以操作域；可以全域查找findAttribute）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JSP共9个内置对象：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaWeb" scheme="https://mlone.top/categories/JavaWeb/"/>
+    
+    
+      <category term="jsp" scheme="https://mlone.top/tags/jsp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cookie与Session</title>
+    <link href="https://mlone.top/post/5321d6b2.html"/>
+    <id>https://mlone.top/post/5321d6b2.html</id>
+    <published>2018-12-25T08:50:36.000Z</published>
+    <updated>2019-02-27T10:09:49.796Z</updated>
+    
+    <content type="html"><![CDATA[<p>描述Cookie和Session的作用，区别和各自的应用范围，Session工作原理。<br><a id="more"></a></p><p><strong>Cookie：</strong>保存在本地客户端。</p><p>如果不设置有效时间则默认为一次会话时间，即浏览器关闭即销毁。</p><p>应用：比如，存储用户的登录信息，用户名、密码。</p><p><strong>Session：</strong>保存在服务器端，保存一次会话。</p><p>当浏览器访问服务器时，服务器会创建一个session会话与当前客户端进行连接。</p><p>何时销毁：</p><ol><li>程序调用HttpSession.invalidate()方法主动进行销毁；</li><li>距离客户端上一次发送请求超过了Session的最大有效时间；</li><li>服务器进程被停止。</li></ol><p>应用：保存用户状态，比如购物车中添加商品。</p><p><strong>Session的机制：</strong></p><p>一种服务器端的机制，服务器使用一种类似于散列表的结构来保存信息。</p><p>当程序需要为某个客户端的请求创建一个session的时候，服务器会首先检查这个客户端的请求中是否包含session标识－session id，如果已包含则说明以前为此客户创建过session，服务器就会根据session id把这个session检索出来使用；</p><p>如果客户请求中不包含session id，则为此客户新建一个session并同时生成一个相关联的session id，这个session id将在本次响应中返回给客户端保存。</p><p><strong>二者区别：</strong></p><ul><li>存储数据量方面：session 能够存储任意的 java 对象，cookie 只能存储 String 类型的对象</li><li>一个在客户端一个在服务端，因为Cookie在客户端所以可以编辑伪造，不是十分安全</li><li>Session过多时会消耗服务器资源，大型网站会有专门Session服务器，Cookie存在客户端没问题</li><li>域的支持范围不一样，比方说a.com的Cookie在a.com下都能用，而<a href="http://www.a.com的Session在api.a.com下都不能用，解决这个问题的办法是*JSONP跨域请求或者跨域资源共享" target="_blank" rel="noopener">www.a.com的Session在api.a.com下都不能用，解决这个问题的办法是*JSONP跨域请求或者跨域资源共享</a>*</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;描述Cookie和Session的作用，区别和各自的应用范围，Session工作原理。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaWeb" scheme="https://mlone.top/categories/JavaWeb/"/>
+    
+    
+      <category term="web" scheme="https://mlone.top/tags/web/"/>
+    
+      <category term="cookie" scheme="https://mlone.top/tags/cookie/"/>
+    
+      <category term="session" scheme="https://mlone.top/tags/session/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Servlet的生命周期</title>
+    <link href="https://mlone.top/post/ce1ea3ff.html"/>
+    <id>https://mlone.top/post/ce1ea3ff.html</id>
+    <published>2018-12-25T06:26:25.000Z</published>
+    <updated>2019-02-27T10:07:25.399Z</updated>
+    
+    <content type="html"><![CDATA[<p>共四个阶段：</p><a id="more"></a><p>（1）Servlet被类的加载器ClassLoad加载,</p><p>（2）调用其中的init()方法进行初始化，</p><p>（3）调用其中的响应方法，如doGet()、doPost()</p><p>（4）当请求不会再被调用或者当服务器关闭时，会调用其中的destroy()方法进行销毁。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;共四个阶段：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaWeb" scheme="https://mlone.top/categories/JavaWeb/"/>
+    
+    
+      <category term="servlet" scheme="https://mlone.top/tags/servlet/"/>
+    
+  </entry>
   
   <entry>
     <title>整数中1出现的次数</title>
@@ -441,13 +629,13 @@
   </entry>
   
   <entry>
-    <title>旋转数组中的最小数字</title>
-    <link href="https://mlone.top/post/a9f65c43.html"/>
-    <id>https://mlone.top/post/a9f65c43.html</id>
+    <title>自然数组</title>
+    <link href="https://mlone.top/post/9aaffcef.html"/>
+    <id>https://mlone.top/post/9aaffcef.html</id>
     <published>2018-12-06T02:55:12.000Z</published>
-    <updated>2019-02-26T15:14:17.224Z</updated>
+    <updated>2019-02-26T15:14:07.841Z</updated>
     
-    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。</p><p> NOTE：给出的所有元素都大于0，若数组大小为0，请返回0：</p><p><strong>解析：</strong></p><p>采用二分法解答这个问题，</p><p>mid = low + (high - low)/2</p><p>需要考虑三种情况：</p><p>(1)array[mid] &gt; array[high]:</p><p>出现这种情况的array类似[3,4,5,6,0,1,2]，此时最小数字一定在mid的右边。</p><p>low = mid + 1</p><p>(2)array[mid] == array[high]:</p><p>出现这种情况的array类似 [1,0,1,1,1] 或者[1,1,1,0,1]，此时最小数字不好判断在mid左边还是右边,这时只好一个一个试 ，</p><p>high = high - 1</p><p>(3)array[mid] &lt; array[high]:</p><p>出现这种情况的array类似[2,2,3,4,5,6,6],此时最小数字一定就是array[mid]或者在mid的左边。因为右边必然都是递增的。</p><p>high = mid</p><p><strong>注意这里有个坑（坑1）：如果待查询的范围最后只剩两个数(即最后一次迭代循环)，那么mid 一定会指向下标靠前的数字：</strong></p><p>比如 array = [4,6]</p><p>array[low] = 4 ;array[mid] = 4 ; array[high] = 6 ;</p><p>如果high = mid - 1，就会产生错误， 因此high = mid</p><p>但情形(1)中low = mid + 1就不会错误</p><p><strong>考虑临界情况：(最后一次迭代循环)</strong></p><p>情形1：<em>[max,min]时，array[mid]max，而array[high]min，此时满足if条件：array[mid]&gt; array[high]，将执行low=mid+1；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。</em></p><p>情形2：<em>[min,max]时，array[mid]min，而array[high]min，此时满足if条件：array[mid]&lt; array[high]，将执行high=mid；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。</em></p><p><strong>综合1、2，即将最后一个元素锁定到min即可，即设法当跳出循环时使其满足array[low=high]=min</strong></p><p><strong>代码：（二分查找的迭代形式）</strong></p><pre><code>public class Solution {    public int minNumberInRotateArray(int [] array) {        int low = 0 ; int high = array.length - 1;           while(low &lt; high){            int mid = (low + high)/2;                    if(array[mid] &gt; array[high])               //这里mid必须+1，否则面对剩余两个元素：[max,min]情况时会陷入无限循环low = mid + 1; //由坑1导致的坑2            else if(array[mid] == array[high])                high = high - 1;            else                high = mid;        }        return array[low];    }}</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>二分查找的进一步应用：对于一个自然数（从0开始）数组，从中随机删除一个元素，请使用二分查找算法找出这个未知元素。</p><p>例如：</p><ul><li>角标：0,1,2,3,4,5,6,7,…</li><li>元素：0,1,2,4,5,6,7,8,…</li></ul><p><strong>坑1：</strong>如果待查询的范围最后只剩两个数(即最后一次迭代循环)：[2,4]，那么mid 一定会指向下标靠前的数字，<br>即arr[low=mid=high-1]=2,arr[high]=4</p><p><strong>代码：</strong></p><pre><code>public static int BSearchTest(int[] arr){    int low=0,high=arr.length-1;    while(low&lt;high){ //当只剩余一个元素时终止while迭代循环        int mid = (low+high)/2;        if(arr[mid]==mid) //（临界）情况1：[2,4]            low = mid+1; //由坑1）导致的坑2：）这里mid必须+1，不能为low=mid，否则最后一次迭代会陷入无限循环                         //然后剩余最后一个元素arr[low=mid=high]=4.跳出while循环返回arr[high]-1或arr[low]-1        else if(arr[mid]&gt;mid) //（临界）情况2：[2,4,5]            high = mid; //然后进入情况1    }    return arr[low]-1; //arr[high]-1}</code></pre>]]></content>
     
     <summary type="html">
     
@@ -463,13 +651,13 @@
   </entry>
   
   <entry>
-    <title>自然数组</title>
-    <link href="https://mlone.top/post/9aaffcef.html"/>
-    <id>https://mlone.top/post/9aaffcef.html</id>
+    <title>旋转数组中的最小数字</title>
+    <link href="https://mlone.top/post/a9f65c43.html"/>
+    <id>https://mlone.top/post/a9f65c43.html</id>
     <published>2018-12-06T02:55:12.000Z</published>
-    <updated>2019-02-26T15:14:07.841Z</updated>
+    <updated>2019-02-26T15:14:17.224Z</updated>
     
-    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>二分查找的进一步应用：对于一个自然数（从0开始）数组，从中随机删除一个元素，请使用二分查找算法找出这个未知元素。</p><p>例如：</p><ul><li>角标：0,1,2,3,4,5,6,7,…</li><li>元素：0,1,2,4,5,6,7,8,…</li></ul><p><strong>坑1：</strong>如果待查询的范围最后只剩两个数(即最后一次迭代循环)：[2,4]，那么mid 一定会指向下标靠前的数字，<br>即arr[low=mid=high-1]=2,arr[high]=4</p><p><strong>代码：</strong></p><pre><code>public static int BSearchTest(int[] arr){    int low=0,high=arr.length-1;    while(low&lt;high){ //当只剩余一个元素时终止while迭代循环        int mid = (low+high)/2;        if(arr[mid]==mid) //（临界）情况1：[2,4]            low = mid+1; //由坑1）导致的坑2：）这里mid必须+1，不能为low=mid，否则最后一次迭代会陷入无限循环                         //然后剩余最后一个元素arr[low=mid=high]=4.跳出while循环返回arr[high]-1或arr[low]-1        else if(arr[mid]&gt;mid) //（临界）情况2：[2,4,5]            high = mid; //然后进入情况1    }    return arr[low]-1; //arr[high]-1}</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。</p><p> NOTE：给出的所有元素都大于0，若数组大小为0，请返回0：</p><p><strong>解析：</strong></p><p>采用二分法解答这个问题，</p><p>mid = low + (high - low)/2</p><p>需要考虑三种情况：</p><p>(1)array[mid] &gt; array[high]:</p><p>出现这种情况的array类似[3,4,5,6,0,1,2]，此时最小数字一定在mid的右边。</p><p>low = mid + 1</p><p>(2)array[mid] == array[high]:</p><p>出现这种情况的array类似 [1,0,1,1,1] 或者[1,1,1,0,1]，此时最小数字不好判断在mid左边还是右边,这时只好一个一个试 ，</p><p>high = high - 1</p><p>(3)array[mid] &lt; array[high]:</p><p>出现这种情况的array类似[2,2,3,4,5,6,6],此时最小数字一定就是array[mid]或者在mid的左边。因为右边必然都是递增的。</p><p>high = mid</p><p><strong>注意这里有个坑（坑1）：如果待查询的范围最后只剩两个数(即最后一次迭代循环)，那么mid 一定会指向下标靠前的数字：</strong></p><p>比如 array = [4,6]</p><p>array[low] = 4 ;array[mid] = 4 ; array[high] = 6 ;</p><p>如果high = mid - 1，就会产生错误， 因此high = mid</p><p>但情形(1)中low = mid + 1就不会错误</p><p><strong>考虑临界情况：(最后一次迭代循环)</strong></p><p>情形1：<em>[max,min]时，array[mid]max，而array[high]min，此时满足if条件：array[mid]&gt; array[high]，将执行low=mid+1；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。</em></p><p>情形2：<em>[min,max]时，array[mid]min，而array[high]min，此时满足if条件：array[mid]&lt; array[high]，将执行high=mid；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。</em></p><p><strong>综合1、2，即将最后一个元素锁定到min即可，即设法当跳出循环时使其满足array[low=high]=min</strong></p><p><strong>代码：（二分查找的迭代形式）</strong></p><pre><code>public class Solution {    public int minNumberInRotateArray(int [] array) {        int low = 0 ; int high = array.length - 1;           while(low &lt; high){            int mid = (low + high)/2;                    if(array[mid] &gt; array[high])               //这里mid必须+1，否则面对剩余两个元素：[max,min]情况时会陷入无限循环low = mid + 1; //由坑1导致的坑2            else if(array[mid] == array[high])                high = high - 1;            else                high = mid;        }        return array[low];    }}</code></pre>]]></content>
     
     <summary type="html">
     
@@ -1116,7 +1304,7 @@
     <link href="https://mlone.top/post/7b28700.html"/>
     <id>https://mlone.top/post/7b28700.html</id>
     <published>2018-10-29T08:41:34.000Z</published>
-    <updated>2019-02-27T08:44:47.525Z</updated>
+    <updated>2019-02-27T08:46:49.762Z</updated>
     
     <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>Java多线程中的死锁：</p><p><strong>死锁是指两个或两个以上的进程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用，它们都将无法推进下去。</strong></p><p>死锁的发生必须满足以下四个条件：</p><ul><li><p><strong>互斥条件：</strong>一个资源每次只能被一个进程使用。</p></li><li><p><strong>请求与保持条件：</strong>一个进程因请求资源而阻塞时，对已获得的资源保持不放。</p></li><li><p><strong>不可剥夺条件：进</strong>程已获得的资源，在末使用完之前，不能强行剥夺。</p></li><li><p><strong>循环等待条件：</strong>若干进程之间形成一种头尾相接的循环等待资源关系。</p></li></ul><p>避免死锁最简单的方法就是<strong>阻止循环等待条件</strong>，将系统中所有的资源设置<em>标志位、排序</em>，规定所有的进程<em>在申请资源时必须按照一定的顺序规则</em>来避免死锁。</p>]]></content>
     
@@ -1153,9 +1341,35 @@
       <category term="数据库" scheme="https://mlone.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
+      <category term="数据库" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
       <category term="事务" scheme="https://mlone.top/tags/%E4%BA%8B%E5%8A%A1/"/>
     
+  </entry>
+  
+  <entry>
+    <title>JDBC数据库访问与事务处理</title>
+    <link href="https://mlone.top/post/9b2f6e20.html"/>
+    <id>https://mlone.top/post/9b2f6e20.html</id>
+    <published>2018-10-28T06:28:02.000Z</published>
+    <updated>2019-02-27T10:07:25.397Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><h4 id="jdbc访问数据库的步骤："><a href="#jdbc访问数据库的步骤：" class="headerlink" title="jdbc访问数据库的步骤："></a>jdbc访问数据库的步骤：</h4><ol><li>获取到数据库的用户名、密码、连接字符串。</li><li>用Class.forName或者其他方法来注册驱动，获得ConnectionManager</li><li>再用ConnectionManager通过连接字符串、用户名、密码，获取到Connection连接，</li><li>通过Connection获得Statement处理对象或者PreparedStatement预处理对象，</li><li>操作完毕后，先关闭statement对象再关闭Connection连接。</li></ol><h4 id="jdbc如何做事务处理？"><a href="#jdbc如何做事务处理？" class="headerlink" title="jdbc如何做事务处理？"></a>jdbc如何做事务处理？</h4><p>首先，设置jdbc的自动提交为false；</p><p>然后，使用数据库连接，开启一个事务transaction；</p><p>接着，对数据库进行多条增删改操作，并添加异常捕获try-catch；</p><p>操作完毕后，进行commit事务提交，并在catch代码块中使用事务回滚rollback功能；</p><p>最后，在finally代码块中关闭数据库连接。</p><h4 id="jdbc入门"><a href="#jdbc入门" class="headerlink" title="jdbc入门"></a>jdbc入门</h4><pre><code>/* 以查找全部记录为例 */import java.sql.DriverManager;import java.sql.Connection;import java.sql.Statement;import java.sql.ResultSet;//首先导入mysql的jdbc包import com.mysql.jdbc.Driver;public class JdbcTest {    @Test    public void process(){        Connection conn = null; // 创建连接对象        Statement stmt = null;    // 创建能执行SQL语句的Statement对象        ResultSet rs = null; // 创建SQL语句执行结果返回对象        try {//异常捕获            // 1.通过jdbc包中的Driver类来注册驱动            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);            // 2.通过DriverManager以及连接参数获取链接Connection            conn = DriverManager.getConnection(&quot;jdbc:mysql:///DBname&quot;, &quot;username&quot;, &quot;password&quot;); //参数：数据库连接字符串、用户名、密码            // 3.由Connection开启事务 --设置默认提交为false            conn.setAutoCommit(false);            // 4.由Connection创建能执行SQL语句的Statement对象            stmt = conn.createStatement();//或PreparedStatement预处理对象            // 5.编写SQL语句并执行            String sql = &quot;select * from t_user&quot;;            // 执行SQL语句获得结果集            rs = stmt.executeQuery(sql);            // 遍历查询结果集rs获取数据            while(rs.next()){                // 拿出来                int id =rs.getInt(&quot;id&quot;);                String username = rs.getString(&quot;username&quot;);                String password = rs.getString(&quot;password&quot;);                System.out.println(id+&quot; &quot;+username+&quot; &quot;+password);            }            // 6.手动提交事务            conn.commit();        } catch (Exception e) { //ClassNotFoundException、SQLException            // 7.若发生异常  回滚事务（对于增删改）            try {                conn.rollback();            } catch (SQLException e1) {                e1.printStackTrace();            }            e.printStackTrace(); //打印异常信息            throw new RuntimeException(e);        }        finally{            // 8.释放资源            /** 释放资源的标准文档代码: */            // 8.1先关闭执行SQL语句的结果返回对象ResultSet            if(rs != null){                try {                    rs.close();                } catch (SQLException e) {                    e.printStackTrace();                }                rs = null;            }            // 8.2然后再关闭能执行SQL语句的Statement对象            if(stmt != null){                try {                    stmt.close();                } catch (SQLException e) {                    e.printStackTrace();                }                stmt = null;            }            // 8.3最后关闭链接            if(conn != null){                try {                    conn.close();                } catch (SQLException e) {                    e.printStackTrace();                }                conn = null;            }        }    }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://mlone.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
       <category term="数据库" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="事务" scheme="https://mlone.top/tags/%E4%BA%8B%E5%8A%A1/"/>
+    
+      <category term="jdbc" scheme="https://mlone.top/tags/jdbc/"/>
     
   </entry>
   
@@ -1177,9 +1391,101 @@
       <category term="数据库" scheme="https://mlone.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
+      <category term="数据库" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
       <category term="事务" scheme="https://mlone.top/tags/%E4%BA%8B%E5%8A%A1/"/>
     
-      <category term="数据库" scheme="https://mlone.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+  </entry>
+  
+  <entry>
+    <title>索引的作用</title>
+    <link href="https://mlone.top/post/cfd87e66.html"/>
+    <id>https://mlone.top/post/cfd87e66.html</id>
+    <published>2018-10-26T09:28:02.000Z</published>
+    <updated>2019-02-27T10:07:25.408Z</updated>
+    
+    <content type="html"><![CDATA[<p>为什么要创建索引呢？</p><a id="more"></a><p>这是因为，创建索引可以大大提高系统的性能。</p><ol><li><p>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。 </p></li><li><p>可以大大<strong>加快数据的检索速度</strong>，这也是创建索引的最主要的原因。 </p></li><li><p>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。</p></li><li><p>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</p></li><li><p>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为什么要创建索引呢？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://mlone.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="mysql" scheme="https://mlone.top/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql外键介绍</title>
+    <link href="https://mlone.top/post/c1424651.html"/>
+    <id>https://mlone.top/post/c1424651.html</id>
+    <published>2018-10-25T08:28:02.000Z</published>
+    <updated>2019-02-27T10:07:25.403Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><ol><li><p>MySQL外键必须使用存储引擎为  innDB  其中MySAM 和MEMORYH这两种引擎不支持。</p></li><li><p>由数据库自身保证数据一致性，完整性，更可靠，因为程序很难100％保证数据的完整性，而用外键即使在数据库服务器当机或者出现其他问题的时候，也能够最大限度的<strong>保证数据的一致性和完整性。</strong></p></li><li><p>设置外键约束的两个表之间会具有父子关系，即子表中外键的字段的取值范围由父表所决定。</p></li><li><p>设置外键一定程度上降低数据库的速度。</p></li><li><p>子表的外键字段的数据类型和父表中要一致。</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://mlone.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="mysql" scheme="https://mlone.top/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java基本数据类型对应的mysql字段类型</title>
+    <link href="https://mlone.top/post/8dcfa579.html"/>
+    <id>https://mlone.top/post/8dcfa579.html</id>
+    <published>2018-10-25T06:28:02.000Z</published>
+    <updated>2019-02-27T10:07:25.402Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>8中基本数据类型：</strong></p><a id="more"></a><p><em>boolean</em> –&gt; BIT</p><p><em>char</em></p><p><em>byte</em></p><p><em>short</em></p><p><em>（int）Integer (lang包)</em>–&gt; TINYINT（BOOLEAN）、SMALLINT、MEDIUMINT </p><p><em>BigInteger(math包)</em> –&gt; BIGINT</p><p><em>Long</em> –&gt; INTEGER、ID</p><p><em>Float</em> –&gt; FLOAT</p><p><em>Double</em> –&gt; DOUBLE </p><p><strong>3种引用数据类型：</strong></p><p><em>String</em> –&gt; VARCHAR、CHAR、TEXT</p><p><em>数组byte[]</em> –&gt; BLOB</p><p>对象（sql包）:</p><p><em>Date</em> –&gt; DATE、YEAR</p><p><em>Time</em> –&gt; TIME</p><p><em>Timestamp</em> –&gt; DATETIME、TIMESTAMP</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;8中基本数据类型：&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://mlone.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="mysql" scheme="https://mlone.top/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>五种作业调度算法</title>
+    <link href="https://mlone.top/post/713996e4.html"/>
+    <id>https://mlone.top/post/713996e4.html</id>
+    <published>2018-10-25T02:28:02.000Z</published>
+    <updated>2019-02-27T10:07:25.407Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>（1）先来先服务</p><p>（2）短作业优先</p><p>（3）最短剩余时间优先</p><p>（4）最高响应比优先  响应比R=作业周转时间/作业处理时间（周转时间：等待+处理）</p><p>（5）优先级调度算法（设定优先级有两种方式：用户自己设定和系统设定）</p><p>（6）均衡调度算法（分类排队算法）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="操作系统" scheme="https://mlone.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="操作系统" scheme="https://mlone.top/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="算法" scheme="https://mlone.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="作业调度" scheme="https://mlone.top/tags/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6/"/>
     
   </entry>
   
@@ -1256,6 +1562,28 @@
   </entry>
   
   <entry>
+    <title>观察者模式</title>
+    <link href="https://mlone.top/post/9a246216.html"/>
+    <id>https://mlone.top/post/9a246216.html</id>
+    <published>2018-10-22T07:28:02.000Z</published>
+    <updated>2019-02-27T07:53:09.140Z</updated>
+    
+    <content type="html"><![CDATA[<p>转自：<a href="http://www.cnblogs.com/luohanguo/p/7825656.html" target="_blank" rel="noopener">http://www.cnblogs.com/luohanguo/p/7825656.html</a><br><a id="more"></a></p><h4 id="基本思想："><a href="#基本思想：" class="headerlink" title="基本思想："></a>基本思想：</h4><p>观察者模式的定义：</p><p>　　在对象之间定义了一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象会收到通知并自动更新。</p><p>大白话：</p><p>　　其实就是发布订阅模式，发布者发布信息，订阅者获取信息，订阅了就能收到信息，没订阅就收不到信息。</p><p>该模式包含四个角色：</p><ul><li>抽象被观察者角色：也就是一个抽象主题，它把所有对观察者对象的引用保存在一个集合中，每个主题都可以有任意数量的观察者。抽象主题提供一个接口，可以增加和删除观察者角色。一般用一个抽象类和接口来实现。</li><li>抽象观察者角色：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。</li><li>具体被观察者角色：也就是一个具体的主题，在集体主题的内部状态改变时，所有登记过的观察者发出通知。</li><li>具体观察者角色：实现抽象观察者角色所需要的更新接口，一边使本身的状态与制图的状态相协调。</li></ul><h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code>/*** * 抽象被观察者接口 * 声明了添加、删除、通知观察者方法 * @author jstao */public interface Observerable {    public void registerObserver(Observer o); //添加一个用户    public void removeObserver(Observer o); //移除一个用户    public void notifyObserver(); //通知用户消息更新了--&gt;里面调用观察者接口的update()方法}</code></pre><p>.</p><pre><code>/*** * 抽象观察者接口 * 定义了一个update()方法，当被观察者调用notifyObservers()方法时，观察者的update()方法会被回调。 * @author jstao */public interface Observer {    public void update(String message);}</code></pre><p>.</p><pre><code>import java.util.ArrayList;import java.util.List;/** * 被观察者，也就是微信公众号服务 * 实现了Observerable接口，对Observerable接口的三个方法进行了具体实现 * @author jstao * */public class WechatServer implements Observerable {    //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现类编程    private List&lt;Observer&gt; list; //用户列表    private String message; //发布的信息    public WechatServer() {        list = new ArrayList&lt;Observer&gt;();    }    @Override    public void registerObserver(Observer o) {        list.add(o);    }    @Override    public void removeObserver(Observer o) {        if(!list.isEmpty())            list.remove(o);    }    //遍历    @Override    public void notifyObserver() {        for(int i = 0; i &lt; list.size(); i++) {            Observer oserver = list.get(i);            oserver.update(message); //回调集合中每个用户的update()方法，传达更新消息        }    }    public void setInfomation(String s) { //设置更新消息        this.message = s;        System.out.println(&quot;微信服务更新消息： &quot; + s);        //消息更新，通知所有观察者        notifyObserver();    }}</code></pre><p>.</p><pre><code>/** * 观察者 * 实现了update方法 * @author jstao * */public class User implements Observer {    private String name;    private String message;    public User(String name) {        this.name = name;    }    @Override    public void update(String message) {        this.message = message;        read();    }    public void read() {        System.out.println(name + &quot; 收到推送消息： &quot; + message);    }}</code></pre><p>//测试：</p><pre><code>/** * 首先注册了三个用户，ZhangSan、LiSi、WangWu。公众号发布了一条消息&quot;PHP是世界上最好用的语言！&quot;，三个用户都收到了消息。    用户ZhangSan看到消息后颇为震惊，果断取消订阅，这时公众号又推送了一条消息，此时用户ZhangSan已经收不到消息，其他用户    还是正常能收到推送消息。 */public class Test {    public static void main(String[] args) {        WechatServer server = new WechatServer();        Observer userZhang = new User(&quot;ZhangSan&quot;);        Observer userLi = new User(&quot;LiSi&quot;);        Observer userWang = new User(&quot;WangWu&quot;);        server.registerObserver(userZhang);        server.registerObserver(userLi);        server.registerObserver(userWang);        server.setInfomation(&quot;PHP是世界上最好用的语言！&quot;);        System.out.println(&quot;----------------------------------------------&quot;);        server.removeObserver(userZhang);        server.setInfomation(&quot;JAVA是世界上最好用的语言！&quot;);    }}</code></pre><h4 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h4><p>这个模式是松偶合的，改变主题或观察者中的一方，另一方不会受到影像。</p><p>JDK中也有自带的观察者模式，但是被观察者是一个类而不是接口，限制了它的复用能力。</p><p>在JavaBean和Swing中也可以看到观察者模式的影子。</p><p><strong>yangd个人理解：</strong></p><p>接口异步回调是两个对象之间互相调用，而观察者模式只有服务器调用用户的方法（被观察者调用观察者），是单向调用，所以二者是不一样的。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转自：&lt;a href=&quot;http://www.cnblogs.com/luohanguo/p/7825656.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.cnblogs.com/luohanguo/p/7825656.html&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="设计模式" scheme="https://mlone.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计模式" scheme="https://mlone.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何在两个线程间共享数据</title>
     <link href="https://mlone.top/post/9a246216.html"/>
     <id>https://mlone.top/post/9a246216.html</id>
@@ -1276,28 +1604,6 @@
       <category term="java" scheme="https://mlone.top/tags/java/"/>
     
       <category term="多线程" scheme="https://mlone.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>观察者模式</title>
-    <link href="https://mlone.top/post/9a246216.html"/>
-    <id>https://mlone.top/post/9a246216.html</id>
-    <published>2018-10-22T07:28:02.000Z</published>
-    <updated>2019-02-27T07:53:09.140Z</updated>
-    
-    <content type="html"><![CDATA[<p>转自：<a href="http://www.cnblogs.com/luohanguo/p/7825656.html" target="_blank" rel="noopener">http://www.cnblogs.com/luohanguo/p/7825656.html</a><br><a id="more"></a></p><h4 id="基本思想："><a href="#基本思想：" class="headerlink" title="基本思想："></a>基本思想：</h4><p>观察者模式的定义：</p><p>　　在对象之间定义了一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象会收到通知并自动更新。</p><p>大白话：</p><p>　　其实就是发布订阅模式，发布者发布信息，订阅者获取信息，订阅了就能收到信息，没订阅就收不到信息。</p><p>该模式包含四个角色：</p><ul><li>抽象被观察者角色：也就是一个抽象主题，它把所有对观察者对象的引用保存在一个集合中，每个主题都可以有任意数量的观察者。抽象主题提供一个接口，可以增加和删除观察者角色。一般用一个抽象类和接口来实现。</li><li>抽象观察者角色：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。</li><li>具体被观察者角色：也就是一个具体的主题，在集体主题的内部状态改变时，所有登记过的观察者发出通知。</li><li>具体观察者角色：实现抽象观察者角色所需要的更新接口，一边使本身的状态与制图的状态相协调。</li></ul><h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code>/*** * 抽象被观察者接口 * 声明了添加、删除、通知观察者方法 * @author jstao */public interface Observerable {    public void registerObserver(Observer o); //添加一个用户    public void removeObserver(Observer o); //移除一个用户    public void notifyObserver(); //通知用户消息更新了--&gt;里面调用观察者接口的update()方法}</code></pre><p>.</p><pre><code>/*** * 抽象观察者接口 * 定义了一个update()方法，当被观察者调用notifyObservers()方法时，观察者的update()方法会被回调。 * @author jstao */public interface Observer {    public void update(String message);}</code></pre><p>.</p><pre><code>import java.util.ArrayList;import java.util.List;/** * 被观察者，也就是微信公众号服务 * 实现了Observerable接口，对Observerable接口的三个方法进行了具体实现 * @author jstao * */public class WechatServer implements Observerable {    //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现类编程    private List&lt;Observer&gt; list; //用户列表    private String message; //发布的信息    public WechatServer() {        list = new ArrayList&lt;Observer&gt;();    }    @Override    public void registerObserver(Observer o) {        list.add(o);    }    @Override    public void removeObserver(Observer o) {        if(!list.isEmpty())            list.remove(o);    }    //遍历    @Override    public void notifyObserver() {        for(int i = 0; i &lt; list.size(); i++) {            Observer oserver = list.get(i);            oserver.update(message); //回调集合中每个用户的update()方法，传达更新消息        }    }    public void setInfomation(String s) { //设置更新消息        this.message = s;        System.out.println(&quot;微信服务更新消息： &quot; + s);        //消息更新，通知所有观察者        notifyObserver();    }}</code></pre><p>.</p><pre><code>/** * 观察者 * 实现了update方法 * @author jstao * */public class User implements Observer {    private String name;    private String message;    public User(String name) {        this.name = name;    }    @Override    public void update(String message) {        this.message = message;        read();    }    public void read() {        System.out.println(name + &quot; 收到推送消息： &quot; + message);    }}</code></pre><p>//测试：</p><pre><code>/** * 首先注册了三个用户，ZhangSan、LiSi、WangWu。公众号发布了一条消息&quot;PHP是世界上最好用的语言！&quot;，三个用户都收到了消息。    用户ZhangSan看到消息后颇为震惊，果断取消订阅，这时公众号又推送了一条消息，此时用户ZhangSan已经收不到消息，其他用户    还是正常能收到推送消息。 */public class Test {    public static void main(String[] args) {        WechatServer server = new WechatServer();        Observer userZhang = new User(&quot;ZhangSan&quot;);        Observer userLi = new User(&quot;LiSi&quot;);        Observer userWang = new User(&quot;WangWu&quot;);        server.registerObserver(userZhang);        server.registerObserver(userLi);        server.registerObserver(userWang);        server.setInfomation(&quot;PHP是世界上最好用的语言！&quot;);        System.out.println(&quot;----------------------------------------------&quot;);        server.removeObserver(userZhang);        server.setInfomation(&quot;JAVA是世界上最好用的语言！&quot;);    }}</code></pre><h4 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h4><p>这个模式是松偶合的，改变主题或观察者中的一方，另一方不会受到影像。</p><p>JDK中也有自带的观察者模式，但是被观察者是一个类而不是接口，限制了它的复用能力。</p><p>在JavaBean和Swing中也可以看到观察者模式的影子。</p><p><strong>yangd个人理解：</strong></p><p>接口异步回调是两个对象之间互相调用，而观察者模式只有服务器调用用户的方法（被观察者调用观察者），是单向调用，所以二者是不一样的。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;转自：&lt;a href=&quot;http://www.cnblogs.com/luohanguo/p/7825656.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.cnblogs.com/luohanguo/p/7825656.html&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="设计模式" scheme="https://mlone.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-      <category term="设计模式" scheme="https://mlone.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
@@ -1409,9 +1715,9 @@
     
       <category term="java" scheme="https://mlone.top/tags/java/"/>
     
-      <category term="JVM" scheme="https://mlone.top/tags/JVM/"/>
-    
       <category term="GC" scheme="https://mlone.top/tags/GC/"/>
+    
+      <category term="JVM" scheme="https://mlone.top/tags/JVM/"/>
     
   </entry>
   
@@ -1435,9 +1741,9 @@
     
       <category term="java" scheme="https://mlone.top/tags/java/"/>
     
-      <category term="JVM" scheme="https://mlone.top/tags/JVM/"/>
-    
       <category term="GC" scheme="https://mlone.top/tags/GC/"/>
+    
+      <category term="JVM" scheme="https://mlone.top/tags/JVM/"/>
     
   </entry>
   
@@ -1461,9 +1767,9 @@
     
       <category term="java" scheme="https://mlone.top/tags/java/"/>
     
-      <category term="JVM" scheme="https://mlone.top/tags/JVM/"/>
-    
       <category term="GC" scheme="https://mlone.top/tags/GC/"/>
+    
+      <category term="JVM" scheme="https://mlone.top/tags/JVM/"/>
     
   </entry>
   
@@ -1487,9 +1793,9 @@
     
       <category term="java" scheme="https://mlone.top/tags/java/"/>
     
-      <category term="JVM" scheme="https://mlone.top/tags/JVM/"/>
-    
       <category term="GC" scheme="https://mlone.top/tags/GC/"/>
+    
+      <category term="JVM" scheme="https://mlone.top/tags/JVM/"/>
     
   </entry>
   
@@ -1668,16 +1974,20 @@
     <link href="https://mlone.top/post/16df4c2a.html"/>
     <id>https://mlone.top/post/16df4c2a.html</id>
     <published>2018-09-21T12:39:28.000Z</published>
-    <updated>2019-02-25T14:42:03.787Z</updated>
+    <updated>2019-02-27T09:25:06.531Z</updated>
     
-    <content type="html"><![CDATA[<p>转自：<a href="https://www.cnblogs.com/loren-Yang/p/7538482.html" target="_blank" rel="noopener">https://www.cnblogs.com/loren-Yang/p/7538482.html</a></p><a id="more"></a><h2 id="1、两者的区别"><a href="#1、两者的区别" class="headerlink" title="1、两者的区别"></a>1、两者的区别</h2><ul><li>这两个方法来自不同的类分别是Thread和Object  </li><li>最主要是sleep方法没有释放锁，而wait方法释放了锁，使得其他线程可以使用同步控制块或者方法(锁代码块和方法锁)。</li><li>wait，notify和notifyAll只能在同步控制方法或者同步控制块里面使用，而sleep可以在任何地方使用(使用范围)</li><li>sleep必须捕获异常，而wait，notify和notifyAll不需要捕获异常  </li><li>sleep方法属于Thread类中方法，表示让一个线程进入睡眠状态，等待一定的时间之后，自动醒来进入到可运行状态，不会马上进入运行状态，因为线程调度机制恢复线程的运行也需要时间，一个线程对象调用了sleep方法之后，并不会释放他所持有的所有对象锁，所以也就不会影响其他进程对象的运行。但在sleep的过程中过程中有可能被其他对象调用它的interrupt(),产生InterruptedException异常，如果你的程序不捕获这个异常，线程就会异常终止，进入TERMINATED状态，如果你的程序捕获了这个异常，那么程序就会继续执行catch语句块(可能还有finally语句块)以及以后的代码。  </li><li>注意sleep()方法是一个静态方法，也就是说他只对当前对象有效，通过t.sleep()让t对象进入sleep，这样的做法是错误的，它只会是使当前线程被sleep 而不是t线程 </li><li>wait属于Object的成员方法，一旦一个对象调用了wait方法，必须要采用notify()和notifyAll()方法唤醒该进程;如果线程拥有某个或某些对象的同步锁，那么在调用了wait()后，这个线程就会释放它持有的所有同步资源，而不限于这个被调用了wait()方法的对象。wait()方法也同样会在wait的过程中有可能被其他对象调用interrupt()方法而产生 </li></ul><p>　　如果线程A希望立即结束线程B，则可以对线程B对应的Thread实例调用interrupt方法。如果此刻线程B正在wait/sleep/join，则线程B会立刻抛出InterruptedException，在catch() {} 中直接return即可安全地结束线程。</p><p>　　需要注意的是，InterruptedException是线程自己从内部抛出的，并不是interrupt()方法抛出的。对某一线程调用interrupt()时，如果该线程正在执行普通的代码，那么该线程根本就不会抛出InterruptedException。但是，一旦该线程进入到wait()/sleep()/join()后，就会立刻抛出InterruptedException。</p><p>　　waite()和notify()因为会对对象的“锁标志”进行操作，所以它们必须在synchronized函数或synchronized block中进行调用。如果在non-synchronized函数或non-synchronizedblock中进行调用，虽然能编译通过，但在运行时会发生illegalMonitorStateException的异常。</p><h2 id="补充两个重要的方法：-yield-和join"><a href="#补充两个重要的方法：-yield-和join" class="headerlink" title="补充两个重要的方法： yield()和join()"></a>补充两个重要的方法： yield()和join()</h2><p>　　yield方法暂停当前正在执行的线程对象。  </p><p>　　yield()方法是停止当前线程，让同等优先权的线程或更高优先级的线程有执行的机会。如果没有的话，那么yield()方法将不会起作用，并且由可执行状态后马上又被执行。   </p><p>　　join方法是用于在某一个线程的执行过程中调用另一个线程执行，等到被调用的线程执行结束后，再继续执行当前线程。</p><p>　　如：</p><pre><code>t.join();//主要用于等待t线程运行结束，若无此句，main则会执行完毕，导致结果不可预测。 </code></pre><h2 id="说一下为什么使用wait-方法时，一般是需要while循环而不是if？"><a href="#说一下为什么使用wait-方法时，一般是需要while循环而不是if？" class="headerlink" title="说一下为什么使用wait()方法时，一般是需要while循环而不是if？"></a>说一下为什么使用wait()方法时，一般是需要while循环而不是if？</h2><pre><code>while(!执行条件） {    wait();}....if(!执行条件） {    wait();}....</code></pre><p>　　while会一直执行循环，直到条件满足，执行条件才会继续往下执行。if只会执行一次判断条件，不满足就会等待。这样就会出现问题。</p><p>　　我们知道用notify() 和notifyAll()可以唤醒线程，一般我们常用的是notifyAll()，因为notify()，只会随机唤醒一个睡眠线程，并不一定是我们想要唤醒的线程。如果使用的是notifyAll()，唤醒所有的线程，那你怎么知道他想唤醒的是某个正在等待的wait()线程呢，如果用while()方法，就会再次判断条件是不是成立，满足执行条件了，就会接着执行，而if会直接唤醒wait()方法，继续往下执行，根本不管这个notifyAll()是不是想唤醒的是自己还是别人，可能此时if的条件根本没成立。</p><p>举个例子：</p><p>　　while去水果店买苹果，没有了，然后while就和水果店老板说，有水果的时候通知我，我先回去了。if也去水果店买苹果，没有了，然后if就和水果店老板说，有水果的时候通知我，我先回去了。过一段时间，水果店老板发短信告诉while和if，有水果了，while去一看，水果店只是进了香蕉，并不是苹果，所以不是想要的水果，于是回去继续等水果店老板通知，而if根本就不看是不是自己想要的苹果，直接就叫老板送10斤水果过来，这样会导致你得到错误的结果。</p><p>参考文献：</p><p><a href="http://wkf41068.iteye.com/blog/1835697" target="_blank" rel="noopener">Java中wait 和sleep 方法比较</a></p><p><a href="http://blog.csdn.net/clam_clam/article/details/6803667" target="_blank" rel="noopener">JAVA-sleep()和wait()的区别</a></p><p><a href="http://www.cnblogs.com/hongten/p/hongten_java_sleep_wait.html" target="_blank" rel="noopener">java中的sleep()和wait()的区别</a></p>]]></content>
+    <content type="html"><![CDATA[<p>参考：<a href="https://www.cnblogs.com/loren-Yang/p/7538482.html" target="_blank" rel="noopener">https://www.cnblogs.com/loren-Yang/p/7538482.html</a></p><a id="more"></a><h4 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h4><p><strong>（1）来自不同的类：</strong></p><p>sleep()方法是Thread类中的一个静态方法；</p><p>wait()属于Object类的成员方法。</p><p><strong>（2）唤醒条件不同：</strong></p><p>Sleep()方法属于Thread类中方法，表示让当前线程进入睡眠状态，等待一定的时间后，便会自动醒来进入可运行状态；</p><p>一旦某个线程对象调用了wait()方法，就必须要在其他线程中使用notify()或notifyAll()方法才能唤醒它。</p><p><strong>（3）异常捕获不同：</strong></p><p>在sleep的过程中有可能被其他对象调用它的interrupt()方法,产生InterruptedException异常，所以要使用sleep方法必须对其捕获异常；</p><p>而使用wait()，notify()和notifyAll()方法不需要进行捕获异常 。</p><p><strong>（4）最主要区别是对带锁Synchronized资源的控制权：</strong></p><p>Sleep()方法没有释放锁。一个线程对象调用了sleep()方法之后，并不会释放它所持有的所有对象锁；</p><p>Wait()方法释放了锁。使得其他线程可以有机会使用带锁代码块或者带锁方法。</p><p><strong>PS：</strong></p><p>如果线程调用了对象的 wait()方法，那么线程便会处于该对象的<strong>等待池</strong>中，<strong>等待池中的线程不会去竞争该对象的锁。</strong></p><ul><li>当有线程调用了对象的 notifyAll()方法（唤醒所有 wait 线程）或 notify()方法（只随机唤醒一个 wait 线程），被唤醒的的线程便会进入该对象的锁池中，锁池中的线程会去竞争该对象锁。</li><li>也就是说，调用了notify后只会有一个线程会由等待池进入锁池，而notifyAll会将该对象等待池内的所有线程移动到锁池中，等待锁竞争。</li></ul><h4 id="补充两个重要的方法：-yield-和join"><a href="#补充两个重要的方法：-yield-和join" class="headerlink" title="补充两个重要的方法： yield()和join()"></a>补充两个重要的方法： yield()和join()</h4><p>　　yield方法暂停当前正在执行的线程对象。  </p><p>　　yield()方法是停止当前线程，让同等优先权的线程或更高优先级的线程有执行的机会。如果没有的话，那么yield()方法将不会起作用，并且由可执行状态后马上又被执行。   </p><p>　　join方法是用于在某一个线程的执行过程中调用另一个线程执行，等到被调用的线程执行结束后，再继续执行当前线程。</p><p>　　如：</p><pre><code>t.join();//主要用于等待t线程运行结束，若无此句，main则会执行完毕，导致结果不可预测。 </code></pre><h4 id="说一下为什么使用wait-方法时，一般是需要while循环而不是if？"><a href="#说一下为什么使用wait-方法时，一般是需要while循环而不是if？" class="headerlink" title="说一下为什么使用wait()方法时，一般是需要while循环而不是if？"></a>说一下为什么使用wait()方法时，一般是需要while循环而不是if？</h4><pre><code>while(!执行条件） {    wait();}....if(!执行条件） {    wait();}....</code></pre><p>　　while会一直执行循环，直到条件满足，执行条件才会继续往下执行。if只会执行一次判断条件，不满足就会等待。这样就会出现问题。</p><p>　　我们知道用notify() 和notifyAll()可以唤醒线程，一般我们常用的是notifyAll()，因为notify()，只会随机唤醒一个睡眠线程，并不一定是我们想要唤醒的线程。如果使用的是notifyAll()，唤醒所有的线程，那你怎么知道他想唤醒的是某个正在等待的wait()线程呢，如果用while()方法，就会再次判断条件是不是成立，满足执行条件了，就会接着执行，而if会直接唤醒wait()方法，继续往下执行，根本不管这个notifyAll()是不是想唤醒的是自己还是别人，可能此时if的条件根本没成立。</p><p>举个例子：</p><p>　　while去水果店买苹果，没有了，然后while就和水果店老板说，有水果的时候通知我，我先回去了。if也去水果店买苹果，没有了，然后if就和水果店老板说，有水果的时候通知我，我先回去了。过一段时间，水果店老板发短信告诉while和if，有水果了，while去一看，水果店只是进了香蕉，并不是苹果，所以不是想要的水果，于是回去继续等水果店老板通知，而if根本就不看是不是自己想要的苹果，直接就叫老板送10斤水果过来，这样会导致你得到错误的结果。</p><p>参考文献：</p><p><a href="http://wkf41068.iteye.com/blog/1835697" target="_blank" rel="noopener">Java中wait 和sleep 方法比较</a></p><p><a href="http://blog.csdn.net/clam_clam/article/details/6803667" target="_blank" rel="noopener">JAVA-sleep()和wait()的区别</a></p><p><a href="http://www.cnblogs.com/hongten/p/hongten_java_sleep_wait.html" target="_blank" rel="noopener">java中的sleep()和wait()的区别</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;转自：&lt;a href=&quot;https://www.cnblogs.com/loren-Yang/p/7538482.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/loren-Yang/p/7538482.html&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;参考：&lt;a href=&quot;https://www.cnblogs.com/loren-Yang/p/7538482.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/loren-Yang/p/7538482.html&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
+      <category term="并发编程" scheme="https://mlone.top/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="多线程" scheme="https://mlone.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
@@ -1890,9 +2200,9 @@
     <link href="https://mlone.top/post/2e5c77c2.html"/>
     <id>https://mlone.top/post/2e5c77c2.html</id>
     <published>2018-09-14T11:45:51.000Z</published>
-    <updated>2019-02-25T14:42:03.788Z</updated>
+    <updated>2019-02-27T09:53:37.761Z</updated>
     
-    <content type="html"><![CDATA[<p>转载自:<a href="http://www.cnblogs.com/lich/archive/2011/12/11/2283700.html" target="_blank" rel="noopener">http://www.cnblogs.com/lich/archive/2011/12/11/2283700.html</a></p><a id="more"></a><p>先来看一下流的概念：</p><p>在程序中所有的数据都是以流的方式进行传输或保存的，程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的时候，就要使用输出流完成。</p><p><strong>程序中的输入输出都是以流的形式保存的，流中保存的实际上全都是字节文件。</strong></p><h2 id="字节流与字符流"><a href="#字节流与字符流" class="headerlink" title="字节流与字符流"></a>字节流与字符流</h2><p>在java.io包中操作文件内容的主要有两大类：字节流、字符流，两类都分为输入和输出操作。在字节流中输出数据主要是使用OutputStream完成，输入使的是InputStream，在字符流中输出主要是使用Writer类完成，输入流主要使用Reader类完成。（这四个都是抽象类）</p><h3 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h3><p>在Java中IO操作也是有相应步骤的，以文件操作为例，主要的操作流程如下：</p><ol><li>使用File类打开一个文件</li><li>通过字节流或字符流的子类，指定输出的位置</li><li>进行读/写操作</li><li>关闭输入/输出</li></ol><p><strong>IO操作属于资源操作，一定要记得关闭</strong></p><h2 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h2><p>字节流主要是操作byte类型数据，以byte数组为准，主要操作类就是OutputStream、InputStream</p><p>字节输出流：OutputStream</p><p>OutputStream是整个IO包中<strong>字节输出流的最大父类</strong>，此类的定义如下：</p><p><em>public abstract class OutputStream extends Object implements Closeable,Flushable</em></p><p>从以上的定义可以发现，此类是一个抽象类，如果想要使用此类的话，则首先必须通过子类实例化对象，那么如果现在要操作的是一个文件，则可以使用：FileOutputStream类。通过向上转型之后，可以为OutputStream实例化</p><p><strong>Closeable表示可以关闭的操作，因为程序运行到最后肯定要关闭</strong></p><p><strong>Flushable：表示刷新，清空内存中的数据</strong></p><p>FileOutputStream类的构造方法如下：</p><p>public FileOutputStream(File file)throws FileNotFoundException</p><p>写数据：</p><pre><code>import java.io.File;import java.io.FileOutputStream;import java.io.IOException;import java.io.OutputStream;public class Test11 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        OutputStream out=new FileOutputStream(f);//如果文件不存在会自动创建        String str=&quot;Hello World&quot;;        byte[] b=str.getBytes();        out.write(b);//因为是字节流，所以要转化成字节数组进行输出        out.close();    }}</code></pre><p>也可以一个字节一个字节进行输出，如下：</p><pre><code>import java.io.File;import java.io.FileOutputStream;import java.io.IOException;import java.io.OutputStream;public class Test11 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        OutputStream out=new FileOutputStream(f);//如果文件不存在会自动创建        String str=&quot;Hello World&quot;;        byte[] b=str.getBytes();        for(int i=0;i&lt;b.length;i++){            out.write(b[i]);        }        out.close();    }}</code></pre><p>以上输出只会进行覆盖，如果要追加的话，请看FileOutputStream类的另一个构造方法：</p><p><strong>public FileOutputStream(File file,boolean append)throws FileNotFoundException</strong></p><p>在构造方法中，如果将append的值设置为true，则表示在文件的末尾追加内容。</p><pre><code>import java.io.File;import java.io.FileOutputStream;import java.io.IOException;import java.io.OutputStream;public class Test11 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        OutputStream out=new FileOutputStream(f,true);//追加内容        String str=&quot;\r\nHello World&quot;;        byte[] b=str.getBytes();        for(int i=0;i&lt;b.length;i++){            out.write(b[i]);        }        out.close();    }}</code></pre><p><strong>文件中换行为：\r\n</strong></p><h3 id="字节输入流：InputStream"><a href="#字节输入流：InputStream" class="headerlink" title="字节输入流：InputStream"></a>字节输入流：InputStream</h3><p>既然程序可以向文件中写入内容，则就可以通过InputStream从文件中把内容读取进来，首先来看InputStream类的定义：</p><p><em>public abstract class InputStream extends Object implements Closeable</em></p><p>与OutputStream类一样，InputStream本身也是一个抽象类，必须依靠其子类，如果现在是从文件中读取，就用FileInputStream来实现。</p><p>观察FileInputStream类的构造方法：</p><p><em>public FileInputStream(File file)throws FileNotFoundException</em></p><p>读文件：</p><pre><code>import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStream;public class Test12 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        InputStream in=new FileInputStream(f);        byte[] b=new byte[1024];        int len=in.read(b);        in.close();        System.out.println(new String(b,0,len));    }}</code></pre><p>但以上方法是有问题的，用不用开辟这么大的一个字节数组，明显是浪费嘛，我们可以根据文件的大小来定义字节数组的大小，File类中的方法：public long length()</p><pre><code>import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStream;public class Test13 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        InputStream in=new FileInputStream(f);        byte[] b=new byte[(int) f.length()];        in.read(b);        in.close();        System.out.println(new String(b));    }}</code></pre><p>我们换种方式，一个字节一个字节读入~</p><pre><code>import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStream;public class Test14 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        InputStream in=new FileInputStream(f);        byte[] b=new byte[(int) f.length()];        for(int i=0;i&lt;b.length;i++){            b[i]=(byte) in.read();        }        in.close();        System.out.println(new String(b));    }}</code></pre><p>但以上情况只适合知道输入文件的大小，不知道的话用如下方法：</p><pre><code>import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStream;public class Test15 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        InputStream in=new FileInputStream(f);        byte[] b=new byte[1024];        int temp=0;        int len=0;        while((temp=in.read())!=-1){//-1为文件读完的标志            b[len]=(byte) temp;            len++;        }        in.close();        System.out.println(new String(b,0,len));    }}</code></pre><h2 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h2><p>在程序中一个字符等于两个字节，那么java提供了Reader、Writer两个专门操作字符流的类。</p><h3 id="字符输出流：Writer"><a href="#字符输出流：Writer" class="headerlink" title="字符输出流：Writer"></a>字符输出流：Writer</h3><p>Writer本身是一个字符流的输出类，此类的定义如下：</p><p><em>public abstract class Writer extends Object implements Appendable，Closeable，Flushable</em></p><p>此类本身也是一个抽象类，如果要使用此类，则肯定要使用其子类，此时如果是向文件中写入内容，所以应该使用FileWriter的子类。</p><p>FileWriter类的构造方法定义如下：</p><p><em>public FileWriter(File file)throws IOException</em></p><p>字符流的操作比字节流操作好在一点，就是可以直接输出字符串了，不用再像之前那样进行转换操作了。</p><p>写文件：</p><pre><code>import java.io.File;import java.io.FileWriter;import java.io.IOException;import java.io.Writer;public class Test16 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        Writer out=new FileWriter(f);        String str=&quot;Hello World&quot;;        out.write(str);        out.close();    }}</code></pre><p>在默认情况下再次输出会覆盖，追加的方法也是在构造函数上加上追加标记</p><pre><code>import java.io.File;import java.io.FileWriter;import java.io.IOException;import java.io.Writer;public class Test17 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        Writer out=new FileWriter(f,true);//追加        String str=&quot;\r\nHello World&quot;;        out.write(str);        out.close();    }}</code></pre><h3 id="字符输入流：Reader"><a href="#字符输入流：Reader" class="headerlink" title="字符输入流：Reader"></a>字符输入流：Reader</h3><p>Reader是使用字符的方式从文件中取出数据，Reader类的定义如下：</p><p><em>public abstract class Reader extends Objects implements Readable，Closeable</em></p><p>Reader本身也是抽象类，如果现在要从文件中读取内容，则可以直接使用FileReader子类。</p><p>FileReader的构造方法定义如下：</p><p><em>public FileReader(File file)throws FileNotFoundException</em></p><p>以字符数组的形式读取出数据：</p><pre><code>import java.io.File;import java.io.FileReader;import java.io.IOException;import java.io.Reader;public class Test18 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        Reader input=new FileReader(f);        char[] c=new char[1024];        int len=input.read(c);        input.close();        System.out.println(new String(c,0,len));    }}</code></pre><p>也可以用循环方式，判断是否读到底：</p><pre><code>import java.io.File;import java.io.FileReader;import java.io.IOException;import java.io.Reader;public class Test19 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        Reader input=new FileReader(f);        char[] c=new char[1024];        int temp=0;        int len=0;        while((temp=input.read())!=-1){            c[len]=(char) temp;            len++;        }        input.close();        System.out.println(new String(c,0,len));    }}</code></pre><h2 id="字节流与字符流的区别"><a href="#字节流与字符流的区别" class="headerlink" title="字节流与字符流的区别"></a>字节流与字符流的区别</h2><p>字节流和字符流使用是非常相似的，那么除了操作代码的不同之外，还有哪些不同呢？</p><p><em>字节流在操作的时候本身是不会用到缓冲区（内存）的，是与文件本身直接操作的，而字符流在操作的时候是使用到缓冲区的</em></p><p><em>字节流在操作文件时，即使不关闭资源（close方法），文件也能输出，但是如果字符流不使用close方法的话，则不会输出任何内容，说明字符流用的是缓冲区，并且可以使用flush方法强制进行刷新缓冲区，这时才能在不close的情况下输出内容</em></p><p><strong>那开发中究竟用字节流好还是用字符流好呢？</strong></p><p><em>在所有的硬盘上保存文件或进行传输的时候都是以字节的方法进行的，包括图片也是按字节完成，而字符是只有在内存中才会形成的，所以使用字节的操作是最多的。</em></p><p><strong>如果要java程序实现一个拷贝功能，应该选用字节流进行操作（可能拷贝的是图片），并且采用边读边写的方式（节省内存）。</strong></p>]]></content>
+    <content type="html"><![CDATA[<p>转载自:<a href="http://www.cnblogs.com/lich/archive/2011/12/11/2283700.html" target="_blank" rel="noopener">http://www.cnblogs.com/lich/archive/2011/12/11/2283700.html</a></p><a id="more"></a><p>先来看一下流的概念：</p><p>在程序中所有的数据都是以流的方式进行传输或保存的，程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的时候，就要使用输出流完成。</p><p><strong>程序中的输入输出都是以流的形式保存的，流中保存的实际上全都是字节文件。</strong></p><h2 id="字节流与字符流"><a href="#字节流与字符流" class="headerlink" title="字节流与字符流"></a>字节流与字符流</h2><p>在java.io包中操作文件内容的主要有两大类：字节流、字符流，两类都分为输入和输出操作。在字节流中输出数据主要是使用OutputStream完成，输入使的是InputStream，在字符流中输出主要是使用Writer类完成，输入流主要使用Reader类完成。（这四个都是抽象类）</p><h3 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h3><p>在Java中IO操作也是有相应步骤的，以文件操作为例，主要的操作流程如下：</p><ol><li>使用File类打开一个文件</li><li>通过字节流或字符流的子类，指定输出的位置</li><li>进行读/写操作</li><li>关闭输入/输出</li></ol><p><strong>IO操作属于资源操作，一定要记得关闭</strong></p><h2 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h2><p>字节流主要是操作<strong>byte类型数据，以byte数组为准</strong>，主要操作类就是OutputStream、InputStream</p><p>字节输出流：OutputStream</p><p>OutputStream是整个IO包中<strong>字节输出流的最大父类</strong>，此类的定义如下：</p><p><em>public abstract class OutputStream extends Object implements Closeable,Flushable</em></p><p>从以上的定义可以发现，此类是一个抽象类，如果想要使用此类的话，则首先必须通过子类实例化对象，那么如果现在要操作的是一个文件，则可以使用：FileOutputStream类。通过向上转型之后，可以为OutputStream实例化</p><p><strong>Closeable表示可以关闭的操作，因为程序运行到最后肯定要关闭</strong></p><p><strong>Flushable：表示刷新，清空内存中的数据</strong></p><p>FileOutputStream类的构造方法如下：</p><p>public FileOutputStream(File file)throws FileNotFoundException</p><p>写数据：</p><pre><code>import java.io.File;import java.io.FileOutputStream;import java.io.IOException;import java.io.OutputStream;public class Test11 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        OutputStream out=new FileOutputStream(f);//如果文件不存在会自动创建        String str=&quot;Hello World&quot;;        byte[] b=str.getBytes();        out.write(b);//因为是字节流，所以要转化成字节数组进行输出        out.close();    }}</code></pre><p>也可以一个字节一个字节进行输出，如下：</p><pre><code>import java.io.File;import java.io.FileOutputStream;import java.io.IOException;import java.io.OutputStream;public class Test11 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        OutputStream out=new FileOutputStream(f);//如果文件不存在会自动创建        String str=&quot;Hello World&quot;;        byte[] b=str.getBytes();        for(int i=0;i&lt;b.length;i++){            out.write(b[i]);        }        out.close();    }}</code></pre><p>以上输出只会进行覆盖，如果要追加的话，请看FileOutputStream类的另一个构造方法：</p><p><strong>public FileOutputStream(File file,boolean append)throws FileNotFoundException</strong></p><p>在构造方法中，如果将append的值设置为true，则表示在文件的末尾追加内容。</p><pre><code>import java.io.File;import java.io.FileOutputStream;import java.io.IOException;import java.io.OutputStream;public class Test11 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        OutputStream out=new FileOutputStream(f,true);//追加内容        String str=&quot;\r\nHello World&quot;;        byte[] b=str.getBytes();        for(int i=0;i&lt;b.length;i++){            out.write(b[i]);        }        out.close();    }}</code></pre><p><strong>文件中换行为：\r\n</strong></p><h3 id="字节输入流：InputStream"><a href="#字节输入流：InputStream" class="headerlink" title="字节输入流：InputStream"></a>字节输入流：InputStream</h3><p>既然程序可以向文件中写入内容，则就可以通过InputStream从文件中把内容读取进来，首先来看InputStream类的定义：</p><p><em>public abstract class InputStream extends Object implements Closeable</em></p><p>与OutputStream类一样，InputStream本身也是一个抽象类，必须依靠其子类，如果现在是从文件中读取，就用FileInputStream来实现。</p><p>观察FileInputStream类的构造方法：</p><p><em>public FileInputStream(File file)throws FileNotFoundException</em></p><p>读文件：</p><pre><code>import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStream;public class Test12 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        InputStream in=new FileInputStream(f);        byte[] b=new byte[1024];        int len=in.read(b);        in.close();        System.out.println(new String(b,0,len));    }}</code></pre><p>但以上方法是有问题的，用不用开辟这么大的一个字节数组，明显是浪费嘛，我们可以根据文件的大小来定义字节数组的大小，File类中的方法：public long length()</p><pre><code>import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStream;public class Test13 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        InputStream in=new FileInputStream(f);        byte[] b=new byte[(int) f.length()];        in.read(b);        in.close();        System.out.println(new String(b));    }}</code></pre><p>我们换种方式，一个字节一个字节读入~</p><pre><code>import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStream;public class Test14 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        InputStream in=new FileInputStream(f);        byte[] b=new byte[(int) f.length()];        for(int i=0;i&lt;b.length;i++){            b[i]=(byte) in.read();        }        in.close();        System.out.println(new String(b));    }}</code></pre><p>但以上情况只适合知道输入文件的大小，不知道的话用如下方法：</p><pre><code>import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStream;public class Test15 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        InputStream in=new FileInputStream(f);        byte[] b=new byte[1024];        int temp=0;        int len=0;        while((temp=in.read())!=-1){//-1为文件读完的标志            b[len]=(byte) temp;            len++;        }        in.close();        System.out.println(new String(b,0,len));    }}</code></pre><h2 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h2><p>在程序中一个字符等于两个字节，那么java提供了Reader、Writer两个<strong>专门操作字符流</strong>的类。</p><h3 id="字符输出流：Writer"><a href="#字符输出流：Writer" class="headerlink" title="字符输出流：Writer"></a>字符输出流：Writer</h3><p>Writer本身是一个字符流的输出类，此类的定义如下：</p><p><em>public abstract class Writer extends Object implements Appendable，Closeable，Flushable</em></p><p>此类本身也是一个抽象类，如果要使用此类，则肯定要使用其子类，此时如果是向文件中写入内容，所以应该使用FileWriter的子类。</p><p>FileWriter类的构造方法定义如下：</p><p><em>public FileWriter(File file)throws IOException</em></p><p>字符流的操作比字节流操作好在一点，就是可以直接输出字符串了，不用再像之前那样进行转换操作了。</p><p>写文件：</p><pre><code>import java.io.File;import java.io.FileWriter;import java.io.IOException;import java.io.Writer;public class Test16 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        Writer out=new FileWriter(f);        String str=&quot;Hello World&quot;;        out.write(str);        out.close();    }}</code></pre><p>在默认情况下再次输出会覆盖，追加的方法也是在构造函数上加上追加标记</p><pre><code>import java.io.File;import java.io.FileWriter;import java.io.IOException;import java.io.Writer;public class Test17 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        Writer out=new FileWriter(f,true);//追加        String str=&quot;\r\nHello World&quot;;        out.write(str);        out.close();    }}</code></pre><h3 id="字符输入流：Reader"><a href="#字符输入流：Reader" class="headerlink" title="字符输入流：Reader"></a>字符输入流：Reader</h3><p>Reader是使用字符的方式从文件中取出数据，Reader类的定义如下：</p><p><em>public abstract class Reader extends Objects implements Readable，Closeable</em></p><p>Reader本身也是抽象类，如果现在要从文件中读取内容，则可以直接使用FileReader子类。</p><p>FileReader的构造方法定义如下：</p><p><em>public FileReader(File file)throws FileNotFoundException</em></p><p>以字符数组的形式读取出数据：</p><pre><code>import java.io.File;import java.io.FileReader;import java.io.IOException;import java.io.Reader;public class Test18 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        Reader input=new FileReader(f);        char[] c=new char[1024];        int len=input.read(c);        input.close();        System.out.println(new String(c,0,len));    }}</code></pre><p>也可以用循环方式，判断是否读到底：</p><pre><code>import java.io.File;import java.io.FileReader;import java.io.IOException;import java.io.Reader;public class Test19 {    public static void main(String[] args) throws IOException {        File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;);        Reader input=new FileReader(f);        char[] c=new char[1024];        int temp=0;        int len=0;        while((temp=input.read())!=-1){            c[len]=(char) temp;            len++;        }        input.close();        System.out.println(new String(c,0,len));    }}</code></pre><p><strong>另外：</strong></p><p>文件输入输出流：FileReader  FileWriter（实现对文件内容的<strong>逐字符处理</strong>）</p><p>缓存文件输入输出流：BufferedReader   BufferedWriter（实现对文件内容的<strong>逐行处理</strong>）</p><h2 id="字节流与字符流的区别"><a href="#字节流与字符流的区别" class="headerlink" title="字节流与字符流的区别"></a>字节流与字符流的区别</h2><p>字节流和字符流使用是非常相似的，那么除了操作代码的不同之外，还有哪些不同呢？</p><p><em>字节流在操作的时候本身是不会用到缓冲区（内存）的，是与文件本身直接操作的，而字符流在操作的时候是使用到缓冲区的</em></p><p><em>字节流在操作文件时，即使不关闭资源（close方法），文件也能输出，但是如果字符流不使用close方法的话，则不会输出任何内容，说明字符流用的是缓冲区，并且可以使用flush方法强制进行刷新缓冲区，这时才能在不close的情况下输出内容</em></p><p><strong>那开发中究竟用字节流好还是用字符流好呢？</strong></p><p><em>在所有的硬盘上保存文件或进行传输的时候都是以字节的方法进行的，包括图片也是按字节完成，而字符是只有在内存中才会形成的，所以使用字节的操作是最多的。</em></p><p><strong>如果要java程序实现一个拷贝功能，应该选用字节流进行操作（可能拷贝的是图片），并且采用边读边写的方式（节省内存）。</strong></p>]]></content>
     
     <summary type="html">
     
@@ -1970,122 +2280,6 @@
       <category term="杰伦" scheme="https://mlone.top/tags/%E6%9D%B0%E4%BC%A6/"/>
     
       <category term="酸菜" scheme="https://mlone.top/tags/%E9%85%B8%E8%8F%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>忻钰坤第二弹--《心迷宫》简单解读[转载]</title>
-    <link href="https://mlone.top/post/b690c376.html"/>
-    <id>https://mlone.top/post/b690c376.html</id>
-    <published>2018-09-11T07:22:43.000Z</published>
-    <updated>2019-02-23T09:43:18.486Z</updated>
-    
-    <content type="html"><![CDATA[<p>电影前10分钟，留下了太多的悬念。这几个看似无关的“线头”故意“现出来”，稍后由它们牵扯出余下的“线”——一条条相互交缠。</p><a id="more"></a><p>那些可能永远无法解释的巧合，常常被称之为“命运”的东西，其实存在它的合理性——不过是每个人在衡量自己利益最大化之后的选择。这种趋利避害，也不过是生存的本能而已。</p><p><img src="/assets/blogImg/2/1.jpg" alt="剧照1"></p><h5 id="发生在村里的故事"><a href="#发生在村里的故事" class="headerlink" title="发生在村里的故事"></a>发生在村里的故事</h5><p>故事发生在村里。对这个地点，或者说这个组成社会的一个单位，村是一个极有意思的存在。说它有意思是因为，它的原始性、自然性和独特性。村，是社会化的产物，但同时它又不那么科学化、理性化、法制化。</p><p>在村之上乡镇、城市似乎都遵循着一个“法”，但村稍稍不同，它更本源的延续了人类凝聚之后的另一种约束方式——道德。在一个村之中，有时候是不讲法的，更多的是理、是信、是义，是约定俗成，是人情世故，是中庸之道。所以，这样一个近似荒诞，看似缺乏逻辑的存在，其实在村里是非常合理的存在。因为，村是自成运作系统的。</p><p>比如影片中村长的推选，便是建立在信义的基础上。在妻子口中我们知道，老村长为村子兢兢业业，从不贪图，所以换届选举完胜用金钱拉选票的人。在村民们眼中，能为自己办实事，人品上德高望重，办事上以村民利益为先的，便是好村长。而这种道德上的“选举”和“任命”无论在凝聚力上还是在民心所向上，无疑都是更加人性化的。结尾处，无论是老村长要辞去村长一职，还是去自首，其实都是内心中无法跨过道德这道坎。</p><p><img src="/assets/blogImg/2/2.jpg" alt="剧照2"></p><h5 id="村里的事都是稀里糊涂的"><a href="#村里的事都是稀里糊涂的" class="headerlink" title="村里的事都是稀里糊涂的"></a>村里的事都是稀里糊涂的</h5><p>要说人活着，大事小事有时候该糊涂的时候就得糊涂。很多事情都没办法钉是钉铆是铆的去深究。中国人有一句俗话叫“难得糊涂”，虽然是一个公认的可以称得上是知识分子的老先生郑板桥提出来的，但它恰好最大的体现在村里人中。</p><p>电影中的故事，可能有人会很不理解：怎么死了人，不报警、不验尸、不走法律程序呢？仅仅凭一句话就盖棺定论了呢？从第一个亡者开始，这种“约定俗成”便很好的说明了这个问题：村里的事儿，只要是大家认可了的，在村里就能解决，何必大动干戈？开篇的引子，已经为整部戏定下了基调：一个老头去烧山，结果自己没走出来烧死掉了。大家公认，合情合理，自然没有必要去报案。用棺材装了，停三天，埋了，大家吃个流水席。那么这件事在村里就算是了了。于是乎，当村里接二连三出现尸体的时候，只要有一个适当的解释，那么这自然就不是事。正所谓“民不举，官不究”。单反符合了村里大致的说法，完成了大家公认的程序，每个人都有一个知会，那么这便不再是个事儿。</p><p>令人感到好笑和荒诞的地方是，为什么最后根本没人深究死人究竟是谁？大家自己过上了自己想要的生活，那么好奇心只会平添烦恼，所以何必事事都要弄得请清除吃吃呢？如果影片最后没有出现那几行字的结局，仅仅是一具棺椁和三个人的心照不宣，村里的生活还将继续。可能过上几个月便是全村兴高采烈地喝上欢欢和和宗耀的喜酒也说不定哦！</p><p><img src="/assets/blogImg/2/3.jpg" alt="剧照3"></p><h5 id="村里的人都是精明智慧的"><a href="#村里的人都是精明智慧的" class="headerlink" title="村里的人都是精明智慧的"></a>村里的人都是精明智慧的</h5><p>要说这事情可能是糊涂，但这人却极为精明。村里是一个相对封闭的环境，人在这种氛围中几乎可以完全熟悉任意一个人的秘密。相处久了，基本上张家长李家短的，没有不知道的。所以，每个人心中都有一杆秤，衡量着自己，也衡量着别人。</p><p>之所以说越是底层人也是聪明，是因为他们可以循着本能取追求自己利益的最大化。几个镜头中出现的电视节目，播放的都是星星生活的场景，这并非巧合，而是一种映射——从本质上讲，人和动物没什么区别，生存才是最重要的。如何生活的更好，是每个人都追求的。我们完全可以看到，每个人的每条线都如此清晰的摆在眼前。他们的每一次选择都是按照如何最大限度实现自己利益为前提的。而人生，不过就是一次次选择的叠加，于是，每一次选择下来，人生的走向便有所不同。本片中，可笑的是，很多人的“最优选择”却导致的是“最惨后果”。但综合利弊，你却无法指责他每次选择上的正确性，或许这就是我们所说的“命”。</p><p>要说最智慧的存在，其实还是人民群众。电影展现的非常简洁，却真实的让人汗毛都能竖起来：人在生存的时候，无非就是见招拆招。或许这句话有些武侠化了，那么用普通话说，就是：出事儿，想辙。在事情发生的几乎不到48小时中，你听不到抱怨。事情出了，最简单直接的方式就是想办法解决。而这才是最普通却也是最值得竖起大拇指的行为。</p><p>人生其实很简单，就像我的曾经在牌桌上说的一句话：不要抱怨你手里的牌，重要的是如何打好一手烂牌。电影中每个人也都是如此，最原始的趋利避害，最原始的解决问题，最原始的寻找生存下来的途径。而这，就是人与生俱来的智慧所在。</p><p>在九百六十万平方公里的土地上，法律所及的地方太小。从根本上，这是一个讲情的国度，而这情，人类，其实就是这样祖祖辈辈生生不息的延续着。</p><p><img src="/assets/blogImg/2/4.jpg" alt="剧照4"></p><p>PS：</p><p>1、影片最后几行字的交代，应该并非原作者的本意吧。相信他应该也能明白，只留下最后一个镜头就好，整部影片的深意完完全全会提升两个档次！那种民族或人类最原始的东西都在涌动着。当然，为了能让更多人看到，加一个“尾巴”也可以理解。</p><p>2、人都是以自我为中心运转着，如果说每个人是一个小宇宙，那么可能你永远预料不到的是他人对你的影响，以及你背后更大的银河系发生着什么样的事。一切都是玄而又玄的，变数时时存在。</p><p>原文地址：<a href="http://i.mtime.com/5807981/blog/7926134/" target="_blank" rel="noopener">《心迷宫》：迷宫尽头是生存本能</a></p><h5 id="最后加几张电影海报"><a href="#最后加几张电影海报" class="headerlink" title="最后加几张电影海报"></a>最后加几张电影海报</h5><p><img src="/assets/blogImg/2/5.jpg" alt="剧照5"></p><p><img src="/assets/blogImg/2/6.jpg" alt="剧照6"></p><p><img src="/assets/blogImg/2/7.jpg" alt="剧照7"></p><p><img src="/assets/blogImg/2/8.jpg" alt="剧照8"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;电影前10分钟，留下了太多的悬念。这几个看似无关的“线头”故意“现出来”，稍后由它们牵扯出余下的“线”——一条条相互交缠。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="影视" scheme="https://mlone.top/categories/%E5%BD%B1%E8%A7%86/"/>
-    
-    
-      <category term="影视" scheme="https://mlone.top/tags/%E5%BD%B1%E8%A7%86/"/>
-    
-      <category term="真实" scheme="https://mlone.top/tags/%E7%9C%9F%E5%AE%9E/"/>
-    
-      <category term="生活" scheme="https://mlone.top/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-      <category term="犯罪" scheme="https://mlone.top/tags/%E7%8A%AF%E7%BD%AA/"/>
-    
-      <category term="悬疑" scheme="https://mlone.top/tags/%E6%82%AC%E7%96%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>忻钰坤第一弹--《爆裂无声》深度解析[转载]</title>
-    <link href="https://mlone.top/post/66b74461.html"/>
-    <id>https://mlone.top/post/66b74461.html</id>
-    <published>2018-09-10T07:00:10.000Z</published>
-    <updated>2019-02-23T09:42:52.776Z</updated>
-    
-    <content type="html"><![CDATA[<p>电影《暴裂无声》是由忻钰坤执导的犯罪悬疑片，姜武、宋洋、袁文康、谭卓等主演。暴裂无声剧情讲述了在北方凛冽的冬天，一个牧羊少年带着自家的羊群在山里行走，…</p><a id="more"></a><h2 id="暴裂无声观影后细节分析"><a href="#暴裂无声观影后细节分析" class="headerlink" title="暴裂无声观影后细节分析"></a>暴裂无声观影后细节分析</h2><h6 id="不知道当你看完《暴裂无声》，是不是也和电影的主角一样，不想声，失语了……"><a href="#不知道当你看完《暴裂无声》，是不是也和电影的主角一样，不想声，失语了……" class="headerlink" title="不知道当你看完《暴裂无声》，是不是也和电影的主角一样，不想声，失语了……"></a>不知道当你看完《暴裂无声》，是不是也和电影的主角一样，不想声，失语了……</h6><p><img src="/assets/blogImg/1/1.jpg" alt="剧照1"><br>电影的剧情其实挺简单，《暴裂无声》的内容和片名一样，无声的暴力罢了。男主是哑者张保民，以拳头显示暴力，从头打到尾，只是这种近乎的暴力却只是最低能无力的；外表光鲜却身处灰色地带的徐律师，看似平静温文尔雅，沉默少言，他表现的暴力却最为阴冷可怕！当然还有强有力的施暴者姜武饰演的土豪金主昌老板，，他所表现出来的暴力是多元化，最全面的。记得电影里有一个场面：昌老板坐在一满桌切盘羊肉前吃着火锅，旁边机器在咔嚓咔嚓地切着羊肉，另一个矿主说自己信佛吃素，昌老板却淡然地讲到：“羊也是吃素的……”接着殴打，威胁，恐吓等等手段跃然而出，完胜！<br><img src="/assets/blogImg/1/2.jpg" alt="剧照2"><br>这三个男人唱出了一部完美诠释暴力，却控诉无声的悲剧！整部剧的精彩烧脑之处并不是通常悬疑剧的翻转结局，而是在好似不经意间表现出的一个个细节场景。所有细节场景的串联，才是这部烧脑片的精华所在。电影里的主角只是在引导着剧情的发展，而看懂细节，你才是真正的主角。不过，所有细节串联只有等到看完整部电影才会让你都明白过来。<br><img src="/assets/blogImg/1/3.jpg" alt="剧照3"></p><h4 id="细节一"><a href="#细节一" class="headerlink" title="细节一:"></a>细节一:</h4><p>张保民得知儿子失踪回家遇到村长，村长递给张保民抽的洋烟在后来昌老板的桌子上出现了。村长整车的往自己家运矿泉水。这两点说明了昌老板和村长之间的利益输送，村长明知道开矿污染了水源，却只顾自己的安危，贪图了昌老板的贿赂。</p><h4 id="细节二"><a href="#细节二" class="headerlink" title="细节二:"></a>细节二:</h4><p>昌老板非常喜欢射杀动物和吃羊肉，在最后要射杀张保民的打斗中又表现出了射击水平非常差，加上当手下打手为了威胁张保民交出律师女儿而谎称张保民的儿子在他手中，昌老板气急败坏之下的把手下打的奄奄一息，这些都表明了，徐律师帮昌老板做完伪证，昌老板给徐律师贿赂后心情大好，想要射杀小羊取乐享用，可是在远处放羊的张保民儿子不同意，保护着他心爱的小羊，昌老板依然射击了小羊，却误杀了张保民的儿子。</p><h4 id="细节三："><a href="#细节三：" class="headerlink" title="细节三："></a>细节三：</h4><p>昌老板的第一次露面，穿着一身干净的西装，站在校长室，一遍看着学生的照片，一遍吃着西红柿，吃相很难看，与他的穿着形成了鲜明的对比，这里解释一下为什么不吃苹果香蕉之类的而是吃西红柿，西红柿是红色的，象征着生命和鲜血，由于吃的太急，西红柿的汁流到了昌老板的衣服上，但昌老板用纸巾怎么擦也擦不掉，这也表达了做过坏事留下的痕迹是不容易抹去的。</p><h4 id="细节四"><a href="#细节四" class="headerlink" title="细节四:"></a>细节四:</h4><p>昌老板在练习弓箭的时候，弦已拉满，却又最终放弃了，虽然这时候导演并没有给出昌老板回忆的镜头，但不难看出，此时的昌老板内心世界是极其复杂的，他在收拾弓箭时，镜头中有一支箭是没有箭头的。箭头第一次出现是在张保民被绑在吉普车后备箱，张保民摸到了箭头并用它解开了脚上的绳子，还有是到结尾的时候，昌老板跟张保民发生冲突，昌老板快要包张保民勒断气的时候，张保民摸到昌老板口袋里的箭头，果断地把它刺进昌老板的大腿里，这才得以空隙出手反击。</p><p>这里要补充说明一下，昌老板一直向徐律师索要证据，而徐律师也一头雾水，徐律师其实是真不知道，因为昌老板杀人的证据一直被遗忘在他吉普车的后备箱里，就是那个箭头。这也解释了为什么昌老板会把那个箭头放在裤兜了，最后匆匆把它埋进土里。<br><img src="/assets/blogImg/1/4.jpg" alt="剧照4"></p><h4 id="细节五"><a href="#细节五" class="headerlink" title="细节五:"></a>细节五:</h4><p>张保民儿子的鬼魂出现在山洞里解开徐律师女儿的绳索和徐律师把女儿抱出山洞后，向着山洞深处的黑暗里偷偷看了一眼，表达了张磊的尸体就被埋在这个山洞深处，徐律师知道，却还是没有告诉张保民。这就和最后徐律师的一句：“没有。”相互辉映，揭示了人性的可怕。</p><h4 id="细节六"><a href="#细节六" class="headerlink" title="细节六:"></a>细节六:</h4><p>因为非法采矿，导致矿物污染，所有井水才会越来越难喝，村长才会 一车一车的运纯净水回家，张保民的妻子、栓子的母亲以及更多的村民才会得了怪病，失踪的张磊才会看见小鸟的尸体……</p><h4 id="细节七"><a href="#细节七" class="headerlink" title="细节七:"></a>细节七:</h4><p>酷爱吃羊肉的昌总为什么会掉那么多头发以导致前额发秃，因为他吃的也都是这个矿区的羊。</p><p>而这种“以彼之道还施彼身”巧妙且富有深意的设计，在电影中还有三处：</p><p>一是那枚要了人命、怎么也找不到的箭头，最终扎到了昌总自己身上！</p><p>二是律师跟着张保民来到藏护女儿的山洞，他开始恍惚、害怕，因为这个地方也藏着他的秘密！</p><p>三是羊肉店老板逼着张保民在拆迁补上签字，换来的不仅是自己瞎了一只眼，更是自己的儿子因为环境污染而精神失常。<br><img src="/assets/blogImg/1/5.jpg" alt="剧照5"></p><p>总结：虽然最后的结局是让人无言以对的可悲，各种暴力覆盖了一切！山的坍塌，张磊尸体的消失都揭露了黑暗的存在，但是剧中的细节已经表达过一个道理：恶有恶报！出来混总是要还的！</p><p>就让我们依靠着剧中曾经虚幻出的两个小孩纯真的站在山上俯瞰这个城市的场景，看出些许希望吧。</p><p><a href="https://baijiahao.baidu.com/s?id=1601128884575929109&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">转载自百家号：我爱烧脑之《暴裂无声》深度解析！这部悬疑电影你看懂了多少？</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;电影《暴裂无声》是由忻钰坤执导的犯罪悬疑片，姜武、宋洋、袁文康、谭卓等主演。暴裂无声剧情讲述了在北方凛冽的冬天，一个牧羊少年带着自家的羊群在山里行走，…&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="影视" scheme="https://mlone.top/categories/%E5%BD%B1%E8%A7%86/"/>
-    
-    
-      <category term="影视" scheme="https://mlone.top/tags/%E5%BD%B1%E8%A7%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>国内有哪些好的刷题网站</title>
-    <link href="https://mlone.top/post/65ebe4d.html"/>
-    <id>https://mlone.top/post/65ebe4d.html</id>
-    <published>2018-09-10T01:31:10.000Z</published>
-    <updated>2019-02-23T09:40:43.696Z</updated>
-    
-    <content type="html"><![CDATA[<p>来自：知乎<br>链接：<a href="https://www.zhihu.com/question/25574458" target="_blank" rel="noopener">https://www.zhihu.com/question/25574458</a></p><a id="more"></a><h3 id="1、Leetcode"><a href="#1、Leetcode" class="headerlink" title="1、Leetcode"></a>1、Leetcode</h3><p>鼎鼎大名的Leetcode，据不完全统计在上面被刷过的题可以围绕地球三圈。（没说赤道哈，就是这么严谨。）总之，很多国内外的码农在上面刷题。难度从easy到hard都有，而且覆盖面极广。现在还增加了数据库和shell，相匹配的论坛也可以多看看。很锻炼和国外码农沟通的能力，对于以后去混Github也有好处。</p><p>特点：各种语言支持很广泛，题型覆盖很广，测试数据集较弱。</p><h3 id="2、Codility"><a href="#2、Codility" class="headerlink" title="2、Codility"></a>2、Codility</h3><p>同样一家著名的国外刷题网站。和Leetcode不同，它是专门帮各大软件公司笔试用的，只是副业提供了一些面试题和挑战。但即使是训练模式都非常经典，很值得一做。而且测试数据集提供的非常完善，总能让你有想不到的边界情况。Take our free programming lessons</p><p>特点：很接近面试题的风格，训练模式也基本够用。</p><h3 id="3、Lintcode"><a href="#3、Lintcode" class="headerlink" title="3、Lintcode"></a>3、Lintcode</h3><p>可以称作中文版本的Leetcode，个人感觉最高难度比Leetcode高一些。这两个类似的网站，可以配套来刷。每个刷一遍，也能保持新鲜感。</p><p>特点：中文支持很好，和Leetcode有一部分题类似，可以和九章算法课程配合使用。</p><h3 id="4、Hihocoder"><a href="#4、Hihocoder" class="headerlink" title="4、Hihocoder"></a>4、Hihocoder</h3><p>来自于原北京大学POJ开发团队，网站一直在进步。最早是微软的在线笔试网站，现在网易也使用它进行在线笔试。题目侧重于较难题目，风格很像ACM比赛，要自己注意数据集的输入输出。</p><p>特点：每周一道算法题极难又有趣，可以用来扩展面试题思路。而且是网易、微软的在线笔试网站，有机会需要多练习。</p><h3 id="5、CC150"><a href="#5、CC150" class="headerlink" title="5、CC150"></a>5、CC150</h3><p>这不是网站，这是一本书。全称Cracking the coding interview，是国外找工作的神书，而且的确写的很好。里面除了算法题，还有计算机基础知识等内容，很不错。适合想去外企的人仔细阅读，而且最新版已经比150题多了。总之，外企必备！</p><p>特点：外企必备！外企必备！外企必备！想去外企的人，多看看书的配套答案也是好的</p><h3 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h3><p>最后，经过公众号作者小分队的讨论，根据不同方向的工作，我们建议按照以下方式刷题：</p><p>国企、银行、科研单位<br>Leetcode简单、中等难度最好刷一遍，有时间再过一遍思路。</p><p>创业公司<br>Leetcode全部难度上机刷一遍，然后把不会的题纸上在重新写一下。<br>国内互联网</p><p>Leetcode全部难度上机刷一遍，纸上再写一遍。同时尽量涉及难度较高的平台（Codility），或者多去几家公司面试，以赛代练。</p><p>国内外企<br>Leetcode至少全难度刷一遍，CC150纸上写一遍。想提高Microsoft/Google等在线笔试通过率的，多去玩玩Hihocoder等在线笔试平台。</p><p>外企总部<br>Leetcode困难程度烂熟于心，尽量达到ACM入门标准，甚至稍高一点比较有把握。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;来自：知乎&lt;br&gt;链接：&lt;a href=&quot;https://www.zhihu.com/question/25574458&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.zhihu.com/question/25574458&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="随笔" scheme="https://mlone.top/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>图片收藏</title>
-    <link href="https://mlone.top/post/fda4c161.html"/>
-    <id>https://mlone.top/post/fda4c161.html</id>
-    <published>2018-09-01T00:30:20.000Z</published>
-    <updated>2019-02-23T12:56:48.820Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h2><p>好多美女啊！！！</p><a id="more"></a><h3 id="美女1"><a href="#美女1" class="headerlink" title="美女1"></a>美女1</h3><blockquote><p>这里的图片链接不能写相对路径：./assets/blogImg/美女1.jpg<br>如果这样写的话，文章不展开时的图片是可以显示的，但当文章展开时，<br>所有的图片都无法找到路径了。(可见展开和不展开的页面代码文件并不在同一目录下)</p></blockquote><p><img src="/assets/blogImg/0/美女1.jpg" alt="美女1"></p><h3 id="美女2"><a href="#美女2" class="headerlink" title="美女2"></a>美女2</h3><p><img src="/assets/blogImg/0/美女2.jpg" alt="美女2"></p><h3 id="动图1"><a href="#动图1" class="headerlink" title="动图1"></a>动图1</h3><p><img src="/assets/blogImg/0/动图1.gif" alt="动图1"></p><h3 id="动图2"><a href="#动图2" class="headerlink" title="动图2"></a>动图2</h3><p><img src="/assets/blogImg/0/动图2.gif" alt="动图2"></p><h3 id="动图3"><a href="#动图3" class="headerlink" title="动图3"></a>动图3</h3><p><img src="/assets/blogImg/0/动图3.gif" alt="动图3"></p><h3 id="动图4"><a href="#动图4" class="headerlink" title="动图4"></a>动图4</h3><p><img src="/assets/blogImg/0/动图4.gif" alt="动图4"></p><h3 id="风景1"><a href="#风景1" class="headerlink" title="风景1"></a>风景1</h3><p><img src="/assets/blogImg/0/风景1.jpg" alt="风景1"></p><h3 id="风景2"><a href="#风景2" class="headerlink" title="风景2"></a>风景2</h3><p><img src="/assets/blogImg/0/风景2.jpg" alt="风景2"></p><h3 id="佩奇"><a href="#佩奇" class="headerlink" title="佩奇"></a>佩奇</h3><p><img src="/assets/blogImg/0/佩奇.jpeg" alt="佩奇"></p><h3 id="狗子"><a href="#狗子" class="headerlink" title="狗子"></a>狗子</h3><p><img src="/assets/blogImg/0/狗子.jpg" alt="狗子"></p>]]></content>
-    
-    <summary type="html">
-    
-      美女图片、动图、佩奇、狗子、风景
-    
-    </summary>
-    
-      <category term="随笔" scheme="https://mlone.top/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="图片" scheme="https://mlone.top/tags/%E5%9B%BE%E7%89%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GitHub Pages</title>
-    <link href="https://mlone.top/post/5641fb4c.html"/>
-    <id>https://mlone.top/post/5641fb4c.html</id>
-    <published>2018-08-31T23:15:00.000Z</published>
-    <updated>2019-02-23T09:42:10.030Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用github pages服务搭建博客的好处有：<br><a id="more"></a></p><ol><li>全是静态文件，访问速度快；</li><li>免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；</li><li>可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</li><li>数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</li><li>博客内容可以轻松打包、转移、发布到其它平台；</li><li>等等；</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;使用github pages服务搭建博客的好处有：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="默认分类" scheme="https://mlone.top/categories/%E9%BB%98%E8%AE%A4%E5%88%86%E7%B1%BB/"/>
-    
-    
-      <category term="随笔" scheme="https://mlone.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   

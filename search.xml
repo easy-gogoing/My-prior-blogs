@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[nginx的作用]]></title>
+    <url>%2Fpost%2Fd86db295.html</url>
+    <content type="text"><![CDATA[参考：正向代理和反向代理概述 一、作为静态资源服务器可以通过http请求访问服务器上的静态资源。（首页广告图片、商品图片显示、图片上传回显） 二、反向代理与负载均衡：正向代理最大的特点是客户端非常明确要访问的服务器地址；服务器只清楚请求来自哪个代理服务器，而不清楚来自哪个具体的客户端；正向代理模式屏蔽或者隐藏了真实客户端信息。 反向代理，主要用于服务器集群分布式部署的情况下，反向代理隐藏了服务器的信息！ 多个客户端给服务器发送的请求，nginx服务器接收到之后，按照一定的规则分发给了后端的业务处理服务器进行处理了。此时~请求的来源也就是客户端是明确的，但是请求具体由哪台服务器处理的并不明确了，nginx扮演的就是一个反向代理角色 客户端发送的、nginx反向代理服务器接收到的请求数量，就是我们说的负载量请求数量按照一定的规则进行分发到不同的服务器处理的规则，就是一种均衡规则 所以~将服务器接收到的请求按照规则分发的过程，称为负载均衡。]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[spring与springmvc]]></title>
+    <url>%2Fpost%2F724a55c9.html</url>
+    <content type="text"><![CDATA[转自：spring与springmvc的区别与联系 一、spring框架的介绍spring是一个一站式的框架，提供了表现层（springmvc）到业务层（spring）再到数据层（springdata）的全套解决方案；spring的两大核心IOC(控制反转)和AOP(面向切面编程)更是给我们的程序解耦和代码的简介提供了支持。 二、springmvc （1）springmvc给spring的表现层提供支持 （2）springmvc的流程： 用户发送请求至前端控制器DispatcherServlet； DispatcherServlet收到请求调用HandlerMapping处理器映射器； 处理器映射器根据请求url找到具体的处理器，生成处理器对象及处理器拦截器(如果有则生成)一并返回给DispatcherServlet； DispatcherServlet通过HandlerAdapter处理器适配器调用处理器，执行处理器(Controller，也叫后端控制器)； Controller执行完成返回ModelAndView，并返回给HandlerAdapter，HandlerAdapter将结果返回给DispatcherServlet； DispatcherServlet将ModelAndView传给ViewReslover视图解析器，ViewReslover解析后返回具体View给DispatcherServlet； DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）后返回给客户 三、AOP与IOC（1）AOP与IOC给spring的业务层提供支持，使程序的耦合度更低，代码更简洁 （2）AOP原理：即面向切面编程，就是提取公共部分，集中解决一些公共问题 （3）IOC原理：控制反转。在传统过程中，当某一个对象依赖于另外一个对象时，会由该对象去创建另外一个对象，有了ioc后，将创建过程交给IOC,由spring创建bean，从而只需给该对象注入即可 问：*什么是AOP和IOC，它们的作用是什么?* AOP：(Aspect Oriented Programing) 面向切面编程。 是指使用动态代理模式，在一个事务中无缝地插入多条其他处理。 作用：Spring使用aop声明式事务控制，通过横向抽取方法将service层中的事务控制的代码抽取出来。 IOC： (Inverse of Control) 控制反转。 是指将原来程序中自己创建实现类对象的控制权反转到IOC容器中。只需要通过IOC来获对象的实例，将IOC当成一个黑盒子、工厂。 作用：Spring提供ioc容器，对 bean进行实例化。使用bean时候从容器中取。还可以实现依赖注入(DI)，将对象需要的bean注入到其对象属性中。 拓展：*AOP的概念：* Aspected Oriented Programming 面向方面编程。 好处：AOP将程序分解成各个方面或者说关注点。这使得可以模块化，相当横向上分切了。它可以解决OOP和过程化方法不能够很好解决的横切（crosscut）问题，如：事务、安全、日志等横切关注。 实现AOP有几种方式： Spring 1.2版本中通过ProxyFactoryBean来实现aop,即通过动态代理来实现的,Aspect必须继承MethodBeforeAdvice,MethodAfterAdvice等。 Spring 2.0 AOP需要改的是FBI 这个类，而且它也不需要再实现某些接口。 三使用标注（@AspectJ）实现AOP。 AOP 和 OOP的区别： 面向方面编程 AOP 偏重业务处理过程的某个步骤或阶段，强调降低模块之间的耦合度，使代码拥有更好的移植性。 面向对象编程 (oop) 则是对业务分析中抽取的实体进行方法和属性的封装。也可以说 AOP 是面向业务中的动词领域， OOP 面向名词领域。AOP 的一个很重要的特点是源代码无关性，也就是说如果我们的系统中引用了 AOP 组件，即使我们把该组件去掉，系统代码也应该能够编译通过。要实现这一点，可以使用动态 proxy 模式。]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>框架</tag>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Struts2处理请求的全过程]]></title>
+    <url>%2Fpost%2F85eb9bf0.html</url>
+    <content type="text"><![CDATA[Struts 2处理请求的全过程是什么? （1）当客户端浏览器向服务器端发送请求，会被Struts2的核心前端控制器（一个过滤器）所拦截，然后根据struts2.xml配置文件中的内容来决定调用哪个前端控制器action； （2）前端控制器action接收到请求后，会根据请求的method方法名调用函数进行处理； （3）处理完成后，会返回一个逻辑视图名，然后根据struts2.xml中配置的action的result来决定要跳转到哪个前端页面。]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>框架</tag>
+        <tag>struts2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hibernate对象的三大状态]]></title>
+    <url>%2Fpost%2F993a1961.html</url>
+    <content type="text"><![CDATA[. 瞬时态 transient new了一个对象，此时对象就是瞬时态； 瞬时态对象和数据库记录没有对应关系，和session没有关系。 持久态 persistent 瞬时态对象执行save方法后变成持久态； 持久态对象和数据库记录存在对应关系，和session有关系。 修改对象的属性，会直接将数据保存到数据库中。 托管态Detached 当session关闭后，持久态对象变为托管态。 托管态对象和session没有关系，可能和数据库存在对应也可能不对应。]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>框架</tag>
+        <tag>hibernate</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[forward和redirect的区别]]></title>
+    <url>%2Fpost%2Fa78a807b.html</url>
+    <content type="text"><![CDATA[请求转发和重定向 forward：请求转发，属于同一请求，浏览器的url不会改变，request域中的数据不会丢失。 redirect：重定向，属于不同的请求，浏览器的url改变，request域中的数据清空。]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JSP有哪些内置对象]]></title>
+    <url>%2Fpost%2F23a05b25.html</url>
+    <content type="text"><![CDATA[JSP共9个内置对象： page、request、session 、application、（四大域对象） response、out、config、exception、 pageContext（可以获取其他八个内置对象；可以操作域；可以全域查找findAttribute）]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>jsp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Cookie与Session]]></title>
+    <url>%2Fpost%2F5321d6b2.html</url>
+    <content type="text"><![CDATA[描述Cookie和Session的作用，区别和各自的应用范围，Session工作原理。 Cookie：保存在本地客户端。 如果不设置有效时间则默认为一次会话时间，即浏览器关闭即销毁。 应用：比如，存储用户的登录信息，用户名、密码。 Session：保存在服务器端，保存一次会话。 当浏览器访问服务器时，服务器会创建一个session会话与当前客户端进行连接。 何时销毁： 程序调用HttpSession.invalidate()方法主动进行销毁； 距离客户端上一次发送请求超过了Session的最大有效时间； 服务器进程被停止。 应用：保存用户状态，比如购物车中添加商品。 Session的机制： 一种服务器端的机制，服务器使用一种类似于散列表的结构来保存信息。 当程序需要为某个客户端的请求创建一个session的时候，服务器会首先检查这个客户端的请求中是否包含session标识－session id，如果已包含则说明以前为此客户创建过session，服务器就会根据session id把这个session检索出来使用； 如果客户请求中不包含session id，则为此客户新建一个session并同时生成一个相关联的session id，这个session id将在本次响应中返回给客户端保存。 二者区别： 存储数据量方面：session 能够存储任意的 java 对象，cookie 只能存储 String 类型的对象 一个在客户端一个在服务端，因为Cookie在客户端所以可以编辑伪造，不是十分安全 Session过多时会消耗服务器资源，大型网站会有专门Session服务器，Cookie存在客户端没问题 域的支持范围不一样，比方说a.com的Cookie在a.com下都能用，而www.a.com的Session在api.a.com下都不能用，解决这个问题的办法是*JSONP跨域请求或者跨域资源共享*]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>web</tag>
+        <tag>cookie</tag>
+        <tag>session</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Servlet的生命周期]]></title>
+    <url>%2Fpost%2Fce1ea3ff.html</url>
+    <content type="text"><![CDATA[共四个阶段： （1）Servlet被类的加载器ClassLoad加载, （2）调用其中的init()方法进行初始化， （3）调用其中的响应方法，如doGet()、doPost() （4）当请求不会再被调用或者当服务器关闭时，会调用其中的destroy()方法进行销毁。]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>servlet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[整数中1出现的次数]]></title>
     <url>%2Fpost%2F42e11ab6.html</url>
     <content type="text"><![CDATA[. 求出1~13的整数中1出现的次数,并算出100~1300的整数中1出现的次数？为此他特别数了一下1~13中包含1的数字有1、10、11、12、13因此共出现6次,但是对于后面问题他就没辙了。ACMer希望你们帮帮他,并把问题更加普遍化,可以很快的求出任意非负整数区间中1出现的次数（从1 到 n 中1出现的次数）。 代码： https://www.nowcoder.com/profile/448404/codeBookDetail?submissionId=1505827 public class Solution { public int NumberOf1Between1AndN_Solution(int n) { int count=0; while(n&gt;0){ //遍历n到1 String str = String.valueOf(n); //整数转字符串 char[] arr = str.toCharArray(); //字符串转字符数组 for(int i=0; i&lt;arr.length; i++){ if(arr[i]==&apos;1&apos;) count++; } n--; } return count; } }]]></content>
@@ -197,9 +291,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[旋转数组中的最小数字]]></title>
-    <url>%2Fpost%2Fa9f65c43.html</url>
-    <content type="text"><![CDATA[. 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 NOTE：给出的所有元素都大于0，若数组大小为0，请返回0： 解析： 采用二分法解答这个问题， mid = low + (high - low)/2 需要考虑三种情况： (1)array[mid] &gt; array[high]: 出现这种情况的array类似[3,4,5,6,0,1,2]，此时最小数字一定在mid的右边。 low = mid + 1 (2)array[mid] == array[high]: 出现这种情况的array类似 [1,0,1,1,1] 或者[1,1,1,0,1]，此时最小数字不好判断在mid左边还是右边,这时只好一个一个试 ， high = high - 1 (3)array[mid] &lt; array[high]: 出现这种情况的array类似[2,2,3,4,5,6,6],此时最小数字一定就是array[mid]或者在mid的左边。因为右边必然都是递增的。 high = mid 注意这里有个坑（坑1）：如果待查询的范围最后只剩两个数(即最后一次迭代循环)，那么mid 一定会指向下标靠前的数字： 比如 array = [4,6] array[low] = 4 ;array[mid] = 4 ; array[high] = 6 ; 如果high = mid - 1，就会产生错误， 因此high = mid 但情形(1)中low = mid + 1就不会错误 考虑临界情况：(最后一次迭代循环) 情形1：[max,min]时，array[mid]max，而array[high]min，此时满足if条件：array[mid]&gt; array[high]，将执行low=mid+1；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。 情形2：[min,max]时，array[mid]min，而array[high]min，此时满足if条件：array[mid]&lt; array[high]，将执行high=mid；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。 综合1、2，即将最后一个元素锁定到min即可，即设法当跳出循环时使其满足array[low=high]=min 代码：（二分查找的迭代形式） public class Solution { public int minNumberInRotateArray(int [] array) { int low = 0 ; int high = array.length - 1; while(low &lt; high){ int mid = (low + high)/2; if(array[mid] &gt; array[high]) //这里mid必须+1，否则面对剩余两个元素：[max,min]情况时会陷入无限循环 low = mid + 1; //由坑1导致的坑2 else if(array[mid] == array[high]) high = high - 1; else high = mid; } return array[low]; } }]]></content>
+    <title><![CDATA[自然数组]]></title>
+    <url>%2Fpost%2F9aaffcef.html</url>
+    <content type="text"><![CDATA[. 二分查找的进一步应用：对于一个自然数（从0开始）数组，从中随机删除一个元素，请使用二分查找算法找出这个未知元素。 例如： 角标：0,1,2,3,4,5,6,7,… 元素：0,1,2,4,5,6,7,8,… 坑1：如果待查询的范围最后只剩两个数(即最后一次迭代循环)：[2,4]，那么mid 一定会指向下标靠前的数字，即arr[low=mid=high-1]=2,arr[high]=4 代码： public static int BSearchTest(int[] arr){ int low=0,high=arr.length-1; while(low&lt;high){ //当只剩余一个元素时终止while迭代循环 int mid = (low+high)/2; if(arr[mid]==mid) //（临界）情况1：[2,4] low = mid+1; //由坑1）导致的坑2：）这里mid必须+1，不能为low=mid，否则最后一次迭代会陷入无限循环 //然后剩余最后一个元素arr[low=mid=high]=4.跳出while循环返回arr[high]-1或arr[low]-1 else if(arr[mid]&gt;mid) //（临界）情况2：[2,4,5] high = mid; //然后进入情况1 } return arr[low]-1; //arr[high]-1 }]]></content>
       <categories>
         <category>剑指offer</category>
       </categories>
@@ -208,9 +302,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[自然数组]]></title>
-    <url>%2Fpost%2F9aaffcef.html</url>
-    <content type="text"><![CDATA[. 二分查找的进一步应用：对于一个自然数（从0开始）数组，从中随机删除一个元素，请使用二分查找算法找出这个未知元素。 例如： 角标：0,1,2,3,4,5,6,7,… 元素：0,1,2,4,5,6,7,8,… 坑1：如果待查询的范围最后只剩两个数(即最后一次迭代循环)：[2,4]，那么mid 一定会指向下标靠前的数字，即arr[low=mid=high-1]=2,arr[high]=4 代码： public static int BSearchTest(int[] arr){ int low=0,high=arr.length-1; while(low&lt;high){ //当只剩余一个元素时终止while迭代循环 int mid = (low+high)/2; if(arr[mid]==mid) //（临界）情况1：[2,4] low = mid+1; //由坑1）导致的坑2：）这里mid必须+1，不能为low=mid，否则最后一次迭代会陷入无限循环 //然后剩余最后一个元素arr[low=mid=high]=4.跳出while循环返回arr[high]-1或arr[low]-1 else if(arr[mid]&gt;mid) //（临界）情况2：[2,4,5] high = mid; //然后进入情况1 } return arr[low]-1; //arr[high]-1 }]]></content>
+    <title><![CDATA[旋转数组中的最小数字]]></title>
+    <url>%2Fpost%2Fa9f65c43.html</url>
+    <content type="text"><![CDATA[. 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 NOTE：给出的所有元素都大于0，若数组大小为0，请返回0： 解析： 采用二分法解答这个问题， mid = low + (high - low)/2 需要考虑三种情况： (1)array[mid] &gt; array[high]: 出现这种情况的array类似[3,4,5,6,0,1,2]，此时最小数字一定在mid的右边。 low = mid + 1 (2)array[mid] == array[high]: 出现这种情况的array类似 [1,0,1,1,1] 或者[1,1,1,0,1]，此时最小数字不好判断在mid左边还是右边,这时只好一个一个试 ， high = high - 1 (3)array[mid] &lt; array[high]: 出现这种情况的array类似[2,2,3,4,5,6,6],此时最小数字一定就是array[mid]或者在mid的左边。因为右边必然都是递增的。 high = mid 注意这里有个坑（坑1）：如果待查询的范围最后只剩两个数(即最后一次迭代循环)，那么mid 一定会指向下标靠前的数字： 比如 array = [4,6] array[low] = 4 ;array[mid] = 4 ; array[high] = 6 ; 如果high = mid - 1，就会产生错误， 因此high = mid 但情形(1)中low = mid + 1就不会错误 考虑临界情况：(最后一次迭代循环) 情形1：[max,min]时，array[mid]max，而array[high]min，此时满足if条件：array[mid]&gt; array[high]，将执行low=mid+1；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。 情形2：[min,max]时，array[mid]min，而array[high]min，此时满足if条件：array[mid]&lt; array[high]，将执行high=mid；然后只剩余一个元素：array[low=mid=high]=min，跳出while循环返回array[low]或array[high]即可。 综合1、2，即将最后一个元素锁定到min即可，即设法当跳出循环时使其满足array[low=high]=min 代码：（二分查找的迭代形式） public class Solution { public int minNumberInRotateArray(int [] array) { int low = 0 ; int high = array.length - 1; while(low &lt; high){ int mid = (low + high)/2; if(array[mid] &gt; array[high]) //这里mid必须+1，否则面对剩余两个元素：[max,min]情况时会陷入无限循环 low = mid + 1; //由坑1导致的坑2 else if(array[mid] == array[high]) high = high - 1; else high = mid; } return array[low]; } }]]></content>
       <categories>
         <category>剑指offer</category>
       </categories>
@@ -547,8 +641,21 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>事务</tag>
         <tag>数据库</tag>
+        <tag>事务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JDBC数据库访问与事务处理]]></title>
+    <url>%2Fpost%2F9b2f6e20.html</url>
+    <content type="text"><![CDATA[. jdbc访问数据库的步骤： 获取到数据库的用户名、密码、连接字符串。 用Class.forName或者其他方法来注册驱动，获得ConnectionManager 再用ConnectionManager通过连接字符串、用户名、密码，获取到Connection连接， 通过Connection获得Statement处理对象或者PreparedStatement预处理对象， 操作完毕后，先关闭statement对象再关闭Connection连接。 jdbc如何做事务处理？首先，设置jdbc的自动提交为false； 然后，使用数据库连接，开启一个事务transaction； 接着，对数据库进行多条增删改操作，并添加异常捕获try-catch； 操作完毕后，进行commit事务提交，并在catch代码块中使用事务回滚rollback功能； 最后，在finally代码块中关闭数据库连接。 jdbc入门/* 以查找全部记录为例 */ import java.sql.DriverManager; import java.sql.Connection; import java.sql.Statement; import java.sql.ResultSet; //首先导入mysql的jdbc包 import com.mysql.jdbc.Driver; public class JdbcTest { @Test public void process(){ Connection conn = null; // 创建连接对象 Statement stmt = null; // 创建能执行SQL语句的Statement对象 ResultSet rs = null; // 创建SQL语句执行结果返回对象 try {//异常捕获 // 1.通过jdbc包中的Driver类来注册驱动 Class.forName(&quot;com.mysql.jdbc.Driver&quot;); // 2.通过DriverManager以及连接参数获取链接Connection conn = DriverManager.getConnection(&quot;jdbc:mysql:///DBname&quot;, &quot;username&quot;, &quot;password&quot;); //参数：数据库连接字符串、用户名、密码 // 3.由Connection开启事务 --设置默认提交为false conn.setAutoCommit(false); // 4.由Connection创建能执行SQL语句的Statement对象 stmt = conn.createStatement();//或PreparedStatement预处理对象 // 5.编写SQL语句并执行 String sql = &quot;select * from t_user&quot;; // 执行SQL语句获得结果集 rs = stmt.executeQuery(sql); // 遍历查询结果集rs获取数据 while(rs.next()){ // 拿出来 int id =rs.getInt(&quot;id&quot;); String username = rs.getString(&quot;username&quot;); String password = rs.getString(&quot;password&quot;); System.out.println(id+&quot; &quot;+username+&quot; &quot;+password); } // 6.手动提交事务 conn.commit(); } catch (Exception e) { //ClassNotFoundException、SQLException // 7.若发生异常 回滚事务（对于增删改） try { conn.rollback(); } catch (SQLException e1) { e1.printStackTrace(); } e.printStackTrace(); //打印异常信息 throw new RuntimeException(e); } finally{ // 8.释放资源 /** 释放资源的标准文档代码: */ // 8.1先关闭执行SQL语句的结果返回对象ResultSet if(rs != null){ try { rs.close(); } catch (SQLException e) { e.printStackTrace(); } rs = null; } // 8.2然后再关闭能执行SQL语句的Statement对象 if(stmt != null){ try { stmt.close(); } catch (SQLException e) { e.printStackTrace(); } stmt = null; } // 8.3最后关闭链接 if(conn != null){ try { conn.close(); } catch (SQLException e) { e.printStackTrace(); } conn = null; } } } }]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库</tag>
+        <tag>事务</tag>
+        <tag>jdbc</tag>
       </tags>
   </entry>
   <entry>
@@ -559,8 +666,54 @@
         <category>数据库</category>
       </categories>
       <tags>
-        <tag>事务</tag>
         <tag>数据库</tag>
+        <tag>事务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[索引的作用]]></title>
+    <url>%2Fpost%2Fcfd87e66.html</url>
+    <content type="text"><![CDATA[为什么要创建索引呢？ 这是因为，创建索引可以大大提高系统的性能。 通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。 可以大大加快数据的检索速度，这也是创建索引的最主要的原因。 可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。 在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。 通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mysql外键介绍]]></title>
+    <url>%2Fpost%2Fc1424651.html</url>
+    <content type="text"><![CDATA[. MySQL外键必须使用存储引擎为 innDB 其中MySAM 和MEMORYH这两种引擎不支持。 由数据库自身保证数据一致性，完整性，更可靠，因为程序很难100％保证数据的完整性，而用外键即使在数据库服务器当机或者出现其他问题的时候，也能够最大限度的保证数据的一致性和完整性。 设置外键约束的两个表之间会具有父子关系，即子表中外键的字段的取值范围由父表所决定。 设置外键一定程度上降低数据库的速度。 子表的外键字段的数据类型和父表中要一致。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java基本数据类型对应的mysql字段类型]]></title>
+    <url>%2Fpost%2F8dcfa579.html</url>
+    <content type="text"><![CDATA[8中基本数据类型： boolean –&gt; BIT char byte short （int）Integer (lang包)–&gt; TINYINT（BOOLEAN）、SMALLINT、MEDIUMINT BigInteger(math包) –&gt; BIGINT Long –&gt; INTEGER、ID Float –&gt; FLOAT Double –&gt; DOUBLE 3种引用数据类型： String –&gt; VARCHAR、CHAR、TEXT 数组byte[] –&gt; BLOB 对象（sql包）: Date –&gt; DATE、YEAR Time –&gt; TIME Timestamp –&gt; DATETIME、TIMESTAMP]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[五种作业调度算法]]></title>
+    <url>%2Fpost%2F713996e4.html</url>
+    <content type="text"><![CDATA[. （1）先来先服务 （2）短作业优先 （3）最短剩余时间优先 （4）最高响应比优先 响应比R=作业周转时间/作业处理时间（周转时间：等待+处理） （5）优先级调度算法（设定优先级有两种方式：用户自己设定和系统设定） （6）均衡调度算法（分类排队算法）]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>算法</tag>
+        <tag>作业调度</tag>
       </tags>
   </entry>
   <entry>
@@ -600,6 +753,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[观察者模式]]></title>
+    <url>%2Fpost%2F9a246216.html</url>
+    <content type="text"><![CDATA[转自：http://www.cnblogs.com/luohanguo/p/7825656.html 基本思想：观察者模式的定义： 在对象之间定义了一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象会收到通知并自动更新。 大白话： 其实就是发布订阅模式，发布者发布信息，订阅者获取信息，订阅了就能收到信息，没订阅就收不到信息。 该模式包含四个角色： 抽象被观察者角色：也就是一个抽象主题，它把所有对观察者对象的引用保存在一个集合中，每个主题都可以有任意数量的观察者。抽象主题提供一个接口，可以增加和删除观察者角色。一般用一个抽象类和接口来实现。 抽象观察者角色：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。 具体被观察者角色：也就是一个具体的主题，在集体主题的内部状态改变时，所有登记过的观察者发出通知。 具体观察者角色：实现抽象观察者角色所需要的更新接口，一边使本身的状态与制图的状态相协调。 代码：/*** * 抽象被观察者接口 * 声明了添加、删除、通知观察者方法 * @author jstao */ public interface Observerable { public void registerObserver(Observer o); //添加一个用户 public void removeObserver(Observer o); //移除一个用户 public void notifyObserver(); //通知用户消息更新了--&gt;里面调用观察者接口的update()方法 } . /*** * 抽象观察者接口 * 定义了一个update()方法，当被观察者调用notifyObservers()方法时，观察者的update()方法会被回调。 * @author jstao */ public interface Observer { public void update(String message); } . import java.util.ArrayList; import java.util.List; /** * 被观察者，也就是微信公众号服务 * 实现了Observerable接口，对Observerable接口的三个方法进行了具体实现 * @author jstao * */ public class WechatServer implements Observerable { //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现类编程 private List&lt;Observer&gt; list; //用户列表 private String message; //发布的信息 public WechatServer() { list = new ArrayList&lt;Observer&gt;(); } @Override public void registerObserver(Observer o) { list.add(o); } @Override public void removeObserver(Observer o) { if(!list.isEmpty()) list.remove(o); } //遍历 @Override public void notifyObserver() { for(int i = 0; i &lt; list.size(); i++) { Observer oserver = list.get(i); oserver.update(message); //回调集合中每个用户的update()方法，传达更新消息 } } public void setInfomation(String s) { //设置更新消息 this.message = s; System.out.println(&quot;微信服务更新消息： &quot; + s); //消息更新，通知所有观察者 notifyObserver(); } } . /** * 观察者 * 实现了update方法 * @author jstao * */ public class User implements Observer { private String name; private String message; public User(String name) { this.name = name; } @Override public void update(String message) { this.message = message; read(); } public void read() { System.out.println(name + &quot; 收到推送消息： &quot; + message); } } //测试： /** * 首先注册了三个用户，ZhangSan、LiSi、WangWu。公众号发布了一条消息&quot;PHP是世界上最好用的语言！&quot;，三个用户都收到了消息。 用户ZhangSan看到消息后颇为震惊，果断取消订阅，这时公众号又推送了一条消息，此时用户ZhangSan已经收不到消息，其他用户 还是正常能收到推送消息。 */ public class Test { public static void main(String[] args) { WechatServer server = new WechatServer(); Observer userZhang = new User(&quot;ZhangSan&quot;); Observer userLi = new User(&quot;LiSi&quot;); Observer userWang = new User(&quot;WangWu&quot;); server.registerObserver(userZhang); server.registerObserver(userLi); server.registerObserver(userWang); server.setInfomation(&quot;PHP是世界上最好用的语言！&quot;); System.out.println(&quot;----------------------------------------------&quot;); server.removeObserver(userZhang); server.setInfomation(&quot;JAVA是世界上最好用的语言！&quot;); } } 小结：这个模式是松偶合的，改变主题或观察者中的一方，另一方不会受到影像。 JDK中也有自带的观察者模式，但是被观察者是一个类而不是接口，限制了它的复用能力。 在JavaBean和Swing中也可以看到观察者模式的影子。 yangd个人理解： 接口异步回调是两个对象之间互相调用，而观察者模式只有服务器调用用户的方法（被观察者调用观察者），是单向调用，所以二者是不一样的。]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如何在两个线程间共享数据]]></title>
     <url>%2Fpost%2F9a246216.html</url>
     <content type="text"><![CDATA[转自：https://blog.csdn.net/hejingyuan6/article/details/47053409 你可以通过共享对象来实现这个目的，或者是使用像阻塞队列这样并发的数据结构。 1，如果每个线程执行的代码相同，可以使用同一个Runnable对象，这个Runnable对象中有那个共享数据。 例如，卖票系统就可以这么做： class Ticket implements Runnable { private int ticket = 10; //共享成员变量 public void run() { while (ticket &gt; 0) { ticket--; System.out.println(&quot;当前票数为：&quot; + ticket); } } } public class SellTicket { public static void main(String[] args) { Ticket t = new Ticket(); //使用同一个Runnable实现对象 new Thread(t).start(); //在主线程中新建并开启两个线程 new Thread(t).start(); } } 2，如果每个线程执行的代码不同，这时候需要用不同的Runnable对象。 例如，设计4个线程。其中两个线程每次对data增加1，另外两个线程对data每次减1，银行存取款。 有两种方法来解决此问题： （其实这两个方法是差不多的，只是使用内部类写法更简洁） 2.1 将共享数据封装成另外一个对象，然后将这个对象逐一传递给各个Runnable对象，每个线程对共享数据的操作方法也分配到那个对象身上完成，这样容易实现针对数据进行各个操作的互斥和通信： class MyData{ //共享数据类 private int data; //共享数据 public MyData(int data){ this.data=data; } public synchronized void increase(){ //加操作 data++; System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data); } public synchronized void decrease(){ //减操作 data--; System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data); } } class Inc implements Runnable{ //线程1 private MyData obj; public Inc(MyData obj){ //传入共享数据类对象 this.obj=obj; } public void run(){ this.obj.increase(); //调用加操作 } } class Dec implements Runnable{ //线程2 private MyData obj; public Dec(MyData obj){ //传入共享数据类对象 this.obj=obj; } public void run(){ this.obj.decrease(); //调用减操作 } } public class Test{ public static void main(String[] args){ MyData t = new MyData (10); for (int i = 0; i &lt; 2; i++){ //共开启2*2个线程 Thread inc=new Thread(new Inc(t)); Thread dec=new Thread(new Dec(t)); inc.start(); dec.start(); } } } 2.2 将Runnable对象作为一个类的内部类，共享数据作为这个类的成员变量，每个线程对共享数据的操作方法也封装在外部类，以便实现对数据的各个操作的同步和互斥，作为内部类的各个Runnable对象调用外部类的这些方法： class MyData{ //共享数据类 private int data; //共享数据 public MyData(int data){ this.data=data; } public synchronized void increase(){ //加操作 data++; System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data); } public synchronized void decrease(){ //减操作 data--; System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data); } } public class Test{ public static void main(String[] args){ final MyData t = new MyData (10); //final表示引用变量t不能指向其他对象实例 for (int i = 0; i &lt; 2; i++){ new Thread(new Runnable(){ public void run(){ this.obj.increase(); //调用加操作 } }).start(); new Thread(new Runnable(){ public void run(){ this.obj.decrease(); //调用减操作 } }).start(); } } } 总结： 其实多线程间的共享数据最主要的还是互斥，多个线程共享一个变量，针对变量的操作实现原子性即可。]]></content>
@@ -609,17 +773,6 @@
       <tags>
         <tag>java</tag>
         <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[观察者模式]]></title>
-    <url>%2Fpost%2F9a246216.html</url>
-    <content type="text"><![CDATA[转自：http://www.cnblogs.com/luohanguo/p/7825656.html 基本思想：观察者模式的定义： 在对象之间定义了一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象会收到通知并自动更新。 大白话： 其实就是发布订阅模式，发布者发布信息，订阅者获取信息，订阅了就能收到信息，没订阅就收不到信息。 该模式包含四个角色： 抽象被观察者角色：也就是一个抽象主题，它把所有对观察者对象的引用保存在一个集合中，每个主题都可以有任意数量的观察者。抽象主题提供一个接口，可以增加和删除观察者角色。一般用一个抽象类和接口来实现。 抽象观察者角色：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。 具体被观察者角色：也就是一个具体的主题，在集体主题的内部状态改变时，所有登记过的观察者发出通知。 具体观察者角色：实现抽象观察者角色所需要的更新接口，一边使本身的状态与制图的状态相协调。 代码：/*** * 抽象被观察者接口 * 声明了添加、删除、通知观察者方法 * @author jstao */ public interface Observerable { public void registerObserver(Observer o); //添加一个用户 public void removeObserver(Observer o); //移除一个用户 public void notifyObserver(); //通知用户消息更新了--&gt;里面调用观察者接口的update()方法 } . /*** * 抽象观察者接口 * 定义了一个update()方法，当被观察者调用notifyObservers()方法时，观察者的update()方法会被回调。 * @author jstao */ public interface Observer { public void update(String message); } . import java.util.ArrayList; import java.util.List; /** * 被观察者，也就是微信公众号服务 * 实现了Observerable接口，对Observerable接口的三个方法进行了具体实现 * @author jstao * */ public class WechatServer implements Observerable { //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现类编程 private List&lt;Observer&gt; list; //用户列表 private String message; //发布的信息 public WechatServer() { list = new ArrayList&lt;Observer&gt;(); } @Override public void registerObserver(Observer o) { list.add(o); } @Override public void removeObserver(Observer o) { if(!list.isEmpty()) list.remove(o); } //遍历 @Override public void notifyObserver() { for(int i = 0; i &lt; list.size(); i++) { Observer oserver = list.get(i); oserver.update(message); //回调集合中每个用户的update()方法，传达更新消息 } } public void setInfomation(String s) { //设置更新消息 this.message = s; System.out.println(&quot;微信服务更新消息： &quot; + s); //消息更新，通知所有观察者 notifyObserver(); } } . /** * 观察者 * 实现了update方法 * @author jstao * */ public class User implements Observer { private String name; private String message; public User(String name) { this.name = name; } @Override public void update(String message) { this.message = message; read(); } public void read() { System.out.println(name + &quot; 收到推送消息： &quot; + message); } } //测试： /** * 首先注册了三个用户，ZhangSan、LiSi、WangWu。公众号发布了一条消息&quot;PHP是世界上最好用的语言！&quot;，三个用户都收到了消息。 用户ZhangSan看到消息后颇为震惊，果断取消订阅，这时公众号又推送了一条消息，此时用户ZhangSan已经收不到消息，其他用户 还是正常能收到推送消息。 */ public class Test { public static void main(String[] args) { WechatServer server = new WechatServer(); Observer userZhang = new User(&quot;ZhangSan&quot;); Observer userLi = new User(&quot;LiSi&quot;); Observer userWang = new User(&quot;WangWu&quot;); server.registerObserver(userZhang); server.registerObserver(userLi); server.registerObserver(userWang); server.setInfomation(&quot;PHP是世界上最好用的语言！&quot;); System.out.println(&quot;----------------------------------------------&quot;); server.removeObserver(userZhang); server.setInfomation(&quot;JAVA是世界上最好用的语言！&quot;); } } 小结：这个模式是松偶合的，改变主题或观察者中的一方，另一方不会受到影像。 JDK中也有自带的观察者模式，但是被观察者是一个类而不是接口，限制了它的复用能力。 在JavaBean和Swing中也可以看到观察者模式的影子。 yangd个人理解： 接口异步回调是两个对象之间互相调用，而观察者模式只有服务器调用用户的方法（被观察者调用观察者），是单向调用，所以二者是不一样的。]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -675,8 +828,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>JVM</tag>
         <tag>GC</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -688,8 +841,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>JVM</tag>
         <tag>GC</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -701,8 +854,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>JVM</tag>
         <tag>GC</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -714,8 +867,8 @@
       </categories>
       <tags>
         <tag>java</tag>
-        <tag>JVM</tag>
         <tag>GC</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -806,7 +959,13 @@
   <entry>
     <title><![CDATA[wait和sleep方法的区别]]></title>
     <url>%2Fpost%2F16df4c2a.html</url>
-    <content type="text"><![CDATA[转自：https://www.cnblogs.com/loren-Yang/p/7538482.html 1、两者的区别 这两个方法来自不同的类分别是Thread和Object 最主要是sleep方法没有释放锁，而wait方法释放了锁，使得其他线程可以使用同步控制块或者方法(锁代码块和方法锁)。 wait，notify和notifyAll只能在同步控制方法或者同步控制块里面使用，而sleep可以在任何地方使用(使用范围) sleep必须捕获异常，而wait，notify和notifyAll不需要捕获异常 sleep方法属于Thread类中方法，表示让一个线程进入睡眠状态，等待一定的时间之后，自动醒来进入到可运行状态，不会马上进入运行状态，因为线程调度机制恢复线程的运行也需要时间，一个线程对象调用了sleep方法之后，并不会释放他所持有的所有对象锁，所以也就不会影响其他进程对象的运行。但在sleep的过程中过程中有可能被其他对象调用它的interrupt(),产生InterruptedException异常，如果你的程序不捕获这个异常，线程就会异常终止，进入TERMINATED状态，如果你的程序捕获了这个异常，那么程序就会继续执行catch语句块(可能还有finally语句块)以及以后的代码。 注意sleep()方法是一个静态方法，也就是说他只对当前对象有效，通过t.sleep()让t对象进入sleep，这样的做法是错误的，它只会是使当前线程被sleep 而不是t线程 wait属于Object的成员方法，一旦一个对象调用了wait方法，必须要采用notify()和notifyAll()方法唤醒该进程;如果线程拥有某个或某些对象的同步锁，那么在调用了wait()后，这个线程就会释放它持有的所有同步资源，而不限于这个被调用了wait()方法的对象。wait()方法也同样会在wait的过程中有可能被其他对象调用interrupt()方法而产生 如果线程A希望立即结束线程B，则可以对线程B对应的Thread实例调用interrupt方法。如果此刻线程B正在wait/sleep/join，则线程B会立刻抛出InterruptedException，在catch() {} 中直接return即可安全地结束线程。 需要注意的是，InterruptedException是线程自己从内部抛出的，并不是interrupt()方法抛出的。对某一线程调用interrupt()时，如果该线程正在执行普通的代码，那么该线程根本就不会抛出InterruptedException。但是，一旦该线程进入到wait()/sleep()/join()后，就会立刻抛出InterruptedException。 waite()和notify()因为会对对象的“锁标志”进行操作，所以它们必须在synchronized函数或synchronized block中进行调用。如果在non-synchronized函数或non-synchronizedblock中进行调用，虽然能编译通过，但在运行时会发生illegalMonitorStateException的异常。 补充两个重要的方法： yield()和join() yield方法暂停当前正在执行的线程对象。 yield()方法是停止当前线程，让同等优先权的线程或更高优先级的线程有执行的机会。如果没有的话，那么yield()方法将不会起作用，并且由可执行状态后马上又被执行。 join方法是用于在某一个线程的执行过程中调用另一个线程执行，等到被调用的线程执行结束后，再继续执行当前线程。 如： t.join(); //主要用于等待t线程运行结束，若无此句，main则会执行完毕，导致结果不可预测。 说一下为什么使用wait()方法时，一般是需要while循环而不是if？while(!执行条件） { wait(); } .... if(!执行条件） { wait(); } .... while会一直执行循环，直到条件满足，执行条件才会继续往下执行。if只会执行一次判断条件，不满足就会等待。这样就会出现问题。 我们知道用notify() 和notifyAll()可以唤醒线程，一般我们常用的是notifyAll()，因为notify()，只会随机唤醒一个睡眠线程，并不一定是我们想要唤醒的线程。如果使用的是notifyAll()，唤醒所有的线程，那你怎么知道他想唤醒的是某个正在等待的wait()线程呢，如果用while()方法，就会再次判断条件是不是成立，满足执行条件了，就会接着执行，而if会直接唤醒wait()方法，继续往下执行，根本不管这个notifyAll()是不是想唤醒的是自己还是别人，可能此时if的条件根本没成立。 举个例子： while去水果店买苹果，没有了，然后while就和水果店老板说，有水果的时候通知我，我先回去了。if也去水果店买苹果，没有了，然后if就和水果店老板说，有水果的时候通知我，我先回去了。过一段时间，水果店老板发短信告诉while和if，有水果了，while去一看，水果店只是进了香蕉，并不是苹果，所以不是想要的水果，于是回去继续等水果店老板通知，而if根本就不看是不是自己想要的苹果，直接就叫老板送10斤水果过来，这样会导致你得到错误的结果。 参考文献： Java中wait 和sleep 方法比较 JAVA-sleep()和wait()的区别 java中的sleep()和wait()的区别]]></content>
+    <content type="text"><![CDATA[参考：https://www.cnblogs.com/loren-Yang/p/7538482.html 两者的区别（1）来自不同的类： sleep()方法是Thread类中的一个静态方法； wait()属于Object类的成员方法。 （2）唤醒条件不同： Sleep()方法属于Thread类中方法，表示让当前线程进入睡眠状态，等待一定的时间后，便会自动醒来进入可运行状态； 一旦某个线程对象调用了wait()方法，就必须要在其他线程中使用notify()或notifyAll()方法才能唤醒它。 （3）异常捕获不同： 在sleep的过程中有可能被其他对象调用它的interrupt()方法,产生InterruptedException异常，所以要使用sleep方法必须对其捕获异常； 而使用wait()，notify()和notifyAll()方法不需要进行捕获异常 。 （4）最主要区别是对带锁Synchronized资源的控制权： Sleep()方法没有释放锁。一个线程对象调用了sleep()方法之后，并不会释放它所持有的所有对象锁； Wait()方法释放了锁。使得其他线程可以有机会使用带锁代码块或者带锁方法。 PS： 如果线程调用了对象的 wait()方法，那么线程便会处于该对象的等待池中，等待池中的线程不会去竞争该对象的锁。 当有线程调用了对象的 notifyAll()方法（唤醒所有 wait 线程）或 notify()方法（只随机唤醒一个 wait 线程），被唤醒的的线程便会进入该对象的锁池中，锁池中的线程会去竞争该对象锁。 也就是说，调用了notify后只会有一个线程会由等待池进入锁池，而notifyAll会将该对象等待池内的所有线程移动到锁池中，等待锁竞争。 补充两个重要的方法： yield()和join() yield方法暂停当前正在执行的线程对象。 yield()方法是停止当前线程，让同等优先权的线程或更高优先级的线程有执行的机会。如果没有的话，那么yield()方法将不会起作用，并且由可执行状态后马上又被执行。 join方法是用于在某一个线程的执行过程中调用另一个线程执行，等到被调用的线程执行结束后，再继续执行当前线程。 如： t.join(); //主要用于等待t线程运行结束，若无此句，main则会执行完毕，导致结果不可预测。 说一下为什么使用wait()方法时，一般是需要while循环而不是if？while(!执行条件） { wait(); } .... if(!执行条件） { wait(); } .... while会一直执行循环，直到条件满足，执行条件才会继续往下执行。if只会执行一次判断条件，不满足就会等待。这样就会出现问题。 我们知道用notify() 和notifyAll()可以唤醒线程，一般我们常用的是notifyAll()，因为notify()，只会随机唤醒一个睡眠线程，并不一定是我们想要唤醒的线程。如果使用的是notifyAll()，唤醒所有的线程，那你怎么知道他想唤醒的是某个正在等待的wait()线程呢，如果用while()方法，就会再次判断条件是不是成立，满足执行条件了，就会接着执行，而if会直接唤醒wait()方法，继续往下执行，根本不管这个notifyAll()是不是想唤醒的是自己还是别人，可能此时if的条件根本没成立。 举个例子： while去水果店买苹果，没有了，然后while就和水果店老板说，有水果的时候通知我，我先回去了。if也去水果店买苹果，没有了，然后if就和水果店老板说，有水果的时候通知我，我先回去了。过一段时间，水果店老板发短信告诉while和if，有水果了，while去一看，水果店只是进了香蕉，并不是苹果，所以不是想要的水果，于是回去继续等水果店老板通知，而if根本就不看是不是自己想要的苹果，直接就叫老板送10斤水果过来，这样会导致你得到错误的结果。 参考文献： Java中wait 和sleep 方法比较 JAVA-sleep()和wait()的区别 java中的sleep()和wait()的区别]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>多线程</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[早绑定与晚绑定]]></title>
@@ -909,7 +1068,7 @@
   <entry>
     <title><![CDATA[字节流与字符流]]></title>
     <url>%2Fpost%2F2e5c77c2.html</url>
-    <content type="text"><![CDATA[转载自:http://www.cnblogs.com/lich/archive/2011/12/11/2283700.html 先来看一下流的概念： 在程序中所有的数据都是以流的方式进行传输或保存的，程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的时候，就要使用输出流完成。 程序中的输入输出都是以流的形式保存的，流中保存的实际上全都是字节文件。 字节流与字符流在java.io包中操作文件内容的主要有两大类：字节流、字符流，两类都分为输入和输出操作。在字节流中输出数据主要是使用OutputStream完成，输入使的是InputStream，在字符流中输出主要是使用Writer类完成，输入流主要使用Reader类完成。（这四个都是抽象类） 操作流程在Java中IO操作也是有相应步骤的，以文件操作为例，主要的操作流程如下： 使用File类打开一个文件 通过字节流或字符流的子类，指定输出的位置 进行读/写操作 关闭输入/输出 IO操作属于资源操作，一定要记得关闭 字节流字节流主要是操作byte类型数据，以byte数组为准，主要操作类就是OutputStream、InputStream 字节输出流：OutputStream OutputStream是整个IO包中字节输出流的最大父类，此类的定义如下： public abstract class OutputStream extends Object implements Closeable,Flushable 从以上的定义可以发现，此类是一个抽象类，如果想要使用此类的话，则首先必须通过子类实例化对象，那么如果现在要操作的是一个文件，则可以使用：FileOutputStream类。通过向上转型之后，可以为OutputStream实例化 Closeable表示可以关闭的操作，因为程序运行到最后肯定要关闭 Flushable：表示刷新，清空内存中的数据 FileOutputStream类的构造方法如下： public FileOutputStream(File file)throws FileNotFoundException 写数据： import java.io.File; import java.io.FileOutputStream; import java.io.IOException; import java.io.OutputStream; public class Test11 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); OutputStream out=new FileOutputStream(f);//如果文件不存在会自动创建 String str=&quot;Hello World&quot;; byte[] b=str.getBytes(); out.write(b);//因为是字节流，所以要转化成字节数组进行输出 out.close(); } } 也可以一个字节一个字节进行输出，如下： import java.io.File; import java.io.FileOutputStream; import java.io.IOException; import java.io.OutputStream; public class Test11 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); OutputStream out=new FileOutputStream(f);//如果文件不存在会自动创建 String str=&quot;Hello World&quot;; byte[] b=str.getBytes(); for(int i=0;i&lt;b.length;i++){ out.write(b[i]); } out.close(); } } 以上输出只会进行覆盖，如果要追加的话，请看FileOutputStream类的另一个构造方法： public FileOutputStream(File file,boolean append)throws FileNotFoundException 在构造方法中，如果将append的值设置为true，则表示在文件的末尾追加内容。 import java.io.File; import java.io.FileOutputStream; import java.io.IOException; import java.io.OutputStream; public class Test11 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); OutputStream out=new FileOutputStream(f,true);//追加内容 String str=&quot;\r\nHello World&quot;; byte[] b=str.getBytes(); for(int i=0;i&lt;b.length;i++){ out.write(b[i]); } out.close(); } } 文件中换行为：\r\n 字节输入流：InputStream既然程序可以向文件中写入内容，则就可以通过InputStream从文件中把内容读取进来，首先来看InputStream类的定义： public abstract class InputStream extends Object implements Closeable 与OutputStream类一样，InputStream本身也是一个抽象类，必须依靠其子类，如果现在是从文件中读取，就用FileInputStream来实现。 观察FileInputStream类的构造方法： public FileInputStream(File file)throws FileNotFoundException 读文件： import java.io.File; import java.io.FileInputStream; import java.io.IOException; import java.io.InputStream; public class Test12 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); InputStream in=new FileInputStream(f); byte[] b=new byte[1024]; int len=in.read(b); in.close(); System.out.println(new String(b,0,len)); } } 但以上方法是有问题的，用不用开辟这么大的一个字节数组，明显是浪费嘛，我们可以根据文件的大小来定义字节数组的大小，File类中的方法：public long length() import java.io.File; import java.io.FileInputStream; import java.io.IOException; import java.io.InputStream; public class Test13 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); InputStream in=new FileInputStream(f); byte[] b=new byte[(int) f.length()]; in.read(b); in.close(); System.out.println(new String(b)); } } 我们换种方式，一个字节一个字节读入~ import java.io.File; import java.io.FileInputStream; import java.io.IOException; import java.io.InputStream; public class Test14 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); InputStream in=new FileInputStream(f); byte[] b=new byte[(int) f.length()]; for(int i=0;i&lt;b.length;i++){ b[i]=(byte) in.read(); } in.close(); System.out.println(new String(b)); } } 但以上情况只适合知道输入文件的大小，不知道的话用如下方法： import java.io.File; import java.io.FileInputStream; import java.io.IOException; import java.io.InputStream; public class Test15 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); InputStream in=new FileInputStream(f); byte[] b=new byte[1024]; int temp=0; int len=0; while((temp=in.read())!=-1){//-1为文件读完的标志 b[len]=(byte) temp; len++; } in.close(); System.out.println(new String(b,0,len)); } } 字符流在程序中一个字符等于两个字节，那么java提供了Reader、Writer两个专门操作字符流的类。 字符输出流：WriterWriter本身是一个字符流的输出类，此类的定义如下： public abstract class Writer extends Object implements Appendable，Closeable，Flushable 此类本身也是一个抽象类，如果要使用此类，则肯定要使用其子类，此时如果是向文件中写入内容，所以应该使用FileWriter的子类。 FileWriter类的构造方法定义如下： public FileWriter(File file)throws IOException 字符流的操作比字节流操作好在一点，就是可以直接输出字符串了，不用再像之前那样进行转换操作了。 写文件： import java.io.File; import java.io.FileWriter; import java.io.IOException; import java.io.Writer; public class Test16 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); Writer out=new FileWriter(f); String str=&quot;Hello World&quot;; out.write(str); out.close(); } } 在默认情况下再次输出会覆盖，追加的方法也是在构造函数上加上追加标记 import java.io.File; import java.io.FileWriter; import java.io.IOException; import java.io.Writer; public class Test17 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); Writer out=new FileWriter(f,true);//追加 String str=&quot;\r\nHello World&quot;; out.write(str); out.close(); } } 字符输入流：ReaderReader是使用字符的方式从文件中取出数据，Reader类的定义如下： public abstract class Reader extends Objects implements Readable，Closeable Reader本身也是抽象类，如果现在要从文件中读取内容，则可以直接使用FileReader子类。 FileReader的构造方法定义如下： public FileReader(File file)throws FileNotFoundException 以字符数组的形式读取出数据： import java.io.File; import java.io.FileReader; import java.io.IOException; import java.io.Reader; public class Test18 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); Reader input=new FileReader(f); char[] c=new char[1024]; int len=input.read(c); input.close(); System.out.println(new String(c,0,len)); } } 也可以用循环方式，判断是否读到底： import java.io.File; import java.io.FileReader; import java.io.IOException; import java.io.Reader; public class Test19 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); Reader input=new FileReader(f); char[] c=new char[1024]; int temp=0; int len=0; while((temp=input.read())!=-1){ c[len]=(char) temp; len++; } input.close(); System.out.println(new String(c,0,len)); } } 字节流与字符流的区别字节流和字符流使用是非常相似的，那么除了操作代码的不同之外，还有哪些不同呢？ 字节流在操作的时候本身是不会用到缓冲区（内存）的，是与文件本身直接操作的，而字符流在操作的时候是使用到缓冲区的 字节流在操作文件时，即使不关闭资源（close方法），文件也能输出，但是如果字符流不使用close方法的话，则不会输出任何内容，说明字符流用的是缓冲区，并且可以使用flush方法强制进行刷新缓冲区，这时才能在不close的情况下输出内容 那开发中究竟用字节流好还是用字符流好呢？ 在所有的硬盘上保存文件或进行传输的时候都是以字节的方法进行的，包括图片也是按字节完成，而字符是只有在内存中才会形成的，所以使用字节的操作是最多的。 如果要java程序实现一个拷贝功能，应该选用字节流进行操作（可能拷贝的是图片），并且采用边读边写的方式（节省内存）。]]></content>
+    <content type="text"><![CDATA[转载自:http://www.cnblogs.com/lich/archive/2011/12/11/2283700.html 先来看一下流的概念： 在程序中所有的数据都是以流的方式进行传输或保存的，程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的时候，就要使用输出流完成。 程序中的输入输出都是以流的形式保存的，流中保存的实际上全都是字节文件。 字节流与字符流在java.io包中操作文件内容的主要有两大类：字节流、字符流，两类都分为输入和输出操作。在字节流中输出数据主要是使用OutputStream完成，输入使的是InputStream，在字符流中输出主要是使用Writer类完成，输入流主要使用Reader类完成。（这四个都是抽象类） 操作流程在Java中IO操作也是有相应步骤的，以文件操作为例，主要的操作流程如下： 使用File类打开一个文件 通过字节流或字符流的子类，指定输出的位置 进行读/写操作 关闭输入/输出 IO操作属于资源操作，一定要记得关闭 字节流字节流主要是操作byte类型数据，以byte数组为准，主要操作类就是OutputStream、InputStream 字节输出流：OutputStream OutputStream是整个IO包中字节输出流的最大父类，此类的定义如下： public abstract class OutputStream extends Object implements Closeable,Flushable 从以上的定义可以发现，此类是一个抽象类，如果想要使用此类的话，则首先必须通过子类实例化对象，那么如果现在要操作的是一个文件，则可以使用：FileOutputStream类。通过向上转型之后，可以为OutputStream实例化 Closeable表示可以关闭的操作，因为程序运行到最后肯定要关闭 Flushable：表示刷新，清空内存中的数据 FileOutputStream类的构造方法如下： public FileOutputStream(File file)throws FileNotFoundException 写数据： import java.io.File; import java.io.FileOutputStream; import java.io.IOException; import java.io.OutputStream; public class Test11 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); OutputStream out=new FileOutputStream(f);//如果文件不存在会自动创建 String str=&quot;Hello World&quot;; byte[] b=str.getBytes(); out.write(b);//因为是字节流，所以要转化成字节数组进行输出 out.close(); } } 也可以一个字节一个字节进行输出，如下： import java.io.File; import java.io.FileOutputStream; import java.io.IOException; import java.io.OutputStream; public class Test11 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); OutputStream out=new FileOutputStream(f);//如果文件不存在会自动创建 String str=&quot;Hello World&quot;; byte[] b=str.getBytes(); for(int i=0;i&lt;b.length;i++){ out.write(b[i]); } out.close(); } } 以上输出只会进行覆盖，如果要追加的话，请看FileOutputStream类的另一个构造方法： public FileOutputStream(File file,boolean append)throws FileNotFoundException 在构造方法中，如果将append的值设置为true，则表示在文件的末尾追加内容。 import java.io.File; import java.io.FileOutputStream; import java.io.IOException; import java.io.OutputStream; public class Test11 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); OutputStream out=new FileOutputStream(f,true);//追加内容 String str=&quot;\r\nHello World&quot;; byte[] b=str.getBytes(); for(int i=0;i&lt;b.length;i++){ out.write(b[i]); } out.close(); } } 文件中换行为：\r\n 字节输入流：InputStream既然程序可以向文件中写入内容，则就可以通过InputStream从文件中把内容读取进来，首先来看InputStream类的定义： public abstract class InputStream extends Object implements Closeable 与OutputStream类一样，InputStream本身也是一个抽象类，必须依靠其子类，如果现在是从文件中读取，就用FileInputStream来实现。 观察FileInputStream类的构造方法： public FileInputStream(File file)throws FileNotFoundException 读文件： import java.io.File; import java.io.FileInputStream; import java.io.IOException; import java.io.InputStream; public class Test12 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); InputStream in=new FileInputStream(f); byte[] b=new byte[1024]; int len=in.read(b); in.close(); System.out.println(new String(b,0,len)); } } 但以上方法是有问题的，用不用开辟这么大的一个字节数组，明显是浪费嘛，我们可以根据文件的大小来定义字节数组的大小，File类中的方法：public long length() import java.io.File; import java.io.FileInputStream; import java.io.IOException; import java.io.InputStream; public class Test13 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); InputStream in=new FileInputStream(f); byte[] b=new byte[(int) f.length()]; in.read(b); in.close(); System.out.println(new String(b)); } } 我们换种方式，一个字节一个字节读入~ import java.io.File; import java.io.FileInputStream; import java.io.IOException; import java.io.InputStream; public class Test14 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); InputStream in=new FileInputStream(f); byte[] b=new byte[(int) f.length()]; for(int i=0;i&lt;b.length;i++){ b[i]=(byte) in.read(); } in.close(); System.out.println(new String(b)); } } 但以上情况只适合知道输入文件的大小，不知道的话用如下方法： import java.io.File; import java.io.FileInputStream; import java.io.IOException; import java.io.InputStream; public class Test15 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); InputStream in=new FileInputStream(f); byte[] b=new byte[1024]; int temp=0; int len=0; while((temp=in.read())!=-1){//-1为文件读完的标志 b[len]=(byte) temp; len++; } in.close(); System.out.println(new String(b,0,len)); } } 字符流在程序中一个字符等于两个字节，那么java提供了Reader、Writer两个专门操作字符流的类。 字符输出流：WriterWriter本身是一个字符流的输出类，此类的定义如下： public abstract class Writer extends Object implements Appendable，Closeable，Flushable 此类本身也是一个抽象类，如果要使用此类，则肯定要使用其子类，此时如果是向文件中写入内容，所以应该使用FileWriter的子类。 FileWriter类的构造方法定义如下： public FileWriter(File file)throws IOException 字符流的操作比字节流操作好在一点，就是可以直接输出字符串了，不用再像之前那样进行转换操作了。 写文件： import java.io.File; import java.io.FileWriter; import java.io.IOException; import java.io.Writer; public class Test16 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); Writer out=new FileWriter(f); String str=&quot;Hello World&quot;; out.write(str); out.close(); } } 在默认情况下再次输出会覆盖，追加的方法也是在构造函数上加上追加标记 import java.io.File; import java.io.FileWriter; import java.io.IOException; import java.io.Writer; public class Test17 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); Writer out=new FileWriter(f,true);//追加 String str=&quot;\r\nHello World&quot;; out.write(str); out.close(); } } 字符输入流：ReaderReader是使用字符的方式从文件中取出数据，Reader类的定义如下： public abstract class Reader extends Objects implements Readable，Closeable Reader本身也是抽象类，如果现在要从文件中读取内容，则可以直接使用FileReader子类。 FileReader的构造方法定义如下： public FileReader(File file)throws FileNotFoundException 以字符数组的形式读取出数据： import java.io.File; import java.io.FileReader; import java.io.IOException; import java.io.Reader; public class Test18 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); Reader input=new FileReader(f); char[] c=new char[1024]; int len=input.read(c); input.close(); System.out.println(new String(c,0,len)); } } 也可以用循环方式，判断是否读到底： import java.io.File; import java.io.FileReader; import java.io.IOException; import java.io.Reader; public class Test19 { public static void main(String[] args) throws IOException { File f = new File(&quot;d:&quot; + File.separator+&quot;test.txt&quot;); Reader input=new FileReader(f); char[] c=new char[1024]; int temp=0; int len=0; while((temp=input.read())!=-1){ c[len]=(char) temp; len++; } input.close(); System.out.println(new String(c,0,len)); } } 另外： 文件输入输出流：FileReader FileWriter（实现对文件内容的逐字符处理） 缓存文件输入输出流：BufferedReader BufferedWriter（实现对文件内容的逐行处理） 字节流与字符流的区别字节流和字符流使用是非常相似的，那么除了操作代码的不同之外，还有哪些不同呢？ 字节流在操作的时候本身是不会用到缓冲区（内存）的，是与文件本身直接操作的，而字符流在操作的时候是使用到缓冲区的 字节流在操作文件时，即使不关闭资源（close方法），文件也能输出，但是如果字符流不使用close方法的话，则不会输出任何内容，说明字符流用的是缓冲区，并且可以使用flush方法强制进行刷新缓冲区，这时才能在不close的情况下输出内容 那开发中究竟用字节流好还是用字符流好呢？ 在所有的硬盘上保存文件或进行传输的时候都是以字节的方法进行的，包括图片也是按字节完成，而字符是只有在内存中才会形成的，所以使用字节的操作是最多的。 如果要java程序实现一个拷贝功能，应该选用字节流进行操作（可能拷贝的是图片），并且采用边读边写的方式（节省内存）。]]></content>
       <categories>
         <category>Java</category>
       </categories>
