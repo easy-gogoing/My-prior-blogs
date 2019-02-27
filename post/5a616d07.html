@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta name="theme-color" content="#222">
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/optimus-32x32.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/optimus-16x16.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="sql," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="easy-go's blogs" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="来源于：牛客网">
+<meta name="keywords" content="sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用sql语句总结1">
+<meta property="og:url" content="https://mlone.top/post/5a616d07.html">
+<meta property="og:site_name" content="easy-go&#39;s blogs">
+<meta property="og:description" content="来源于：牛客网">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-27T07:16:15.050Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用sql语句总结1">
+<meta name="twitter:description" content="来源于：牛客网">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"perspectiveLeftIn","post_header":"fadeIn","post_body":"fadeIn","coll_header":"perspectiveLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://mlone.top/post/5a616d07.html"/>
+
+
+
+
+
+  <title>常用sql语句总结1 | easy-go's blogs</title>
+  
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">easy-go's blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Welcome!</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mlone.top/post/5a616d07.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="easy go">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="easy-go's blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">常用sql语句总结1</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T14:15:00+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-27T15:16:15+08:00">
+                2019-02-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+             <span id="/post/5a616d07.html" class="leancloud_visitors" data-flag-title="常用sql语句总结1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k 字
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>来源于：<a href="https://www.nowcoder.com/ta/sql" target="_blank" rel="noopener">牛客网</a><br><a id="more"></a></p>
+<h5 id="1-sql查找表中多余的重复记录，重复记录是根据单个字段（itemId）来判断"><a href="#1-sql查找表中多余的重复记录，重复记录是根据单个字段（itemId）来判断" class="headerlink" title="1.sql查找表中多余的重复记录，重复记录是根据单个字段（itemId）来判断:"></a>1.sql查找表中多余的重复记录，重复记录是根据单个字段（itemId）来判断:</h5><p><strong>答：</strong></p>
+<pre><code>select * from tb_Item
+where itemId in (select itemId from tb_Item 
+group by itemId having count(itemId) &gt; 1 )
+</code></pre><h5 id="2-1-查找最晚入职员工的所有信息"><a href="#2-1-查找最晚入职员工的所有信息" class="headerlink" title="2.1 查找最晚入职员工的所有信息:"></a>2.1 查找最晚入职员工的所有信息:</h5><pre><code>CREATE TABLE `employees` (
+`emp_no` int(11) NOT NULL,
+`birth_date` date NOT NULL,
+`first_name` varchar(14) NOT NULL,
+`last_name` varchar(16) NOT NULL,
+`gender` char(1) NOT NULL,
+`hire_date` date NOT NULL,
+PRIMARY KEY (`emp_no`));
+</code></pre><p><strong>答：</strong></p>
+<pre><code>select * from employees
+where hire_date =
+(select max(hire_date) from employees)
+</code></pre><h5 id="2-2-查找入职员工时间排名倒数第三的员工所有信息（接上题）"><a href="#2-2-查找入职员工时间排名倒数第三的员工所有信息（接上题）" class="headerlink" title="2.2 查找入职员工时间排名倒数第三的员工所有信息（接上题）"></a>2.2 查找入职员工时间排名倒数第三的员工所有信息（接上题）</h5><p><strong>答：</strong>对入职时间进行降序排列，从第2条记录开始，选取1条记录信息。</p>
+<pre><code>SELECT * FROM employees ORDER BY hire_date DESC LIMIT 2,1
+</code></pre><h5 id="3-查找各个部门当前-to-date-’9999-01-01’-领导当前薪水详情以及其对应部门编号dept-no"><a href="#3-查找各个部门当前-to-date-’9999-01-01’-领导当前薪水详情以及其对应部门编号dept-no" class="headerlink" title="3.查找各个部门当前(to_date=’9999-01-01’)领导当前薪水详情以及其对应部门编号dept_no"></a>3.查找各个部门当前(to_date=’9999-01-01’)领导当前薪水详情以及其对应部门编号dept_no</h5><pre><code>CREATE TABLE `dept_manager` (
+`dept_no` char(4) NOT NULL,
+`emp_no` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+</code></pre><p>.</p>
+<pre><code>CREATE TABLE `salaries` (
+`emp_no` int(11) NOT NULL,
+`salary` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`from_date`));
+</code></pre><p><strong>答：</strong>（注意这里两个表的日期要同步）</p>
+<p>解1：</p>
+<pre><code>select s.*, d.dept_no
+from salaries s, dept_manager d
+where s.emp_no = d.emp_no 
+and s.to_date = &apos;9999-01-01&apos;
+and d.to_date = &apos;9999-01-01&apos;
+</code></pre><p>解2：（使用关联查询）</p>
+<pre><code>select s.*, d.dept_no
+from salaries as s
+inner join dept_manager as d
+on s.emp_no = d.emp_no 
+and s.to_date = &apos;9999-01-01&apos;
+and d.to_date = &apos;9999-01-01&apos;
+</code></pre><p>解3：（只是加了一个where）</p>
+<pre><code>select s.*, d.dept_no
+from salaries s
+inner join dept_manager d
+on s.emp_no = d.emp_no 
+where s.to_date = &apos;9999-01-01&apos;
+and d.to_date = &apos;9999-01-01&apos;
+</code></pre><h5 id="4-1-查找所有已经分配部门的员工的last-name和first-name"><a href="#4-1-查找所有已经分配部门的员工的last-name和first-name" class="headerlink" title="4.1 查找所有已经分配部门的员工的last_name和first_name"></a>4.1 查找所有已经分配部门的员工的last_name和first_name</h5><pre><code>CREATE TABLE `dept_emp` (
+`emp_no` int(11) NOT NULL,
+`dept_no` char(4) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+</code></pre><p>.</p>
+<pre><code>CREATE TABLE `employees` (
+`emp_no` int(11) NOT NULL,
+`birth_date` date NOT NULL,
+`first_name` varchar(14) NOT NULL,
+`last_name` varchar(16) NOT NULL,
+`gender` char(1) NOT NULL,
+`hire_date` date NOT NULL,
+PRIMARY KEY (`emp_no`));
+</code></pre><p><strong>答：</strong></p>
+<p>解1：</p>
+<pre><code>select e.last_name, e.first_name, d.dept_no
+from employees e 
+inner join dept_emp d
+on e.emp_no = d.emp_no
+</code></pre><p>解2：（//只有一列是公有的，用自然连接）</p>
+<pre><code>select e.last_name, e.first_name, d.dept_no
+from employees e 
+natural join dept_emp d
+</code></pre><h5 id="4-2-查找所有员工的last-name和first-name以及对应部门编号dept-no，也包括展示没有分配具体部门的员工（接上题）"><a href="#4-2-查找所有员工的last-name和first-name以及对应部门编号dept-no，也包括展示没有分配具体部门的员工（接上题）" class="headerlink" title="4.2 查找所有员工的last_name和first_name以及对应部门编号dept_no，也包括展示没有分配具体部门的员工（接上题）"></a>4.2 查找所有员工的last_name和first_name以及对应部门编号dept_no，也包括展示没有分配具体部门的员工（接上题）</h5><p><strong>答：</strong></p>
+<pre><code>SELECT e.last_name, e.first_name, d.dept_no 
+FROM employees e 
+LEFT JOIN dept_emp d
+ON e.emp_no = d.emp_no
+</code></pre><p><strong>注意：</strong></p>
+<ul>
+<li>INNER JOIN 两边表同时有对应的数据，即任何一边缺失数据就不显示。</li>
+<li>LEFT JOIN 会读取左边数据表的全部数据，即便右边表无对应数据。</li>
+<li>RIGHT JOIN 会读取右边数据表的全部数据，即便左边表无对应数据。</li>
+</ul>
+<h5 id="4-3查找所有员工入职时候的薪水情况，给出emp-no以及salary，-并按照emp-no进行逆序（接上题）"><a href="#4-3查找所有员工入职时候的薪水情况，给出emp-no以及salary，-并按照emp-no进行逆序（接上题）" class="headerlink" title="4.3查找所有员工入职时候的薪水情况，给出emp_no以及salary， 并按照emp_no进行逆序（接上题）"></a>4.3查找所有员工入职时候的薪水情况，给出emp_no以及salary， 并按照emp_no进行逆序（接上题）</h5><p><strong>答：</strong></p>
+<p>此题应注意以下四个知识点：</p>
+<ol>
+<li>由于测试数据中，salaries.emp_no 不唯一（因为号码为 emp_no 的员工会有多次涨薪的可能，所以在 salaries 中对应的记录不止一条），employees.emp_no 唯一，即 salaries 的数据会多于 employees，因此需先找到 employees.emp_no 在 salaries 表中对应的记录salaries.emp_no，则有限制条件 e.emp_no = s.emp_no</li>
+<li>根据题意注意到 salaries.from_date 和 employees.hire_date 的值应该要相等，因此有限制条件 e.hire_date = s.from_date</li>
+<li>根据题意要按照 emp_no 值逆序排列，因此最后要加上 ORDER BY e.emp_no DESC</li>
+<li>为了代码良好的可读性，运用了 Alias 别名语句，将 employees 简化为 e，salaries 简化为s，即 employees AS e 与 salaries AS s，其中 AS 可以省略</li>
+</ol>
+<p>方法一：利用 INNER JOIN 连接两张表</p>
+<pre><code>SELECT e.emp_no, s.salary FROM employees AS e INNER JOIN salaries AS s
+ON e.emp_no = s.emp_no AND e.hire_date = s.from_date
+ORDER BY e.emp_no DESC
+</code></pre><p>方法二：直接用逗号并列查询两张表</p>
+<pre><code>SELECT e.emp_no, s.salary FROM employees AS e, salaries AS s
+WHERE e.emp_no = s.emp_no AND e.hire_date = s.from_date
+ORDER BY e.emp_no DESC
+</code></pre><h5 id="5-查找薪水涨幅超过15次的员工号emp-no以及其对应的涨幅次数t："><a href="#5-查找薪水涨幅超过15次的员工号emp-no以及其对应的涨幅次数t：" class="headerlink" title="5.查找薪水涨幅超过15次的员工号emp_no以及其对应的涨幅次数t："></a>5.查找薪水涨幅超过15次的员工号emp_no以及其对应的涨幅次数t：</h5><pre><code>CREATE TABLE `salaries` (
+`emp_no` int(11) NOT NULL,
+`salary` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`from_date`));
+</code></pre><p><strong>答：</strong></p>
+<pre><code>SELECT emp_no, COUNT(emp_no) AS t 
+FROM salaries 
+GROUP BY emp_no HAVING t &gt; 15
+</code></pre><p>解析：</p>
+<p>此题应注意以下四点：</p>
+<ol>
+<li>用COUNT()函数和GROUP BY语句可以统计同一emp_no值的记录条数</li>
+<li>根据题意，输出的涨幅次数为t，故用AS语句将COUNT(emp_no)的值转换为t</li>
+<li>由于COUNT()函数不可用于WHERE语句中，故使用HAVING语句来限定t&gt;15的条件</li>
+<li>最后存在一个理解误区，涨幅超过15次，salaries中相应的记录数应该超过16（从第2条记录开始算作第1次涨幅），不过题目为了简单起见，将第1条记录当作第1次涨幅，所以令t&gt;15即可</li>
+</ol>
+<p><em>注意： 严格来说，下一条salary高于本条才算涨幅，但本题只要出现了一条记录就算一次涨幅，salary相同可以理解为涨幅为0，salary变少理解为涨幅为负</em></p>
+<h5 id="6-找出所有员工当前-to-date-’9999-01-01’-具体的薪水salary情况，对于相同的薪水只显示一次-并按照逆序显示："><a href="#6-找出所有员工当前-to-date-’9999-01-01’-具体的薪水salary情况，对于相同的薪水只显示一次-并按照逆序显示：" class="headerlink" title="6.找出所有员工当前(to_date=’9999-01-01’)具体的薪水salary情况，对于相同的薪水只显示一次,并按照逆序显示："></a>6.找出所有员工当前(to_date=’9999-01-01’)具体的薪水salary情况，对于相同的薪水只显示一次,并按照逆序显示：</h5><p><strong>答：</strong></p>
+<p>方式一：</p>
+<pre><code>SELECT DISTINCT salary FROM salaries 
+WHERE to_date=&apos;9999-01-01&apos; 
+ORDER BY salary DESC;
+</code></pre><p>方式二：</p>
+<pre><code>SELECT salary FROM salaries 
+WHERE to_date=&apos;9999-01-01&apos; 
+GROUP BY salary 
+ORDER BY salary DESC;
+</code></pre><p><strong>解析：</strong></p>
+<p>对于distinct,groupby的性能</p>
+<ol>
+<li>数据量非常巨大时候，比如1000万中有300W重复数据，这时候的distinct的效率略好于group by；</li>
+<li>对于相对重复量较小的数据量比如1000万中1万的重复量，用groupby的性能会远优于distnct；</li>
+<li>简书上的一篇博客说的不错，大家可以穿送过去看一看<a href="http://www.jianshu.com/p/34800d06f63d" target="_blank" rel="noopener">传送门</a></li>
+</ol>
+<h5 id="7-获取所有部门当前manager的当前薪水情况，给出dept-no-emp-no以及salary，当前表示to-date-’9999-01-01’："><a href="#7-获取所有部门当前manager的当前薪水情况，给出dept-no-emp-no以及salary，当前表示to-date-’9999-01-01’：" class="headerlink" title="7.获取所有部门当前manager的当前薪水情况，给出dept_no, emp_no以及salary，当前表示to_date=’9999-01-01’："></a>7.获取所有部门当前manager的当前薪水情况，给出dept_no, emp_no以及salary，当前表示to_date=’9999-01-01’：</h5><pre><code>CREATE TABLE `dept_manager` (
+`dept_no` char(4) NOT NULL,
+`emp_no` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+</code></pre><p>.</p>
+<pre><code>CREATE TABLE `salaries` (
+`emp_no` int(11) NOT NULL,
+`salary` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`from_date`));
+</code></pre><p><strong>答：</strong></p>
+<p>方式一：（where关联查询语句）</p>
+<pre><code>SELECT d.dept_no, d.emp_no, s.salary 
+FROM salaries AS s, dept_manager AS d
+WHERE d.emp_no = s.emp_no 
+AND s.to_date = &apos;9999-01-01&apos;
+AND d.to_date = &apos;9999-01-01&apos;;
+</code></pre><p>方式二：（内连接）</p>
+<pre><code>SELECT d.dept_no, d.emp_no, s.salary 
+FROM salaries AS s 
+INNER JOIN dept_manager AS d 
+ON d.emp_no = s.emp_no
+WHERE d.to_date = &apos;9999-01-01&apos; 
+AND s.to_date = &apos;9999-01-01&apos;
+</code></pre><p>或：</p>
+<pre><code>SELECT d.dept_no, d.emp_no, s.salary 
+FROM salaries AS s 
+INNER JOIN dept_manager AS d 
+ON d.emp_no = s.emp_no
+AND d.to_date = &apos;9999-01-01&apos;
+AND s.to_date = &apos;9999-01-01&apos;
+</code></pre><h5 id="8-获取所有非manager的员工emp-no："><a href="#8-获取所有非manager的员工emp-no：" class="headerlink" title="8.获取所有非manager的员工emp_no："></a>8.获取所有非manager的员工emp_no：</h5><pre><code>CREATE TABLE `dept_manager` (
+`dept_no` char(4) NOT NULL,
+`emp_no` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+</code></pre><p>.</p>
+<pre><code>CREATE TABLE `employees` (
+`emp_no` int(11) NOT NULL,
+`birth_date` date NOT NULL,
+`first_name` varchar(14) NOT NULL,
+`last_name` varchar(16) NOT NULL,
+`gender` char(1) NOT NULL,
+`hire_date` date NOT NULL,
+PRIMARY KEY (`emp_no`));
+</code></pre><p><strong>答：</strong></p>
+<p>方式一：（使用NOT IN选出在employees但不在dept_manager中的emp_no记录）</p>
+<pre><code>SELECT emp_no FROM employees
+WHERE emp_no NOT IN (SELECT emp_no FROM dept_manager)
+</code></pre><p>方式二：（先使用LEFT JOIN连接两张表，再从此表中选出dept_no值为NULL对应的emp_no记录）</p>
+<pre><code>SELECT e.emp_no FROM employees e 
+LEFT JOIN dept_manager d 
+ON e.emp_no = d.emp_no 
+WHERE dept_no IS NULL
+</code></pre><h5 id="9-获取所有员工当前的manager，如果当前的manager是自己的话结果不显示，当前表示to-date-’9999-01-01’。结果第一列给出当前员工的emp-no-第二列给出其manager对应的manager-no。"><a href="#9-获取所有员工当前的manager，如果当前的manager是自己的话结果不显示，当前表示to-date-’9999-01-01’。结果第一列给出当前员工的emp-no-第二列给出其manager对应的manager-no。" class="headerlink" title="9.获取所有员工当前的manager，如果当前的manager是自己的话结果不显示，当前表示to_date=’9999-01-01’。结果第一列给出当前员工的emp_no,第二列给出其manager对应的manager_no。"></a>9.获取所有员工当前的manager，如果当前的manager是自己的话结果不显示，当前表示to_date=’9999-01-01’。结果第一列给出当前员工的emp_no,第二列给出其manager对应的manager_no。</h5><pre><code>CREATE TABLE `dept_emp` (
+`emp_no` int(11) NOT NULL,
+`dept_no` char(4) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+</code></pre><p>.</p>
+<pre><code>CREATE TABLE `dept_manager` (
+`dept_no` char(4) NOT NULL,
+`emp_no` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+</code></pre><p><strong>答：</strong></p>
+<p>方式一：（使用where条件语句）</p>
+<pre><code>SELECT de.emp_no, dm.emp_no AS manager_no
+FROM dept_manager AS dm, dept_emp AS de
+WHERE de.dept_no = dm.dept_no 
+AND de.to_date=&apos;9999-01-01&apos;
+AND dm.to_date=&apos;9999-01-01&apos;
+AND de.emp_no &lt;&gt; dm.emp_no
+</code></pre><p>方式二：（使用inner join内连接）</p>
+<pre><code>SELECT de.emp_no, dm.emp_no AS manager_no 
+FROM dept_emp AS de INNER JOIN dept_manager AS dm
+ON de.dept_no = dm.dept_no 
+WHERE dm.to_date = &apos;9999-01-01&apos; 
+AND de.to_date = &apos;9999-01-01&apos; 
+AND de.emp_no &lt;&gt; dm.emp_no
+</code></pre><p><strong>解析：</strong></p>
+<p>本题应注意以下三点：</p>
+<ol>
+<li>用 INNER JOIN 连接两张表，因为要输出自己的经理，得知自己与经理的部门要相同，故有限制条件 de.dept_no = dm.dept_no</li>
+<li>再用 WHERE 限制当前员工与当前经理的条件，即 dm.to_date 等于 ‘9999-01-01’ 、de.to_date 等于 ‘9999-01-01’ 、 de.emp_no 不等于 dm.emp_no</li>
+<li>为了增强代码可读性，将 dept_emp 用别名 de 代替，dept_manager 用 dm 代替，最后根据题意将 de.emp_no 用别名 manager_no 代替后输出</li>
+</ol>
+<h5 id="10-获取所有部门中当前员工薪水最高的相关信息，给出dept-no-emp-no以及其对应的salary："><a href="#10-获取所有部门中当前员工薪水最高的相关信息，给出dept-no-emp-no以及其对应的salary：" class="headerlink" title="10.获取所有部门中当前员工薪水最高的相关信息，给出dept_no, emp_no以及其对应的salary："></a>10.获取所有部门中当前员工薪水最高的相关信息，给出dept_no, emp_no以及其对应的salary：</h5><pre><code>CREATE TABLE `dept_emp` (
+`emp_no` int(11) NOT NULL,
+`dept_no` char(4) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+</code></pre><p>.</p>
+<pre><code>CREATE TABLE `salaries` (
+`emp_no` int(11) NOT NULL,
+`salary` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`from_date`));
+</code></pre><p><strong>答：</strong></p>
+<p>方式一：</p>
+<pre><code>SELECT de.dept_no, de.emp_no, max(s.salary) salary 
+FROM dept_emp de,salaries s 
+WHERE de.emp_no = s.emp_no 
+AND de.to_date = &apos;9999-01-01&apos;
+AND s.to_date = &apos;9999-01-01&apos;
+GROUP BY de.dept_no;
+</code></pre><p>方式二：</p>
+<pre><code>SELECT d.dept_no, s.emp_no, MAX(s.salary) AS salary
+FROM salaries AS s 
+INNER JOIN dept_emp As d 
+ON d.emp_no = s.emp_no 
+WHERE d.to_date = &apos;9999-01-01&apos; 
+AND s.to_date = &apos;9999-01-01&apos;
+GROUP BY d.dept_no
+</code></pre>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+	
+		<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+
+	
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag"><i class="fa fa-tag"></i> sql</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/3ecb78ee.html" rel="next" title="java反射机制">
+                <i class="fa fa-chevron-left"></i> java反射机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/c3683cbd.html" rel="prev" title="常用sql语句总结2">
+                常用sql语句总结2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/head.jpeg"
+                alt="easy go" />
+            
+              <p class="site-author-name" itemprop="name">easy go</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">80</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/easy-gogoing" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/easygogoing" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="/mywechat.html" target="_blank" title="WeChat">
+                      
+                        <i class="fa fa-fw fa-weixin"></i>WeChat</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=easygoes@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.codeliu.com/" title="CodeTiger" target="_blank">CodeTiger</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-sql查找表中多余的重复记录，重复记录是根据单个字段（itemId）来判断"><span class="nav-number">1.</span> <span class="nav-text">1.sql查找表中多余的重复记录，重复记录是根据单个字段（itemId）来判断:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-查找最晚入职员工的所有信息"><span class="nav-number">2.</span> <span class="nav-text">2.1 查找最晚入职员工的所有信息:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-查找入职员工时间排名倒数第三的员工所有信息（接上题）"><span class="nav-number">3.</span> <span class="nav-text">2.2 查找入职员工时间排名倒数第三的员工所有信息（接上题）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-查找各个部门当前-to-date-’9999-01-01’-领导当前薪水详情以及其对应部门编号dept-no"><span class="nav-number">4.</span> <span class="nav-text">3.查找各个部门当前(to_date=’9999-01-01’)领导当前薪水详情以及其对应部门编号dept_no</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-查找所有已经分配部门的员工的last-name和first-name"><span class="nav-number">5.</span> <span class="nav-text">4.1 查找所有已经分配部门的员工的last_name和first_name</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-查找所有员工的last-name和first-name以及对应部门编号dept-no，也包括展示没有分配具体部门的员工（接上题）"><span class="nav-number">6.</span> <span class="nav-text">4.2 查找所有员工的last_name和first_name以及对应部门编号dept_no，也包括展示没有分配具体部门的员工（接上题）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3查找所有员工入职时候的薪水情况，给出emp-no以及salary，-并按照emp-no进行逆序（接上题）"><span class="nav-number">7.</span> <span class="nav-text">4.3查找所有员工入职时候的薪水情况，给出emp_no以及salary， 并按照emp_no进行逆序（接上题）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-查找薪水涨幅超过15次的员工号emp-no以及其对应的涨幅次数t："><span class="nav-number">8.</span> <span class="nav-text">5.查找薪水涨幅超过15次的员工号emp_no以及其对应的涨幅次数t：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-找出所有员工当前-to-date-’9999-01-01’-具体的薪水salary情况，对于相同的薪水只显示一次-并按照逆序显示："><span class="nav-number">9.</span> <span class="nav-text">6.找出所有员工当前(to_date=’9999-01-01’)具体的薪水salary情况，对于相同的薪水只显示一次,并按照逆序显示：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-获取所有部门当前manager的当前薪水情况，给出dept-no-emp-no以及salary，当前表示to-date-’9999-01-01’："><span class="nav-number">10.</span> <span class="nav-text">7.获取所有部门当前manager的当前薪水情况，给出dept_no, emp_no以及salary，当前表示to_date=’9999-01-01’：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-获取所有非manager的员工emp-no："><span class="nav-number">11.</span> <span class="nav-text">8.获取所有非manager的员工emp_no：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-获取所有员工当前的manager，如果当前的manager是自己的话结果不显示，当前表示to-date-’9999-01-01’。结果第一列给出当前员工的emp-no-第二列给出其manager对应的manager-no。"><span class="nav-number">12.</span> <span class="nav-text">9.获取所有员工当前的manager，如果当前的manager是自己的话结果不显示，当前表示to_date=’9999-01-01’。结果第一列给出当前员工的emp_no,第二列给出其manager对应的manager_no。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-获取所有部门中当前员工薪水最高的相关信息，给出dept-no-emp-no以及其对应的salary："><span class="nav-number">13.</span> <span class="nav-text">10.获取所有部门中当前员工薪水最高的相关信息，给出dept_no, emp_no以及其对应的salary：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">easy go</span>
+
+ 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">总字数&#58;</span>
+    
+    <span title="总字数">81.4k</span>
+  
+
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4
+   <br/>
+   
+  </div>
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a>
+   <span class="post-meta-divider">|</span>
+   <span><i class="fa fa-bomb"></i></span>
+   <span id="showDays"></span>
+  </div>
+
+  
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,9,1,00,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+  }, 1000);
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'AkhCVq4JSrC0e8zhjg9Thg1v-gzGzoHsz',
+        appKey: 'oUQTzUbuDC7FIoCiu9XxCsIW',
+        placeholder: '输入昵称即可留言！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("AkhCVq4JSrC0e8zhjg9Thg1v-gzGzoHsz", "oUQTzUbuDC7FIoCiu9XxCsIW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "button";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
