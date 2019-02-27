@@ -528,16 +528,142 @@
     <content type="text"><![CDATA[转载自：https://www.cnblogs.com/yuanblog/p/4441017.html 一、Java中的hashCode和equals1、关于hashCode 1.hashCode的存在主要是用于查找的快捷性，如Hashtable，HashMap等，hashCode是用来在散列存储结构中确定对象的存储地址的 2.如果两个对象相同，就是适用于equals(java.lang.Object) 方法，那么这两个对象的hashCode一定要相同 3.如果对象的equals方法被重写，那么对象的hashCode也尽量重写，并且产生hashCode使用的对象，一定要和equals方法中使用的一致，否则就会违反上面提到的第2点 4.两个对象的hashCode相同，并不一定表示两个对象就相同，也就是不一定适用于equals(java.lang.Object) 方法，只能够说明这两个对象在散列存储结构中，如Hashtable，他们“存放在同一个篮子里” 再归纳一下就是hashCode是用于查找使用的，而equals是用于比较两个对象的是否相等的。 以下对hashCode的解读摘自其他博客： 1.hashcode是用来查找的，如果你学过数据结构就应该知道，在查找和排序这一章有 例如内存中有这样的位置 0 1 2 3 4 5 6 7 而我有个类，这个类有个字段叫ID,我要把这个类存放在以上8个位置之一，如果不用hashcode而任意存放，那么当查找时就需要到这八个位置里挨个去找，或者用二分法一类的算法。 但如果用hashcode那就会使效率提高很多。 我们这个类中有个字段叫ID,那么我们就定义我们的hashcode为ID％8，然后把我们的类存放在取得得余数那个位置。比如我们的ID为9，9除8的余数为1，那么我们就把该类存在1这个位置，如果ID是13，求得的余数是5，那么我们就把该类放在5这个位置。这样，以后在查找该类时就可以通过ID除 8求余数直接找到存放的位置了。 2.但是如果两个类有相同的hashcode怎么办那（我们假设上面的类的ID不是唯一的），例如9除以8和17除以8的余数都是1，那么这是不是合法的，回答是：可以这样。那么如何判断呢？在这个时候就需要定义 equals了。 也就是说，我们先通过 hashcode来判断两个类是否存放某个桶里，但这个桶里可能有很多类，那么我们就需要再通过 equals 来在这个桶里找到我们要的类。 那么，重写了equals()，为什么还要重写hashCode()呢？ 想想，你要在一个桶里找东西，你必须先要找到这个桶啊，你不通过重写hashcode()来找到桶，光重写equals()有什么用啊 2、关于equals1.equals和====用于比较引用和比较基本数据类型时具有不同的功能：比较基本数据类型，如果两个值相同，则结果为true而在比较引用时，如果引用指向内存中的同一对象，结果为true; equals()作为方法，实现对象的比较。由于==运算符不允许我们进行覆盖，也就是说它限制了我们的表达。因此我们复写equals()方法，达到比较对象内容是否相同的目的。而这些通过==运算符是做不到的。 2.object类的equals()方法的比较规则为：如果两个对象的类型一致，并且内容一致，则返回true,这些类有： java.io.file,java.util.Date,java.lang.string,包装类（Integer,Double等） String s1=new String(&quot;abc&quot;); String s2=new String(&quot;abc&quot;); System.out.println(s1==s2); System.out.println(s1.equals(s2)); 运行结果为false true 二、HashMap的实现原理1.HashMap概述 HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有可选的映射操作，并允许使用null值和null键。此类不保证映射的顺序，特别是它不保证该顺序恒久不变。 在java编程语言中，最基本的结构就是两种，一个是数组，另外一个是模拟指针（引用），所有的数据结构都可以用这两个基本结构来构造的，HashMap也不例外。HashMap实际上是一个“链表散列”的数据结构，即数组和链表的结合体。 从上图中可以看出，HashMap底层就是一个数组结构，数组中的每一项又是一个链表。当新建一个HashMap的时候，就会初始化一个数组。 其中Java源码如下： /** * The table, resized as necessary. Length MUST Always be a power of two. */ transient Entry[] table; static class Entry&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; { final K key; V value; Entry&lt;K,V&gt; next; final int hash; …… } 可以看出，Entry就是数组中的元素，每个 Map.Entry 其实就是一个key-value对，它持有一个指向下一个元素的引用，这就构成了链表。 2.HashMap实现存储和读取1）存储public V put(K key, V value) { // HashMap允许存放null键和null值。 // 当key为null时，调用putForNullKey方法，将value放置在数组第一个位置。 if (key == null) return putForNullKey(value); // 根据key的keyCode重新计算hash值。 int hash = hash(key.hashCode()); // 搜索指定hash值在对应table中的索引。 int i = indexFor(hash, table.length); // 如果 i 索引处的 Entry 不为 null，通过循环不断遍历 e 元素的下一个元素。 for (Entry&lt;K,V&gt; e = table[i]; e != null; e = e.next) { Object k; if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) { // 如果发现已有该键值，则存储新的值，并返回原始值 V oldValue = e.value; e.value = value; e.recordAccess(this); return oldValue; } } // 如果i索引处的Entry为null，表明此处还没有Entry。 modCount++; // 将key、value添加到i索引处。 addEntry(hash, key, value, i); return null; } 根据hash值得到这个元素在数组中的位置（即下标），如果数组该位置上已经存放有其他元素了，那么在这个位置上的元素将以链表的形式存放，新加入的放在链头，最先加入的放在链尾。如果数组该位置上没有元素，就直接将该元素放到此数组中的该位置上。 hash(int h)方法根据key的hashCode重新计算一次散列。此算法加入了高位计算，防止低位不变，高位变化时，造成的hash冲突。 1 static int hash(int h) { 2 h ^= (h &gt;&gt;&gt; 20) ^ (h &gt;&gt;&gt; 12); 3 return h ^ (h &gt;&gt;&gt; 7) ^ (h &gt;&gt;&gt; 4); 4 } 我们可以看到在HashMap中要找到某个元素，需要根据key的hash值来求得对应数组中的位置。如何计算这个位置就是hash算法。前面说过HashMap的数据结构是数组和链表的结合，所以我们当然希望这个HashMap里面的元素位置尽量的分布均匀些，尽量使得每个位置上的元素数量只有一个，那么当我们用hash算法求得这个位置的时候，马上就可以知道对应位置的元素就是我们要的，而不用再去遍历链表，这样就大大优化了查询的效率。 根据上面 put 方法的源代码可以看出，当程序试图将一个key-value对放入HashMap中时，程序首先根据该 key的 hashCode() 返回值决定该 Entry 的存储位置：如果两个 Entry 的 key 的 hashCode() 返回值相同，那它们的存储位置相同。如果这两个 Entry 的 key 通过 equals 比较返回 true，新添加 Entry 的 value 将覆盖集合中原有 Entry的 value，但key不会覆盖。如果这两个 Entry 的 key 通过 equals 比较返回 false，新添加的 Entry 将与集合中原有 Entry 形成 Entry 链，而且新添加的 Entry 位于 Entry 链的头部——具体说明继续看 addEntry() 方法的说明。 通过这种方式就可以高效的解决HashMap的冲突问题。 2）读取public V get(Object key) { if (key == null) return getForNullKey(); int hash = hash(key.hashCode()); for (Entry&lt;K,V&gt; e = table[indexFor(hash, table.length)]; e != null; e = e.next) { Object k; if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) return e.value; } return null; } 从HashMap中get元素时，首先计算key的hashCode，找到数组中对应位置的某一元素，然后通过key的equals方法在对应位置的链表中找到需要的元素。 3）归纳起来简单地说:HashMap 在底层将 key-value 当成一个整体进行处理，这个整体就是一个 Entry 对象。HashMap 底层采用一个 Entry[] 数组来保存所有的 key-value 对，当需要存储一个 Entry 对象时，会根据hash算法来决定其在数组中的存储位置，在根据equals方法决定其在该数组位置上的链表中的存储位置；当需要取出一个Entry时，也会根据hash算法找到其在数组中的存储位置，再根据equals方法从该位置上的链表中取出该Entry。 3.HashMap的resize当hashmap中的元素越来越多的时候，碰撞的几率也就越来越高（因为数组的长度是固定的），所以为了提高查询的效率，就要对hashmap的数组进行扩容，数组扩容这个操作也会出现在ArrayList中，所以这是一个通用的操作，很多人对它的性能表示过怀疑，不过想想我们的“均摊”原理，就释然了，而在hashmap数组扩容之后，最消耗性能的点就出现了：原数组中的数据必须重新计算其在新数组中的位置，并放进去，这就是resize。 那么hashmap什么时候进行扩容呢？当hashmap中的元素个数超过数组大小loadFactor时，就会进行数组扩容，loadFactor的默认值为0.75，也就是说，默认情况下，数组大小为16，那么当hashmap中元素个数超过160.75=12的时候，就把数组的大小扩展为216=32，即扩大一倍，然后重新计算每个元素在数组中的位置，而这是一个非常消耗性能的操作，所以如果我们已经预知hashmap中元素的个数，那么预设元素的个数能够有效的提高hashmap的性能。比如说，我们有1000个元素new HashMap(1000), 但是理论上来讲new HashMap(1024)更合适，不过上面annegu已经说过，即使是1000，hashmap也自动会将其设置为1024。 但是new HashMap(1024)还不是更合适的，因为0.751000 &lt; 1000, 也就是说为了让0.75 * size &gt; 1000, 我们必须这样new HashMap(2048)才最合适，既考虑了&amp;的问题，也避免了resize的问题。 总结：HashMap的实现原理： 1. 利用key的hashCode重新hash计算出当前对象的元素在数组中的下标。 2. 存储时，如果出现hash值相同的key，此时有两种情况。(1)如果key相同，则覆盖原始值；(2)如果key不同（出现冲突），则将当前的key-value放入链表中。 3. 获取时，直接找到hash值对应的下标，在进一步判断key是否相同，从而找到对应值。 4. 理解了以上过程就不难明白HashMap是如何解决hash冲突的问题，核心就是使用了数组的存储方式，然后将冲突的key的对象放入链表中，一旦发现冲突就在链表中做进一步的对比。]]></content>
   </entry>
   <entry>
-    <title><![CDATA[JVM内存设置原理]]></title>
-    <url>%2Fpost%2F4cc01209.html</url>
-    <content type="text"><![CDATA[转载自：https://blog.csdn.net/sivyer123/article/details/17139443 堆内存设置原理方法区：Permanent 即 持久代（Permanent Generation），主要存放的是Java类定义信息，与垃圾收集器要收集的Java对象关系不大。 堆内存：Heap = { Old + NEW = {Eden, from, to} }，Old 即 年老代（Old Generation），New 即 年轻代（Young Generation）。年老代和年轻代的划分对垃圾收集影响比较大。 持久代 用于存放静态类型数据，如 Java Class, Method 等。持久代对垃圾回收没有显著影响。但是有些应用可能动态生成或调用一些Class，例如 Hibernate CGLib 等，在这种时候往往需要设置一个比较大的持久代空间来存放这些运行过程中动态增加的类型。 年轻代 所有新生成的对象首先都是放在年轻代。年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象。年轻代一般分3个区，1个Eden区，2个Survivor区（from 和 to）。 大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到Survivor区（两个中的一个），当一个Survivor区满时，此区的存活对象将被复制到另外一个Survivor区，当另一个Survivor区也满了的时候，从前一个Survivor区复制过来的并且此时还存活的对象，将可能被复制到年老代。 2个Survivor区是对称的，没有先后关系，所以同一个Survivor区中可能同时存在从Eden区复制过来对象，和从另一个Survivor区复制过来的对象；而复制到年老区的只有从另一个Survivor区过来的对象。而且，因为需要交换的原因，Survivor区至少有一个是空的。特殊的情况下，根据程序需要，Survivor区是可以配置为多个的（多于2个），这样可以增加对象在年轻代中的存在时间，减少被放到年老代的可能。 针对年轻代的垃圾回收即 Young GC。 年老代 在年轻代中经历了N次（可配置）垃圾回收后仍然存活的对象，就会被复制到年老代中。因此，可以认为年老代中存放的都是一些生命周期较长的对象。 针对年老代的垃圾回收即 Full GC。 所以，当一组对象生成时，内存申请过程如下： JVM会试图为相关Java对象在年轻代的Eden区中初始化一块内存区域。 当Eden区空间足够时，内存申请结束。否则执行下一步。 JVM试图释放在Eden区中所有不活跃的对象（Young GC）。释放后若Eden空间仍然不足以放入新对象，JVM则试图将部分Eden区中活跃对象放入Survivor区。 Survivor区被用来作为Eden区及年老代的中间交换区域。当年老代空间足够时，Survivor区中存活了一定次数的对象会被移到年老代。 当年老代空间不够时，JVM会在年老代进行完全的垃圾回收（Full GC）。 Full GC后，若Survivor区及年老代仍然无法存放从Eden区复制过来的对象，则会导致JVM无法在Eden区为新生成的对象申请内存，即出现“Out of Memory”。 OOM（“Out of Memory”）异常一般主要有如下2种原因： 持久代溢出，表现为：java.lang.OutOfMemoryError:PermGenspace 通常由于持久代设置过小，动态加载了大量Java类而导致溢出，解决办法唯有将参数 -XX:MaxPermSize 调大（一般256m能满足绝大多数应用程序需求）。将部分Java类放到容器共享区（例如Tomcat share lib）去加载的办法也是一个思路，但前提是容器里部署了多个应用，且这些应用有大量的共享类库。 年老代溢出，表现为：java.lang.OutOfMemoryError:Javaheapspace 这是最常见的情况，产生的原因可能是：设置的内存参数Xmx过小或程序的内存泄露及使用不当问题。 例如循环上万次的字符串处理、创建上千万个对象、在一段代码内申请上百M甚至上G的内存。还有的时候虽然不会报内存溢出，却会使系统不间断的垃圾回收，也无法处理其它请求。这种情况下除了检查程序、打印堆内存等方法排查，还可以借助一些内存分析工具，比如MAT就很不错。]]></content>
+    <title><![CDATA[如何避免死锁]]></title>
+    <url>%2Fpost%2F7b28700.html</url>
+    <content type="text"><![CDATA[. Java多线程中的死锁： 死锁是指两个或两个以上的进程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用，它们都将无法推进下去。 死锁的发生必须满足以下四个条件： 互斥条件：一个资源每次只能被一个进程使用。 请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不放。 不可剥夺条件：进程已获得的资源，在末使用完之前，不能强行剥夺。 循环等待条件：若干进程之间形成一种头尾相接的循环等待资源关系。 避免死锁最简单的方法就是阻止循环等待条件，将系统中所有的资源设置标志位、排序，规定所有的进程在申请资源时必须按照一定的顺序规则来避免死锁。]]></content>
       <categories>
-        <category>JVM</category>
+        <category>并发编程</category>
       </categories>
       <tags>
-        <tag>GC</tag>
         <tag>java</tag>
-        <tag>JVM</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[事务的4种隔离级别]]></title>
+    <url>%2Fpost%2F9ba28576.html</url>
+    <content type="text"><![CDATA[. 关系型数据库存在的数据安全问题： 脏读：一个事务读取到了另外一个事务未提交的数据。 不可重复读：一个事务读取到了另外一个事务修改过并提交的数据。（一个事务过程中多次查询，查询的数据结果却不同） 幻读（虚读）：一个事务读取到了另外一个事务插入并提交的新数据。（一个事务过程中多次查询，却查询到了之前并不存在的记录） 事务的4种隔离级别 read uncommitted：读未提交（可读别人未提交的数据）–&gt;最低级别（存在脏读、不可重复读、虚读问题） read committed：读已提交（可读别人已提交的数据）–&gt;消除了脏读（存在不可重复读、虚读问题） repeatable read：可重复读（不读别人提交的数据）–&gt;消除不可重复读（存在虚读问题） serializable：串行化（别人未提交就作等待不能读数据）–&gt;消除虚读 最高级别 效率最低 一般数据库都使用中间两种级别。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>事务</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[事务的四大特性ACID]]></title>
+    <url>%2Fpost%2F5554abcc.html</url>
+    <content type="text"><![CDATA[. ⑴ 原子性（Atomicity）原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。 ⑵ 一致性（Consistency）一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态。拿转账来说，假设用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，转几次账，事务结束后两个用户的钱相加起来应该还得是5000，这就是事务的一致性。 ⑶ 隔离性（Isolation）隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。 即要达到这么一种效果：对于任意两个并发的事务T1和T2，在事务T1看来，T2要么在T1开始之前就已经结束，要么在T1结束之后才开始，这样每个事务都感觉不到有其他事务在并发地执行。 ⑷ 持久性（Durability）持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>事务</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何手动停止一个线程]]></title>
+    <url>%2Fpost%2Fb82cf365.html</url>
+    <content type="text"><![CDATA[转载自：https://www.cnblogs.com/luckygxf/p/4737655.html 在Java的多线程编程中，java.lang.Thread类型包含了一些列的方法start(), stop(), stop(Throwable) and suspend(), destroy() and resume()。通过这些方法，我们可以对线程进行方便的操作，但是这些方法中，只有start()方法得到了保留。 方式1. 设置一个成员变量作为共享变量，相当于标志，在run()方法中不断检查标志，判断是否退出线程（跳出函数）： （只能中断处于运行状态的进程） public class ThreadFlag extends Thread { public volatile boolean exit = false; public void run() { while (!exit); } public static void main(String[] args) throws Exception { ThreadFlag thread = new ThreadFlag(); thread.start(); sleep(3000); // 主线程延迟3秒 thread.exit = true; // 将中断标志值为true thread.join(); // 在主线程中等待thread线程执行完毕 System.out.println(&quot;线程退出!&quot;); } } 在上面代码中定义了一个退出标志exit，当exit为true时，while循环退出，exit的默认值为false。在定义exit时，使用了一个Java关键字volatile，这个关键字的目的是使exit同步，也就是说在同一时刻只能由一个线程来修改exit的值。 方式2. 使用Thread.interrupt()方法终止线程 （只能中断处于阻塞状态的进程） 如果一个线程由于等待某些事件的发生而被阻塞，又该怎样停止该线程呢？ 这种情况经常会发生，比如当一个线程由于需要等候键盘输入而被阻塞，或者调用Thread.join()方法，或者Thread.sleep()方法，在网络中调用ServerSocket.accept()方法，或者调用了DatagramSocket.receive()方法时，都有可能导致线程阻塞，使线程处于处于不可运行状态时，即使主程序中将该线程的共享变量设置为true，但该线程此时根本无法检查循环标志，当然也就无法立即中断。 这里我们给出的建议是，不要使用stop()方法，而是使用Thread提供的interrupt()方法，因为该方法虽然不会中断一个正在运行的线程，但是它可以使一个被阻塞的线程抛出一个中断异常，从而使线程提前结束阻塞状态，退出堵塞代码。 注意：interrupted与isInterrupted 在Thread类中有两个方法可以判断线程是否通过interrupt方法被终止： 静态的interrupted用来判断当前线程是否被中断； 非静态的isInterrupted可以用来判断其他线程是否被中断。]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java线程的6中状态]]></title>
+    <url>%2Fpost%2F42644e5a.html</url>
+    <content type="text"><![CDATA[. 初始(NEW)：新创建了一个线程对象，但还没有调用start()方法。 运行(RUNNABLE)： 线程对象创建后，其他线程(比如main线程）调用了该对象的start()方法。该状态的线程位于可运行线程池中，等待被线程调度选中，获取CPU的使用权，此时处于就绪状态（ready）。就绪状态的线程在获得CPU时间片后变为运行中状态（running） 阻塞(BLOCKED)：表示线程阻塞于锁synchronized。 等待(WAITING)：进入该状态的线程需要等待其他线程做出一些特定动作（通知或中断）。 超时等待(TIMED_WAITING)：该状态不同于WAITING，它可以在指定的时间后自行返回。 终止(TERMINATED)：表示该线程已经执行完毕。]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[线程间的通信方式]]></title>
+    <url>%2Fpost%2Fa84acd9a.html</url>
+    <content type="text"><![CDATA[转自：JAVA多线程之线程间的通信方式 一，介绍本总结我对于JAVA多线程中线程之间的通信方式的理解，主要以代码结合文字的方式来讨论线程间的通信，故摘抄了书中的一些示例代码。 二，线程间的通信方式①同步这里讲的同步是指多个线程通过synchronized关键字这种方式来实现线程间的通信。 参考示例： public class MyObject { synchronized public void methodA() { //do something.... } synchronized public void methodB() { //do some other thing } } public class ThreadA extends Thread { private MyObject object; //省略构造方法 @Override public void run() { super.run(); object.methodA(); } } public class ThreadB extends Thread { private MyObject object; //省略构造方法 @Override public void run() { super.run(); object.methodB(); } } public class Run { public static void main(String[] args) { MyObject object = new MyObject(); //线程A与线程B 持有的是同一个对象:object ThreadA a = new ThreadA(object); ThreadB b = new ThreadB(object); a.start(); b.start(); } } 由于线程A和线程B持有同一个MyObject类的对象object，尽管这两个线程需要调用不同的方法，但是它们是同步执行的，比如：线程B需要等待线程A执行完了methodA()方法之后，它才能执行methodB()方法。这样，线程A和线程B就实现了 通信。 这种方式，本质上就是“共享内存”式的通信。多个线程需要访问同一个共享变量，谁拿到了锁（获得了访问权限），谁就可以执行。 ②while轮询的方式代码如下： import java.util.ArrayList; import java.util.List; public class MyList { private List&lt;String&gt; list = new ArrayList&lt;String&gt;(); public void add() { list.add(&quot;elements&quot;); } public int size() { return list.size(); } } import mylist.MyList; public class ThreadA extends Thread { private MyList list; public ThreadA(MyList list) { super(); this.list = list; } @Override public void run() { try { for (int i = 0; i &lt; 10; i++) { list.add(); System.out.println(&quot;添加了&quot; + (i + 1) + &quot;个元素&quot;); Thread.sleep(1000); } } catch (InterruptedException e) { e.printStackTrace(); } } } import mylist.MyList; public class ThreadB extends Thread { private MyList list; public ThreadB(MyList list) { super(); this.list = list; } @Override public void run() { try { while (true) { if (list.size() == 5) { System.out.println(&quot;==5, 线程b准备退出了&quot;); throw new InterruptedException(); } } } catch (InterruptedException e) { e.printStackTrace(); } } } import mylist.MyList; import extthread.ThreadA; import extthread.ThreadB; public class Test { public static void main(String[] args) { MyList service = new MyList(); ThreadA a = new ThreadA(service); a.setName(&quot;A&quot;); a.start(); ThreadB b = new ThreadB(service); b.setName(&quot;B&quot;); b.start(); } } 在这种方式下，线程A不断地改变条件，线程ThreadB不停地通过while语句检测这个条件(list.size()==5)是否成立 ，从而实现了线程间的通信。但是这种方式会浪费CPU资源。之所以说它浪费资源，是因为JVM调度器将CPU交给线程B执行时，它没做啥“有用”的工作，只是在不断地测试 某个条件是否成立。就类似于现实生活中，某个人一直看着手机屏幕是否有电话来了，而不是： 在干别的事情，当有电话来时，响铃通知TA电话来了。关于线程的轮询的影响，可参考：JAVA多线程之当一个线程在执行死循环时会影响另外一个线程吗？ 这种方式还存在另外一个问题： 轮询的条件的可见性问题，关于内存可见性问题，可参考：JAVA多线程之volatile 与 synchronized 的比较中的第一点“一，volatile关键字的可见性” 线程都是先把变量读取到本地线程栈空间，然后再去再去修改的本地变量。因此，如果线程B每次都在取本地的 条件变量，那么尽管另外一个线程已经改变了轮询的条件，它也察觉不到，这样也会造成死循环。 ③wait/notify机制代码如下： import java.util.ArrayList; import java.util.List; public class MyList { private static List&lt;String&gt; list = new ArrayList&lt;String&gt;(); public static void add() { list.add(&quot;anyString&quot;); } public static int size() { return list.size(); } } public class ThreadA extends Thread { private Object lock; public ThreadA(Object lock) { super(); this.lock = lock; } @Override public void run() { try { synchronized (lock) { if (MyList.size() != 5) { System.out.println(&quot;wait begin &quot; + System.currentTimeMillis()); lock.wait(); System.out.println(&quot;wait end &quot; + System.currentTimeMillis()); } } } catch (InterruptedException e) { e.printStackTrace(); } } } public class ThreadB extends Thread { private Object lock; public ThreadB(Object lock) { super(); this.lock = lock; } @Override public void run() { try { synchronized (lock) { for (int i = 0; i &lt; 10; i++) { MyList.add(); if (MyList.size() == 5) { lock.notify(); System.out.println(&quot;已经发出了通知&quot;); } System.out.println(&quot;添加了&quot; + (i + 1) + &quot;个元素!&quot;); Thread.sleep(1000); } } } catch (InterruptedException e) { e.printStackTrace(); } } } public class Run { public static void main(String[] args) { try { Object lock = new Object(); ThreadA a = new ThreadA(lock); a.start(); Thread.sleep(50); ThreadB b = new ThreadB(lock); b.start(); } catch (InterruptedException e) { e.printStackTrace(); } } } 线程A要等待某个条件满足时(list.size()==5)，才执行操作。线程B则向list中添加元素，改变list 的size。 A,B之间如何通信的呢？也就是说，线程A如何知道 list.size() 已经为5了呢？ 这里用到了Object类的 wait() 和 notify() 方法。 当条件未满足时(list.size() !=5)，线程A调用wait() 放弃CPU，并进入阻塞状态。—不像②while轮询那样占用CPU 当条件满足时，线程B调用 notify()通知 线程A，所谓通知线程A，就是唤醒线程A，并让它进入可运行状态。 这种方式的一个好处就是CPU的利用率提高了。 但是也有一些缺点：比如，线程B先执行，一下子添加了5个元素并调用了notify()发送了通知，而此时线程A还执行；当线程A执行并调用wait()时，那它永远就不可能被唤醒了。因为，线程B已经发了通知了，以后不再发通知了。这说明：通知过早，会打乱程序的执行逻辑。 ④管道通信就是使用java.io.PipedInputStream 和 java.io.PipedOutputStream进行通信 具体就不介绍了。分布式系统中说的两种通信机制：共享内存机制和消息通信机制。感觉前面的①中的synchronized关键字和②中的while轮询 “属于” 共享内存机制，由于是轮询的条件使用了volatile关键字修饰时，这就表示它们通过判断这个“共享的条件变量“是否改变了，来实现进程间的交流。 而管道通信，更像消息传递机制，也就是说：通过管道，将一个线程中的消息发送给另一个。 关于wait/notify更多内容，可参考：JAVA多线程之wait/notify]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[如何在两个线程间共享数据]]></title>
+    <url>%2Fpost%2F9a246216.html</url>
+    <content type="text"><![CDATA[转自：https://blog.csdn.net/hejingyuan6/article/details/47053409 你可以通过共享对象来实现这个目的，或者是使用像阻塞队列这样并发的数据结构。 1，如果每个线程执行的代码相同，可以使用同一个Runnable对象，这个Runnable对象中有那个共享数据。 例如，卖票系统就可以这么做： class Ticket implements Runnable { private int ticket = 10; //共享成员变量 public void run() { while (ticket &gt; 0) { ticket--; System.out.println(&quot;当前票数为：&quot; + ticket); } } } public class SellTicket { public static void main(String[] args) { Ticket t = new Ticket(); //使用同一个Runnable实现对象 new Thread(t).start(); //在主线程中新建并开启两个线程 new Thread(t).start(); } } 2，如果每个线程执行的代码不同，这时候需要用不同的Runnable对象。 例如，设计4个线程。其中两个线程每次对data增加1，另外两个线程对data每次减1，银行存取款。 有两种方法来解决此问题： （其实这两个方法是差不多的，只是使用内部类写法更简洁） 2.1 将共享数据封装成另外一个对象，然后将这个对象逐一传递给各个Runnable对象，每个线程对共享数据的操作方法也分配到那个对象身上完成，这样容易实现针对数据进行各个操作的互斥和通信： class MyData{ //共享数据类 private int data; //共享数据 public MyData(int data){ this.data=data; } public synchronized void increase(){ //加操作 data++; System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data); } public synchronized void decrease(){ //减操作 data--; System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data); } } class Inc implements Runnable{ //线程1 private MyData obj; public Inc(MyData obj){ //传入共享数据类对象 this.obj=obj; } public void run(){ this.obj.increase(); //调用加操作 } } class Dec implements Runnable{ //线程2 private MyData obj; public Dec(MyData obj){ //传入共享数据类对象 this.obj=obj; } public void run(){ this.obj.decrease(); //调用减操作 } } public class Test{ public static void main(String[] args){ MyData t = new MyData (10); for (int i = 0; i &lt; 2; i++){ //共开启2*2个线程 Thread inc=new Thread(new Inc(t)); Thread dec=new Thread(new Dec(t)); inc.start(); dec.start(); } } } 2.2 将Runnable对象作为一个类的内部类，共享数据作为这个类的成员变量，每个线程对共享数据的操作方法也封装在外部类，以便实现对数据的各个操作的同步和互斥，作为内部类的各个Runnable对象调用外部类的这些方法： class MyData{ //共享数据类 private int data; //共享数据 public MyData(int data){ this.data=data; } public synchronized void increase(){ //加操作 data++; System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data); } public synchronized void decrease(){ //减操作 data--; System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data); } } public class Test{ public static void main(String[] args){ final MyData t = new MyData (10); //final表示引用变量t不能指向其他对象实例 for (int i = 0; i &lt; 2; i++){ new Thread(new Runnable(){ public void run(){ this.obj.increase(); //调用加操作 } }).start(); new Thread(new Runnable(){ public void run(){ this.obj.decrease(); //调用减操作 } }).start(); } } } 总结： 其实多线程间的共享数据最主要的还是互斥，多个线程共享一个变量，针对变量的操作实现原子性即可。]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[观察者模式]]></title>
+    <url>%2Fpost%2F9a246216.html</url>
+    <content type="text"><![CDATA[转自：http://www.cnblogs.com/luohanguo/p/7825656.html 基本思想：观察者模式的定义： 在对象之间定义了一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象会收到通知并自动更新。 大白话： 其实就是发布订阅模式，发布者发布信息，订阅者获取信息，订阅了就能收到信息，没订阅就收不到信息。 该模式包含四个角色： 抽象被观察者角色：也就是一个抽象主题，它把所有对观察者对象的引用保存在一个集合中，每个主题都可以有任意数量的观察者。抽象主题提供一个接口，可以增加和删除观察者角色。一般用一个抽象类和接口来实现。 抽象观察者角色：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。 具体被观察者角色：也就是一个具体的主题，在集体主题的内部状态改变时，所有登记过的观察者发出通知。 具体观察者角色：实现抽象观察者角色所需要的更新接口，一边使本身的状态与制图的状态相协调。 代码：/*** * 抽象被观察者接口 * 声明了添加、删除、通知观察者方法 * @author jstao */ public interface Observerable { public void registerObserver(Observer o); //添加一个用户 public void removeObserver(Observer o); //移除一个用户 public void notifyObserver(); //通知用户消息更新了--&gt;里面调用观察者接口的update()方法 } . /*** * 抽象观察者接口 * 定义了一个update()方法，当被观察者调用notifyObservers()方法时，观察者的update()方法会被回调。 * @author jstao */ public interface Observer { public void update(String message); } . import java.util.ArrayList; import java.util.List; /** * 被观察者，也就是微信公众号服务 * 实现了Observerable接口，对Observerable接口的三个方法进行了具体实现 * @author jstao * */ public class WechatServer implements Observerable { //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现类编程 private List&lt;Observer&gt; list; //用户列表 private String message; //发布的信息 public WechatServer() { list = new ArrayList&lt;Observer&gt;(); } @Override public void registerObserver(Observer o) { list.add(o); } @Override public void removeObserver(Observer o) { if(!list.isEmpty()) list.remove(o); } //遍历 @Override public void notifyObserver() { for(int i = 0; i &lt; list.size(); i++) { Observer oserver = list.get(i); oserver.update(message); //回调集合中每个用户的update()方法，传达更新消息 } } public void setInfomation(String s) { //设置更新消息 this.message = s; System.out.println(&quot;微信服务更新消息： &quot; + s); //消息更新，通知所有观察者 notifyObserver(); } } . /** * 观察者 * 实现了update方法 * @author jstao * */ public class User implements Observer { private String name; private String message; public User(String name) { this.name = name; } @Override public void update(String message) { this.message = message; read(); } public void read() { System.out.println(name + &quot; 收到推送消息： &quot; + message); } } //测试： /** * 首先注册了三个用户，ZhangSan、LiSi、WangWu。公众号发布了一条消息&quot;PHP是世界上最好用的语言！&quot;，三个用户都收到了消息。 用户ZhangSan看到消息后颇为震惊，果断取消订阅，这时公众号又推送了一条消息，此时用户ZhangSan已经收不到消息，其他用户 还是正常能收到推送消息。 */ public class Test { public static void main(String[] args) { WechatServer server = new WechatServer(); Observer userZhang = new User(&quot;ZhangSan&quot;); Observer userLi = new User(&quot;LiSi&quot;); Observer userWang = new User(&quot;WangWu&quot;); server.registerObserver(userZhang); server.registerObserver(userLi); server.registerObserver(userWang); server.setInfomation(&quot;PHP是世界上最好用的语言！&quot;); System.out.println(&quot;----------------------------------------------&quot;); server.removeObserver(userZhang); server.setInfomation(&quot;JAVA是世界上最好用的语言！&quot;); } } 小结：这个模式是松偶合的，改变主题或观察者中的一方，另一方不会受到影像。 JDK中也有自带的观察者模式，但是被观察者是一个类而不是接口，限制了它的复用能力。 在JavaBean和Swing中也可以看到观察者模式的影子。 yangd个人理解： 接口异步回调是两个对象之间互相调用，而观察者模式只有服务器调用用户的方法（被观察者调用观察者），是单向调用，所以二者是不一样的。]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[动态代理模式]]></title>
+    <url>%2Fpost%2Faa7827a9.html</url>
+    <content type="text"><![CDATA[. /** * 通过reflect反射实现 */ import java.lang.reflect.InvocationHandler; import java.lang.reflect.Method; import java.lang.reflect.Proxy; //接口 public interface Waiter { // 服务功能 public void service(); } //接口实现类：女服务员 public class Waitress implements Waiter { @Override public void service() { System.out.println(&quot;女服务员正在服务...&quot;); } } //服务员经理 public class WaiterManager { /** * 通过经理拿到女服务员的功能代理对象Waiter proxy */ public static Waiter getWaitressProxy(Waitress ress){ // Proxy代理类的静态实例化方法newProxyInstance //参数：被代理对象的类的加载器、接口、InvocationHandler接口的实现类 Waiter proxy = (Waiter) Proxy.newProxyInstance(ress.getClass().getClassLoader(), ress.getClass().getInterfaces(), new MyWaitressHandler(ress)); return proxy; // 返回女服务员的代理对象 } } // InvocationHandler动态代理接口的实现类 class MyWaitressHandler implements InvocationHandler{ private Waiter w; MyWaitressHandler(Waiter w){ // 实参是Waitress ress this.w = w; } //重写InvocationHandler接口的invoke方法 /** * 执行服务功能： * 在该方法里，经理不仅可以决定是否让服务员进行服务，还可以对服务功能进行完善。 * （服务前请微笑，服务后请鞠躬。） */ @Override public Object invoke(Object proxy, Method method, Object[] args) throws Throwable { // 服务前请微笑 System.out.println(&quot;微笑...&quot;); // method是waiter中service()方法的对象 // 形参w.service() --&gt; 实参ress.service() // 执行服务功能 method.invoke(w, args); // 服务后请鞠躬 System.out.println(&quot;鞠躬...&quot;); return null; } //测试 @Test public void run2(){ Waitress ress = new Waitress(); Waiter proxy = WaiterManager.getWaitressProxy(ress); proxy.service(); //微笑…女服务员正在服务…鞠躬… } }]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[静态工厂模式]]></title>
+    <url>%2Fpost%2Ff11bee84.html</url>
+    <content type="text"><![CDATA[参考：https://www.cnblogs.com/xuxinstyle/p/9128865.html //首先创建一个抽象类 public abstract class INoodles { /** * 描述每种面条啥样的 */ public abstract void desc(); } //该抽象类的3个实现子类 public class LzNoodles extends INoodles { @Override public void desc() { System.out.println(&quot;兰州拉面&quot;); } } public class PaoNoodles extends INoodles { @Override public void desc() { System.out.println(&quot;泡面&quot;); } } public class GankouNoodles extends INoodles { @Override public void desc() { System.out.println(&quot;干扣面&quot;); } } //工厂类 public class SimpleNoodlesFactory { public static final int TYPE_LZ = 1; //兰州拉面 public static final int TYPE_PM = 2; //泡面 public static final int TYPE_GK = 3; //干扣面 //根据类型创建不同的对象实例 public static INoodles createNoodles(int type) { switch (type) { case TYPE_LZ: return new LzNoodles(); case TYPE_PM: return new PaoNoodles(); case TYPE_GK: return new GankouNoodles(); default: return new PaoNoodles(); //默认给一碗泡面 } } }]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[装饰者模式]]></title>
+    <url>%2Fpost%2Fa708a60d.html</url>
+    <content type="text"><![CDATA[. 基本思想： 增强类与被增强类实现(implements)相同的接口； 增强类中获取被增强类的引用。 // 共同的接口： interface IPerson{ public void run(); } // 被增强的类 class Person implements IPerson{ public void run(){ System.out.println(&quot;跑...&quot;); } } // 增强的类 class SuperPerson implements IPerson{ private IPerson p; // 用于接收Person对象 public SuperPerson(IPerson p){ // 传入一个Person对象 this.p = p; } public void run(){ p.run(); System.out.println(&quot;超人跑...&quot;); } }]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[单例模式]]></title>
+    <url>%2Fpost%2Ff1601c3e.html</url>
+    <content type="text"><![CDATA[懒汉、饿汉 //懒汉式 public class Apple { private static Apple apple = null; private Apple(){} //synchronized使用来对方法进行线程同步的，即一定时间内只能有一个线程调用该方法 public static synchronized Apple getApple(){ if(apple == null) { apple = new Apple(); //需要时再创建Apple实例，需要加synchronized，防止并发操作时多个线程同时创建多个实例 } return apple; } } //饿汉式 public class Apple { private static Apple apple = new Apple(); //提前创建Apple实例 private Apple(){} public static Apple getApple(){ //不需要加synchronized，也能应对并发操作 return apple; } }]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -548,9 +674,22 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>GC</tag>
         <tag>java</tag>
         <tag>JVM</tag>
+        <tag>GC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JVM内存设置原理]]></title>
+    <url>%2Fpost%2F4cc01209.html</url>
+    <content type="text"><![CDATA[转载自：https://blog.csdn.net/sivyer123/article/details/17139443 堆内存设置原理方法区：Permanent 即 持久代（Permanent Generation），主要存放的是Java类定义信息，与垃圾收集器要收集的Java对象关系不大。 堆内存：Heap = { Old + NEW = {Eden, from, to} }，Old 即 年老代（Old Generation），New 即 年轻代（Young Generation）。年老代和年轻代的划分对垃圾收集影响比较大。 持久代 用于存放静态类型数据，如 Java Class, Method 等。持久代对垃圾回收没有显著影响。但是有些应用可能动态生成或调用一些Class，例如 Hibernate CGLib 等，在这种时候往往需要设置一个比较大的持久代空间来存放这些运行过程中动态增加的类型。 年轻代 所有新生成的对象首先都是放在年轻代。年轻代的目标就是尽可能快速的收集掉那些生命周期短的对象。年轻代一般分3个区，1个Eden区，2个Survivor区（from 和 to）。 大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到Survivor区（两个中的一个），当一个Survivor区满时，此区的存活对象将被复制到另外一个Survivor区，当另一个Survivor区也满了的时候，从前一个Survivor区复制过来的并且此时还存活的对象，将可能被复制到年老代。 2个Survivor区是对称的，没有先后关系，所以同一个Survivor区中可能同时存在从Eden区复制过来对象，和从另一个Survivor区复制过来的对象；而复制到年老区的只有从另一个Survivor区过来的对象。而且，因为需要交换的原因，Survivor区至少有一个是空的。特殊的情况下，根据程序需要，Survivor区是可以配置为多个的（多于2个），这样可以增加对象在年轻代中的存在时间，减少被放到年老代的可能。 针对年轻代的垃圾回收即 Young GC。 年老代 在年轻代中经历了N次（可配置）垃圾回收后仍然存活的对象，就会被复制到年老代中。因此，可以认为年老代中存放的都是一些生命周期较长的对象。 针对年老代的垃圾回收即 Full GC。 所以，当一组对象生成时，内存申请过程如下： JVM会试图为相关Java对象在年轻代的Eden区中初始化一块内存区域。 当Eden区空间足够时，内存申请结束。否则执行下一步。 JVM试图释放在Eden区中所有不活跃的对象（Young GC）。释放后若Eden空间仍然不足以放入新对象，JVM则试图将部分Eden区中活跃对象放入Survivor区。 Survivor区被用来作为Eden区及年老代的中间交换区域。当年老代空间足够时，Survivor区中存活了一定次数的对象会被移到年老代。 当年老代空间不够时，JVM会在年老代进行完全的垃圾回收（Full GC）。 Full GC后，若Survivor区及年老代仍然无法存放从Eden区复制过来的对象，则会导致JVM无法在Eden区为新生成的对象申请内存，即出现“Out of Memory”。 OOM（“Out of Memory”）异常一般主要有如下2种原因： 持久代溢出，表现为：java.lang.OutOfMemoryError:PermGenspace 通常由于持久代设置过小，动态加载了大量Java类而导致溢出，解决办法唯有将参数 -XX:MaxPermSize 调大（一般256m能满足绝大多数应用程序需求）。将部分Java类放到容器共享区（例如Tomcat share lib）去加载的办法也是一个思路，但前提是容器里部署了多个应用，且这些应用有大量的共享类库。 年老代溢出，表现为：java.lang.OutOfMemoryError:Javaheapspace 这是最常见的情况，产生的原因可能是：设置的内存参数Xmx过小或程序的内存泄露及使用不当问题。 例如循环上万次的字符串处理、创建上千万个对象、在一段代码内申请上百M甚至上G的内存。还有的时候虽然不会报内存溢出，却会使系统不间断的垃圾回收，也无法处理其它请求。这种情况下除了检查程序、打印堆内存等方法排查，还可以借助一些内存分析工具，比如MAT就很不错。]]></content>
+      <categories>
+        <category>JVM</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>JVM</tag>
+        <tag>GC</tag>
       </tags>
   </entry>
   <entry>
@@ -561,9 +700,9 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>GC</tag>
         <tag>java</tag>
         <tag>JVM</tag>
+        <tag>GC</tag>
       </tags>
   </entry>
   <entry>
@@ -574,9 +713,9 @@
         <category>JVM</category>
       </categories>
       <tags>
-        <tag>GC</tag>
         <tag>java</tag>
         <tag>JVM</tag>
+        <tag>GC</tag>
       </tags>
   </entry>
   <entry>

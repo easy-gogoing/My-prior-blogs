@@ -4,6 +4,260 @@
 
     
   <url>
+    <loc>https://mlone.top/post/7b28700.html</loc>
+    <lastmod>2019-02-27T08:44:47.525Z</lastmod>
+    <data>
+        <display>
+        <title>如何避免死锁</title>
+        <pubTime>2018-10-29T08:41:34.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="并发编程" url="https://mlone.top/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/b82cf365.html</loc>
+    <lastmod>2019-02-27T08:39:18.357Z</lastmod>
+    <data>
+        <display>
+        <title>如何手动停止一个线程</title>
+        <pubTime>2018-10-24T07:28:02.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="并发编程" url="https://mlone.top/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/5554abcc.html</loc>
+    <lastmod>2019-02-27T08:39:18.356Z</lastmod>
+    <data>
+        <display>
+        <title>事务的四大特性ACID</title>
+        <pubTime>2018-10-27T07:28:02.000Z</pubTime>
+        
+        <tag>事务</tag>
+         
+        <tag>数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="https://mlone.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/9ba28576.html</loc>
+    <lastmod>2019-02-27T08:39:18.355Z</lastmod>
+    <data>
+        <display>
+        <title>事务的4种隔离级别</title>
+        <pubTime>2018-10-28T07:28:02.000Z</pubTime>
+        
+        <tag>事务</tag>
+         
+        <tag>数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="https://mlone.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/42644e5a.html</loc>
+    <lastmod>2019-02-27T08:39:18.353Z</lastmod>
+    <data>
+        <display>
+        <title>java线程的6中状态</title>
+        <pubTime>2018-10-24T02:28:02.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="并发编程" url="https://mlone.top/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/a84acd9a.html</loc>
+    <lastmod>2019-02-27T08:16:52.761Z</lastmod>
+    <data>
+        <display>
+        <title>线程间的通信方式</title>
+        <pubTime>2018-10-23T07:28:02.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="并发编程" url="https://mlone.top/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/9a246216.html</loc>
+    <lastmod>2019-02-27T08:07:15.087Z</lastmod>
+    <data>
+        <display>
+        <title>如何在两个线程间共享数据</title>
+        <pubTime>2018-10-22T07:28:02.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>多线程</tag>
+         
+         
+           
+             
+              <breadCrumb title="并发编程" url="https://mlone.top/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/9a246216.html</loc>
+    <lastmod>2019-02-27T07:53:09.140Z</lastmod>
+    <data>
+        <display>
+        <title>观察者模式</title>
+        <pubTime>2018-10-22T07:28:02.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="https://mlone.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/f11bee84.html</loc>
+    <lastmod>2019-02-27T07:49:50.454Z</lastmod>
+    <data>
+        <display>
+        <title>静态工厂模式</title>
+        <pubTime>2018-10-19T07:28:02.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="https://mlone.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/a708a60d.html</loc>
+    <lastmod>2019-02-27T07:49:50.452Z</lastmod>
+    <data>
+        <display>
+        <title>装饰者模式</title>
+        <pubTime>2018-10-18T07:28:02.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="https://mlone.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/f1601c3e.html</loc>
+    <lastmod>2019-02-27T07:49:50.451Z</lastmod>
+    <data>
+        <display>
+        <title>单例模式</title>
+        <pubTime>2018-10-17T07:28:02.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="https://mlone.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mlone.top/post/aa7827a9.html</loc>
+    <lastmod>2019-02-27T07:49:50.450Z</lastmod>
+    <data>
+        <display>
+        <title>动态代理模式</title>
+        <pubTime>2018-10-20T07:28:02.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="https://mlone.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mlone.top/post/5a616d07.html</loc>
     <lastmod>2019-02-27T07:16:15.050Z</lastmod>
     <data>
@@ -929,11 +1183,11 @@
         <title>JVM内存设置原理</title>
         <pubTime>2018-10-15T14:30:16.000Z</pubTime>
         
-        <tag>GC</tag>
-         
         <tag>java</tag>
          
         <tag>JVM</tag>
+         
+        <tag>GC</tag>
          
          
            
@@ -975,11 +1229,11 @@
         <title>Java运行时数据区</title>
         <pubTime>2018-10-14T13:30:16.000Z</pubTime>
         
-        <tag>GC</tag>
-         
         <tag>java</tag>
          
         <tag>JVM</tag>
+         
+        <tag>GC</tag>
          
          
            
@@ -999,11 +1253,11 @@
         <title>运行时数据区概括</title>
         <pubTime>2018-10-14T14:30:16.000Z</pubTime>
         
-        <tag>GC</tag>
-         
         <tag>java</tag>
          
         <tag>JVM</tag>
+         
+        <tag>GC</tag>
          
          
            
@@ -1174,11 +1428,11 @@
         <title>JVM启动参数设置</title>
         <pubTime>2018-10-15T14:30:16.000Z</pubTime>
         
-        <tag>GC</tag>
-         
         <tag>java</tag>
          
         <tag>JVM</tag>
+         
+        <tag>GC</tag>
          
          
            
