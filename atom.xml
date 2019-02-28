@@ -45,7 +45,7 @@
     <link href="https://mlone.top/post/724a55c9.html"/>
     <id>https://mlone.top/post/724a55c9.html</id>
     <published>2018-12-29T08:50:36.000Z</published>
-    <updated>2019-02-27T10:12:17.544Z</updated>
+    <updated>2019-02-28T08:08:27.347Z</updated>
     
     <content type="html"><![CDATA[<p>转自：<a href="https://blog.csdn.net/jonesAriven/article/details/80036602" target="_blank" rel="noopener">spring与springmvc的区别与联系</a></p><a id="more"></a><h5 id="一、spring框架的介绍"><a href="#一、spring框架的介绍" class="headerlink" title="一、spring框架的介绍"></a>一、spring框架的介绍</h5><p><strong>spring是一个一站式的框架，提供了表现层（springmvc）到业务层（spring）再到数据层（springdata）的全套解决方案；</strong>spring的两大核心IOC(控制反转)和AOP(面向切面编程)更是给我们的程序解耦和代码的简介提供了支持。</p><h5 id="二、springmvc"><a href="#二、springmvc" class="headerlink" title="二、springmvc"></a>二、springmvc</h5><p> （1）<strong>springmvc给spring的表现层提供支持</strong></p><p> （2）springmvc的流程：</p><ol><li><p>用户发送请求至<strong>前端控制器DispatcherServlet；</strong></p></li><li><p>DispatcherServlet收到请求调用<strong>HandlerMapping处理器映射器；</strong></p></li><li><p>处理器映射器根据<strong>请求url</strong>找到具体的处理器，生成<strong>处理器对象</strong>及<strong>处理器拦截器</strong>(如果有则生成)一并返回给DispatcherServlet；</p></li><li><p>DispatcherServlet通过<strong>HandlerAdapter处理器适配器</strong>调用处理器，执行<strong>处理器</strong>(Controller，也叫后端控制器)；</p></li><li><p>Controller执行完成返回ModelAndView，并返回给HandlerAdapter，HandlerAdapter将结果返回给DispatcherServlet；</p></li><li><p>DispatcherServlet将ModelAndView传给<strong>ViewReslover视图解析器</strong>，ViewReslover解析后返回具体View给DispatcherServlet；</p></li><li>DispatcherServlet对View进行渲染视图（即将模型数据填充至视图中）后返回给客户</li></ol><h5 id="三、AOP与IOC"><a href="#三、AOP与IOC" class="headerlink" title="三、AOP与IOC"></a>三、AOP与IOC</h5><p>（1）AOP与IOC给spring的业务层提供支持，使程序的耦合度更低，代码更简洁</p><p>（2）AOP原理：即面向切面编程，就是提取公共部分，集中解决一些公共问题</p><p>（3）IOC原理：控制反转。在传统过程中，当某一个对象依赖于另外一个对象时，会由该对象去创建另外一个对象，有了ioc后，将创建过程交给IOC,由spring创建bean，从而只需给该对象注入即可</p><p><strong>问：*</strong>什么是AOP和IOC，它们的作用是什么?*</p><p>AOP：(Aspect Oriented Programing) 面向切面编程。</p><p>是指<strong>使用动态代理模式，在一个事务中无缝地插入多条其他处理。</strong></p><p>作用：Spring使用aop声明式事务控制，通过横向抽取方法将service层中的事务控制的代码抽取出来。</p><p>IOC： (Inverse of Control) 控制反转。</p><p>是指<strong>将原来程序中自己创建实现类对象的控制权反转到IOC容器中。只需要通过IOC来获对象的实例，将IOC当成一个黑盒子、工厂。</strong></p><p>作用：Spring提供ioc容器，对 bean进行实例化。使用bean时候从容器中取。还可以实现依赖注入(DI)，将对象需要的bean注入到其对象属性中。</p><p><strong>拓展：*</strong>AOP的概念：*</p><p>Aspected Oriented Programming 面向方面编程。</p><p>好处：AOP将程序分解成各个方面或者说关注点。这使得可以模块化，相当横向上分切了。它可以解决OOP和过程化方法不能够很好解决的横切（crosscut）问题，如：事务、安全、日志等横切关注。</p><p>实现AOP有几种方式：</p><ol><li>Spring 1.2版本中通过ProxyFactoryBean来实现aop,即通过动态代理来实现的,Aspect必须继承MethodBeforeAdvice,MethodAfterAdvice等。</li><li>Spring 2.0 AOP需要改的是FBI 这个类，而且它也不需要再实现某些接口。</li><li>三使用标注（@AspectJ）实现AOP。</li></ol><p>AOP 和 OOP的区别：</p><ol><li>面向方面编程 AOP 偏重业务处理过程的某个步骤或阶段，强调降低模块之间的耦合度，使代码拥有更好的移植性。</li><li>面向对象编程 (oop) 则是对业务分析中抽取的实体进行方法和属性的封装。<br>也可以说 AOP 是面向业务中的动词领域， OOP 面向名词领域。<br>AOP 的一个很重要的特点是源代码无关性，也就是说如果我们的系统中引用了 AOP 组件，即使我们把该组件去掉，系统代码也应该能够编译通过。要实现这一点，可以使用动态 proxy 模式。</li></ol>]]></content>
     
@@ -55,47 +55,25 @@
     
     </summary>
     
-      <category term="框架" scheme="https://mlone.top/categories/%E6%A1%86%E6%9E%B6/"/>
+      <category term="FrameWorks" scheme="https://mlone.top/categories/FrameWorks/"/>
     
     
-      <category term="框架" scheme="https://mlone.top/tags/%E6%A1%86%E6%9E%B6/"/>
+      <category term="FrameWorks" scheme="https://mlone.top/tags/FrameWorks/"/>
     
       <category term="spring" scheme="https://mlone.top/tags/spring/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Struts2处理请求的全过程</title>
-    <link href="https://mlone.top/post/85eb9bf0.html"/>
-    <id>https://mlone.top/post/85eb9bf0.html</id>
-    <published>2018-12-27T08:50:36.000Z</published>
-    <updated>2019-02-27T10:11:49.505Z</updated>
-    
-    <content type="html"><![CDATA[<p>Struts 2处理请求的全过程是什么? </p><a id="more"></a><p>（1）当客户端浏览器向服务器端发送请求，会被Struts2的核心前端控制器（一个过滤器）所拦截，然后根据struts2.xml配置文件中的内容来决定调用哪个前端控制器action；</p><p>（2）前端控制器action接收到请求后，会根据请求的method方法名调用函数进行处理；</p><p>（3）处理完成后，会返回一个逻辑视图名，然后根据struts2.xml中配置的action的result来决定要跳转到哪个前端页面。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Struts 2处理请求的全过程是什么? &lt;/p&gt;
-    
-    </summary>
-    
-      <category term="框架" scheme="https://mlone.top/categories/%E6%A1%86%E6%9E%B6/"/>
-    
-    
-      <category term="框架" scheme="https://mlone.top/tags/%E6%A1%86%E6%9E%B6/"/>
-    
-      <category term="struts2" scheme="https://mlone.top/tags/struts2/"/>
+      <category term="springmvc" scheme="https://mlone.top/tags/springmvc/"/>
     
   </entry>
   
   <entry>
-    <title>Hibernate对象的三大状态</title>
-    <link href="https://mlone.top/post/993a1961.html"/>
-    <id>https://mlone.top/post/993a1961.html</id>
-    <published>2018-12-26T08:50:36.000Z</published>
-    <updated>2019-02-27T10:07:25.396Z</updated>
+    <title>MyBatis与Hibernate的区别</title>
+    <link href="https://mlone.top/post/3141c602.html"/>
+    <id>https://mlone.top/post/3141c602.html</id>
+    <published>2018-12-28T08:50:36.000Z</published>
+    <updated>2019-02-28T08:45:08.964Z</updated>
     
-    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><ul><li><p><strong>瞬时态 transient</strong></p><p>  new了一个对象，此时对象就是瞬时态；</p><p>  瞬时态对象和数据库记录没有对应关系，和session没有关系。</p></li><li><p><strong>持久态 persistent</strong></p><p>  瞬时态对象执行save方法后变成持久态；</p><p>  持久态对象和数据库记录存在对应关系，和session有关系。</p><p>  修改对象的属性，会直接将数据保存到数据库中。</p></li><li><p><strong>托管态Detached</strong></p><p>  当session关闭后，持久态对象变为托管态。</p><p>  托管态对象和session没有关系，可能和数据库存在对应也可能不对应。</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><h4 id="什么是mybatis？"><a href="#什么是mybatis？" class="headerlink" title="什么是mybatis？"></a>什么是mybatis？</h4><p>mybatis是一个持久层的框架，是apache下的顶级项目。一开始托管到goolecode下，再后来托管到github下(<a href="https://github.com/mybatis/mybatis-3/releases)。" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-3/releases)。</a></p><p>mybatis让程序将主要精力放在sql上，通过mybatis提供的映射方式，自由灵活生成（半自动化，大部分需要程序员编写sql）满足需要sql语句。</p><p>mybatis可以将向 preparedStatement中的输入参数自动进行<strong>输入映射，</strong>将查询结果集灵活映射成java对象。<strong>（输出映射）</strong></p><h4 id="Mybatis与Hibernate的区别？"><a href="#Mybatis与Hibernate的区别？" class="headerlink" title="Mybatis与Hibernate的区别？"></a>Mybatis与Hibernate的区别？</h4><p><strong>hibernate：</strong></p><p>是一个标准ORM框架（对象关系映射）。入门门槛较高的，不需要程序写sql，sql语句自动生成了。对sql语句进行优化、修改比较困难的。</p><p><strong>应用场景：</strong>适用与需求变化不多的中小型项目，比如：后台管理系统，erp、orm、oa…</p><p><strong>mybatis：</strong></p><p>专注于sql本身，需要程序员自己编写sql语句，sql修改、优化比较方便。<br>mybatis是一个不完全 的ORM框架，虽然程序员自己写sql，mybatis 也可以实现映射（输入映射、输出映射）。</p><p><strong>应用场景：</strong>适用与需求变化较多的项目，比如：互联网项目。</p>]]></content>
     
     <summary type="html">
     
@@ -103,10 +81,60 @@
     
     </summary>
     
-      <category term="框架" scheme="https://mlone.top/categories/%E6%A1%86%E6%9E%B6/"/>
+      <category term="FrameWorks" scheme="https://mlone.top/categories/FrameWorks/"/>
     
     
-      <category term="框架" scheme="https://mlone.top/tags/%E6%A1%86%E6%9E%B6/"/>
+      <category term="FrameWorks" scheme="https://mlone.top/tags/FrameWorks/"/>
+    
+      <category term="hibernate" scheme="https://mlone.top/tags/hibernate/"/>
+    
+      <category term="mybatis" scheme="https://mlone.top/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Struts2学习笔记</title>
+    <link href="https://mlone.top/post/85eb9bf0.html"/>
+    <id>https://mlone.top/post/85eb9bf0.html</id>
+    <published>2018-12-27T08:50:36.000Z</published>
+    <updated>2019-02-28T08:38:03.040Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><h4 id="1-什么是Struts2？"><a href="#1-什么是Struts2？" class="headerlink" title="1.什么是Struts2？"></a>1.什么是Struts2？</h4><p>javaEE三层架构：表现层、业务层、持久层，为了提高开发效率，方便项目管理。</p><p>技术结构发展：</p><ol><li>单独使用jsp/servlet、</li><li>使用jsp+javabean：（model1模式）、</li><li>使用：jsp+servlet+javaBean（model2模式）</li></ol><p>Model2模式即MVC模式，MVC全名是Model View Controller，是模型(model)－视图(view)－控制器(controller)的缩写。</p><p>存在的问题：</p><ol><li>控制逻辑复杂且不通用（多个请求得写多个Servlet）。</li><li>表现（视图）技术单一，只使用jsp，能否使用其它表现层技术（freemarker，pdf、xls）。</li><li>对请求的参数的解析（需手动单独获取每个参数request.getParameter()）。</li></ol><p>Struts2 是apache的一个开源项目，它是纯java开发，它是一个非常优秀的MVC框架，基于Model2 设计模型。</p><h4 id="2-Struts2的结构优点"><a href="#2-Struts2的结构优点" class="headerlink" title="2.Struts2的结构优点"></a>2.Struts2的结构优点</h4><p>解决jsp+servlet+javabean中的问题：</p><ol><li>将控制逻辑单独封装成通用的控制器</li><li>原控制逻辑中封装请参数、调用业务逻辑代码抽取出来。</li><li>支持多视图技术。</li></ol><p>（1）控制器</p><p>struts2提供前端控制器（Struts2PreparedAndExecutFilter），将控制逻辑封装起来，接收请求。</p><p>（2）模型</p><p>封装请求参数，进行业务处理。<br>struts2提供了action接口，根据业务需求开发不同的action，比如：注册用户Action</p><p>（3）提供Result接口，支持多视图技术</p><p>Result将结果响应给用户。</p><h4 id="3-Struts2处理请求的全过程是什么"><a href="#3-Struts2处理请求的全过程是什么" class="headerlink" title="3.Struts2处理请求的全过程是什么?"></a>3.Struts2处理请求的全过程是什么?</h4><ol><li><p>当客户端浏览器向服务器端发送请求，会被Struts2的核心前端控制器（一个过滤器）所拦截，然后根据struts2.xml配置文件中的内容来决定调用哪个前端控制器action；</p></li><li><p>前端控制器action接收到请求后，会根据请求的method方法名调用函数进行处理；</p></li><li><p>处理完成后，会返回一个逻辑视图名，然后根据struts2.xml中配置的action的result来决定要跳转到哪个前端页面。</p></li></ol><h4 id="4-属性驱动"><a href="#4-属性驱动" class="headerlink" title="4.属性驱动"></a>4.属性驱动</h4><p>属性驱动是struts2提供的一种参数绑定机制，如果按照struts指定的开发规则，自动请求的参数设置（赋值）到struts的action类的属性中。</p><p>属性驱动开发规则：</p><ol><li>确定请求参数的名称。</li><li>在action类中添加属性，属性名和参数名称一致，并且添加 get/set方法。</li></ol><p>属性驱动支持不同action类属性类型：包括基本数据类型、list、map、数组、pojo。</p><p>重点掌握：1.基本类型 2.pojo  3.数组 4.list</p><h4 id="5-模型驱动"><a href="#5-模型驱动" class="headerlink" title="5.模型驱动"></a>5.模型驱动</h4><p><strong>问题描述：</strong>使用属性驱动，如果业务方法比较多，添加很多属性及get/set方法，不方便对业务方法进行维护。</p><p><strong>解决方案：</strong>将action中接收参数属性及get/set方法单独放到其它pojo中，action只剩下业务方法。可以使用struts2提供模型驱动方法开发action。</p><p><em>Ognl和值栈是实现模型驱动的基础原理。</em></p><p><em>OGNL是Xwork框架提供的功能，Xwork是struts2基础架构，Xwork是一个ioc容器。</em></p><p><em>OGNL是Object Graphic Navigation Language（对象图导航语言）的缩写，它是一个开源项目，struts2使用ognl，作为表达式语言。</em></p><p><em>使用OGNL可以方便向对象中设置属性值，从对象中获取属性值。</em></p><p><strong>模型驱动：</strong>模型驱动是将请求参数绑定到专门的模型对象中，Action实现ModelDriven接口并指定模型对象类型，模型对象类型即为pojo。</p><h4 id="6-拦截器"><a href="#6-拦截器" class="headerlink" title="6.拦截器"></a>6.拦截器</h4><p>struts2中通过拦截器实现<strong>参数绑定、参数校验、类型转换</strong>，拦截器就是<strong>在action的执行之前或之后</strong>进行拦截执行一些代码，就是对action代码的增强。</p><p><strong>拦截器的特点：</strong></p><ol><li>如果使用拦截器可以很方便访问值栈中的数据；</li><li>filter过滤器，可以拦截所有的请求；而struts2的拦截器只能拦截用户的请求，即action请求。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="FrameWorks" scheme="https://mlone.top/categories/FrameWorks/"/>
+    
+    
+      <category term="FrameWorks" scheme="https://mlone.top/tags/FrameWorks/"/>
+    
+      <category term="struts2" scheme="https://mlone.top/tags/struts2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hibernate学习笔记</title>
+    <link href="https://mlone.top/post/993a1961.html"/>
+    <id>https://mlone.top/post/993a1961.html</id>
+    <published>2018-12-26T08:50:36.000Z</published>
+    <updated>2019-02-28T08:27:22.520Z</updated>
+    
+    <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><h4 id="1-Hibernate的核心配置文件是什么及其作用"><a href="#1-Hibernate的核心配置文件是什么及其作用" class="headerlink" title="1.Hibernate的核心配置文件是什么及其作用?"></a>1.Hibernate的核心配置文件是什么及其作用?</h4><p>hibernate框架默认会加载classpath下的核心配置文件hibernate.cfg.xml</p><p>作用：</p><ol><li>加载对象关系映射文件；</li><li>配置hibernate运行的参数(属性)<br>，如会话工厂所需要的属性：</li></ol><p>数据库方言（决定了hibenrate发出哪个数据库认识的sql语句）、驱动、<br>连接url、用户名和密码，数据库连接池、事务隔离级别，开启二级缓存等。</p><h4 id="2-sessionFactory会话工厂生命周期"><a href="#2-sessionFactory会话工厂生命周期" class="headerlink" title="2.sessionFactory会话工厂生命周期"></a>2.sessionFactory会话工厂生命周期</h4><p>整个运行过程中只有一个sessionFactory实例即可，使用单例模式管理sessionFactory。<br>sessionFactory是线程安全的！</p><h4 id="3-Hibernate中有哪几种关联关系？"><a href="#3-Hibernate中有哪几种关联关系？" class="headerlink" title="3.Hibernate中有哪几种关联关系？"></a>3.Hibernate中有哪几种关联关系？</h4><p><strong>4种：</strong></p><p>一对一，一对多，多对一，多对多</p><h4 id="4-Hibernate对象的三大状态："><a href="#4-Hibernate对象的三大状态：" class="headerlink" title="4.Hibernate对象的三大状态："></a>4.Hibernate对象的三大状态：</h4><ul><li><p><strong>瞬时态 transient</strong></p><p>  new了一个对象，此时对象就是瞬时态；</p><p>  瞬时态对象和数据库记录没有对应关系，和session没有关系。</p></li><li><p><strong>持久态 persistent</strong></p><p>  瞬时态对象执行save方法后变成持久态；</p><p>  持久态对象和数据库记录存在对应关系，和session有关系。</p><p>  修改对象的属性，会直接将数据保存到数据库中。</p></li><li><p><strong>托管态Detached</strong></p><p>  当session关闭后，持久态对象变为托管态。</p><p>  托管态对象和session没有关系，可能和数据库存在对应也可能不对应。</p></li></ul><h4 id="5-QBC"><a href="#5-QBC" class="headerlink" title="5.QBC"></a>5.QBC</h4><p>QBC（Query By Criteria）按条件查询，通过Criteria构造查询条件，即通过调用Criteria的api实现各种查询。</p><p>通过Criteria对象拼装 查询条件，调用Criteria的add方法拼接查询条件，最终hibernate通过criteria对象自动生成sql语句。</p><h4 id="6-一级缓存与二级缓存"><a href="#6-一级缓存与二级缓存" class="headerlink" title="6.一级缓存与二级缓存"></a>6.一级缓存与二级缓存</h4><p><strong>一级缓存：</strong></p><ol><li>session级别的缓存，是线程级别的缓存；</li><li>在session中有一块内存区域，存储了持久态的对象；</li><li>第一次从数据库查询到数据存到session, 当session不关闭，再次查询不会向数据库发出sql；</li><li>当session关闭了，一级缓存就会被清空。</li></ol><p><strong>二级缓存：</strong></p><p>sessionFactory级别的缓存，是进程级别的缓存；</p><p>可以跨session，多个session可以公用二级缓存的数据。</p><p><strong>二级缓存区域：</strong></p><p><strong>1. 类级别缓冲区，存储了散装对象</strong></p><p>数据结构：map<br>[ key：对象的主键值+对象的全类路径，value：对象内容 ]</p><p><strong>2. 查询缓存区域，存储了查询结果集</strong></p><p>任意执行一个sql语句，将sql结果进行缓存</p><p>数据结构：map [ key：sql语句本身+输入参数，value就是List&lt;对象的主键值&gt; ]</p><h4 id="7-延迟加载"><a href="#7-延迟加载" class="headerlink" title="7.延迟加载"></a>7.延迟加载</h4><p><strong>什么是延迟加载？</strong></p><p>当查询信息，建议只查询需要的信息，对于不需要信息当需要时再去查询，这叫延迟加载。</p><p>好处：提高查询性能。</p><p>例子：对象导航查询。</p><ol><li><p>只查询基本信息，不查询关联属性;</p></li><li><p>当调用cstCustomer对象的get方法获取关联属性，再向数据库发出sql，去加载数据。</p></li></ol><p><strong>Get与Load：</strong></p><p>load执行原理：</p><ol><li>执行load查询，得到的是一个代理对象，没有发出sql</li><li>当调用get方法时，通过代理对象向数据库发出sql</li></ol><p><strong>延迟加载原理：</strong></p><ol><li>生成一个代理对象</li><li>执行加载时，通过代理对象向数据库发出sql</li></ol><h4 id="8-抓取策略"><a href="#8-抓取策略" class="headerlink" title="8.抓取策略"></a>8.抓取策略</h4><p><strong>什么是抓取策略？</strong></p><p>指当应用程序需要在（Hibernate实体对象图的）关联关系间进行导航的时候， Hibernate如何获取关联对象的策略。</p><p>策略包括：</p><ol><li>延迟加载</li><li>立即加载，将加载到数据抓取到对象的属性中。</li></ol><p><strong>（1）类级别的抓取策略</strong><br>(这里的lazy是class标签的属性，默认为true)</p><ol><li>延迟加载<br> 在hbm.xml中class标签内设置lazy=”true”（延迟加载），相当于load方法;</li><li>立即加载<br> 在hbm.xml中class标签内设置lazy=”false”，立即加载，load和get方法效果一样。</li></ol><p><strong>（2）关联级别的抓取策略（重点掌握）</strong></p><p><strong>一对多、多对多：</strong><br>（这里的fetch和lazy位于class标签下的<set>标签上，fetch=”select” lazy=”true”：此为一方的默认值）</set></p><p>set元素提供 lazy属性 和 fetch 用于设置 抓取策略</p><ol><li>fetch=”select”(默认)，lazy=”true”(默认)：fetch=”select”每get请求发出sql，lazy=”true”表示延迟加载<br>（一方lazy的值可设为true或false或extra）;</li><li>fetch=”join”（lazy不起作用）：批量抓取，自动生成左外连接语句，将关联的多方数据抓取到一方的属性中。</li><li>(一般不用) fetch=”select”（或不写），lazy=”false”，立即加载（注意：但这里的并不是生成左外连接sql，而是新建的查询sql语句去查外联表）。</li></ol><p>最佳实践：</p><p>在进行一对多、多对多关联查询时候，只查询基本信息而不需要关联多方数据的，一般情况下最好采用延迟加载的抓取策略。（就像查询客户列表时并不需要立即加载其联系人信息，就将两个表的关系映射配置为延迟加载，即默认设置）</p><p><strong>多对一：</strong><br>（这里的fetch和lazy位于class标签下的<many-to-one>标签上，fetch=”select” lazy=”proxy”：此为多方的默认值）<br>根据客户查询客户来源，多对一。</many-to-one></p><p>hbm采用 <many-to-one>元素，提供lazy属性和fetch属性，用来配置抓取策略</many-to-one></p><ol><li>fetch=”join”：自动生成左外连接，将关联一方属性对象抓取到多方的属性，查询客户信息，将many-to-one中fetch设置join，通过qbc查询客户时自动生成一个客户表和数据字典表的关联查询语句。</li><li>fetch=”select”，lazy=”proxy”：延迟加载</li><li>(扩展) fetch=”select”（或不写），lazy=”false”：立即加载。比如在查询联系人信息时，会连带其所属的客户信息一并查询出来（注意：但这里的并不是生成左外连接sql，而是新建的查询sql语句去查客户表）。</li></ol><h4 id="9-HQL"><a href="#9-HQL" class="headerlink" title="9.HQL"></a>9.HQL</h4><p>HQL是Hibernate Query Language缩写， 语法很像SQL语法，以完全面向对象的方式操作数据库。<br>（QBC能做的HQL都能做，而反之不然）</p><p><strong>HQL对象导航方式：</strong>Hql可以实现对象导航查询。</p><p>注意：如果使用投影查询，得到List中是舜时态对象，不能使用对象导航。</p><p><strong>HQL关联查询：</strong><br>因为经过测试：</p><ol><li>HQL对hbm.xml设置 fetch参数无效；</li><li>HQL对hbm.xml设置lazy=true，lazy=false有效。<br>所以通过HQL实现fetch=”join”的功能。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="FrameWorks" scheme="https://mlone.top/categories/FrameWorks/"/>
+    
+    
+      <category term="FrameWorks" scheme="https://mlone.top/tags/FrameWorks/"/>
     
       <category term="hibernate" scheme="https://mlone.top/tags/hibernate/"/>
     
@@ -1304,7 +1332,7 @@
     <link href="https://mlone.top/post/7b28700.html"/>
     <id>https://mlone.top/post/7b28700.html</id>
     <published>2018-10-29T08:41:34.000Z</published>
-    <updated>2019-02-27T08:46:49.762Z</updated>
+    <updated>2019-02-28T04:24:11.955Z</updated>
     
     <content type="html"><![CDATA[<p>.<br><a id="more"></a></p><p>Java多线程中的死锁：</p><p><strong>死锁是指两个或两个以上的进程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用，它们都将无法推进下去。</strong></p><p>死锁的发生必须满足以下四个条件：</p><ul><li><p><strong>互斥条件：</strong>一个资源每次只能被一个进程使用。</p></li><li><p><strong>请求与保持条件：</strong>一个进程因请求资源而阻塞时，对已获得的资源保持不放。</p></li><li><p><strong>不可剥夺条件：进</strong>程已获得的资源，在末使用完之前，不能强行剥夺。</p></li><li><p><strong>循环等待条件：</strong>若干进程之间形成一种头尾相接的循环等待资源关系。</p></li></ul><p>避免死锁最简单的方法就是<strong>阻止循环等待条件</strong>，将系统中所有的资源设置<em>标志位、排序</em>，规定所有的进程<em>在申请资源时必须按照一定的顺序规则</em>来避免死锁。</p>]]></content>
     
@@ -1314,7 +1342,7 @@
     
     </summary>
     
-      <category term="并发编程" scheme="https://mlone.top/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+      <category term="操作系统" scheme="https://mlone.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
       <category term="java" scheme="https://mlone.top/tags/java/"/>
@@ -1420,6 +1448,28 @@
   </entry>
   
   <entry>
+    <title>四种Java线程池用法解析</title>
+    <link href="https://mlone.top/post/984eacd5.html"/>
+    <id>https://mlone.top/post/984eacd5.html</id>
+    <published>2018-10-25T08:46:56.000Z</published>
+    <updated>2019-02-28T09:10:16.037Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载自：<a href="https://www.cnblogs.com/ruiati/p/6134131.html" target="_blank" rel="noopener">https://www.cnblogs.com/ruiati/p/6134131.html</a></p><a id="more"></a><p>本文为大家分析四种Java线程池用法，供大家参考，具体内容如下</p><p><a href="http://www.jb51.net/article/81843.htm" target="_blank" rel="noopener">http://www.jb51.net/article/81843.htm</a></p><h4 id="1、new-Thread的弊端"><a href="#1、new-Thread的弊端" class="headerlink" title="1、new Thread的弊端"></a>1、new Thread的弊端</h4><p>执行一个异步任务你还只是如下new Thread吗？</p><pre><code>new Thread(new Runnable() {  @Override  public void run() {    // TODO Auto-generated method stub    }  }).start();</code></pre><p>那你就out太多了，new Thread的弊端如下：</p><ul><li>每次new Thread新建对象性能差。</li><li>线程缺乏统一管理，可能无限制新建线程，相互之间竞争，及可能占用过多系统资源导致死机或oom。</li><li>缺乏更多功能，如定时执行、定期执行、线程中断。</li></ul><p>相比new Thread，Java提供的四种线程池的好处在于：</p><ul><li>重用存在的线程，减少对象创建、消亡的开销，性能佳。</li><li>可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。</li><li>提供定时执行、定期执行、单线程、并发数控制等功能。</li></ul><h4 id="2、Java-线程池"><a href="#2、Java-线程池" class="headerlink" title="2、Java 线程池"></a>2、Java 线程池</h4><p>Java通过Executors提供四种线程池，分别为：</p><ol><li>newCachedThreadPool创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</li><li>newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</li><li>newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。</li><li>newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</li></ol><p><strong>(1) newCachedThreadPool：</strong></p><p>创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。示例代码如下：</p><pre><code>ExecutorService cachedThreadPool = Executors.newCachedThreadPool();  for (int i = 0; i &lt; 10; i++) {    final int index = i;  try {    Thread.sleep(index * 1000);  }     catch (InterruptedException e) {      e.printStackTrace();  }cachedThreadPool.execute(new Runnable() {@Overridepublic void run() {  System.out.println(index);}});}</code></pre><p>线程池为无限大，当执行第二个任务时第一个任务已经完成，会复用执行第一个任务的线程，而不用每次新建线程。</p><p><strong>(2)newFixedThreadPool：</strong></p><p>创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。示例代码如下：</p><pre><code>ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);  for (int i = 0; i &lt; 10; i++) {  final int index = i;  fixedThreadPool.execute(new Runnable() {@Overridepublic void run() {try {  System.out.println(index);  Thread.sleep(2000);} catch (InterruptedException e) {  // TODO Auto-generated catch block  e.printStackTrace();  }}});}</code></pre><p>因为线程池大小为3，每个任务输出index后sleep 2秒，所以每两秒打印3个数字。</p><p>定长线程池的大小最好根据系统资源进行设置。如Runtime.getRuntime().availableProcessors()。可参考PreloadDataCache。</p><p><strong>(3)newScheduledThreadPool：</strong></p><p>创建一个定长线程池，支持定时及周期性任务执行。延迟执行示例代码如下：</p><pre><code>ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5); scheduledThreadPool.schedule(new Runnable() {@Overridepublic void run() {  System.out.println(&quot;delay 3 seconds&quot;);}}, 3, TimeUnit.SECONDS);</code></pre><p>表示延迟3秒执行。</p><p>定期执行示例代码如下：</p><pre><code>scheduledThreadPool.scheduleAtFixedRate(new Runnable() {@Overridepublic void run() {  System.out.println(&quot;delay 1 seconds, and excute every 3 seconds&quot;);}}, 1, 3, TimeUnit.SECONDS);</code></pre><p>表示延迟1秒后每3秒执行一次。</p><p>ScheduledExecutorService比Timer更安全，功能更强大</p><p><strong>(4)newSingleThreadExecutor：</strong></p><p>创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。示例代码如下：</p><pre><code>ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();for (int i = 0; i &lt; 10; i++) {final int index = i;singleThreadExecutor.execute(new Runnable() {@Overridepublic void run() {  try {    System.out.println(index);  Thread.sleep(2000);} catch (InterruptedException e) {  // TODO Auto-generated catch block  e.printStackTrace();    }}  });}</code></pre><p>结果依次输出，相当于顺序执行各个任务。</p><p>现行大多数GUI程序都是单线程的。Android中单线程可用于数据库操作，文件操作，应用批量安装，应用批量删除等不适合并发但可能IO阻塞性及影响UI线程响应的操作。</p><p><strong>线程池的作用：</strong></p><p>线程池作用就是限制系统中执行线程的数量。<br>根 据系统的环境情况，可以自动或手动设置线程数量，达到运行的最佳效果；少了浪费了系统资源，多了造成系统拥挤效率不高。用线程池控制线程数量，其他线程排 队等候。一个任务执行完毕，再从队列的中取最前面的任务开始执行。若队列中没有等待进程，线程池的这一资源处于等待。当一个新任务需要运行时，如果线程池 中有等待的工作线程，就可以开始运行了；否则进入等待队列。</p><p><strong>为什么要用线程池:</strong></p><p>1.减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</p><p>2.可以根据系统的承受能力，调整线程池中工作线线程的数目，防止因为消耗过多的内存，而把服务器累趴下(每个线程需要大约1MB内存，线程开的越多，消耗的内存也就越大，最后死机)。</p><p>Java里面线程池的顶级接口是Executor，但是严格意义上讲Executor并不是一个线程池，而只是一个执行线程的工具。真正的线程池接口是ExecutorService。</p><p><strong>比较重要的几个类：</strong></p><p>ExecutorService： 真正的线程池接口。</p><p>ScheduledExecutorService： 能和Timer/TimerTask类似，解决那些需要任务重复执行的问题。</p><p>ThreadPoolExecutor： ExecutorService的默认实现。</p><p>ScheduledThreadPoolExecutor： 继承ThreadPoolExecutor的ScheduledExecutorService接口实现，周期性任务调度的类实现。</p><p>要配置一个线程池是比较复杂的，尤其是对于线程池的原理不是很清楚的情况下，很有可能配置的线程池不是较优的，因此在Executors类里面提供了一些静态工厂，生成一些常用的线程池。</p><p><strong>1.newSingleThreadExecutor</strong></p><p>创建一个单线程的线程池。这个线程池只有一个线程在工作，也就是相当于单线程串行执行所有任务。如果这个唯一的线程因为异常结束，那么会有一个新的线程来替代它。此线程池保证所有任务的执行顺序按照任务的提交顺序执行。</p><p><strong>2.newFixedThreadPool</strong></p><p>创建固定大小的线程池。每次提交一个任务就创建一个线程，直到线程达到线程池的最大大小。线程池的大小一旦达到最大值就会保持不变，如果某个线程因为执行异常而结束，那么线程池会补充一个新线程。</p><p><strong>3.newCachedThreadPool</strong></p><p>创建一个可缓存的线程池。如果线程池的大小超过了处理任务所需要的线程，</p><p>那么就会回收部分空闲（60秒不执行任务）的线程，当任务数增加时，此线程池又可以智能的添加新线程来处理任务。此线程池不会对线程池大小做限制，线程池大小完全依赖于操作系统（或者说JVM）能够创建的最大线程大小。</p><p><strong>4.newScheduledThreadPool</strong></p><p>创建一个大小无限的线程池。此线程池支持定时以及周期性执行任务的需求。</p><p>实例代码</p><p><strong>一、固定大小的线程池，newFixedThreadPool：</strong></p><pre><code>package app.executors; import java.util.concurrent.Executors; import java.util.concurrent.ExecutorService; /**  * Java线程：线程池  *  * @author xiho */public class Test {   public static void main(String[] args) {     // 创建一个可重用固定线程数的线程池     ExecutorService pool = Executors.newFixedThreadPool(2);     // 创建线程     Thread t1 = new MyThread();     Thread t2 = new MyThread();     Thread t3 = new MyThread();     Thread t4 = new MyThread();     Thread t5 = new MyThread();     // 将线程放入池中进行执行     pool.execute(t1);     pool.execute(t2);     pool.execute(t3);     pool.execute(t4);     pool.execute(t5);     // 关闭线程池     pool.shutdown();   } } class MyThread extends Thread {   @Override  public void run() {     System.out.println(Thread.currentThread().getName() + &quot;正在执行。。。&quot;);   } }</code></pre><p>输出结果：</p><pre><code>pool-1-thread-1正在执行。。。 pool-1-thread-3正在执行。。。 pool-1-thread-4正在执行。。。 pool-1-thread-2正在执行。。。 pool-1-thread-5正在执行。。。</code></pre><p>改变ExecutorService pool = Executors.newFixedThreadPool(5)中的参数：ExecutorService pool = Executors.newFixedThreadPool(2)，</p><p>输出结果是：</p><pre><code>pool-1-thread-1正在执行。。。 pool-1-thread-1正在执行。。。 pool-1-thread-2正在执行。。。 pool-1-thread-1正在执行。。。 pool-1-thread-2正在执行。。。</code></pre><p>从以上结果可以看出，newFixedThreadPool的参数指定了可以运行的线程的最大数目，超过这个数目的线程加进去以后，不会运行。其次，加入线程池的线程属于托管状态，线程的运行不受加入顺序的影响。</p><p><strong>二、单任务线程池，newSingleThreadExecutor：</strong></p><p>仅仅是把上述代码中的ExecutorService pool = Executors.newFixedThreadPool(2)改为ExecutorService pool = Executors.newSingleThreadExecutor();</p><p>输出结果：</p><pre><code>pool-1-thread-1正在执行。。。 pool-1-thread-1正在执行。。。 pool-1-thread-1正在执行。。。 pool-1-thread-1正在执行。。。 pool-1-thread-1正在执行。。。</code></pre><p>可以看出，每次调用execute方法，其实最后都是调用了thread-1的run方法。</p><p><strong>三、可变尺寸的线程池，newCachedThreadPool：</strong></p><p>与上面的类似，只是改动下pool的创建方式：ExecutorService pool = Executors.newCachedThreadPool();</p><p>输出结果：</p><pre><code>pool-1-thread-1正在执行。。。 pool-1-thread-2正在执行。。。 pool-1-thread-4正在执行。。。 pool-1-thread-3正在执行。。。 pool-1-thread-5正在执行。。。</code></pre><p>这种方式的特点是：可根据需要创建新线程的线程池，但是在以前构造的线程可用时将重用它们。</p><p><strong>四、延迟连接池，newScheduledThreadPool：</strong></p><pre><code>public class TestScheduledThreadPoolExecutor {  public static void main(String[] args) {    ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);    exec.scheduleAtFixedRate(new Runnable() {//每隔一段时间就触发异常           @Override           publicvoid run() {              //throw new RuntimeException();              System.out.println(&quot;================&quot;);           }         }, 1000, 5000, TimeUnit.MILLISECONDS);    exec.scheduleAtFixedRate(new Runnable() {//每隔一段时间打印系统时间，证明两者是互不影响的           @Override           publicvoid run() {              System.out.println(System.nanoTime());           }         }, 1000, 2000, TimeUnit.MILLISECONDS);  }}</code></pre><p>输出结果：</p><pre><code>================838464454951683866438290348388643830710================839064385138383926438793198400643939383</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转载自：&lt;a href=&quot;https://www.cnblogs.com/ruiati/p/6134131.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/ruiati/p/6134131.html&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://mlone.top/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="线程池" scheme="https://mlone.top/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>mysql外键介绍</title>
     <link href="https://mlone.top/post/c1424651.html"/>
     <id>https://mlone.top/post/c1424651.html</id>
@@ -1438,6 +1488,28 @@
     
     
       <category term="mysql" scheme="https://mlone.top/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java常用的几种线程池比较</title>
+    <link href="https://mlone.top/post/2f895ce9.html"/>
+    <id>https://mlone.top/post/2f895ce9.html</id>
+    <published>2018-10-25T07:46:56.000Z</published>
+    <updated>2019-02-28T08:58:22.793Z</updated>
+    
+    <content type="html"><![CDATA[<p>转自：<a href="https://www.cnblogs.com/aaron911/p/6213808.html" target="_blank" rel="noopener">https://www.cnblogs.com/aaron911/p/6213808.html</a></p><a id="more"></a><h1 id="1-为什么使用线程池"><a href="#1-为什么使用线程池" class="headerlink" title="1. 为什么使用线程池"></a>1. 为什么使用线程池</h1><p>诸如 Web 服务器、数据库服务器、文件服务器或邮件服务器之类的许多服务器应用程序都面向处理来自某些远程来源的大量短小的任务。请求以某种方式到达服务器，这种方式可能是通过网络协议（例如 HTTP、FTP 或 POP）、通过 JMS 队列或者可能通过轮询数据库。不管请求如何到达，服务器应用程序中经常出现的情况是：单个任务处理的时间很短而请求的数目却是巨大的。</p><p>构建服务器应用程序的一个简单模型是：每当一个请求到达就创建一个新线程，然后在新线程中为请求服务。实际上对于原型开发这种方法工作得很好，但如果试图部署以这种方式运行的服务器应用程序，那么这种方法的严重不足就很明显。每个请求对应一个线程（thread-per-request）方法的不足之一是：为每个请求创建一个新线程的开销很大；为每个请求创建新线程的服务器在创建和销毁线程上花费的时间和消耗的系统资源要比花在处理实际的用户请求的时间和资源更多。</p><p>除了创建和销毁线程的开销之外，活动的线程也消耗系统资源。在一个 JVM 里创建太多的线程可能会导致系统由于过度消耗内存而用完内存或“切换过度”。为了防止资源不足，服务器应用程序需要一些办法来限制任何给定时刻处理的请求数目。</p><p>线程池为线程生命周期开销问题和资源不足问题提供了解决方案。通过对多个任务重用线程，线程创建的开销被分摊到了多个任务上。其好处是，因为在请求到达时线程已经存在，所以无意中也消除了线程创建所带来的延迟。这样，就可以立即为请求服务，使应用程序响应更快。而且，通过适当地调整线程池中的线程数目，也就是当请求的数目超过某个阈值时，就强制其它任何新到的请求一直等待，直到获得一个线程来处理为止，从而可以防止资源不足。</p><h1 id="2-使用线程池的风险"><a href="#2-使用线程池的风险" class="headerlink" title="2. 使用线程池的风险"></a>2. 使用线程池的风险</h1><p>虽然线程池是构建多线程应用程序的强大机制，但使用它并不是没有风险的。用线程池构建的应用程序容易遭受任何其它多线程应用程序容易遭受的所有并发风险，诸如同步错误和死锁，它还容易遭受特定于线程池的少数其它风险，诸如与池有关的死锁、资源不足和线程泄漏。</p><h2 id="2-1-死锁"><a href="#2-1-死锁" class="headerlink" title="2.1 死锁"></a>2.1 死锁</h2><p>任何多线程应用程序都有死锁风险。当一组进程或线程中的每一个都在等待一个只有该组中另一个进程才能引起的事件时，我们就说这组进程或线程 死锁了。死锁的最简单情形是：线程 A 持有对象 X 的独占锁，并且在等待对象 Y 的锁，而线程 B 持有对象 Y 的独占锁，却在等待对象 X 的锁。除非有某种方法来打破对锁的等待（Java 锁定不支持这种方法），否则死锁的线程将永远等下去。</p><p>虽然任何多线程程序中都有死锁的风险，但线程池却引入了另一种死锁可能，在那种情况下，所有池线程都在执行已阻塞的等待队列中另一任务的执行结果的任务，但这一任务却因为没有未被占用的线程而不能运行。当线程池被用来实现涉及许多交互对象的模拟，被模拟的对象可以相互发送查询，这些查询接下来作为排队的任务执行，查询对象又同步等待着响应时，会发生这种情况。</p><h2 id="2-2-资源不足"><a href="#2-2-资源不足" class="headerlink" title="2.2 资源不足"></a>2.2 资源不足</h2><p>线程池的一个优点在于：相对于其它替代调度机制（有些我们已经讨论过）而言，它们通常执行得很好。但只有恰当地调整了线程池大小时才是这样的。线程消耗包括内存和其它系统资源在内的大量资源。除了 Thread 对象所需的内存之外，每个线程都需要两个可能很大的执行调用堆栈。除此以外，JVM 可能会为每个 Java 线程创建一个本机线程，这些本机线程将消耗额外的系统资源。最后，虽然线程之间切换的调度开销很小，但如果有很多线程，环境切换也可能严重地影响程序的性能。</p><p>如果线程池太大，那么被那些线程消耗的资源可能严重地影响系统性能。在线程之间进行切换将会浪费时间，而且使用超出比您实际需要的线程可能会引起资源匮乏问题，因为池线程正在消耗一些资源，而这些资源可能会被其它任务更有效地利用。除了线程自身所使用的资源以外，服务请求时所做的工作可能需要其它资源，例如 JDBC 连接、套接字或文件。这些也都是有限资源，有太多的并发请求也可能引起失效，例如不能分配 JDBC 连接。</p><h2 id="2-3-并发错误"><a href="#2-3-并发错误" class="headerlink" title="2.3 并发错误"></a>2.3 并发错误</h2><p>线程池和其它排队机制依靠使用 wait() 和 notify() 方法，这两个方法都难于使用。如果编码不正确，那么可能丢失通知，导致线程保持空闲状态，尽管队列中有工作要处理。使用这些方法时，必须格外小心。而最好使用现有的、已经知道能工作的实现，例如 util.concurrent 包。</p><h2 id="2-4-线程泄漏"><a href="#2-4-线程泄漏" class="headerlink" title="2.4 线程泄漏"></a>2.4 线程泄漏</h2><p>各种类型的线程池中一个严重的风险是线程泄漏，当从池中除去一个线程以执行一项任务，而在任务完成后该线程却没有返回池时，会发生这种情况。发生线程泄漏的一种情形出现在任务抛出一个 RuntimeException 或一个 Error 时。如果池类没有捕捉到它们，那么线程只会退出而线程池的大小将会永久减少一个。当这种情况发生的次数足够多时，线程池最终就为空，而且系统将停止，因为没有可用的线程来处理任务。</p><p>有些任务可能会永远等待某些资源或来自用户的输入，而这些资源又不能保证变得可用，用户可能也已经回家了，诸如此类的任务会永久停止，而这些停止的任务也会引起和线程泄漏同样的问题。如果某个线程被这样一个任务永久地消耗着，那么它实际上就被从池除去了。对于这样的任务，应该要么只给予它们自己的线程，要么只让它们等待有限的时间。</p><h2 id="2-5-请求过载"><a href="#2-5-请求过载" class="headerlink" title="2.5 请求过载"></a>2.5 请求过载</h2><p>仅仅是请求就压垮了服务器，这种情况是可能的。在这种情形下，我们可能不想将每个到来的请求都排队到我们的工作队列，因为排在队列中等待执行的任务可能会消耗太多的系统资源并引起资源缺乏。在这种情形下决定如何做取决于您自己；在某些情况下，您可以简单地抛弃请求，依靠更高级别的协议稍后重试请求，您也可以用一个指出服务器暂时很忙的响应来拒绝请求。</p><h2 id="3-有效使用线程池的准则"><a href="#3-有效使用线程池的准则" class="headerlink" title="3. 有效使用线程池的准则"></a>3. 有效使用线程池的准则</h2><p>只要您遵循几条简单的准则，线程池可以成为构建服务器应用程序的极其有效的方法：</p><p>不要对那些同步等待其它任务结果的任务排队。这可能会导致上面所描述的那种形式的死锁，在那种死锁中，所有线程都被一些任务所占用，这些任务依次等待排队任务的结果，而这些任务又无法执行，因为所有的线程都很忙。</p><p>在为时间可能很长的操作使用合用的线程时要小心。如果程序必须等待诸如 I/O 完成这样的某个资源，那么请指定最长的等待时间，以及随后是失效还是将任务重新排队以便稍后执行。这样做保证了：通过将某个线程释放给某个可能成功完成的任务，从而将最终取得某些进展。</p><p>理解任务。要有效地调整线程池大小，您需要理解正在排队的任务以及它们正在做什么。它们是 CPU 限制的（CPU-bound）吗？它们是 I/O 限制的（I/O-bound）吗？您的答案将影响您如何调整应用程序。如果您有不同的任务类，这些类有着截然不同的特征，那么为不同任务类设置多个工作队列可能会有意义，这样可以相应地调整每个池。</p><h1 id="4-线程池的大小设置"><a href="#4-线程池的大小设置" class="headerlink" title="4. 线程池的大小设置"></a>4. 线程池的大小设置</h1><p>调整线程池的大小基本上就是避免两类错误：线程太少或线程太多。幸运的是，对于大多数应用程序来说，太多和太少之间的余地相当宽。</p><p>请回忆：在应用程序中使用线程有两个主要优点，尽管在等待诸如 I/O 的慢操作，但允许继续进行处理，并且可以利用多处理器。在运行于具有 N 个处理器机器上的计算限制的应用程序中，在线程数目接近 N 时添加额外的线程可能会改善总处理能力，而在线程数目超过 N 时添加额外的线程将不起作用。事实上，太多的线程甚至会降低性能，因为它会导致额外的环境切换开销。</p><p>线程池的最佳大小取决于可用处理器的数目以及工作队列中的任务的性质。若在一个具有 N 个处理器的系统上只有一个工作队列，其中全部是计算性质的任务，在线程池具有 N 或 N+1 个线程时一般会获得最大的 CPU 利用率。</p><p>对于那些可能需要等待 I/O 完成的任务（例如，从套接字读取 HTTP 请求的任务），需要让池的大小超过可用处理器的数目，因为并不是所有线程都一直在工作。通过使用概要分析，您可以估计某个典型请求的等待时间（WT）与服务时间（ST）之间的比例。如果我们将这一比例称之为 WT/ST，那么对于一个具有 N 个处理器的系统，需要设置大约 N*(1+WT/ST) 个线程来保持处理器得到充分利用。</p><p>处理器利用率不是调整线程池大小过程中的唯一考虑事项。随着线程池的增长，您可能会碰到调度程序、可用内存方面的限制，或者其它系统资源方面的限制，例如套接字、打开的文件句柄或数据库连接等的数目。</p><h1 id="5-常用的几种线程池"><a href="#5-常用的几种线程池" class="headerlink" title="5. 常用的几种线程池"></a>5. 常用的几种线程池</h1><h2 id="5-1-newCachedThreadPool"><a href="#5-1-newCachedThreadPool" class="headerlink" title="5.1 newCachedThreadPool"></a>5.1 newCachedThreadPool</h2><p>创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</p><p>这种类型的线程池特点是：</p><ul><li>工作线程的创建数量几乎没有限制(其实也有限制的,数目为Interger. MAX_VALUE), 这样可灵活的往线程池中添加线程。</li><li>如果长时间没有往线程池中提交任务，即如果工作线程空闲了指定的时间(默认为1分钟)，则该工作线程将自动终止。终止后，如果你又提交了新的任务，则线程池重新创建一个工作线程。</li><li>在使用CachedThreadPool时，一定要注意控制任务的数量，否则，由于大量线程同时运行，很有会造成系统瘫痪。</li></ul><p>示例代码如下：</p><pre><code>package test;import java.util.concurrent.ExecutorService;import java.util.concurrent.Executors;public class ThreadPoolExecutorTest { public static void main(String[] args) {  ExecutorService cachedThreadPool = Executors.newCachedThreadPool();  for (int i = 0; i &lt; 10; i++) {   final int index = i;   try {    Thread.sleep(index * 1000);   } catch (InterruptedException e) {    e.printStackTrace();   }   cachedThreadPool.execute(new Runnable() {    public void run() {     System.out.println(index);    }   });  } }}</code></pre><h2 id="5-2-newFixedThreadPool"><a href="#5-2-newFixedThreadPool" class="headerlink" title="5.2 newFixedThreadPool"></a>5.2 newFixedThreadPool</h2><p>创建一个指定工作线程数量的线程池。每当提交一个任务就创建一个工作线程，如果工作线程数量达到线程池初始的最大数，则将提交的任务存入到池队列中。</p><p>FixedThreadPool是一个典型且优秀的线程池，它具有线程池提高程序效率和节省创建线程时所耗的开销的优点。但是，在线程池空闲时，即线程池中没有可运行任务时，它不会释放工作线程，还会占用一定的系统资源。</p><p>示例代码如下：</p><pre><code>package test;import java.util.concurrent.ExecutorService;import java.util.concurrent.Executors;public class ThreadPoolExecutorTest { public static void main(String[] args) {  ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);  for (int i = 0; i &lt; 10; i++) {   final int index = i;   fixedThreadPool.execute(new Runnable() {    public void run() {     try {      System.out.println(index);      Thread.sleep(2000);     } catch (InterruptedException e) {      e.printStackTrace();     }    }   });  } }}</code></pre><p>因为线程池大小为3，每个任务输出index后sleep 2秒，所以每两秒打印3个数字。</p><p>定长线程池的大小最好根据系统资源进行设置如Runtime.getRuntime().availableProcessors()。</p><h2 id="5-3-newSingleThreadExecutor"><a href="#5-3-newSingleThreadExecutor" class="headerlink" title="5.3 newSingleThreadExecutor"></a>5.3 newSingleThreadExecutor</h2><p>创建一个单线程化的Executor，即只创建唯一的工作者线程来执行任务，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。如果这个线程异常结束，会有另一个取代它，保证顺序执行。单工作线程最大的特点是可保证顺序地执行各个任务，并且在任意给定的时间不会有多个线程是活动的。</p><p>示例代码如下：</p><pre><code>package test;import java.util.concurrent.ExecutorService;import java.util.concurrent.Executors;public class ThreadPoolExecutorTest { public static void main(String[] args) {  ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();  for (int i = 0; i &lt; 10; i++) {   final int index = i;   singleThreadExecutor.execute(new Runnable() {    public void run() {     try {      System.out.println(index);      Thread.sleep(2000);     } catch (InterruptedException e) {      e.printStackTrace();     }    }   });  } }}</code></pre><h2 id="5-4-newScheduleThreadPool"><a href="#5-4-newScheduleThreadPool" class="headerlink" title="5.4 newScheduleThreadPool"></a>5.4 newScheduleThreadPool</h2><p>创建一个定长的线程池，而且支持定时的以及周期性的任务执行，支持定时及周期性任务执行。</p><p>延迟3秒执行，延迟执行示例代码如下：</p><pre><code>package test;import java.util.concurrent.Executors;import java.util.concurrent.ScheduledExecutorService;import java.util.concurrent.TimeUnit;public class ThreadPoolExecutorTest { public static void main(String[] args) {  ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);  scheduledThreadPool.schedule(new Runnable() {   public void run() {    System.out.println(&quot;delay 3 seconds&quot;);   }  }, 3, TimeUnit.SECONDS); }}</code></pre><p>表示延迟1秒后每3秒执行一次，定期执行示例代码如下：</p><pre><code>package test;import java.util.concurrent.Executors;import java.util.concurrent.ScheduledExecutorService;import java.util.concurrent.TimeUnit;public class ThreadPoolExecutorTest { public static void main(String[] args) {  ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);  scheduledThreadPool.scheduleAtFixedRate(new Runnable() {   public void run() {    System.out.println(&quot;delay 1 seconds, and excute every 3 seconds&quot;);   }  }, 1, 3, TimeUnit.SECONDS); }}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转自：&lt;a href=&quot;https://www.cnblogs.com/aaron911/p/6213808.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/aaron911/p/6213808.html&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://mlone.top/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="线程池" scheme="https://mlone.top/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
     
   </entry>
   
@@ -1562,28 +1634,6 @@
   </entry>
   
   <entry>
-    <title>观察者模式</title>
-    <link href="https://mlone.top/post/9a246216.html"/>
-    <id>https://mlone.top/post/9a246216.html</id>
-    <published>2018-10-22T07:28:02.000Z</published>
-    <updated>2019-02-27T07:53:09.140Z</updated>
-    
-    <content type="html"><![CDATA[<p>转自：<a href="http://www.cnblogs.com/luohanguo/p/7825656.html" target="_blank" rel="noopener">http://www.cnblogs.com/luohanguo/p/7825656.html</a><br><a id="more"></a></p><h4 id="基本思想："><a href="#基本思想：" class="headerlink" title="基本思想："></a>基本思想：</h4><p>观察者模式的定义：</p><p>　　在对象之间定义了一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象会收到通知并自动更新。</p><p>大白话：</p><p>　　其实就是发布订阅模式，发布者发布信息，订阅者获取信息，订阅了就能收到信息，没订阅就收不到信息。</p><p>该模式包含四个角色：</p><ul><li>抽象被观察者角色：也就是一个抽象主题，它把所有对观察者对象的引用保存在一个集合中，每个主题都可以有任意数量的观察者。抽象主题提供一个接口，可以增加和删除观察者角色。一般用一个抽象类和接口来实现。</li><li>抽象观察者角色：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。</li><li>具体被观察者角色：也就是一个具体的主题，在集体主题的内部状态改变时，所有登记过的观察者发出通知。</li><li>具体观察者角色：实现抽象观察者角色所需要的更新接口，一边使本身的状态与制图的状态相协调。</li></ul><h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code>/*** * 抽象被观察者接口 * 声明了添加、删除、通知观察者方法 * @author jstao */public interface Observerable {    public void registerObserver(Observer o); //添加一个用户    public void removeObserver(Observer o); //移除一个用户    public void notifyObserver(); //通知用户消息更新了--&gt;里面调用观察者接口的update()方法}</code></pre><p>.</p><pre><code>/*** * 抽象观察者接口 * 定义了一个update()方法，当被观察者调用notifyObservers()方法时，观察者的update()方法会被回调。 * @author jstao */public interface Observer {    public void update(String message);}</code></pre><p>.</p><pre><code>import java.util.ArrayList;import java.util.List;/** * 被观察者，也就是微信公众号服务 * 实现了Observerable接口，对Observerable接口的三个方法进行了具体实现 * @author jstao * */public class WechatServer implements Observerable {    //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现类编程    private List&lt;Observer&gt; list; //用户列表    private String message; //发布的信息    public WechatServer() {        list = new ArrayList&lt;Observer&gt;();    }    @Override    public void registerObserver(Observer o) {        list.add(o);    }    @Override    public void removeObserver(Observer o) {        if(!list.isEmpty())            list.remove(o);    }    //遍历    @Override    public void notifyObserver() {        for(int i = 0; i &lt; list.size(); i++) {            Observer oserver = list.get(i);            oserver.update(message); //回调集合中每个用户的update()方法，传达更新消息        }    }    public void setInfomation(String s) { //设置更新消息        this.message = s;        System.out.println(&quot;微信服务更新消息： &quot; + s);        //消息更新，通知所有观察者        notifyObserver();    }}</code></pre><p>.</p><pre><code>/** * 观察者 * 实现了update方法 * @author jstao * */public class User implements Observer {    private String name;    private String message;    public User(String name) {        this.name = name;    }    @Override    public void update(String message) {        this.message = message;        read();    }    public void read() {        System.out.println(name + &quot; 收到推送消息： &quot; + message);    }}</code></pre><p>//测试：</p><pre><code>/** * 首先注册了三个用户，ZhangSan、LiSi、WangWu。公众号发布了一条消息&quot;PHP是世界上最好用的语言！&quot;，三个用户都收到了消息。    用户ZhangSan看到消息后颇为震惊，果断取消订阅，这时公众号又推送了一条消息，此时用户ZhangSan已经收不到消息，其他用户    还是正常能收到推送消息。 */public class Test {    public static void main(String[] args) {        WechatServer server = new WechatServer();        Observer userZhang = new User(&quot;ZhangSan&quot;);        Observer userLi = new User(&quot;LiSi&quot;);        Observer userWang = new User(&quot;WangWu&quot;);        server.registerObserver(userZhang);        server.registerObserver(userLi);        server.registerObserver(userWang);        server.setInfomation(&quot;PHP是世界上最好用的语言！&quot;);        System.out.println(&quot;----------------------------------------------&quot;);        server.removeObserver(userZhang);        server.setInfomation(&quot;JAVA是世界上最好用的语言！&quot;);    }}</code></pre><h4 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h4><p>这个模式是松偶合的，改变主题或观察者中的一方，另一方不会受到影像。</p><p>JDK中也有自带的观察者模式，但是被观察者是一个类而不是接口，限制了它的复用能力。</p><p>在JavaBean和Swing中也可以看到观察者模式的影子。</p><p><strong>yangd个人理解：</strong></p><p>接口异步回调是两个对象之间互相调用，而观察者模式只有服务器调用用户的方法（被观察者调用观察者），是单向调用，所以二者是不一样的。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;转自：&lt;a href=&quot;http://www.cnblogs.com/luohanguo/p/7825656.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.cnblogs.com/luohanguo/p/7825656.html&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="设计模式" scheme="https://mlone.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-      <category term="设计模式" scheme="https://mlone.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何在两个线程间共享数据</title>
     <link href="https://mlone.top/post/9a246216.html"/>
     <id>https://mlone.top/post/9a246216.html</id>
@@ -1604,6 +1654,28 @@
       <category term="java" scheme="https://mlone.top/tags/java/"/>
     
       <category term="多线程" scheme="https://mlone.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>观察者模式</title>
+    <link href="https://mlone.top/post/9a246216.html"/>
+    <id>https://mlone.top/post/9a246216.html</id>
+    <published>2018-10-22T07:28:02.000Z</published>
+    <updated>2019-02-27T07:53:09.140Z</updated>
+    
+    <content type="html"><![CDATA[<p>转自：<a href="http://www.cnblogs.com/luohanguo/p/7825656.html" target="_blank" rel="noopener">http://www.cnblogs.com/luohanguo/p/7825656.html</a><br><a id="more"></a></p><h4 id="基本思想："><a href="#基本思想：" class="headerlink" title="基本思想："></a>基本思想：</h4><p>观察者模式的定义：</p><p>　　在对象之间定义了一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象会收到通知并自动更新。</p><p>大白话：</p><p>　　其实就是发布订阅模式，发布者发布信息，订阅者获取信息，订阅了就能收到信息，没订阅就收不到信息。</p><p>该模式包含四个角色：</p><ul><li>抽象被观察者角色：也就是一个抽象主题，它把所有对观察者对象的引用保存在一个集合中，每个主题都可以有任意数量的观察者。抽象主题提供一个接口，可以增加和删除观察者角色。一般用一个抽象类和接口来实现。</li><li>抽象观察者角色：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。</li><li>具体被观察者角色：也就是一个具体的主题，在集体主题的内部状态改变时，所有登记过的观察者发出通知。</li><li>具体观察者角色：实现抽象观察者角色所需要的更新接口，一边使本身的状态与制图的状态相协调。</li></ul><h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code>/*** * 抽象被观察者接口 * 声明了添加、删除、通知观察者方法 * @author jstao */public interface Observerable {    public void registerObserver(Observer o); //添加一个用户    public void removeObserver(Observer o); //移除一个用户    public void notifyObserver(); //通知用户消息更新了--&gt;里面调用观察者接口的update()方法}</code></pre><p>.</p><pre><code>/*** * 抽象观察者接口 * 定义了一个update()方法，当被观察者调用notifyObservers()方法时，观察者的update()方法会被回调。 * @author jstao */public interface Observer {    public void update(String message);}</code></pre><p>.</p><pre><code>import java.util.ArrayList;import java.util.List;/** * 被观察者，也就是微信公众号服务 * 实现了Observerable接口，对Observerable接口的三个方法进行了具体实现 * @author jstao * */public class WechatServer implements Observerable {    //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现类编程    private List&lt;Observer&gt; list; //用户列表    private String message; //发布的信息    public WechatServer() {        list = new ArrayList&lt;Observer&gt;();    }    @Override    public void registerObserver(Observer o) {        list.add(o);    }    @Override    public void removeObserver(Observer o) {        if(!list.isEmpty())            list.remove(o);    }    //遍历    @Override    public void notifyObserver() {        for(int i = 0; i &lt; list.size(); i++) {            Observer oserver = list.get(i);            oserver.update(message); //回调集合中每个用户的update()方法，传达更新消息        }    }    public void setInfomation(String s) { //设置更新消息        this.message = s;        System.out.println(&quot;微信服务更新消息： &quot; + s);        //消息更新，通知所有观察者        notifyObserver();    }}</code></pre><p>.</p><pre><code>/** * 观察者 * 实现了update方法 * @author jstao * */public class User implements Observer {    private String name;    private String message;    public User(String name) {        this.name = name;    }    @Override    public void update(String message) {        this.message = message;        read();    }    public void read() {        System.out.println(name + &quot; 收到推送消息： &quot; + message);    }}</code></pre><p>//测试：</p><pre><code>/** * 首先注册了三个用户，ZhangSan、LiSi、WangWu。公众号发布了一条消息&quot;PHP是世界上最好用的语言！&quot;，三个用户都收到了消息。    用户ZhangSan看到消息后颇为震惊，果断取消订阅，这时公众号又推送了一条消息，此时用户ZhangSan已经收不到消息，其他用户    还是正常能收到推送消息。 */public class Test {    public static void main(String[] args) {        WechatServer server = new WechatServer();        Observer userZhang = new User(&quot;ZhangSan&quot;);        Observer userLi = new User(&quot;LiSi&quot;);        Observer userWang = new User(&quot;WangWu&quot;);        server.registerObserver(userZhang);        server.registerObserver(userLi);        server.registerObserver(userWang);        server.setInfomation(&quot;PHP是世界上最好用的语言！&quot;);        System.out.println(&quot;----------------------------------------------&quot;);        server.removeObserver(userZhang);        server.setInfomation(&quot;JAVA是世界上最好用的语言！&quot;);    }}</code></pre><h4 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h4><p>这个模式是松偶合的，改变主题或观察者中的一方，另一方不会受到影像。</p><p>JDK中也有自带的观察者模式，但是被观察者是一个类而不是接口，限制了它的复用能力。</p><p>在JavaBean和Swing中也可以看到观察者模式的影子。</p><p><strong>yangd个人理解：</strong></p><p>接口异步回调是两个对象之间互相调用，而观察者模式只有服务器调用用户的方法（被观察者调用观察者），是单向调用，所以二者是不一样的。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转自：&lt;a href=&quot;http://www.cnblogs.com/luohanguo/p/7825656.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.cnblogs.com/luohanguo/p/7825656.html&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="设计模式" scheme="https://mlone.top/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计模式" scheme="https://mlone.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
@@ -2214,72 +2286,6 @@
     
     
       <category term="语法" scheme="https://mlone.top/tags/%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内部类</title>
-    <link href="https://mlone.top/post/9bc01b38.html"/>
-    <id>https://mlone.top/post/9bc01b38.html</id>
-    <published>2018-09-14T11:38:39.000Z</published>
-    <updated>2019-02-23T12:08:44.001Z</updated>
-    
-    <content type="html"><![CDATA[<p>内容来自：<a href="https://www.nowcoder.com/" target="_blank" rel="noopener">牛客网</a></p><a id="more"></a><h4 id="成员内部类："><a href="#成员内部类：" class="headerlink" title="成员内部类："></a>成员内部类：</h4><pre><code>可以访问外部所有资源，但是本身内部不可以有静态属性（因为自己本身就需要依靠外部类的实例化）。</code></pre><h4 id="局部内部类："><a href="#局部内部类：" class="headerlink" title="局部内部类："></a>局部内部类：</h4><pre><code>不可被访问修饰符和static修饰，且只能访问外部类的final变量和所在函数的形参。</code></pre><h4 id="匿名内部类："><a href="#匿名内部类：" class="headerlink" title="匿名内部类："></a>匿名内部类：</h4><pre><code>不可被访问修饰符和static修饰，且只能访问外部类的final变量和所在函数的形参；没有构造器，没有静态资源；只能创建一个实例；不能是抽象的，它必须要实现继承的类或者实现的接口的所有抽象方法</code></pre><p><img src="/assets/blogImg/4/1.png" alt="图片1"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;内容来自：&lt;a href=&quot;https://www.nowcoder.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;牛客网&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Java" scheme="https://mlone.top/categories/Java/"/>
-    
-    
-      <category term="内部类" scheme="https://mlone.top/tags/%E5%86%85%E9%83%A8%E7%B1%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发需要学什么</title>
-    <link href="https://mlone.top/post/a440b81f.html"/>
-    <id>https://mlone.top/post/a440b81f.html</id>
-    <published>2018-09-13T09:58:41.000Z</published>
-    <updated>2019-02-23T10:08:53.101Z</updated>
-    
-    <content type="html"><![CDATA[<p>以下内容来源于百度知道：</p><a id="more"></a><h2 id="回答1："><a href="#回答1：" class="headerlink" title="回答1："></a>回答1：</h2><p>安卓开发首先第一阶段是要学习java，掌握java了对于安卓的开发就容易很多，然后在学习安卓的开发环境搭配和生命周期，给你分享一个学习的计划表吧。</p><p><img src="/assets/blogImg/3/1.jpg" alt="图1"></p><p><img src="/assets/blogImg/3/2.jpg" alt="图2"></p><h2 id="回答2："><a href="#回答2：" class="headerlink" title="回答2："></a>回答2：</h2><p>从事Android开发工作依次学习和掌握：</p><p>第一阶段：Java（基础语法、面向对象、IO流、多线程与Socket编程、数据库，网络传输和数据解析等）</p><p>第二阶段：Android应用开发（Android UI、Activity、Fragment碎片、屏幕适配、数据存储等）</p><p>第三阶段：Android高级开发（Volley框架、事件机制与手势识别、消息推送、多媒体等）<br>第四阶段：Android游戏开发（引擎系统，碰撞，音效等）</p><p>第五阶段：编写项目，综合练习掌握和未掌握的专业技术。<br>在学习过程中贯穿着代码实战。看的代码是别人的，动手写出来的是自己的。自己动手写代码，记忆更加深刻，效率更高。</p><h2 id="回答3："><a href="#回答3：" class="headerlink" title="回答3："></a>回答3：</h2><p>Android是一种基于Linux的自由及开放源代码的操作系统，主要使用于移动设备，如智能手机和平板电脑，关于安卓的学习需要学习很多的知识点，但是首先要把基础做好。安卓主要学习：</p><p>阶段一：Java编程开发</p><p><img src="/assets/blogImg/3/3.jpg" alt="图3"></p><p>阶段二：安卓基础开发</p><p><img src="/assets/blogImg/3/4.jpg" alt="图4"></p><p>阶段三：安卓高级开发</p><p><img src="/assets/blogImg/3/5.jpg" alt="图5"></p><p>阶段四：企业项目实战</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;以下内容来源于百度知道：&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="安卓开发" scheme="https://mlone.top/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>周杰伦卖酸菜记</title>
-    <link href="https://mlone.top/post/f8e64e55.html"/>
-    <id>https://mlone.top/post/f8e64e55.html</id>
-    <published>2018-09-13T08:10:15.000Z</published>
-    <updated>2019-02-23T09:45:02.583Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="周杰伦卖酸菜记"><a href="#周杰伦卖酸菜记" class="headerlink" title="周杰伦卖酸菜记"></a>周杰伦卖酸菜记</h1><p>时间:2018-06-10 07:55:45 来源:中国古典小说网 作者: 中国古典小说网 点击:106次 </p><p>2012年5月4日，福布斯发布“2012年中国名人榜”，歌星周杰伦力压刘德华和姚明，成为华夏名人之首。这项评比，主要依据入选者的知名度和财富。5月7日，周杰伦的老朋友、台湾著名娱记吴乐平，在《旺报》上发表了题为“周杰伦的赚钱小把戏”专访文章。文中爆料，周杰伦在唱歌事业之外，还拥有多项生意，其中最著名的“胡也酸辣菜”生意正准备在新加坡上市发行股票。</p><p>阿婆家地窖的秘密<br><a id="more"></a><br>周杰伦生长在单亲家庭，由母亲抚养长大，生活十分艰辛。最底层市民吃的食物，他都吃过。有时家里没钱买不起肉和菜，母亲就腌制好多咸菜，小周杰伦常常就着咸菜吃米饭。所以，对于咸菜，他有着一种难以割舍的情结。</p><p>2010年夏天，周杰伦在录音棚里苦干两个月，录制出版了新歌辑《十字勋章》后，感到十分疲劳，于是，便和几个好友，悄悄来到阿里山脉的大武恋山区度假。</p><p>为了避来媒体的打扰，一行人住在一个名叫小坝上的小村子里。白天，大家一起去爬山，晚上就坐在农家小床上打牌。房东是一位80多岁的老奶奶，复姓胡也，周杰伦管她叫胡也阿婆。胡也阿婆是个神厨，会做好多阿里山特色饭菜。</p><p>有一天，周杰伦和朋友们在集市上买了一只野兔，胡也阿婆说：“野兔肉腥，需要配酸辣菜一起吃才好。我在地缸里腌了好些呢，今天拿出来给你们尝尝。”</p><p>周杰伦随阿婆来到仓库里，掀开地上的一块青石板，露出一口埋在地里的大缸。胡也阿婆用竹勺子捞上来几根深绿色的菜条，盛在盘子里。周杰伦尝了一口，只觉得一股微酸微辣的滋味，从舌根慢慢地向下滑去，那滋味爽极了，一盘酸辣菜端上桌子，大家瞬间就吃得精光，直呼“阿婆，再来一大盘”。</p><p>回到台北后，周杰伦一直忘不了酸辣菜，那种美的滋味记忆太深了。有一天，他独自开车回到小坝上村，他想跟胡也阿婆学学怎样腌制酸辣菜。</p><p>胡也阿婆告诉他，她祖上胡也清山是明朝万历年间宫廷御厨，后代也大多从事厨师行业。酸辣菜就是祖上传下来的。她家祖辈一直吃酸辣菜，据说里面有营养，能祛病长寿。所以，她的家族成员绝大部分活过了90岁。</p><p>胡也阿婆说：“小伙子，这个祖传秘方是不外传的，你喜欢吃，我可以给你带上好多回去吃。”</p><p>周杰伦带了满满一坛子酸辣菜回到台北，请好友们品尝。大家一片惊呼，著名导演李安吃过之后，对周杰伦说：“这个如果弄到市场上，一定会畅销。”</p><p>周杰伦认定这是一个难得的商机，除了可以赚钱，把这种有利于健康的食品推向市场，让更多人受益，也是个善行。几月后，他又来到小坝上村找胡也阿婆，想和阿婆合作生产这种酸辣菜。阿婆一听，大声呵责道：“你让我出卖老祖宗？”</p><p>周杰伦受到了训斥，心情沮丧地回到台北。一天，李安见到周杰伦，惊奇问他为什么脸色不好？周杰伦说了事情的经过。李安建议周杰伦去找阿婆的儿子或孙子商量。</p><p>经过多方努力，周杰伦终于与胡也阿婆的孙子、当地的一个小学体育教师胡也平取得了联系。胡也平很赞同周杰伦的想法，经过协商，决定由胡也平任总经理兼总技术督导，以技术入股，负责最关键的配方秘密，周杰伦任董事长，负责出资建厂以及产品的销售。因为这个协议执行过程中并无透露酸辣菜的配方，得到了胡也阿婆的许可。2011年元旦，位于台中市的“胡也酸辣菜”有限责任公司正式开工生产了。</p><p>大明星兜售小酸菜</p><p>第一批“胡也酸辣菜”试产品生产出来了，周杰伦一品尝，与胡也阿婆地窖里的酸辣菜毫无二致，他非常兴奋。与胡也平商量一番后，决定开始大批量投入生产。</p><p>一个月后，大批的“胡也酸辣菜”摆进了台中、台南等城市的商场贷架上。然而，现实与周杰伦的预测截然相反，顾客对这种新的咸菜并不感兴趣，有些商场里，一个星期才卖一两袋。有的产品被退了回来，有的经销商表示不愿再经销它。第一批生产的50吨酸辣菜全面滞销，一下损失了近千万新台币。胡也平受到了更大的刺激，因为他辞去了小学教师的公职，现在工厂又不行，他向周杰伦提出辞职。</p><p>胡也平一走，可就是釜底抽薪，一切都完蛋了。周杰伦怎么劝，胡也平也不听，一心要离开公司。周杰伦跑到小坝上村，找到胡也阿婆，经过阿婆的规劝，胡也平同意暂时留在公司里，危机总算化解了。</p><p>周杰伦很难过，也非常奇怪：为什么味美价廉的酸辣菜竟然无人问津？当初广告也打了，推介会也开了，产品包装也非常精美，为什么产生了这样的结果？</p><p>郁闷之中，周杰伦想到了好友前辈郭台铭先生。郭台铭在商界素以“智多星”著称，一定会有好主意给他。于是，周杰伦特地把郭台铭从台北请来台中市，向他请教。郭台铭看了工厂生产车间，品尝了“胡也酸辣菜”之后，不断点头称赞。他认为，产品非常好，关键是宣传做得不好。俗话说，酒好也怕巷子深。郭台铭说：“要吆喝，要向市场大声吆喝，更重要的是把你的产品和周杰伦这个名字联系起来。”</p><p>周杰伦一下子明白了其中的道理。他请来台湾最著名的广告策划人何进身先生，何先生帮周杰伦策划了一套宣传方案，周杰伦看了，连喊：“高明！高明！”</p><p>2011年3月，周杰伦接拍了松下公司的广告。双方谈妥的价格是3000万新台币，正在签单，周杰伦突然在谈判桌上提出“减到一半的价格”。这个提法令松下谈判代表惊诧不已。周杰伦谈了自己的条件：他想在广告发布会上吃自己的咸菜。松下的电子产品和民间小吃根本不矛盾，而且周杰伦此举定会引起媒体热议，无疑会加大松下公司的广告效应，松下谈判代表当即表示同意。</p><p>广告发布会在香港举行，有200多家媒体记者参加。当有记者问周杰伦最近有什么新歌推出时，周杰伦回答：“近三个月没有新歌推出，我正在生产一种小咸菜，厂址在台中。”好事的记者哪有不抱根问底的，于是 “胡也酸辣菜”发布了。</p><p>当晚，关于“周杰伦卖咸菜”的消息就在媒体上出现，人们非常好奇：周杰伦和咸菜有什么干系？一看报道，确确实实，周杰伦在生产一种名叫“胡也酸辣菜”的小咸菜。好奇的人们立即拥向商场，几天之内，滞销的50吨产品被一扫而光。各大商场纷纷打电话告急，脱销！脱销！原来心灰意冷的胡也平变得干劲十足，组织工人昼夜生产，大批酸辣菜源源不断地供应市场。仅仅在2010年第二季度，公司就进账5000万新台币。</p><p>周杰伦见东风好借力，马上追加5000万新台币投资扩建厂房，生产规模迅速扩大到月产600吨的规模。</p><p>不是广告胜似广告</p><p>其实周杰伦并没有意识到，与他一帆风顺的歌唱事业不同的是，商场风云变幻莫测，随时有翻船的危险。“胡也酸辣菜”在市场上亮相后，引起一片热议。有好多人认为周杰伦是歌星，与生产食品风马牛不相及，他搞出的咸菜什么水平，可想而知。2011年8月，一篇题为《腌制食品的亚硝酸盐对人体的危害》的文章，在《苹果日报》副刊发表，文中以“科学数据”论证了胡也酸辣菜的有害成分。</p><p>此文一出，胡也酸辣菜立即受到迎头痛击，几天之内销量下降一半。更为严重的是，刚刚生产出来的产品，积压库房，为防止超长期搁置产生变质，只好租用台中市一家大型冷库存放，每天租金高达50万台币。</p><p>怎么办？周杰伦焦虑万分，如果这样下去，公司很快就垮台。这时，吴宗宪从媒体上得知了消息，他打来电话，周杰伦连说三遍“情况危急”。吴宗宪想了想，建议他把“胡也酸辣菜”送到台北科学研究院进行化验，用“科学数据”来反击“科学数据”。周杰伦觉得这招可行，马上派人把样品送去检验。</p><p>三天后，检验结果出来了，结论是：内中所含微量亚硝盐并未超出一般酿造食品的含量，符合食品食用标准。周杰伦拿到这份检验结论，如获至宝，喜不自禁。他立即让助手邀请媒体，准备召开发布会。</p><p>2011年9月1日，精心筹备的“胡也酸辣菜”卫生检验结果发布会，在台北晶华大酒店隆重举行。预计上午10点开始，可是，周杰伦却没有到场，只有总经理胡也平在主持。前来抢歌星新闻的记者大失所望。面对吵吵嚷嚷大呼上当的记者，胡也平微笑着劝大家耐心等待，一定会有奇迹出现的。他说：“周杰伦永远是周杰伦嘛，他什么时候给过我们失望？”</p><p>尽管如此，周杰伦迟迟未现身，胡也平渐渐地压不住场了。10点半过后，有记者开始收拾长枪短炮，准备退场了。胡也平怎么挽留也没人听。就在这时，有人高呼：“周杰伦来了！”全场的视线一下子集中到台上，只见周杰伦面带微笑，扶着一位老奶奶，一步步走上台前。</p><p>原来，周杰伦昨晚和胡也平一起讨论明天的发布，直到深夜。一直忧心忡忡的周杰伦总是担心发布会的效果不好。胡也平劝他想开一点。忽然，周杰伦一拍大腿，他有了一个想法：把阿婆请到发布会上，现身说法！胡也平眼睛一亮，说：“我怎么没想到这招呢？”他立即打电话给奶奶，胡也阿婆本来不想来，但听孙子介绍了目前的严重情况后，老太太也着急了。于是，周杰伦立即雇了专机直飞台中市，然后乘出租车直达小坝上村，一路风尘，终于在发布会结前赶到了现场。</p><p>胡也阿婆虽然88岁了，但身板硬朗，声如洪钟。她大声对着全场记者说：“谁说我的酸辣菜有毒？我吃了一辈子，我被毒死了么？我们家族高祖在明朝是御厨，酸辣菜是我高祖发明的健身长寿菜，我们家族吃它吃了几百年了，不但没有一个得癌，反而个个高寿。我爷爷奶奶都活过了95岁，我母亲前年113岁才去世，连战先生在十年前还给我母亲授过奖呢。”</p><p>全场爆发出雷鸣般的掌声，周杰伦心里乐开了花，他明白，一切问题都迎刃而解了。</p><p>胡也酸辣菜恢复了往日的辉煌，东南亚好多国家的华商也开始经销。按周杰伦的想法，东南亚国家华裔市场极具潜力，且中国产食品的竞争远未达到大陆和港台的白热化程度，是一个最可开发的处女地市场。于是，他把“胡也酸辣菜”的市场重点推向了东南亚和北美的华裔市场。</p><p>由于周杰伦在华人中的巨大影响力，胡也酸辣菜顺利地在华人超市中站稳了脚根，销量以几何级数上升，2012年第一季度，产值高达到7亿新台币。</p><p>目前，周杰伦正在运作将“胡也酸辣菜”在新加坡发行股票，上市前的资本前期工作己经结束，周杰伦和他的团队相信，一只生产咸菜的股票不久后就会在股市上成为明星。</p><p>(责任编辑：中国古典小说网)<br>转载自<a href="https://www.seeol.com/chengyu-detail-32220.html" target="_blank" rel="noopener">https://www.seeol.com/chengyu-detail-32220.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      2012年5月4日，福布斯发布“2012年中国名人榜”，歌星周杰伦力压刘德华和姚明，成为华夏名人之首...
-    
-    </summary>
-    
-      <category term="杂记" scheme="https://mlone.top/categories/%E6%9D%82%E8%AE%B0/"/>
-    
-    
-      <category term="杰伦" scheme="https://mlone.top/tags/%E6%9D%B0%E4%BC%A6/"/>
-    
-      <category term="酸菜" scheme="https://mlone.top/tags/%E9%85%B8%E8%8F%9C/"/>
     
   </entry>
   

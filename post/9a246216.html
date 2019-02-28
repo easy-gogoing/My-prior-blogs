@@ -140,7 +140,7 @@
 
 
 
-  <meta name="keywords" content="java,多线程," />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -153,18 +153,18 @@
 
 
 
-<meta name="description" content="转自：https://blog.csdn.net/hejingyuan6/article/details/47053409">
-<meta name="keywords" content="java,多线程">
+<meta name="description" content="转自：http://www.cnblogs.com/luohanguo/p/7825656.html">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何在两个线程间共享数据">
+<meta property="og:title" content="观察者模式">
 <meta property="og:url" content="https://mlone.top/post/9a246216.html">
 <meta property="og:site_name" content="easy-go&#39;s blogs">
-<meta property="og:description" content="转自：https://blog.csdn.net/hejingyuan6/article/details/47053409">
+<meta property="og:description" content="转自：http://www.cnblogs.com/luohanguo/p/7825656.html">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-27T08:07:15.087Z">
+<meta property="og:updated_time" content="2019-02-27T07:53:09.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何在两个线程间共享数据">
-<meta name="twitter:description" content="转自：https://blog.csdn.net/hejingyuan6/article/details/47053409">
+<meta name="twitter:title" content="观察者模式">
+<meta name="twitter:description" content="转自：http://www.cnblogs.com/luohanguo/p/7825656.html">
 
 
 
@@ -200,7 +200,7 @@
 
 
 
-  <title>如何在两个线程间共享数据 | easy-go's blogs</title>
+  <title>观察者模式 | easy-go's blogs</title>
   
 
 
@@ -389,7 +389,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">如何在两个线程间共享数据</h2>
+          <h2 class="post-title" itemprop="name headline">观察者模式</h2>
         
 
         <div class="post-meta">
@@ -417,7 +417,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-27T16:07:15+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-27T15:53:09+08:00">
                 2019-02-27
               </time>
             
@@ -436,8 +436,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/并发编程/" itemprop="url" rel="index">
-                    <span itemprop="name">并发编程</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -451,7 +451,7 @@
 
           
           
-             <span id="/post/9a246216.html" class="leancloud_visitors" data-flag-title="如何在两个线程间共享数据">
+             <span id="/post/9a246216.html" class="leancloud_visitors" data-flag-title="观察者模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -476,7 +476,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  792 字
+                  1.1k 字
                 </span>
               
 
@@ -501,111 +501,146 @@
       
 
       
-        <p>转自：<a href="https://blog.csdn.net/hejingyuan6/article/details/47053409" target="_blank" rel="noopener">https://blog.csdn.net/hejingyuan6/article/details/47053409</a></p>
-<a id="more"></a>
-<p>你可以通过共享对象来实现这个目的，或者是使用像阻塞队列这样并发的数据结构。</p>
-<p>1，如果每个线程执行的代码相同，可以使用同一个Runnable对象，这个Runnable对象中有那个共享数据。</p>
-<p>例如，卖票系统就可以这么做：</p>
-<pre><code>class Ticket implements Runnable {
+        <p>转自：<a href="http://www.cnblogs.com/luohanguo/p/7825656.html" target="_blank" rel="noopener">http://www.cnblogs.com/luohanguo/p/7825656.html</a><br><a id="more"></a></p>
+<h4 id="基本思想："><a href="#基本思想：" class="headerlink" title="基本思想："></a>基本思想：</h4><p>观察者模式的定义：</p>
+<p>　　在对象之间定义了一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象会收到通知并自动更新。</p>
+<p>大白话：</p>
+<p>　　其实就是发布订阅模式，发布者发布信息，订阅者获取信息，订阅了就能收到信息，没订阅就收不到信息。</p>
+<p>该模式包含四个角色：</p>
+<ul>
+<li>抽象被观察者角色：也就是一个抽象主题，它把所有对观察者对象的引用保存在一个集合中，每个主题都可以有任意数量的观察者。抽象主题提供一个接口，可以增加和删除观察者角色。一般用一个抽象类和接口来实现。</li>
+<li>抽象观察者角色：为所有的具体观察者定义一个接口，在得到主题通知时更新自己。</li>
+<li>具体被观察者角色：也就是一个具体的主题，在集体主题的内部状态改变时，所有登记过的观察者发出通知。</li>
+<li>具体观察者角色：实现抽象观察者角色所需要的更新接口，一边使本身的状态与制图的状态相协调。</li>
+</ul>
+<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><pre><code>/***
+ * 抽象被观察者接口
+ * 声明了添加、删除、通知观察者方法
+ * @author jstao
+ */
+public interface Observerable {
 
-    private int ticket = 10; //共享成员变量
+    public void registerObserver(Observer o); //添加一个用户
+    public void removeObserver(Observer o); //移除一个用户
+    public void notifyObserver(); //通知用户消息更新了--&gt;里面调用观察者接口的update()方法
 
-    public void run() {
-        while (ticket &gt; 0) {
-            ticket--;
-            System.out.println(&quot;当前票数为：&quot; + ticket);
+}
+</code></pre><p>.</p>
+<pre><code>/***
+ * 抽象观察者接口
+ * 定义了一个update()方法，当被观察者调用notifyObservers()方法时，观察者的update()方法会被回调。
+ * @author jstao
+ */
+public interface Observer {
+    public void update(String message);
+}
+</code></pre><p>.</p>
+<pre><code>import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 被观察者，也就是微信公众号服务
+ * 实现了Observerable接口，对Observerable接口的三个方法进行了具体实现
+ * @author jstao
+ *
+ */
+public class WechatServer implements Observerable {
+
+    //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现类编程
+    private List&lt;Observer&gt; list; //用户列表
+    private String message; //发布的信息
+
+    public WechatServer() {
+        list = new ArrayList&lt;Observer&gt;();
+    }
+
+    @Override
+    public void registerObserver(Observer o) {
+
+        list.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        if(!list.isEmpty())
+            list.remove(o);
+    }
+
+    //遍历
+    @Override
+    public void notifyObserver() {
+        for(int i = 0; i &lt; list.size(); i++) {
+            Observer oserver = list.get(i);
+            oserver.update(message); //回调集合中每个用户的update()方法，传达更新消息
         }
     }
-}
 
-public class SellTicket {
+    public void setInfomation(String s) { //设置更新消息
+        this.message = s;
+        System.out.println(&quot;微信服务更新消息： &quot; + s);
+        //消息更新，通知所有观察者
+        notifyObserver();
+    }
+
+}
+</code></pre><p>.</p>
+<pre><code>/**
+ * 观察者
+ * 实现了update方法
+ * @author jstao
+ *
+ */
+public class User implements Observer {
+
+    private String name;
+    private String message;
+
+    public User(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void update(String message) {
+        this.message = message;
+        read();
+    }
+
+    public void read() {
+        System.out.println(name + &quot; 收到推送消息： &quot; + message);
+    }
+
+}
+</code></pre><p>//测试：</p>
+<pre><code>/**
+ * 首先注册了三个用户，ZhangSan、LiSi、WangWu。公众号发布了一条消息&quot;PHP是世界上最好用的语言！&quot;，三个用户都收到了消息。
+    用户ZhangSan看到消息后颇为震惊，果断取消订阅，这时公众号又推送了一条消息，此时用户ZhangSan已经收不到消息，其他用户
+    还是正常能收到推送消息。
+ */
+public class Test {
+
     public static void main(String[] args) {
-        Ticket t = new Ticket(); //使用同一个Runnable实现对象
-        new Thread(t).start(); //在主线程中新建并开启两个线程
-        new Thread(t).start();
-    }
-}
-</code></pre><p>2，如果每个线程执行的代码不同，这时候需要用不同的Runnable对象。</p>
-<p>例如，设计4个线程。其中两个线程每次对data增加1，另外两个线程对data每次减1，银行存取款。</p>
-<p>有两种方法来解决此问题：</p>
-<p>（其实这两个方法是差不多的，只是使用内部类写法更简洁）</p>
-<p>2.1 将共享数据封装成另外一个对象，然后将这个对象逐一传递给各个Runnable对象，每个线程对共享数据的操作方法也分配到那个对象身上完成，这样容易实现针对数据进行各个操作的互斥和通信：</p>
-<pre><code>class MyData{ //共享数据类
-    private int data; //共享数据
-    public MyData(int data){ this.data=data; }
-    public synchronized void increase(){ //加操作
-        data++;
-        System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data);
-    }
-    public synchronized void decrease(){ //减操作
-        data--;
-        System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data);
-    }
-}
-class Inc implements Runnable{ //线程1
-    private MyData obj;
-    public Inc(MyData obj){ //传入共享数据类对象
-        this.obj=obj;
-    }
-    public void run(){
-        this.obj.increase(); //调用加操作
-    }
-}
-class Dec implements Runnable{ //线程2
-    private MyData obj;
-    public Dec(MyData obj){ //传入共享数据类对象
-        this.obj=obj;
-    }
-    public void run(){
-        this.obj.decrease(); //调用减操作
-    }
-}
+        WechatServer server = new WechatServer();
 
-public class Test{
-    public static void main(String[] args){
-        MyData t = new MyData (10);
-        for (int i = 0; i &lt; 2; i++){ //共开启2*2个线程
-            Thread inc=new Thread(new Inc(t));
-            Thread dec=new Thread(new Dec(t));
-            inc.start();
-            dec.start();
-        }
-    }
-}
-</code></pre><p>2.2 将Runnable对象作为一个类的内部类，共享数据作为这个类的成员变量，每个线程对共享数据的操作方法也封装在外部类，以便实现对数据的各个操作的同步和互斥，作为内部类的各个Runnable对象调用外部类的这些方法：</p>
-<pre><code>class MyData{ //共享数据类
-    private int data; //共享数据
-    public MyData(int data){ this.data=data; }
-    public synchronized void increase(){ //加操作
-        data++;
-        System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data);
-    }
-    public synchronized void decrease(){ //减操作
-        data--;
-        System.out.println(Thread.currentThread().getName() + &quot;data:&quot; + data);
-    }
-}
+        Observer userZhang = new User(&quot;ZhangSan&quot;);
+        Observer userLi = new User(&quot;LiSi&quot;);
+        Observer userWang = new User(&quot;WangWu&quot;);
 
-public class Test{
-    public static void main(String[] args){
-        final MyData t = new MyData (10); //final表示引用变量t不能指向其他对象实例
-        for (int i = 0; i &lt; 2; i++){ 
-            new Thread(new Runnable(){
-                public void run(){
-                       this.obj.increase(); //调用加操作
-                   }
-                }).start();
+        server.registerObserver(userZhang);
+        server.registerObserver(userLi);
+        server.registerObserver(userWang);
+        server.setInfomation(&quot;PHP是世界上最好用的语言！&quot;);
 
-            new Thread(new Runnable(){
-                public void run(){
-                       this.obj.decrease(); //调用减操作
-                   }
-                }).start();
-        }
+        System.out.println(&quot;----------------------------------------------&quot;);
+        server.removeObserver(userZhang);
+        server.setInfomation(&quot;JAVA是世界上最好用的语言！&quot;);
+
     }
 }
-</code></pre><p><strong>总结：</strong></p>
-<p>其实多线程间的共享数据最主要的还是互斥，多个线程共享一个变量，针对变量的操作实现原子性即可。</p>
+</code></pre><h4 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h4><p>这个模式是松偶合的，改变主题或观察者中的一方，另一方不会受到影像。</p>
+<p>JDK中也有自带的观察者模式，但是被观察者是一个类而不是接口，限制了它的复用能力。</p>
+<p>在JavaBean和Swing中也可以看到观察者模式的影子。</p>
+<p><strong>yangd个人理解：</strong></p>
+<p>接口异步回调是两个对象之间互相调用，而观察者模式只有服务器调用用户的方法（被观察者调用观察者），是单向调用，所以二者是不一样的。</p>
 
       
     </div>
@@ -634,9 +669,7 @@ public class Test{
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
-          
-            <a href="/tags/多线程/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
+            <a href="/tags/设计模式/" rel="tag"><i class="fa fa-tag"></i> 设计模式</a>
           
         </div>
       
@@ -674,8 +707,8 @@ public class Test{
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/9a246216.html" rel="prev" title="观察者模式">
-                观察者模式 <i class="fa fa-chevron-right"></i>
+              <a href="/post/9a246216.html" rel="prev" title="如何在两个线程间共享数据">
+                如何在两个线程间共享数据 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -726,8 +759,17 @@ public class Test{
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -746,7 +788,7 @@ public class Test{
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">108</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -768,7 +810,7 @@ public class Test{
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -841,6 +883,22 @@ public class Test{
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本思想："><span class="nav-number">1.</span> <span class="nav-text">基本思想：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码："><span class="nav-number">2.</span> <span class="nav-text">代码：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结："><span class="nav-number">3.</span> <span class="nav-text">小结：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -870,7 +928,7 @@ public class Test{
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">90.6k</span>
+    <span title="总字数">99.6k</span>
   
 
 </div>

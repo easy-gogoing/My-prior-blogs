@@ -140,7 +140,7 @@
 
 
 
-  <meta name="keywords" content="框架,hibernate," />
+  <meta name="keywords" content="FrameWorks,hibernate," />
 
 
 
@@ -154,16 +154,16 @@
 
 
 <meta name="description" content=".">
-<meta name="keywords" content="框架,hibernate">
+<meta name="keywords" content="FrameWorks,hibernate">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hibernate对象的三大状态">
+<meta property="og:title" content="Hibernate学习笔记">
 <meta property="og:url" content="https://mlone.top/post/993a1961.html">
 <meta property="og:site_name" content="easy-go&#39;s blogs">
 <meta property="og:description" content=".">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-27T10:07:25.396Z">
+<meta property="og:updated_time" content="2019-02-28T08:27:22.520Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hibernate对象的三大状态">
+<meta name="twitter:title" content="Hibernate学习笔记">
 <meta name="twitter:description" content=".">
 
 
@@ -200,7 +200,7 @@
 
 
 
-  <title>Hibernate对象的三大状态 | easy-go's blogs</title>
+  <title>Hibernate学习笔记 | easy-go's blogs</title>
   
 
 
@@ -389,7 +389,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Hibernate对象的三大状态</h2>
+          <h2 class="post-title" itemprop="name headline">Hibernate学习笔记</h2>
         
 
         <div class="post-meta">
@@ -417,8 +417,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-27T18:07:25+08:00">
-                2019-02-27
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-28T16:27:22+08:00">
+                2019-02-28
               </time>
             
           </span>
@@ -436,8 +436,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/框架/" itemprop="url" rel="index">
-                    <span itemprop="name">框架</span>
+                  <a href="/categories/FrameWorks/" itemprop="url" rel="index">
+                    <span itemprop="name">FrameWorks</span>
                   </a>
                 </span>
 
@@ -451,7 +451,7 @@
 
           
           
-             <span id="/post/993a1961.html" class="leancloud_visitors" data-flag-title="Hibernate对象的三大状态">
+             <span id="/post/993a1961.html" class="leancloud_visitors" data-flag-title="Hibernate学习笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -476,7 +476,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  150 字
+                  1.6k 字
                 </span>
               
 
@@ -502,7 +502,17 @@
 
       
         <p>.<br><a id="more"></a></p>
-<ul>
+<h4 id="1-Hibernate的核心配置文件是什么及其作用"><a href="#1-Hibernate的核心配置文件是什么及其作用" class="headerlink" title="1.Hibernate的核心配置文件是什么及其作用?"></a>1.Hibernate的核心配置文件是什么及其作用?</h4><p>hibernate框架默认会加载classpath下的核心配置文件hibernate.cfg.xml</p>
+<p>作用：</p>
+<ol>
+<li>加载对象关系映射文件；</li>
+<li>配置hibernate运行的参数(属性)<br>，如会话工厂所需要的属性：</li>
+</ol>
+<p>数据库方言（决定了hibenrate发出哪个数据库认识的sql语句）、驱动、<br>连接url、用户名和密码，数据库连接池、事务隔离级别，开启二级缓存等。</p>
+<h4 id="2-sessionFactory会话工厂生命周期"><a href="#2-sessionFactory会话工厂生命周期" class="headerlink" title="2.sessionFactory会话工厂生命周期"></a>2.sessionFactory会话工厂生命周期</h4><p>整个运行过程中只有一个sessionFactory实例即可，使用单例模式管理sessionFactory。<br>sessionFactory是线程安全的！</p>
+<h4 id="3-Hibernate中有哪几种关联关系？"><a href="#3-Hibernate中有哪几种关联关系？" class="headerlink" title="3.Hibernate中有哪几种关联关系？"></a>3.Hibernate中有哪几种关联关系？</h4><p><strong>4种：</strong></p>
+<p>一对一，一对多，多对一，多对多</p>
+<h4 id="4-Hibernate对象的三大状态："><a href="#4-Hibernate对象的三大状态：" class="headerlink" title="4.Hibernate对象的三大状态："></a>4.Hibernate对象的三大状态：</h4><ul>
 <li><p><strong>瞬时态 transient</strong></p>
 <p>  new了一个对象，此时对象就是瞬时态；</p>
 <p>  瞬时态对象和数据库记录没有对应关系，和session没有关系。</p>
@@ -517,6 +527,82 @@
 <p>  托管态对象和session没有关系，可能和数据库存在对应也可能不对应。</p>
 </li>
 </ul>
+<h4 id="5-QBC"><a href="#5-QBC" class="headerlink" title="5.QBC"></a>5.QBC</h4><p>QBC（Query By Criteria）按条件查询，通过Criteria构造查询条件，即通过调用Criteria的api实现各种查询。</p>
+<p>通过Criteria对象拼装 查询条件，调用Criteria的add方法拼接查询条件，最终hibernate通过criteria对象自动生成sql语句。</p>
+<h4 id="6-一级缓存与二级缓存"><a href="#6-一级缓存与二级缓存" class="headerlink" title="6.一级缓存与二级缓存"></a>6.一级缓存与二级缓存</h4><p><strong>一级缓存：</strong></p>
+<ol>
+<li>session级别的缓存，是线程级别的缓存；</li>
+<li>在session中有一块内存区域，存储了持久态的对象；</li>
+<li>第一次从数据库查询到数据存到session, 当session不关闭，再次查询不会向数据库发出sql；</li>
+<li>当session关闭了，一级缓存就会被清空。</li>
+</ol>
+<p><strong>二级缓存：</strong></p>
+<p>sessionFactory级别的缓存，是进程级别的缓存；</p>
+<p>可以跨session，多个session可以公用二级缓存的数据。</p>
+<p><strong>二级缓存区域：</strong></p>
+<p><strong>1. 类级别缓冲区，存储了散装对象</strong></p>
+<p>数据结构：map<br>[ key：对象的主键值+对象的全类路径，value：对象内容 ]</p>
+<p><strong>2. 查询缓存区域，存储了查询结果集</strong></p>
+<p>任意执行一个sql语句，将sql结果进行缓存</p>
+<p>数据结构：map [ key：sql语句本身+输入参数，value就是List&lt;对象的主键值&gt; ]</p>
+<h4 id="7-延迟加载"><a href="#7-延迟加载" class="headerlink" title="7.延迟加载"></a>7.延迟加载</h4><p><strong>什么是延迟加载？</strong></p>
+<p>当查询信息，建议只查询需要的信息，对于不需要信息当需要时再去查询，这叫延迟加载。</p>
+<p>好处：提高查询性能。</p>
+<p>例子：对象导航查询。</p>
+<ol>
+<li><p>只查询基本信息，不查询关联属性;</p>
+</li>
+<li><p>当调用cstCustomer对象的get方法获取关联属性，再向数据库发出sql，去加载数据。</p>
+</li>
+</ol>
+<p><strong>Get与Load：</strong></p>
+<p>load执行原理：</p>
+<ol>
+<li>执行load查询，得到的是一个代理对象，没有发出sql</li>
+<li>当调用get方法时，通过代理对象向数据库发出sql</li>
+</ol>
+<p><strong>延迟加载原理：</strong></p>
+<ol>
+<li>生成一个代理对象</li>
+<li>执行加载时，通过代理对象向数据库发出sql</li>
+</ol>
+<h4 id="8-抓取策略"><a href="#8-抓取策略" class="headerlink" title="8.抓取策略"></a>8.抓取策略</h4><p><strong>什么是抓取策略？</strong></p>
+<p>指当应用程序需要在（Hibernate实体对象图的）关联关系间进行导航的时候， Hibernate如何获取关联对象的策略。</p>
+<p>策略包括：</p>
+<ol>
+<li>延迟加载</li>
+<li>立即加载，将加载到数据抓取到对象的属性中。</li>
+</ol>
+<p><strong>（1）类级别的抓取策略</strong><br>(这里的lazy是class标签的属性，默认为true)</p>
+<ol>
+<li>延迟加载<br> 在hbm.xml中class标签内设置lazy=”true”（延迟加载），相当于load方法;</li>
+<li>立即加载<br> 在hbm.xml中class标签内设置lazy=”false”，立即加载，load和get方法效果一样。</li>
+</ol>
+<p><strong>（2）关联级别的抓取策略（重点掌握）</strong></p>
+<p><strong>一对多、多对多：</strong><br>（这里的fetch和lazy位于class标签下的<set>标签上，fetch=”select” lazy=”true”：此为一方的默认值）</set></p>
+<p>set元素提供 lazy属性 和 fetch 用于设置 抓取策略</p>
+<ol>
+<li>fetch=”select”(默认)，lazy=”true”(默认)：fetch=”select”每get请求发出sql，lazy=”true”表示延迟加载<br>（一方lazy的值可设为true或false或extra）;</li>
+<li>fetch=”join”（lazy不起作用）：批量抓取，自动生成左外连接语句，将关联的多方数据抓取到一方的属性中。</li>
+<li>(一般不用) fetch=”select”（或不写），lazy=”false”，立即加载（注意：但这里的并不是生成左外连接sql，而是新建的查询sql语句去查外联表）。</li>
+</ol>
+<p>最佳实践：</p>
+<p>在进行一对多、多对多关联查询时候，只查询基本信息而不需要关联多方数据的，一般情况下最好采用延迟加载的抓取策略。（就像查询客户列表时并不需要立即加载其联系人信息，就将两个表的关系映射配置为延迟加载，即默认设置）</p>
+<p><strong>多对一：</strong><br>（这里的fetch和lazy位于class标签下的<many-to-one>标签上，fetch=”select” lazy=”proxy”：此为多方的默认值）<br>根据客户查询客户来源，多对一。</many-to-one></p>
+<p>hbm采用 <many-to-one>元素，提供lazy属性和fetch属性，用来配置抓取策略</many-to-one></p>
+<ol>
+<li>fetch=”join”：自动生成左外连接，将关联一方属性对象抓取到多方的属性，查询客户信息，将many-to-one中fetch设置join，通过qbc查询客户时自动生成一个客户表和数据字典表的关联查询语句。</li>
+<li>fetch=”select”，lazy=”proxy”：延迟加载</li>
+<li>(扩展) fetch=”select”（或不写），lazy=”false”：立即加载。比如在查询联系人信息时，会连带其所属的客户信息一并查询出来（注意：但这里的并不是生成左外连接sql，而是新建的查询sql语句去查客户表）。</li>
+</ol>
+<h4 id="9-HQL"><a href="#9-HQL" class="headerlink" title="9.HQL"></a>9.HQL</h4><p>HQL是Hibernate Query Language缩写， 语法很像SQL语法，以完全面向对象的方式操作数据库。<br>（QBC能做的HQL都能做，而反之不然）</p>
+<p><strong>HQL对象导航方式：</strong>Hql可以实现对象导航查询。</p>
+<p>注意：如果使用投影查询，得到List中是舜时态对象，不能使用对象导航。</p>
+<p><strong>HQL关联查询：</strong><br>因为经过测试：</p>
+<ol>
+<li>HQL对hbm.xml设置 fetch参数无效；</li>
+<li>HQL对hbm.xml设置lazy=true，lazy=false有效。<br>所以通过HQL实现fetch=”join”的功能。</li>
+</ol>
 
       
     </div>
@@ -545,7 +631,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/框架/" rel="tag"><i class="fa fa-tag"></i> 框架</a>
+            <a href="/tags/FrameWorks/" rel="tag"><i class="fa fa-tag"></i> FrameWorks</a>
           
             <a href="/tags/hibernate/" rel="tag"><i class="fa fa-tag"></i> hibernate</a>
           
@@ -585,8 +671,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/85eb9bf0.html" rel="prev" title="Struts2处理请求的全过程">
-                Struts2处理请求的全过程 <i class="fa fa-chevron-right"></i>
+              <a href="/post/85eb9bf0.html" rel="prev" title="Struts2学习笔记">
+                Struts2学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -637,8 +723,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -657,7 +752,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">108</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -679,7 +774,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -752,6 +847,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Hibernate的核心配置文件是什么及其作用"><span class="nav-number">1.</span> <span class="nav-text">1.Hibernate的核心配置文件是什么及其作用?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-sessionFactory会话工厂生命周期"><span class="nav-number">2.</span> <span class="nav-text">2.sessionFactory会话工厂生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Hibernate中有哪几种关联关系？"><span class="nav-number">3.</span> <span class="nav-text">3.Hibernate中有哪几种关联关系？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Hibernate对象的三大状态："><span class="nav-number">4.</span> <span class="nav-text">4.Hibernate对象的三大状态：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-QBC"><span class="nav-number">5.</span> <span class="nav-text">5.QBC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-一级缓存与二级缓存"><span class="nav-number">6.</span> <span class="nav-text">6.一级缓存与二级缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-延迟加载"><span class="nav-number">7.</span> <span class="nav-text">7.延迟加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-抓取策略"><span class="nav-number">8.</span> <span class="nav-text">8.抓取策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-HQL"><span class="nav-number">9.</span> <span class="nav-text">9.HQL</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -781,7 +892,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">90.6k</span>
+    <span title="总字数">99.6k</span>
   
 
 </div>

@@ -140,7 +140,7 @@
 
 
 
-  <meta name="keywords" content="框架,struts2," />
+  <meta name="keywords" content="FrameWorks,struts2," />
 
 
 
@@ -153,18 +153,18 @@
 
 
 
-<meta name="description" content="Struts 2处理请求的全过程是什么?">
-<meta name="keywords" content="框架,struts2">
+<meta name="description" content=".">
+<meta name="keywords" content="FrameWorks,struts2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Struts2处理请求的全过程">
+<meta property="og:title" content="Struts2学习笔记">
 <meta property="og:url" content="https://mlone.top/post/85eb9bf0.html">
 <meta property="og:site_name" content="easy-go&#39;s blogs">
-<meta property="og:description" content="Struts 2处理请求的全过程是什么?">
+<meta property="og:description" content=".">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-27T10:11:49.505Z">
+<meta property="og:updated_time" content="2019-02-28T08:38:03.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struts2处理请求的全过程">
-<meta name="twitter:description" content="Struts 2处理请求的全过程是什么?">
+<meta name="twitter:title" content="Struts2学习笔记">
+<meta name="twitter:description" content=".">
 
 
 
@@ -200,7 +200,7 @@
 
 
 
-  <title>Struts2处理请求的全过程 | easy-go's blogs</title>
+  <title>Struts2学习笔记 | easy-go's blogs</title>
   
 
 
@@ -389,7 +389,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Struts2处理请求的全过程</h2>
+          <h2 class="post-title" itemprop="name headline">Struts2学习笔记</h2>
         
 
         <div class="post-meta">
@@ -417,8 +417,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-27T18:11:49+08:00">
-                2019-02-27
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-28T16:38:03+08:00">
+                2019-02-28
               </time>
             
           </span>
@@ -436,8 +436,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/框架/" itemprop="url" rel="index">
-                    <span itemprop="name">框架</span>
+                  <a href="/categories/FrameWorks/" itemprop="url" rel="index">
+                    <span itemprop="name">FrameWorks</span>
                   </a>
                 </span>
 
@@ -451,7 +451,7 @@
 
           
           
-             <span id="/post/85eb9bf0.html" class="leancloud_visitors" data-flag-title="Struts2处理请求的全过程">
+             <span id="/post/85eb9bf0.html" class="leancloud_visitors" data-flag-title="Struts2学习笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -476,7 +476,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  146 字
+                  978 字
                 </span>
               
 
@@ -501,11 +501,63 @@
       
 
       
-        <p>Struts 2处理请求的全过程是什么? </p>
-<a id="more"></a>
-<p>（1）当客户端浏览器向服务器端发送请求，会被Struts2的核心前端控制器（一个过滤器）所拦截，然后根据struts2.xml配置文件中的内容来决定调用哪个前端控制器action；</p>
-<p>（2）前端控制器action接收到请求后，会根据请求的method方法名调用函数进行处理；</p>
-<p>（3）处理完成后，会返回一个逻辑视图名，然后根据struts2.xml中配置的action的result来决定要跳转到哪个前端页面。</p>
+        <p>.<br><a id="more"></a></p>
+<h4 id="1-什么是Struts2？"><a href="#1-什么是Struts2？" class="headerlink" title="1.什么是Struts2？"></a>1.什么是Struts2？</h4><p>javaEE三层架构：表现层、业务层、持久层，为了提高开发效率，方便项目管理。</p>
+<p>技术结构发展：</p>
+<ol>
+<li>单独使用jsp/servlet、</li>
+<li>使用jsp+javabean：（model1模式）、</li>
+<li>使用：jsp+servlet+javaBean（model2模式）</li>
+</ol>
+<p>Model2模式即MVC模式，MVC全名是Model View Controller，是模型(model)－视图(view)－控制器(controller)的缩写。</p>
+<p>存在的问题：</p>
+<ol>
+<li>控制逻辑复杂且不通用（多个请求得写多个Servlet）。</li>
+<li>表现（视图）技术单一，只使用jsp，能否使用其它表现层技术（freemarker，pdf、xls）。</li>
+<li>对请求的参数的解析（需手动单独获取每个参数request.getParameter()）。</li>
+</ol>
+<p>Struts2 是apache的一个开源项目，它是纯java开发，它是一个非常优秀的MVC框架，基于Model2 设计模型。</p>
+<h4 id="2-Struts2的结构优点"><a href="#2-Struts2的结构优点" class="headerlink" title="2.Struts2的结构优点"></a>2.Struts2的结构优点</h4><p>解决jsp+servlet+javabean中的问题：</p>
+<ol>
+<li>将控制逻辑单独封装成通用的控制器</li>
+<li>原控制逻辑中封装请参数、调用业务逻辑代码抽取出来。</li>
+<li>支持多视图技术。</li>
+</ol>
+<p>（1）控制器</p>
+<p>struts2提供前端控制器（Struts2PreparedAndExecutFilter），将控制逻辑封装起来，接收请求。</p>
+<p>（2）模型</p>
+<p>封装请求参数，进行业务处理。<br>struts2提供了action接口，根据业务需求开发不同的action，比如：注册用户Action</p>
+<p>（3）提供Result接口，支持多视图技术</p>
+<p>Result将结果响应给用户。</p>
+<h4 id="3-Struts2处理请求的全过程是什么"><a href="#3-Struts2处理请求的全过程是什么" class="headerlink" title="3.Struts2处理请求的全过程是什么?"></a>3.Struts2处理请求的全过程是什么?</h4><ol>
+<li><p>当客户端浏览器向服务器端发送请求，会被Struts2的核心前端控制器（一个过滤器）所拦截，然后根据struts2.xml配置文件中的内容来决定调用哪个前端控制器action；</p>
+</li>
+<li><p>前端控制器action接收到请求后，会根据请求的method方法名调用函数进行处理；</p>
+</li>
+<li><p>处理完成后，会返回一个逻辑视图名，然后根据struts2.xml中配置的action的result来决定要跳转到哪个前端页面。</p>
+</li>
+</ol>
+<h4 id="4-属性驱动"><a href="#4-属性驱动" class="headerlink" title="4.属性驱动"></a>4.属性驱动</h4><p>属性驱动是struts2提供的一种参数绑定机制，如果按照struts指定的开发规则，自动请求的参数设置（赋值）到struts的action类的属性中。</p>
+<p>属性驱动开发规则：</p>
+<ol>
+<li>确定请求参数的名称。</li>
+<li>在action类中添加属性，属性名和参数名称一致，并且添加 get/set方法。</li>
+</ol>
+<p>属性驱动支持不同action类属性类型：包括基本数据类型、list、map、数组、pojo。</p>
+<p>重点掌握：1.基本类型 2.pojo  3.数组 4.list</p>
+<h4 id="5-模型驱动"><a href="#5-模型驱动" class="headerlink" title="5.模型驱动"></a>5.模型驱动</h4><p><strong>问题描述：</strong>使用属性驱动，如果业务方法比较多，添加很多属性及get/set方法，不方便对业务方法进行维护。</p>
+<p><strong>解决方案：</strong>将action中接收参数属性及get/set方法单独放到其它pojo中，action只剩下业务方法。可以使用struts2提供模型驱动方法开发action。</p>
+<p><em>Ognl和值栈是实现模型驱动的基础原理。</em></p>
+<p><em>OGNL是Xwork框架提供的功能，Xwork是struts2基础架构，Xwork是一个ioc容器。</em></p>
+<p><em>OGNL是Object Graphic Navigation Language（对象图导航语言）的缩写，它是一个开源项目，struts2使用ognl，作为表达式语言。</em></p>
+<p><em>使用OGNL可以方便向对象中设置属性值，从对象中获取属性值。</em></p>
+<p><strong>模型驱动：</strong>模型驱动是将请求参数绑定到专门的模型对象中，Action实现ModelDriven接口并指定模型对象类型，模型对象类型即为pojo。</p>
+<h4 id="6-拦截器"><a href="#6-拦截器" class="headerlink" title="6.拦截器"></a>6.拦截器</h4><p>struts2中通过拦截器实现<strong>参数绑定、参数校验、类型转换</strong>，拦截器就是<strong>在action的执行之前或之后</strong>进行拦截执行一些代码，就是对action代码的增强。</p>
+<p><strong>拦截器的特点：</strong></p>
+<ol>
+<li>如果使用拦截器可以很方便访问值栈中的数据；</li>
+<li>filter过滤器，可以拦截所有的请求；而struts2的拦截器只能拦截用户的请求，即action请求。</li>
+</ol>
 
       
     </div>
@@ -534,7 +586,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/框架/" rel="tag"><i class="fa fa-tag"></i> 框架</a>
+            <a href="/tags/FrameWorks/" rel="tag"><i class="fa fa-tag"></i> FrameWorks</a>
           
             <a href="/tags/struts2/" rel="tag"><i class="fa fa-tag"></i> struts2</a>
           
@@ -564,8 +616,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/993a1961.html" rel="next" title="Hibernate对象的三大状态">
-                <i class="fa fa-chevron-left"></i> Hibernate对象的三大状态
+              <a href="/post/993a1961.html" rel="next" title="Hibernate学习笔记">
+                <i class="fa fa-chevron-left"></i> Hibernate学习笔记
               </a>
             
           </div>
@@ -574,8 +626,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/post/724a55c9.html" rel="prev" title="spring与springmvc">
-                spring与springmvc <i class="fa fa-chevron-right"></i>
+              <a href="/post/3141c602.html" rel="prev" title="MyBatis与Hibernate的区别">
+                MyBatis与Hibernate的区别 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -626,8 +678,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -646,7 +707,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-count">108</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -668,7 +729,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -741,6 +802,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-什么是Struts2？"><span class="nav-number">1.</span> <span class="nav-text">1.什么是Struts2？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Struts2的结构优点"><span class="nav-number">2.</span> <span class="nav-text">2.Struts2的结构优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Struts2处理请求的全过程是什么"><span class="nav-number">3.</span> <span class="nav-text">3.Struts2处理请求的全过程是什么?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-属性驱动"><span class="nav-number">4.</span> <span class="nav-text">4.属性驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-模型驱动"><span class="nav-number">5.</span> <span class="nav-text">5.模型驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-拦截器"><span class="nav-number">6.</span> <span class="nav-text">6.拦截器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -770,7 +847,7 @@
     
       <span class="post-meta-item-text">总字数&#58;</span>
     
-    <span title="总字数">90.6k</span>
+    <span title="总字数">99.6k</span>
   
 
 </div>
